@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.danielojea.srapp.CharacterSelection">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startMetatype"
+        android:text="Button"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="127dp" />
 </android.support.constraint.ConstraintLayout>
