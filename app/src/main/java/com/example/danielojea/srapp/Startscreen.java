@@ -98,6 +98,7 @@ public class Startscreen extends AppCompatActivity {
     public void startCharakterSelection(View v){
         Intent characterSelectionIntent =new Intent(this, CharacterSelection.class);
         startActivity(characterSelectionIntent);
+        finish();
     }
 
     @Override
