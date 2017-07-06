@@ -6,82 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.danielojea.srapp.CharacterSheet">
 
-    <TextView
-        android:id="@+id/textViewLOG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="LOG:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWIL" />
-
-    <TextView
-        android:id="@+id/textViewCHA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="CHA:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewINT:" />
-
-    <TextView
-        android:id="@+id/textViewINT:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INT:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        tools:layout_editor_absoluteY="354dp"
-        tools:layout_editor_absoluteX="8dp" />
-
-    <TextView
-        android:id="@+id/textViewGES"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="GES:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintTop_toBottomOf="@+id/textViewKON"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp" />
-
-    <TextView
-        android:id="@+id/textViewWIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="WIL:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSTR"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewSTR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="STR:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintTop_toBottomOf="@+id/textViewREA"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewREA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="REA:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGES"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <ImageView
         android:id="@+id/imageViewChar"
         android:layout_width="100dp"
@@ -320,6 +244,82 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/textViewGES"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="GES:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKON" />
+
+    <TextView
+        android:id="@+id/textViewREA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="REA:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGES" />
+
+    <TextView
+        android:id="@+id/textViewSTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="STR:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewREA" />
+
+    <TextView
+        android:id="@+id/textViewWIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="WIL:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSTR" />
+
+    <TextView
+        android:id="@+id/textViewLOG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="LOG:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWIL" />
+
+    <TextView
+        android:id="@+id/textViewINT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INT:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <TextView
+        android:id="@+id/textViewCHA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:text="CHA:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewINT" />
 
     <ExpandableListView
         android:layout_width="0dp"
