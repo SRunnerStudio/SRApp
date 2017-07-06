@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CharacterSheet"></activity>
+        <activity android:name=".AbilitySelection"></activity>
+        <activity android:name=".CharacterSelection"></activity>
     </application>
 
 </manifest>
