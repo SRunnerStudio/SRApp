@@ -13,8 +13,25 @@ public class CharacterSelection extends AppCompatActivity {
         setContentView(R.layout.activity_character_selection);
     }
 
-    public void startMetatype(View v){
+    public void startDaniel(View v){
         Intent metaIntent = new Intent(this, Metatyp.class);
+        startActivity(metaIntent);
+    }
+    public void startOle(View v){
+        Intent metaIntent = new Intent(this, AbilitySelection.class);
+        startActivity(metaIntent);
+    }
+    public void startSven(View v){
+        Intent metaIntent = new Intent(this, CharacterSheet.class);
+        startActivity(metaIntent);
+    }
+    public void startOjea(View v){
+        Intent metaIntent = new Intent(this, Metatyp.class);
+        startActivity(metaIntent);
+    }
+
+    public void startCreateCharacter(View v){
+        Intent metaIntent = new Intent(this, CharacterSelection.class);
         startActivity(metaIntent);
     }
 }
