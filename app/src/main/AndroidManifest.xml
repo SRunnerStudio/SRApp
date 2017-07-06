@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AbilitySelection"></activity>
-        <activity android:name=".CharacterSelection"></activity>
+        <activity android:name=".AbilitySelection" />
+        <activity android:name=".CharacterSelection" />
+        <activity android:name=".Metatyp"></activity>
     </application>
 
 </manifest>
