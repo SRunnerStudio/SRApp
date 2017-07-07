@@ -32,9 +32,10 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/metatyp_elf_bw"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp"
         android:layout_marginLeft="45dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="0dp" />
 
     <ImageButton
         android:id="@+id/HumanButton"
@@ -44,10 +45,10 @@
         android:onClick="changeHuman"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/metatyp_human_bw"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ElfButton"
         android:layout_marginTop="70dp"
-        android:layout_marginLeft="173dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginLeft="128dp"
+        app:layout_constraintLeft_toLeftOf="@+id/ElfButton" />
 
     <ImageButton
         android:id="@+id/DwarfButton"
@@ -59,8 +60,8 @@
         app:srcCompat="@drawable/metatyp_dwarf_bw"
         app:layout_constraintTop_toTopOf="@+id/ElfButton"
         android:layout_marginTop="148dp"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginRight="126dp"
+        app:layout_constraintRight_toRightOf="@+id/HumanButton" />
 
     <ImageButton
         android:id="@+id/OrcButton"
@@ -70,10 +71,10 @@
         android:onClick="changeOrc"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/metatyp_orc_bw"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="218dp"
-        android:layout_marginLeft="178dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/HumanButton"
+        android:layout_marginTop="147dp"
+        android:layout_marginLeft="132dp"
+        app:layout_constraintLeft_toLeftOf="@+id/DwarfButton" />
 
     <ImageButton
         android:id="@+id/TrollButton"
@@ -83,9 +84,9 @@
         android:onClick="changeTroll"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/metatyp_troll_bw"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="290dp"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/DwarfButton"
+        android:layout_marginTop="146dp"
+        android:layout_marginRight="128dp"
+        app:layout_constraintRight_toRightOf="@+id/OrcButton" />
 
 </android.support.constraint.ConstraintLayout>
