@@ -22,10 +22,11 @@
         </activity>
         <activity android:name=".AbilitySelection" />
         <activity android:name=".CharacterSelection" />
-        <activity android:name=".Metatyp"></activity>
-        <activity android:name=".CharacterSheet"></activity>
-        <activity android:name=".AbilitySelection"></activity>
-        <activity android:name=".CharacterSelection"></activity>
+        <activity android:name=".Metatyp" />
+        <activity android:name=".CharacterSheet" />
+        <activity android:name=".AbilitySelection" />
+        <activity android:name=".CharacterSelection" />
+        <activity android:name=".CharacterCreation"></activity>
     </application>
 
 </manifest>
