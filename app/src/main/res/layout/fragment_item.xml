@@ -9,19 +9,42 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/id"
+        android:id="@+id/AbilityName"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_margin="@dimen/text_margin"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:text="name"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/MinusButton"
         android:layout_width="wrap_content"
-        android:layout_height="71dp"
-        android:layout_alignBaseline="@+id/id"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:layout_weight="1"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/shadowrunapp_minus"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <TextView
+        android:id="@+id/AbilityCounter"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:text="zahl"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/PlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_alignBaseline="@+id/AbilityName"
         android:baselineAlignBottom="false"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_green_dark"
@@ -30,39 +53,8 @@
         tools:layout_editor_absoluteX="182dp"
         tools:layout_editor_absoluteY="76dp" />
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="@dimen/text_margin"
-        android:text="zahl"
-        android:textAppearance="?attr/textAppearanceListItem" />
-
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:fabSize="mini"
-        android:layout_marginRight="20dp"
-        app:srcCompat="@drawable/shadowrunapp_minus"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="116dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:visibility="visible"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/shadowrunapp_upgrade" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        android:id="@+id/DowngradeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -71,4 +63,18 @@
         app:backgroundTint="?android:attr/colorActivatedHighlight"
         app:fabSize="mini"
         app:srcCompat="@drawable/shadowrunapp_downgrade" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/UpgradeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:visibility="visible"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/shadowrunapp_upgrade" />
+
+
 </LinearLayout>
