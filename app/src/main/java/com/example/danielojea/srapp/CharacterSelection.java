@@ -25,6 +25,10 @@ public class CharacterSelection extends AppCompatActivity {
         Intent metaIntent = new Intent(this, CharacterSheet.class);
         startActivity(metaIntent);
     }
+    public void startSven2(View v){
+        Intent metaIntent = new Intent(this, CharacterConcept.class);
+        startActivity(metaIntent);
+    }
     public void startOjea(View v){
         Intent metaIntent = new Intent(this, Metatyp.class);
         startActivity(metaIntent);
