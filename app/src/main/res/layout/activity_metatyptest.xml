@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.danielojea.srapp.Metatyp">
+
+
+    <Button
+        android:id="@+id/WeiterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="WEITER"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.181">
+
+        <ImageButton
+            android:id="@+id/OrcButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="129dp"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="215dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:onClick="changeOrc"
+            android:scaleType="centerInside"
+            app:layout_constraintLeft_toLeftOf="@+id/ElfButton"
+            app:layout_constraintTop_toTopOf="@+id/ElfButton"
+            app:srcCompat="@drawable/metatyp_orc_bw" />
+
+        <ImageButton
+            android:id="@+id/TrollButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginEnd="129dp"
+            android:layout_marginRight="129dp"
+            android:layout_marginTop="283dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:onClick="changeTroll"
+            android:scaleType="centerInside"
+            app:layout_constraintRight_toRightOf="@+id/HumanButton"
+            app:layout_constraintTop_toTopOf="@+id/ElfButton"
+            app:srcCompat="@drawable/metatyp_troll_bw" />
+
+        <ImageButton
+            android:id="@+id/DwarfButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginEnd="129dp"
+            android:layout_marginRight="129dp"
+            android:layout_marginTop="143dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:onClick="changeDwarf"
+            android:scaleType="centerInside"
+            app:layout_constraintRight_toRightOf="@+id/HumanButton"
+            app:layout_constraintTop_toTopOf="@+id/ElfButton"
+            app:srcCompat="@drawable/metatyp_dwarf_bw" />
+
+        <ImageButton
+            android:id="@+id/HumanButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="129dp"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:onClick="changeHuman"
+            android:scaleType="centerInside"
+            app:layout_constraintLeft_toLeftOf="@+id/ElfButton"
+            app:layout_constraintTop_toTopOf="@+id/ElfButton"
+            app:srcCompat="@drawable/metatyp_human_bw" />
+
+        <ImageButton
+            android:id="@+id/ElfButton"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:onClick="changeElf"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/metatyp_elf_bw"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>
