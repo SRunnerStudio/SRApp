@@ -27,6 +27,11 @@
         <activity android:name=".AbilitySelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".CharacterCreation" />
+        <activity
+            android:name=".AbilityPicker"
+            android:label="@string/title_activity_ability_picker"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".CharacterCreation" />
         <activity android:name=".CharacterConcept"></activity>
     </application>
 

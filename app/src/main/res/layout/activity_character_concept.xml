@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.danielojea.srapp.CharacterConcept">
 
+
     <ImageView
         android:id="@+id/imageViewCharacter"
         android:layout_width="100dp"
@@ -15,15 +16,244 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog" />
 
-    <ListView
+
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="395dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCharacter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCharacter">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Name:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.026"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputName"
+                android:layout_width="228dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+                app:layout_constraintLeft_toRightOf="@+id/textViewName"
+                app:layout_constraintTop_toTopOf="@+id/textViewName">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:text="Metatyp:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintHorizontal_bias="0.026"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+            <TextView
+                android:id="@+id/textViewClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Archetyp:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMeta" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputClass"
+                android:layout_width="228dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewClass"
+                app:layout_constraintLeft_toRightOf="@+id/textViewClass"
+                app:layout_constraintTop_toTopOf="@+id/textViewClass">
+
+                <EditText
+                    android:id="@+id/editTextClass"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Geschlecht:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClass" />
+
+            <TextView
+                android:id="@+id/textViewAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="35dp"
+                android:text="Alter:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSex" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputAge"
+                android:layout_width="228dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewAge"
+                app:layout_constraintLeft_toRightOf="@+id/textViewAge"
+                app:layout_constraintTop_toTopOf="@+id/textViewAge">
+
+                <EditText
+                    android:id="@+id/editTextAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Größe:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAge" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputSize"
+                android:layout_width="228dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSize"
+                app:layout_constraintLeft_toRightOf="@+id/textViewSize"
+                app:layout_constraintTop_toTopOf="@+id/textViewSize">
+
+                <EditText
+                    android:id="@+id/editTextSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewSizeUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="cm"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSize"
+                app:layout_constraintLeft_toRightOf="@+id/textInputSize"
+                app:layout_constraintTop_toTopOf="@+id/textViewSize" />
+
+            <TextView
+                android:id="@+id/textViewWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Gewicht:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSize" />
+
+            <TextView
+                android:id="@+id/textViewWeightUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="kg"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintLeft_toRightOf="@+id/textViewWeight"
+                app:layout_constraintTop_toTopOf="@+id/textViewWeight" />
+
+            <TextView
+                android:id="@+id/textViewEthnicity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Ethnie:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewWeight" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEthnicity"
+                android:layout_marginStart="16dp" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
