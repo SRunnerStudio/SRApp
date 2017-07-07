@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/Elf"
+        android:id="@+id/Orc"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="160dp"
