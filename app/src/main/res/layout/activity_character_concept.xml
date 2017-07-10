@@ -188,9 +188,9 @@
 
             <EditText
                 android:id="@+id/editTextBackground"
-                android:layout_width="328dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="0dp"
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
                 android:lines="1"
@@ -199,7 +199,11 @@
                 android:scrollbars="vertical"
                 android:text="Hintergrund/Beschreibung"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEthnicity"
-                tools:layout_editor_absoluteX="8dp" />
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
 
         </android.support.constraint.ConstraintLayout>
 
