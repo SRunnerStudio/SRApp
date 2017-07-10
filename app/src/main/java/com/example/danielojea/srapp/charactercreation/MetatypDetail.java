@@ -1,8 +1,10 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.example.danielojea.srapp.R;
 
 public class MetatypDetail extends AppCompatActivity {
 

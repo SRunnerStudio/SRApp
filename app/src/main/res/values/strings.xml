@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SRApp</string>
+    <string name="app_name">RunnerCreator</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -9,4 +9,6 @@
     <string name="title_activity_ability_picker">AbilityPicker</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_priorityitem_list">PriorityItems</string>
+    <string name="title_priorityitem_detail">PriorityItem Detail</string>
 </resources>
