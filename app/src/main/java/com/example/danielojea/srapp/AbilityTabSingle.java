@@ -27,19 +27,29 @@ public class AbilityTabSingle extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_ability_tab_single, container, false);
+
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // get the listview
         expListView = (ExpandableListView) view.findViewById(R.id.abilityListSingle);
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
+            @Override
+            public boolean onChildClick(
+                    ExpandableListView parent, View v,
+                    int groupPosition, int childPosition,
+                    long id) {
+
+                return false;
+            }
+        });
         // preparing list data
         prepareListData();
 
@@ -49,6 +59,7 @@ public class AbilityTabSingle extends Fragment {
         expListView.setAdapter(listAdapter);
 
     }
+
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
