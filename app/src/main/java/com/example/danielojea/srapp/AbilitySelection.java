@@ -18,9 +18,10 @@ public class AbilitySelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ability_selection);
-        //prepareAbilityData();
+        prepareAbilityData("Pimmel");
+        prepareAbilityData("Vergeina");
     }
-    public void prepareAbilityData (){
+/*    public void prepareAbilityData (){
         RecyclerView recyclerView;
         RecyclerView.Adapter mAdapter;
         RecyclerView.LayoutManager mLayoutManager;
@@ -31,10 +32,22 @@ public class AbilitySelection extends AppCompatActivity {
         abilities.add("Fertigkeit Test");
         mAdapter = new AbilityListAdapter(abilities);
         recyclerView.setAdapter(mAdapter);
+    }*/
+
+    public void prepareAbilityData (String fertigkeit){
+        RecyclerView recyclerView;
+        RecyclerView.Adapter mAdapter;
+        RecyclerView.LayoutManager mLayoutManager;
+
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        abilities.add(fertigkeit);
+        mAdapter = new AbilityListAdapter(abilities);
+        recyclerView.setAdapter(mAdapter);
     }
     public void AddAbility(View v) {
         Intent intent = new Intent(this,AbilityPicker.class);
         startActivity(intent);
-
     }
 }
