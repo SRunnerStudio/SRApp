@@ -30,9 +30,10 @@
         <activity
             android:name=".AbilityPicker"
             android:label="@string/title_activity_ability_picker"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CharacterCreation" />
-        <activity android:name=".CharacterConcept"></activity>
+        <activity android:name=".CharacterConcept" />
+        <activity android:name=".MetatypDetail"></activity>
     </application>
 
 </manifest>
