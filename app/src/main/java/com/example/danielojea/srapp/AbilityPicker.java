@@ -107,9 +107,14 @@ public class AbilityPicker extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_ability_picker, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            int ressource = 1;
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+                case 1:
+                    ressource = R.layout.fragment_ability_picker_tab_single;
+                case 2:
+                    ressource = R.layout.fragment_ability_picker_tab_package;
+            }
+            View rootView = inflater.inflate(ressource, container, false);
             return rootView;
         }
     }
@@ -141,9 +146,9 @@ public class AbilityPicker extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Fertigkeiten";
                 case 1:
-                    return "SECTION 2";
+                    return "Pakete";
             }
             return null;
         }
