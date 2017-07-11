@@ -14,9 +14,9 @@ public class Attributes {
     private AttributeValue INT;
     private AttributeValue CHA;
     private int edge;
-    private Double essence = 6.0;
+    private int essence = 6;
     private String initiative;
-    private String matrixInitiative;
+    private String matrixInitiativeAR;
     private int judgeIntentions;
     private int composure;
     private int Memory;
@@ -32,6 +32,11 @@ public class Attributes {
 
     public void calculateStats(){
         initiative = "1w6 + " + (REA.getValue()+INT.getValue());
+        matrixInitiativeAR = "1w6"+ (REA.getValue()+INT.getValue());
+        physicalLimit = (STR.getValue()*2 + CON.getValue() + REA.getValue())/3;
+        mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
+        socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
+        judgeIntentions = INT.getValue() +CHA.getValue();
     }
 
     public int getPhysicalDamageTrack() {
@@ -66,7 +71,7 @@ public class Attributes {
         StunDamageTrackMax = stunDamageTrackMax;
     }
 
-    public Double getEssence() {
+    public int getEssence() {
         return essence;
     }
 
@@ -74,8 +79,8 @@ public class Attributes {
         return initiative;
     }
 
-    public String getMatrixInitiative() {
-        return matrixInitiative;
+    public String getMatrixInitiativeAR() {
+        return matrixInitiativeAR;
     }
 
     public int getJudgeIntentions() {
