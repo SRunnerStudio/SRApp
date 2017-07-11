@@ -1,7 +1,7 @@
 package com.example.danielojea.srapp.Classes;
 
 /**
- * Created by User on 11.07.2017.
+ * Created by Ole on 11.07.2017.
  */
 
 public class Metatype {

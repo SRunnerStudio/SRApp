@@ -76,7 +76,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             }
         });
 
-        holder.txtCounter.setText("12");
+        holder.txtCounter.setText("1");
     }
 
     // Return the size of your dataset (invoked by the layout manager)
