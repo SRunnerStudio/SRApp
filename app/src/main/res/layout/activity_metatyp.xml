@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/skyline_seattle_weiss"
     tools:context="com.example.danielojea.srapp.charactercreation.Metatyp"
     tools:layout_editor_absoluteY="69dp"
     tools:layout_editor_absoluteX="0dp">
+
 
 
     <Button
