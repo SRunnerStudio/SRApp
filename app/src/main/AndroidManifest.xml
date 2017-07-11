@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SkillSelection" />
-        <activity android:name=".charactercreation.CharacterSelection" />
+        <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.Metatyp" />
         <activity android:name=".charactercreation.CharacterSheet" />
         <activity android:name=".SkillSelection" />
-        <activity android:name=".charactercreation.CharacterSelection" />
+        <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterConcept" />

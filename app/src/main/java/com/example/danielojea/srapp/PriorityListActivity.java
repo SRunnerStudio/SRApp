@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.example.danielojea.srapp.charactercreation.Metatyp;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 import java.util.List;
@@ -54,9 +55,14 @@ public class PriorityListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
     }
+    public void startMetatypeActivity(View v){
+        Intent metaIntent = new Intent(this, Metatyp.class);
+        startActivity(metaIntent);
+    }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(PriorityContentProvider.ITEMS));
+
     }
 
     public class SimpleItemRecyclerViewAdapter
