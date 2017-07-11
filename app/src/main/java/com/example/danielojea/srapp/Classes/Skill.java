@@ -9,9 +9,10 @@ public class Skill {
     private String name;
     private boolean specialization;
     private String specializationName;
-    private Attribute connectedAttribute;
+    private String connectedAttribute;
+    private boolean packageBound;
 
-    public Skill(int value, String name, AttributeValue connectedAttribute) {
+    public Skill(int value, String name, String connectedAttribute) {
         this.value = value;
         this.name = name;
         this.connectedAttribute = connectedAttribute;
@@ -49,11 +50,19 @@ public class Skill {
         this.specializationName = specializationName;
     }
 
-    public AttributeValue getConnectedAttribute() {
+    public String getConnectedAttribute() {
         return connectedAttribute;
     }
 
-    public void setConnectedAttribute(AttributeValue connectedAttribute) {
+    public void setConnectedAttribute(String connectedAttribute) {
         this.connectedAttribute = connectedAttribute;
+    }
+
+    public boolean isPackageBound() {
+        return packageBound;
+    }
+
+    public void setPackageBound(boolean packageBound) {
+        this.packageBound = packageBound;
     }
 }

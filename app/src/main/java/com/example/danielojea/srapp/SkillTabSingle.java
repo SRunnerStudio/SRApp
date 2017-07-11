@@ -7,9 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ScrollView;
+
+import com.example.danielojea.srapp.Classes.Skill;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -22,6 +26,7 @@ public class SkillTabSingle extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    ScrollView scrollView;
 
     public SkillTabSingle() {
         // Required empty public constructor
@@ -38,7 +43,7 @@ public class SkillTabSingle extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // get the listview
-        expListView = (ExpandableListView) view.findViewById(R.id.abilityListSingle);
+        expListView = (ExpandableListView) view.findViewById(R.id.skillListSingle);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -46,7 +51,6 @@ public class SkillTabSingle extends Fragment {
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
-
                 return false;
             }
         });
@@ -60,11 +64,87 @@ public class SkillTabSingle extends Fragment {
 
     }
 
-
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
+        List<Skill> skills = new ArrayList<Skill>();
+        skills.add(new Skill(0,"Akrobatik","GES"));
+        skills.add(new Skill(0,"Entfesseln","GES"));
+        skills.add(new Skill(0,"Exotische Fernkampfwaffe","GES"));
+        skills.add(new Skill(0,"Exotische Nahkampfwaffe","GES"));
+        skills.add(new Skill(0,"Fingerfertigkeit","GES"));
+        skills.add(new Skill(0,"Geschütze","GES"));
+        skills.add(new Skill(0,"Gewehre","GES"));
+        skills.add(new Skill(0,"Klingenwaffen","GES"));
+        skills.add(new Skill(0,"Knüppel","GES"));
+        skills.add(new Skill(0,"Pistolen","GES"));
+        skills.add(new Skill(0,"Projektilwaffen","GES"));
+        skills.add(new Skill(0,"Schleichen","GES"));
+        skills.add(new Skill(0,"Schlosser","GES"));
+        skills.add(new Skill(0,"Schnellfeuerwaffen","GES"));
+        skills.add(new Skill(0,"Schwere Waffen","GES"));
+        skills.add(new Skill(0,"Waffenloser Kampf","GES"));
+        skills.add(new Skill(0,"Wurfwaffen","GES"));
+        skills.add(new Skill(0,"Freifall","KON"));
+        skills.add(new Skill(0,"Tauchen","KON"));
+        skills.add(new Skill(0,"Bodenfahrzeuge","REA"));
+        skills.add(new Skill(0,"Exotisches Fahrzeug","REA"));
+        skills.add(new Skill(0,"Flugzeuge","REA"));
+        skills.add(new Skill(0,"Läufer","REA"));
+        skills.add(new Skill(0,"Raumfahrzeuge","REA"));
+        skills.add(new Skill(0,"Schiffe","REA"));
+        skills.add(new Skill(0,"Laufen","STR"));
+        skills.add(new Skill(0,"Schwimmen","STR"));
+        skills.add(new Skill(0,"Einschüchtern","CHA"));
+        skills.add(new Skill(0,"Führung","CHA"));
+        skills.add(new Skill(0,"Gebräuche","CHA"));
+        skills.add(new Skill(0,"Tierführung","CHA"));
+        skills.add(new Skill(0,"Überreden","CHA"));
+        skills.add(new Skill(0,"Unterricht","CHA"));
+        skills.add(new Skill(0,"Verhandlung","CHA"));
+        skills.add(new Skill(0,"Verkörperung","CHA"));
+        skills.add(new Skill(0,"Vorführung","CHA"));
+        skills.add(new Skill(0,"Askennen","INT"));
+        skills.add(new Skill(0,"Handwerk","INT"));
+        skills.add(new Skill(0,"Navigation","INT"));
+        skills.add(new Skill(0,"Spurenlesen","INT"));
+        skills.add(new Skill(0,"Verkleiden","INT"));
+        skills.add(new Skill(0,"Wahrnehmung","INT"));
+        skills.add(new Skill(0,"Arkana","LOG"));
+        skills.add(new Skill(0,"Biotechnologie","LOG"));
+        skills.add(new Skill(0,"Chemie","LOG"));
+        skills.add(new Skill(0,"Computer","LOG"));
+        skills.add(new Skill(0,"Elektronische Kriegsführung","LOG"));
+        skills.add(new Skill(0,"Erste Hilfe","LOG"));
+        skills.add(new Skill(0,"Fahrzeugmechanik","LOG"));
+        skills.add(new Skill(0,"Fälschen","LOG"));
+        skills.add(new Skill(0,"Hacking","LOG"));
+        skills.add(new Skill(0,"Hardware","LOG"));
+        skills.add(new Skill(0,"Industriemechanik","LOG"));
+        skills.add(new Skill(0,"Kybernetik","LOG"));
+        skills.add(new Skill(0,"Luftfahrtmechanik","LOG"));
+        skills.add(new Skill(0,"Matrixkampf","LOG"));
+        skills.add(new Skill(0,"Medizin","LOG"));
+        skills.add(new Skill(0,"Seefahrtmechanik","LOG"));
+        skills.add(new Skill(0,"Software","LOG"));
+        skills.add(new Skill(0,"Sprengstoffe","LOG"));
+        skills.add(new Skill(0,"Waffenbau","LOG"));
+        skills.add(new Skill(0,"Astralkampf","WIL"));
+        skills.add(new Skill(0,"Survival","WIL"));
+        skills.add(new Skill(0,"Alchemie","MAG"));
+        skills.add(new Skill(0,"Antimagie","MAG"));
+        skills.add(new Skill(0,"Binden","MAG"));
+        skills.add(new Skill(0,"Entzaubern","MAG"));
+        skills.add(new Skill(0,"Fokusherstellung","MAG"));
+        skills.add(new Skill(0,"Herbeirufen","MAG"));
+        skills.add(new Skill(0,"Ritualzauberei","MAG"));
+        skills.add(new Skill(0,"Spruchzauberei","MAG"));
+        skills.add(new Skill(0,"Verbannen","MAG"));
+        skills.add(new Skill(0,"Dekompilieren","RES"));
+        skills.add(new Skill(0,"Kompilieren","RES"));
+        skills.add(new Skill(0,"Registrieren","RES"));
 
+        ;
         // Adding child data
         listDataHeader.add("Geschicklichkeit");
         listDataHeader.add("Konstitution");
@@ -77,79 +157,105 @@ public class SkillTabSingle extends Fragment {
         listDataHeader.add("Magie");
         listDataHeader.add("Resonanz");
 
-        // Dummy Data wird später aus dem Charakterobjekt geladen
         List<String> fertigkeitenGES = new ArrayList<String>();
-        fertigkeitenGES.add("The Shawshank Redemption");
-        fertigkeitenGES.add("The Godfather");
-        fertigkeitenGES.add("The Godfather: Part II");
-        fertigkeitenGES.add("Pulp Fiction");
-        fertigkeitenGES.add("The Good, the Bad and the Ugly");
-        fertigkeitenGES.add("The Dark Knight");
-        fertigkeitenGES.add("12 Angry Men");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+             ) {
+                    Skill skill = i.next();
+                    if (skill.getConnectedAttribute() == "GES")
+                    {
+                        fertigkeitenGES.add(skill.getName());
+                    }
+        }
 
         List<String> fertigkeitenKON = new ArrayList<String>();
-        fertigkeitenKON.add("The Conjuring");
-        fertigkeitenKON.add("Despicable Me 2");
-        fertigkeitenKON.add("Turbo");
-        fertigkeitenKON.add("Grown Ups 2");
-        fertigkeitenKON.add("Red 2");
-        fertigkeitenKON.add("The Wolverine");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "KON")
+            {
+                fertigkeitenKON.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenREA = new ArrayList<String>();
-        fertigkeitenREA.add("2 Guns");
-        fertigkeitenREA.add("The Smurfs 2");
-        fertigkeitenREA.add("The Spectacular Now");
-        fertigkeitenREA.add("The Canyons");
-        fertigkeitenREA.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "REA")
+            {
+                fertigkeitenREA.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenSTR = new ArrayList<String>();
-        fertigkeitenSTR.add("2 Guns");
-        fertigkeitenSTR.add("The Smurfs 2");
-        fertigkeitenSTR.add("The Spectacular Now");
-        fertigkeitenSTR.add("The Canyons");
-        fertigkeitenSTR.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "STR")
+            {
+                fertigkeitenSTR.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenCHA = new ArrayList<String>();
-        fertigkeitenCHA.add("2 Guns");
-        fertigkeitenCHA.add("The Smurfs 2");
-        fertigkeitenCHA.add("The Spectacular Now");
-        fertigkeitenCHA.add("The Canyons");
-        fertigkeitenCHA.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "CHA")
+            {
+                fertigkeitenCHA.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenINT = new ArrayList<String>();
-        fertigkeitenINT.add("2 Guns");
-        fertigkeitenINT.add("The Smurfs 2");
-        fertigkeitenINT.add("The Spectacular Now");
-        fertigkeitenINT.add("The Canyons");
-        fertigkeitenINT.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "INT")
+            {
+                fertigkeitenINT.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenLOG = new ArrayList<String>();
-        fertigkeitenLOG.add("2 Guns");
-        fertigkeitenLOG.add("The Smurfs 2");
-        fertigkeitenLOG.add("The Spectacular Now");
-        fertigkeitenLOG.add("The Canyons");
-        fertigkeitenLOG.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "LOG")
+            {
+                fertigkeitenLOG.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenWIL = new ArrayList<String>();
-        fertigkeitenWIL.add("2 Guns");
-        fertigkeitenWIL.add("The Smurfs 2");
-        fertigkeitenWIL.add("The Spectacular Now");
-        fertigkeitenWIL.add("The Canyons");
-        fertigkeitenWIL.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "WIL")
+            {
+                fertigkeitenWIL.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenMAG = new ArrayList<String>();
-        fertigkeitenMAG.add("2 Guns");
-        fertigkeitenMAG.add("The Smurfs 2");
-        fertigkeitenMAG.add("The Spectacular Now");
-        fertigkeitenMAG.add("The Canyons");
-        fertigkeitenMAG.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "MAG")
+            {
+                fertigkeitenMAG.add(skill.getName());
+            }
+        }
 
         List<String> fertigkeitenRES = new ArrayList<String>();
-        fertigkeitenRES.add("2 Guns");
-        fertigkeitenRES.add("The Smurfs 2");
-        fertigkeitenRES.add("The Spectacular Now");
-        fertigkeitenRES.add("The Canyons");
-        fertigkeitenRES.add("Europa Report");
+        for (Iterator<Skill> i = skills.iterator();i.hasNext();
+                ) {
+            Skill skill = i.next();
+            if (skill.getConnectedAttribute() == "RES")
+            {
+                fertigkeitenRES.add(skill.getName());
+            }
+        }
 
         listDataChild.put(listDataHeader.get(0), fertigkeitenGES); // Header, Child data
         listDataChild.put(listDataHeader.get(1), fertigkeitenKON);

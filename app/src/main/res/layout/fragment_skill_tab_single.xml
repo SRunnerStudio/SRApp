@@ -14,7 +14,7 @@
         android:fillViewport="true">
 
         <ExpandableListView
-            android:id="@+id/abilityListSingle"
+            android:id="@+id/skillListSingle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </ScrollView>

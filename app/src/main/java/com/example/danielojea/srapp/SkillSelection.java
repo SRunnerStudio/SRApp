@@ -32,10 +32,6 @@ public class SkillSelection extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }*/
 
-    public void prepareSkillData (){
-        List<Skill> skills;
-
-    }
     public void AddAbility(View v) {
         Intent intent = new Intent(this,SkillPicker.class);
         startActivity(intent);
