@@ -16,14 +16,14 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AbilityTabSingle extends Fragment {
+public class SkillTabSingle extends Fragment {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
-    public AbilityTabSingle() {
+    public SkillTabSingle() {
         // Required empty public constructor
     }
 
@@ -31,7 +31,7 @@ public class AbilityTabSingle extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ability_tab_single, container, false);
+        return inflater.inflate(R.layout.fragment_skill_tab_single, container, false);
 
     }
     @Override

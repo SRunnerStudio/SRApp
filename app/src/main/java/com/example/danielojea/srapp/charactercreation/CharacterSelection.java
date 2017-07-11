@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.example.danielojea.srapp.PriorityListActivity;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.AbilitySelection;
+import com.example.danielojea.srapp.SkillSelection;
 
 public class CharacterSelection extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class CharacterSelection extends AppCompatActivity {
         startActivity(metaIntent);
     }
     public void startOle(View v){
-        Intent metaIntent = new Intent(this, AbilitySelection.class);
+        Intent metaIntent = new Intent(this, SkillSelection.class);
         startActivity(metaIntent);
     }
     public void startSven(View v){
