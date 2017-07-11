@@ -25,8 +25,8 @@ public class Attributes {
     private int physicalLimit;
     private int mentalLimit;
     private int socialLimit;
-    private int physicalDamageTRack;
-    private int physicalDamageTRackMax;
+    private int physicalDamageTrack;
+    private int physicalDamageTrackMax;
     private int StunDamageTrack;
     private int StunDamageTrackMax;
 
@@ -34,20 +34,20 @@ public class Attributes {
         initiative = "1w6 + " + (REA.getValue()+INT.getValue());
     }
 
-    public int getPhysicalDamageTRack() {
-        return physicalDamageTRack;
+    public int getPhysicalDamageTrack() {
+        return physicalDamageTrack;
     }
 
-    public void setPhysicalDamageTRack(int physicalDamageTRack) {
-        this.physicalDamageTRack = physicalDamageTRack;
+    public void setPhysicalDamageTrack(int physicalDamageTrack) {
+        this.physicalDamageTrack = physicalDamageTrack;
     }
 
-    public int getPhysicalDamageTRackMax() {
-        return physicalDamageTRackMax;
+    public int getPhysicalDamageTrackMax() {
+        return physicalDamageTrackMax;
     }
 
-    public void setPhysicalDamageTRackMax(int physicalDamageTRackMax) {
-        this.physicalDamageTRackMax = physicalDamageTRackMax;
+    public void setPhysicalDamageTrackMax(int physicalDamageTrackMax) {
+        this.physicalDamageTrackMax = physicalDamageTrackMax;
     }
 
     public int getStunDamageTrack() {
