@@ -21,18 +21,34 @@
             </intent-filter>
         </activity>
         <activity android:name=".AbilitySelection" />
-        <activity android:name=".CharacterSelection" />
-        <activity android:name=".Metatyp" />
-        <activity android:name=".CharacterSheet" />
+        <activity android:name=".charactercreation.CharacterSelection" />
+        <activity android:name=".charactercreation.Metatyp" />
+        <activity android:name=".charactercreation.CharacterSheet" />
         <activity android:name=".AbilitySelection" />
-        <activity android:name=".CharacterSelection" />
-        <activity android:name=".CharacterCreation" />
+        <activity android:name=".charactercreation.CharacterSelection" />
+        <activity android:name=".charactercreation.CharacterCreation" />
+        <activity android:name=".charactercreation.CharacterCreation" />
+        <activity android:name=".charactercreation.CharacterConcept" />
         <activity
             android:name=".AbilityPicker"
             android:label="@string/title_activity_ability_picker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".charactercreation.CharacterCreation" />
+        <activity android:name=".charactercreation.CharacterConcept" />
+        <activity android:name=".charactercreation.MetatypDetail" />
+        <activity
+            android:name=".PriorityListActivity"
+            android:label="@string/title_priorityitem_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".CharacterCreation" />
-        <activity android:name=".CharacterConcept"></activity>
+        <activity
+            android:name=".PriorityDetailActivity"
+            android:label="@string/title_priorityitem_detail"
+            android:parentActivityName=".PriorityListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danielojea.srapp.PriorityListActivity" />
+        </activity>
     </application>
 
 </manifest>

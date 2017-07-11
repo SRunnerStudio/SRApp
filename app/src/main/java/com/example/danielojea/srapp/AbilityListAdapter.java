@@ -4,7 +4,6 @@ package com.example.danielojea.srapp;
  * Created by User on 07.07.2017.
  */
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
@@ -57,7 +56,7 @@ public class AbilityListAdapter extends RecyclerView.Adapter<AbilityListAdapter.
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
-                inflater.inflate(R.layout.fragment_item, parent, false);
+                inflater.inflate(R.layout.points_distribute, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;

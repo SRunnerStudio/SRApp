@@ -1,9 +1,13 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.danielojea.srapp.PriorityListActivity;
+import com.example.danielojea.srapp.R;
+import com.example.danielojea.srapp.AbilitySelection;
 
 public class CharacterSelection extends AppCompatActivity {
 
@@ -35,7 +39,7 @@ public class CharacterSelection extends AppCompatActivity {
     }
 
     public void startCreateCharacter(View v){
-        Intent metaIntent = new Intent(this, CharacterSelection.class);
+        Intent metaIntent = new Intent(this, PriorityListActivity.class);
         startActivity(metaIntent);
     }
 }
