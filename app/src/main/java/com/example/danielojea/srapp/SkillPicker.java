@@ -1,8 +1,6 @@
 package com.example.danielojea.srapp;
 
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -11,20 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.ExpandableListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public class AbilityPicker extends AppCompatActivity {
+public class SkillPicker extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -44,7 +30,7 @@ public class AbilityPicker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ability_picker);
+        setContentView(R.layout.activity_skill_picker);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -76,10 +62,10 @@ public class AbilityPicker extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    AbilityTabSingle tabSingle = new AbilityTabSingle();
+                    SkillTabSingle tabSingle = new SkillTabSingle();
                     return tabSingle;
                 case 1:
-                    AbilityTabPackage tabPackage = new AbilityTabPackage();
+                    SkillTabPackage tabPackage = new SkillTabPackage();
                     return tabPackage;
                 default:
                     return null;

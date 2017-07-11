@@ -20,17 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AbilitySelection" />
+        <activity android:name=".SkillSelection" />
         <activity android:name=".charactercreation.CharacterSelection" />
         <activity android:name=".charactercreation.Metatyp" />
         <activity android:name=".charactercreation.CharacterSheet" />
-        <activity android:name=".AbilitySelection" />
+        <activity android:name=".SkillSelection" />
         <activity android:name=".charactercreation.CharacterSelection" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity
-            android:name=".AbilityPicker"
+            android:name=".SkillPicker"
             android:label="@string/title_activity_ability_picker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.CharacterCreation" />

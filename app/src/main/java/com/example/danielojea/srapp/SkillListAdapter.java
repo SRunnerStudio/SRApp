@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AbilityListAdapter extends RecyclerView.Adapter<AbilityListAdapter.ViewHolder> {
+public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
     private List<String> values;
 
     // Provide a reference to the views for each data item
@@ -44,14 +44,14 @@ public class AbilityListAdapter extends RecyclerView.Adapter<AbilityListAdapter.
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AbilityListAdapter(List<String> myDataset) {
+    public SkillListAdapter(List<String> myDataset) {
         values = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public AbilityListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public SkillListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                          int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());

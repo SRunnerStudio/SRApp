@@ -10,12 +10,12 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilitySelection extends AppCompatActivity {
+public class SkillSelection extends AppCompatActivity {
     List<String> abilities = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ability_selection);
+        setContentView(R.layout.activity_skill_selection);
         prepareAbilityData("Pimmel");
         prepareAbilityData("Vergeina");
     }
@@ -28,7 +28,7 @@ public class AbilitySelection extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         abilities.add("Fertigkeit Test");
-        mAdapter = new AbilityListAdapter(abilities);
+        mAdapter = new SkillListAdapter(abilities);
         recyclerView.setAdapter(mAdapter);
     }*/
 
@@ -41,11 +41,11 @@ public class AbilitySelection extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         abilities.add(fertigkeit);
-        mAdapter = new AbilityListAdapter(abilities);
+        mAdapter = new SkillListAdapter(abilities);
         recyclerView.setAdapter(mAdapter);
     }
     public void AddAbility(View v) {
-        Intent intent = new Intent(this,AbilityPicker.class);
+        Intent intent = new Intent(this,SkillPicker.class);
         startActivity(intent);
     }
 }
