@@ -1,10 +1,12 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class Attributes {
+public class Attributes implements Serializable {
     private AttributeValue CON;
     private AttributeValue AGI;
     private AttributeValue REA;

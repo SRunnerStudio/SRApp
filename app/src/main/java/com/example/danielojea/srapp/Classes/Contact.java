@@ -1,10 +1,12 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by User on 11.07.2017.
  */
 
-public class Contact {
+public class Contact implements Serializable {
     private String name;
     private int loyalty;
     private int influence;
