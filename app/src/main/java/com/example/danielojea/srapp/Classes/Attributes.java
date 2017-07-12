@@ -37,6 +37,9 @@ public class Attributes {
         mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
         socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
         judgeIntentions = INT.getValue() +CHA.getValue();
+        composure = WIL.getValue()+CHA.getValue();
+        Memory = WIL.getValue()+LOG.getValue();
+        carry = CON.getValue()+STR.getValue();
     }
 
     public int getPhysicalDamageTrack() {

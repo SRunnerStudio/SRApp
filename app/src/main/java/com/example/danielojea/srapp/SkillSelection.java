@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.danielojea.srapp.Classes.Skill;
+import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,11 @@ public class SkillSelection extends AppCompatActivity {
         mAdapter = new SkillListAdapter(abilities);
         recyclerView.setAdapter(mAdapter);
     }*/
+
+    public void startCharacterConcept(View v){
+        Intent CharacterConceptIntent = new Intent(this, CharacterConcept.class);
+        startActivity(CharacterConceptIntent);
+    }
 
     public void AddAbility(View v) {
         Intent intent = new Intent(this,SkillPicker.class);
