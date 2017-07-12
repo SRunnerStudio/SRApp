@@ -2,11 +2,13 @@ package com.example.danielojea.srapp.Classes;
 
 import android.util.EventLogTags;
 
+import java.io.Serializable;
+
 /**
  * Created by Ole on 11.07.2017.
  */
 
-public class Quality {
+public class Quality implements Serializable {
     private String description;
     private int karma;
     private int KONStartModifier;

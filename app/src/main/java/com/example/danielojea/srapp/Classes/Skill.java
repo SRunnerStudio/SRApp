@@ -1,10 +1,12 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Ole on 11.07.2017.
  */
 
-public class Skill {
+public class Skill implements Serializable {
     private int value;
     private String name;
     private boolean specialization;

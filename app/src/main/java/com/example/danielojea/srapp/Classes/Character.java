@@ -3,6 +3,7 @@ package com.example.danielojea.srapp.Classes;
 import android.graphics.Bitmap;
 import com.example.danielojea.srapp.charactercreation.Metatyp;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by User on 11.07.2017.
  */
 
-public class Character {
+public class Character implements Serializable {
 
     private String name;
     private Metatype metatype;
@@ -161,6 +162,8 @@ public class Character {
     public void setBackground(String background) {
         this.background = background;
     }
+
+
 }
 
 

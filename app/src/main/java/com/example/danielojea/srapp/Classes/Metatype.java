@@ -4,11 +4,13 @@ import android.widget.Switch;
 
 import com.example.danielojea.srapp.R;
 
+import java.io.Serializable;
+
 /**
  * Created by Ole on 11.07.2017.
  */
 
-public class Metatype {
+public class Metatype implements Serializable {
     private int KONStart;
     private int KONMax;
     private int GESStart;
