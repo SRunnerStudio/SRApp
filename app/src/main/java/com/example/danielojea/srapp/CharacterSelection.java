@@ -1,6 +1,5 @@
 package com.example.danielojea.srapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Metatype;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
@@ -83,7 +82,7 @@ public class CharacterSelection extends AppCompatActivity {
             public final ImageView characterPortrait;
             public final TextView characterName;
             public final TextView characterMetatyp;
-            public Character character;
+            public SRCharacter character;
 
 
 
@@ -93,7 +92,7 @@ public class CharacterSelection extends AppCompatActivity {
                 characterPortrait = (ImageView) view.findViewById(R.id.characterSelectionPortrait);
                 characterName = (TextView) view.findViewById(R.id.characterSelectionName);
                 characterMetatyp = (TextView) view.findViewById(R.id.characterSelectionMetatyp);
-                character= new Character();
+                character= new SRCharacter();
             }
 
             @Override
@@ -111,8 +110,8 @@ public class CharacterSelection extends AppCompatActivity {
     public void startOle(View v){
         Intent metaIntent = new Intent(this, SkillSelection.class);
         ArrayList<Skill> skills = new ArrayList<Skill>();
-        Serializable character = (Serializable)new Character("Ole",new Metatype("human"),R.drawable.metatyp_dwarf);
-        ((Character)character).setSkill(skills);
+        Serializable character = new SRCharacter("Ole",new Metatype("human"),R.drawable.metatyp_dwarf);
+        ((SRCharacter)character).setSkill(skills);
         metaIntent.putExtra("Character",character);
         startActivity(metaIntent);
     }

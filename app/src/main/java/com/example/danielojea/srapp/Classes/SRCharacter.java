@@ -12,7 +12,7 @@ import java.util.List;
  * Created by User on 11.07.2017.
  */
 
-public class Character implements Serializable {
+public class SRCharacter implements Serializable {
 
     private String name;
     private Metatype metatype;
@@ -30,19 +30,19 @@ public class Character implements Serializable {
     private Contact connection;
     private String background;
 
-    public Character() {
+    public SRCharacter() {
     }
 
-    public Character(String name) {
+    public SRCharacter(String name) {
         this.name = name;
     }
 
-    public Character(String name, Metatype metatype) {
+    public SRCharacter(String name, Metatype metatype) {
         this.name = name;
         this.metatype = metatype;
     }
 
-    public Character(String name, Metatype metatype, int profileImage) {
+    public SRCharacter(String name, Metatype metatype, int profileImage) {
         this.name = name;
         this.metatype = metatype;
         this.profileImage = profileImage;

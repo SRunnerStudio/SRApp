@@ -8,13 +8,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.app.Activity;
-import android.view.View;
+
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Metatype;
 import com.example.danielojea.srapp.ExpandableListAdapter;
 import com.example.danielojea.srapp.R;
@@ -25,7 +24,7 @@ public class CharacterSheet extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    Character testCharacter =  new Character("Ole",new Metatype("human"), R.drawable.metatyp_human);
+    SRCharacter testCharacter =  new SRCharacter("Ole",new Metatype("human"), R.drawable.metatyp_human);
 
 
     @Override
@@ -45,10 +44,10 @@ public class CharacterSheet extends AppCompatActivity {
         expListView.setAdapter(listAdapter);
         Intent starterIntent = getIntent();
         Serializable character = starterIntent.getSerializableExtra("Character");
-        setCharacterSheetData((Character) character);
+        setCharacterSheetData((SRCharacter) character);
     }
 
-    public void setCharacterSheetData(Character character){
+    public void setCharacterSheetData(SRCharacter character){
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
         ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);

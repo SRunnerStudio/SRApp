@@ -1,5 +1,6 @@
 package com.example.danielojea.srapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 
@@ -27,6 +29,7 @@ public class PriorityDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private PriorityContentProvider.PriorityItem mItem;
+    View rootView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -51,7 +54,7 @@ public class PriorityDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.priorityitem_detail, container, false);
+        rootView = inflater.inflate(R.layout.priorityitem_detail, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
@@ -64,4 +67,5 @@ public class PriorityDetailFragment extends Fragment {
 
         return rootView;
     }
+
 }

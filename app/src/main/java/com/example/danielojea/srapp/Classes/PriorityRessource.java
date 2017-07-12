@@ -1,10 +1,12 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityRessource {
+public class PriorityRessource implements Serializable {
     private int A = 450000;
     private int B = 275000;
     private int C = 140000;
@@ -21,6 +23,10 @@ public class PriorityRessource {
             case 5: return E;
         }
         return 0;
+    }
+
+    public PriorityRessource(int priority) {
+        this.priority = priority;
     }
 
     public int getA() {

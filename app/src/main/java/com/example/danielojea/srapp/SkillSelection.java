@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 
@@ -31,7 +31,7 @@ public class SkillSelection extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        skills = ((Character)character).getSkill();
+        skills = ((SRCharacter)character).getSkill();
         mAdapter = new SkillListAdapter(skills);
         recyclerView.setAdapter(mAdapter);
     }
@@ -40,7 +40,7 @@ public class SkillSelection extends AppCompatActivity {
         super.onResume();
         Intent starterIntent = getIntent();
         character = starterIntent.getSerializableExtra("Character");
-        skills = ((Character)character).getSkill();
+        skills = ((SRCharacter)character).getSkill();
     }
 /*    public void prepareAbilityData (){
         RecyclerView recyclerView;

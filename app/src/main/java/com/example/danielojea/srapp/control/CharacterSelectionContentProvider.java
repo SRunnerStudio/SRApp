@@ -1,9 +1,6 @@
 package com.example.danielojea.srapp.control;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Metatype;
 import com.example.danielojea.srapp.R;
 
@@ -28,10 +25,10 @@ public class CharacterSelectionContentProvider {
     public static final Map<String, CharacterSelectionContentProvider.CharacterItem> ITEM_MAP = new HashMap<String, CharacterSelectionContentProvider.CharacterItem>();
 
     static {
-        Character ole = new Character("Ole",new Metatype("human"), R.drawable.metatyp_human);
-        Character schven = new Character("Schven",new Metatype("troll"),R.drawable.metatyp_troll);
-        Character daniel = new Character("Daniel",new Metatype("dwarf"),R.drawable.metatyp_dwarf);
-        Character ojea = new Character("Ojea",new Metatype("elf"),R.drawable.metatyp_elf);
+        SRCharacter ole = new SRCharacter("Ole",new Metatype("human"), R.drawable.metatyp_human);
+        SRCharacter schven = new SRCharacter("Schven",new Metatype("troll"),R.drawable.metatyp_troll);
+        SRCharacter daniel = new SRCharacter("Daniel",new Metatype("dwarf"),R.drawable.metatyp_dwarf);
+        SRCharacter ojea = new SRCharacter("Ojea",new Metatype("elf"),R.drawable.metatyp_elf);
         addItem(new CharacterSelectionContentProvider.CharacterItem(ole));
         addItem(new CharacterSelectionContentProvider.CharacterItem(schven));
         addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
@@ -49,8 +46,8 @@ public class CharacterSelectionContentProvider {
      * A dummy item representing a piece of content.
      */
     public static class CharacterItem {
-        public final Character character;
-        public CharacterItem(Character character) {
+        public final SRCharacter character;
+        public CharacterItem(SRCharacter character) {
             this.character = character;
         }
     }

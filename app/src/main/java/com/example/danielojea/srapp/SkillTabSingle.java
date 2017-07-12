@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ScrollView;
 
-import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 
 import java.io.Serializable;
@@ -56,7 +56,7 @@ public class SkillTabSingle extends Fragment {
                     int groupPosition, int childPosition,
                     long id) {
                 character = getActivity().getIntent().getSerializableExtra("Character");
-                List<Skill> skills = ((Character) character).getSkill();
+                List<Skill> skills = ((SRCharacter) character).getSkill();
                 Skill skill = new Skill(1,listAdapter.getChild(groupPosition,childPosition).toString(),
                                         "");
                 skills.add(skill);

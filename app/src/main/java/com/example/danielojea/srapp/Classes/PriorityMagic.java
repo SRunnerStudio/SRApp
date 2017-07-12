@@ -1,10 +1,12 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityMagic {
+public class PriorityMagic implements Serializable {
     private String[][] A = {{"Zauberer oder Magieradept","Magie 6, zwei Magische Fertigkeiten auf Stufe 5, 10 Zauber,Rituale und/oder Alchemische Zauber"},
                             {"Technomancer","Resonanz 6, zwei Resonanzfertigkeiten auf Stufe 5, 5 Komplexe Formen"},
                             {"",""},{"",""},{"",""}};
@@ -25,10 +27,13 @@ public class PriorityMagic {
             {"",""},
             {"",""},
             {"",""}};
-
     private int priority;
 
-    public String[][] getAttributePoints(int priority){
+    public PriorityMagic(int priority) {
+        this.priority = priority;
+    }
+
+    public String[][] getMagic(int priority){
         switch (priority){
             case 1: return A;
             case 2: return B;

@@ -1,16 +1,22 @@
 package com.example.danielojea.srapp.Classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityAttribute {
+public class PriorityAttribute implements Serializable {
     private int A = 24;
     private int B = 20;
     private int C = 16;
     private int D = 14;
     private int E = 12;
     private int priority;
+
+    public PriorityAttribute(int priority) {
+        this.priority = priority;
+    }
 
     public int getAttributePoints(int priority){
         switch (priority){
