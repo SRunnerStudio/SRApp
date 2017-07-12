@@ -21,7 +21,7 @@ public class PriorityContentProvider {
     public static final Map<String, PriorityContentProvider.PriorityItem> ITEM_MAP = new HashMap<String, PriorityContentProvider.PriorityItem>();
 
     static {
-        addItem(new PriorityContentProvider.PriorityItem("Metatyp", "A" , "A: \n" +
+        addItem(new PriorityContentProvider.PriorityItem("A", "Metatyp" , "A: \n" +
                 "Mensch (9)\n" +
                 "Elf (8)\n" +
                 "Ork (7)\n" +
@@ -42,7 +42,7 @@ public class PriorityContentProvider {
                 "Mensch (3)\n" +
                 "Elf (0)\n\n" +
                 "E:\n Mensch (1)"));
-        addItem(new PriorityContentProvider.PriorityItem("Attribute", "B" , "A: \n" +
+        addItem(new PriorityContentProvider.PriorityItem("B", "Attribute" , "A: \n" +
                 "24\n\n" +
                 "B:\n" +
                 "20\n\n" +
@@ -52,9 +52,9 @@ public class PriorityContentProvider {
                 "14\n\n" +
                 "E:\n" +
                 "12"));
-        addItem(new PriorityContentProvider.PriorityItem("Magie", "C" , "Krasse Magie"));
-        addItem(new PriorityContentProvider.PriorityItem("Fertigkeiten", "D" , "Krasse Fertigkeiten"));
-        addItem(new PriorityContentProvider.PriorityItem("Ressourcen", "E" , "Krasser Reichtum"));
+        addItem(new PriorityContentProvider.PriorityItem("C", "Magie" , "Krasse Magie"));
+        addItem(new PriorityContentProvider.PriorityItem("D", "Fertigkeiten" , "Krasse Fertigkeiten"));
+        addItem(new PriorityContentProvider.PriorityItem("E", "Ressourcen" , "Krasser Reichtum"));
     }
 
 
