@@ -11,4 +11,19 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_priorityitem_list">PriorityItems</string>
     <string name="title_priorityitem_detail">PriorityItem Detail</string>
+
+
+    <!-- //Character\\ -->
+    <string name="name">Name</string>
+    <string name="streetName">Straßenname</string>
+    <string name="archtype">Archetyp</string>
+    <string name="sex">Geschlecht</string>
+    <string name="age">Alter</string>
+    <string name="size">Größe (cm)</string>
+    <string name="weight">Gewicht (kg)</string>
+    <string name="ethnicity">Ethnie</string>
+    <string name="background">Beschreibung/Hintergrund</string>
+    <!-- //END Character\\ -->
+
+
 </resources>
