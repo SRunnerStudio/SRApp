@@ -7,18 +7,40 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.danielojea.srapp.Classes.Character;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SkillSelection extends AppCompatActivity {
-    List<String> abilities = new ArrayList<>();
+    ArrayList<Skill> skills;
+    Intent starterIntent = getIntent();
+    Serializable character;
+    RecyclerView recyclerView;
+    SkillListAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent starterIntent = getIntent();
+        character = starterIntent.getSerializableExtra("Character");
         setContentView(R.layout.activity_skill_selection);
+        RecyclerView.LayoutManager mLayoutManager;
+        recyclerView = (RecyclerView)findViewById(R.id.skillList);
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        skills = ((Character)character).getSkill();
+        mAdapter = new SkillListAdapter(skills);
+        recyclerView.setAdapter(mAdapter);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Intent starterIntent = getIntent();
+        character = starterIntent.getSerializableExtra("Character");
+        skills = ((Character)character).getSkill();
     }
 /*    public void prepareAbilityData (){
         RecyclerView recyclerView;
@@ -40,6 +62,7 @@ public class SkillSelection extends AppCompatActivity {
 
     public void AddAbility(View v) {
         Intent intent = new Intent(this,SkillPicker.class);
+        intent.putExtra("Character", character);
         startActivity(intent);
     }
 }

@@ -10,7 +10,7 @@
     tools:layout_editor_absoluteX="0dp">
 
     <Button
-        android:id="@+id/WeiterButton"
+        android:id="@+id/weiterButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -59,7 +59,7 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/metatyp_dwarf_bw"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/WeiterButton"
+        app:layout_constraintBottom_toTopOf="@+id/weiterButton"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"

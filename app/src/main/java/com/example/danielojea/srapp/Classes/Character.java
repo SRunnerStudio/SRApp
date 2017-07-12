@@ -5,6 +5,7 @@ import com.example.danielojea.srapp.charactercreation.Metatyp;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class Character implements Serializable {
     private int totalKarma;
     private String archetype;
     private Attributes attribute;
-    private List<Skill> skill;
+    private ArrayList<Skill> skill;
     private Quality advantageAndDisadvantage;
     private Contact connection;
     private String background;
@@ -123,11 +124,11 @@ public class Character implements Serializable {
         this.attribute = attribute;
     }
 
-    public List<Skill> getSkill() {
+    public ArrayList<Skill> getSkill() {
         return skill;
     }
 
-    public void setSkill(List<Skill> skill) {
+    public void setSkill(ArrayList<Skill> skill) {
         this.skill = skill;
     }
 

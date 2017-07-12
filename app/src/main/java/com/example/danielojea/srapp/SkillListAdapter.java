@@ -7,11 +7,13 @@ package com.example.danielojea.srapp;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Skill;
@@ -26,6 +28,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         // each data item is just a string in this case
         public TextView txtName;
         public TextView txtCounter;
+        public FloatingActionButton plusButton;
+        public FloatingActionButton minusButton;
         public View layout;
 
         public ViewHolder(View v) {
@@ -33,6 +37,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             layout = v;
             txtName = (TextView) v.findViewById(R.id.AbilityName);
             txtCounter = (TextView) v.findViewById(R.id.AbilityCounter);
+            plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
+            minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
         }
     }
 
@@ -67,16 +73,17 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Skill skill = values.get(position);
         holder.txtName.setText(skill.getName());
-        holder.txtCounter.setText(skill.getValue());
-        holder.txtCounter.setOnClickListener(new OnClickListener() {
+        holder.txtCounter.setText(""+skill.getValue());
+        holder.plusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                skill.setValue(skill.getValue()+1);
+                holder.txtCounter.setText((""+skill.getValue()));
             }
         });
     }

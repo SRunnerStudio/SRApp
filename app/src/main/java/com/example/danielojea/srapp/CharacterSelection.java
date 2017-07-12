@@ -13,11 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Character;
+import com.example.danielojea.srapp.Classes.Metatype;
+import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 import com.example.danielojea.srapp.charactercreation.CharacterSheet;
 import com.example.danielojea.srapp.charactercreation.Metatyp;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -106,6 +110,10 @@ public class CharacterSelection extends AppCompatActivity {
     }
     public void startOle(View v){
         Intent metaIntent = new Intent(this, SkillSelection.class);
+        ArrayList<Skill> skills = new ArrayList<Skill>();
+        Serializable character = (Serializable)new Character("Ole",new Metatype("human"),R.drawable.metatyp_dwarf);
+        ((Character)character).setSkill(skills);
+        metaIntent.putExtra("Character",character);
         startActivity(metaIntent);
     }
     public void startSven(View v){

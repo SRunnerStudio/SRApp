@@ -1,6 +1,7 @@
 package com.example.danielojea.srapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ScrollView;
 
+import com.example.danielojea.srapp.Classes.Character;
 import com.example.danielojea.srapp.Classes.Skill;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,6 +30,7 @@ public class SkillTabSingle extends Fragment {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     ScrollView scrollView;
+    Serializable character;
 
     public SkillTabSingle() {
         // Required empty public constructor
@@ -35,6 +39,7 @@ public class SkillTabSingle extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_skill_tab_single, container, false);
 
@@ -45,12 +50,19 @@ public class SkillTabSingle extends Fragment {
         // get the listview
         expListView = (ExpandableListView) view.findViewById(R.id.skillListSingle);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
             @Override
             public boolean onChildClick(
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
+                character = getActivity().getIntent().getSerializableExtra("Character");
+                List<Skill> skills = ((Character) character).getSkill();
+                Skill skill = new Skill(1,listAdapter.getChild(groupPosition,childPosition).toString(),
+                                        "");
+                skills.add(skill);
+                Intent intent = new Intent(getContext(),SkillSelection.class);
+                intent.putExtra("Character", character);
+                startActivity(intent);
                 return false;
             }
         });
