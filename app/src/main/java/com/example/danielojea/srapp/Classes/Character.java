@@ -1,8 +1,6 @@
 package com.example.danielojea.srapp.Classes;
 
-import android.provider.ContactsContract;
-
-import com.example.danielojea.srapp.SkillListAdapter;
+import android.graphics.Bitmap;
 import com.example.danielojea.srapp.charactercreation.Metatyp;
 
 import java.text.DecimalFormat;
@@ -15,6 +13,8 @@ import java.util.List;
 public class Character {
 
     private String name;
+    private Metatype metatype;
+    private int profileImage;
     private String gender;
     private int age;
     private DecimalFormat heigt;
@@ -26,10 +26,33 @@ public class Character {
     private List<Skill> skill;
     private Quality advantageAndDisadvantage;
     private Contact connection;
-    private Metatyp metatype;
     private String background;
 
+    public Character() {
+    }
 
+    public Character(String name) {
+        this.name = name;
+    }
+
+    public Character(String name, Metatype metatype) {
+        this.name = name;
+        this.metatype = metatype;
+    }
+
+    public Character(String name, Metatype metatype, int profileImage) {
+        this.name = name;
+        this.metatype = metatype;
+        this.profileImage = profileImage;
+    }
+
+    public int getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(int profileImage) {
+        this.profileImage = profileImage;
+    }
 
     public int getTotalKarma() {
         return totalKarma;
@@ -123,11 +146,11 @@ public class Character {
         this.connection = connection;
     }
 
-    public Metatyp getMetatype() {
+    public Metatype getMetatype() {
         return metatype;
     }
 
-    public void setMetatype(Metatyp metatype) {
+    public void setMetatype(Metatype metatype) {
         this.metatype = metatype;
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/skyline_seattle_weiss"
     tools:context="com.example.danielojea.srapp.charactercreation.MetatypDetail"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
@@ -31,6 +32,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
+            android:onClick="startSkillSelection"
             android:text="WEITER"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

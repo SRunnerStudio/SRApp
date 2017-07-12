@@ -3,6 +3,7 @@
     android:id="@+id/priorityitem_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/skyline_seattle_weiss"
     android:padding="16dp"
     android:textIsSelectable="true"
     tools:context="com.example.danielojea.srapp.PriorityDetailFragment" />

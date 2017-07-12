@@ -1,10 +1,13 @@
 package com.example.danielojea.srapp.charactercreation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.danielojea.srapp.R;
+import com.example.danielojea.srapp.SkillSelection;
 
 public class MetatypDetail extends AppCompatActivity {
 
@@ -36,5 +39,9 @@ public class MetatypDetail extends AppCompatActivity {
                 portraitButton.setImageResource(R.drawable.metatyp_troll);
                 return;
         }
+    }
+    public void startSkillSelection(View v){
+        Intent startSkillSelectionIntent = new Intent(this, SkillSelection.class);
+        startActivity(startSkillSelectionIntent);
     }
 }
