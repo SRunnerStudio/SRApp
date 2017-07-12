@@ -4,6 +4,7 @@ package com.example.danielojea.srapp;
  * Created by User on 07.07.2017.
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +14,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.Classes.Skill;
+
 public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
-    private List<String> values;
+    private ArrayList<Skill> values;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -33,8 +36,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         }
     }
 
-    public void add(int position, String item) {
-        values.add(position, item);
+    public void add(int position, Skill skill) {
+        values.add(position, skill);
         notifyItemInserted(position);
     }
 
@@ -44,7 +47,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SkillListAdapter(List<String> myDataset) {
+    public SkillListAdapter(ArrayList<Skill> myDataset) {
         values = myDataset;
     }
 
@@ -67,16 +70,15 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final String name = values.get(position);
-        holder.txtName.setText(name);
+        final Skill skill = values.get(position);
+        holder.txtName.setText(skill.getName());
+        holder.txtCounter.setText(skill.getValue());
         holder.txtCounter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 remove(position);
             }
         });
-
-        holder.txtCounter.setText("1");
     }
 
     // Return the size of your dataset (invoked by the layout manager)
