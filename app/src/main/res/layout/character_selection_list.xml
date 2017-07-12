@@ -6,9 +6,9 @@
     android:name="com.example.danielojea.srapp.CharacterSelectionListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:background="@drawable/skyline_seattle_weiss"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    style="@style/AppBackgroudImage"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.example.danielojea.srapp.CharacterSelection"
     tools:listitem="@layout/character_selection_list_content" />

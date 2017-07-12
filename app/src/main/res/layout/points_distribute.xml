@@ -8,69 +8,113 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/AbilityName"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_margin="@dimen/text_margin"
-        android:layout_weight="10"
-        android:text="name"
-        android:textAppearance="?attr/textAppearanceListItem" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/MinusButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/shadowrunapp_minus" />
+        <TextView
+            android:id="@+id/AbilityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="10"
+            android:text="name"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
 
-    <TextView
-        android:id="@+id/AbilityCounter"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1"
-        android:text="zahl"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/DowngradeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:visibility="gone"
+            app:backgroundTint="?android:attr/colorActivatedHighlight"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/shadowrunapp_downgrade" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/PlusButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/AbilityName"
-        android:layout_weight="1"
-        android:baselineAlignBottom="false"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_green_dark"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/shadowrunapp_plus" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/PlusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/AbilityName"
+            android:layout_weight="1"
+            android:baselineAlignBottom="false"
+            android:clickable="true"
+            app:backgroundTint="@android:color/holo_green_dark"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/shadowrunapp_plus"
+            app:layout_constraintRight_toLeftOf="@+id/UpgradeButton"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/DowngradeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:visibility="gone"
-        app:backgroundTint="?android:attr/colorActivatedHighlight"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/shadowrunapp_downgrade" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/MinusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/shadowrunapp_minus"
+            app:layout_constraintRight_toLeftOf="@+id/AbilityCounter"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/UpgradeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:visibility="visible"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/shadowrunapp_upgrade" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/UpgradeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:visibility="visible"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/shadowrunapp_upgrade"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/AbilityCounter"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="zahl"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/PlusButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/divider_color"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="0dp" />
+    </android.support.constraint.ConstraintLayout>
 
 
 </LinearLayout>

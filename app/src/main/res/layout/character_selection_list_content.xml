@@ -47,8 +47,9 @@
 
     </LinearLayout>
     <View
-        android:background="#FF000000"
+        android:background="@color/divider_color"
         android:layout_height="2dp"
+
         android:layout_width="fill_parent"/>
 
 
