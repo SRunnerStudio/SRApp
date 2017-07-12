@@ -63,7 +63,7 @@ public class CharacterSelection extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent characterSheetIntent = new Intent(CharacterSelection.this, CharacterSheet.class);
-                    //characterSheetIntent.putExtra("Character", holder.character);
+                    characterSheetIntent.putExtra("Character", holder.character);
                     startActivity(characterSheetIntent);
                 }
             });
