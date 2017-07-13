@@ -5,6 +5,7 @@ package com.example.danielojea.srapp;
  */
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import android.support.design.widget.FloatingActionButton;
@@ -18,9 +19,11 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Skill;
 
+import org.w3c.dom.Text;
+
 public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
     private ArrayList<Skill> values;
-
+    private ArrayList<Skill> deletedSkills = new ArrayList<Skill>();
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -28,8 +31,10 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         // each data item is just a string in this case
         public TextView txtName;
         public TextView txtCounter;
+        public TextView txtSpecialization;
         public FloatingActionButton plusButton;
         public FloatingActionButton minusButton;
+        public TextView txtPackage;
         public View layout;
 
         public ViewHolder(View v) {
@@ -37,6 +42,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             layout = v;
             txtName = (TextView) v.findViewById(R.id.AbilityName);
             txtCounter = (TextView) v.findViewById(R.id.AbilityCounter);
+            txtSpecialization = (TextView) v.findViewById(R.id.specialization);
+            txtPackage = (TextView) v.findViewById(R.id.txtPackage);
             plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
             minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
         }
@@ -79,11 +86,77 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         final Skill skill = values.get(position);
         holder.txtName.setText(skill.getName());
         holder.txtCounter.setText(""+skill.getValue());
+        holder.txtSpecialization.setText(skill.getSpecializationName());
+        if(skill.isPackageBound()){
+            holder.txtPackage.setText(skill.getConnectedPackage());
+        }
         holder.plusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                skill.setValue(skill.getValue()+1);
+                if (skill.isPackageBound()){
+                    ArrayList<Skill> updatedValues = new ArrayList<Skill>();
+                    for (Iterator<Skill> i = values.iterator(); i.hasNext();
+                            ) {
+                        Skill iSkill = i.next();
+                        if(iSkill.getConnectedPackage().equals(skill.getConnectedPackage())){
+                            iSkill.setValue(iSkill.getValue()+1);
+                            updatedValues.add(iSkill);
+                        }else{
+                            updatedValues.add(iSkill);
+                        }
+                    }
+                    values = updatedValues;
+                    notifyDataSetChanged();
+                }else{
+                    skill.setValue(skill.getValue()+1);
+                }
                 holder.txtCounter.setText((""+skill.getValue()));
+                ArrayList<Skill> updatedList = new ArrayList<Skill>();
+                for (Iterator<Skill> i = deletedSkills.iterator(); i.hasNext();
+                        ) {
+                    Skill deletedskill = i.next();
+                    if (skill.getName() == deletedskill.getName())
+                    {
+                        updatedList.add(skill);
+                    }
+                }
+                deletedSkills = updatedList;
+            }
+        });
+        holder.minusButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (skill.isPackageBound()){
+                    ArrayList<Skill> updatedValues = new ArrayList<Skill>();
+                    for (Iterator<Skill> i = values.iterator(); i.hasNext();
+                            ) {
+                        Skill iSkill = i.next();
+                        if(iSkill.getConnectedPackage().equals(skill.getConnectedPackage())){
+                            iSkill.setValue(iSkill.getValue()-1);
+                            if (iSkill.getValue() < 1){
+                                iSkill.setValue(iSkill.getValue()+1);
+                                deletedSkills.add(iSkill);
+                                notifyDataSetChanged();
+                            }else {
+                                updatedValues.add(iSkill);
+                            }
+                        }else{
+                            updatedValues.add(iSkill);
+                        }
+                    }
+                    values = updatedValues;
+                    notifyDataSetChanged();
+                }else{
+                    skill.setValue(skill.getValue()-1);
+                    if (skill.getValue() < 1) {
+                        skill.setValue(skill.getValue()+1);
+                        deletedSkills.add(skill);
+                        remove(position);
+                        notifyDataSetChanged();
+                    }else {
+                        holder.txtCounter.setText((""+skill.getValue()));
+                    }
+                }
             }
         });
     }
@@ -94,4 +167,11 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         return values.size();
     }
 
+    public ArrayList<Skill> getValues() {
+        return values;
+    }
+
+    public ArrayList<Skill> getDeletedSkills() {
+        return deletedSkills;
+    }
 }

@@ -72,10 +72,11 @@
                 android:hint="@string/name"
                 android:inputType="text"
                 android:maxLines="1"
+                android:singleLine="false"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/imageViewCharacter"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <EditText
                 android:id="@+id/editTextStreetName"
