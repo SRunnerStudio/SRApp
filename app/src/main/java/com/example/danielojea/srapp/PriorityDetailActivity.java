@@ -55,7 +55,6 @@ public class PriorityDetailActivity extends AppCompatActivity {
         Intent i = new Intent(this,PriorityListActivity.class);
         i.putExtra("Position",listItemPosition);
         i.putExtra("priorityItem", (Serializable) priorityItem);
-        i.putExtra("priorityItem", (Serializable) priorityItem);
         startActivity(i);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
