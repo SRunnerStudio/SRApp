@@ -114,6 +114,19 @@
             tools:layout_editor_absoluteX="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="0dp" />
+
+        <TextView
+            android:id="@+id/specialization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="36dp" />
+
+        <TextView
+            android:id="@+id/txtPackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp" />
     </android.support.constraint.ConstraintLayout>
 
 

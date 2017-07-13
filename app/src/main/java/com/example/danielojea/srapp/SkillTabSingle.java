@@ -30,7 +30,8 @@ public class SkillTabSingle extends Fragment {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     ScrollView scrollView;
-    Serializable character;
+    SRCharacter character;
+    ArrayList<Skill> skills;
 
     public SkillTabSingle() {
         // Required empty public constructor
@@ -47,6 +48,9 @@ public class SkillTabSingle extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        skills = (ArrayList<Skill>)getActivity().getIntent().getSerializableExtra("Skills");
+        character = (SRCharacter)getActivity().getIntent().getSerializableExtra("Character");
+        final ArrayList<Skill> updatedSkills = new ArrayList<Skill>();
         // get the listview
         expListView = (ExpandableListView) view.findViewById(R.id.skillListSingle);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -55,13 +59,19 @@ public class SkillTabSingle extends Fragment {
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
-                character = getActivity().getIntent().getSerializableExtra("Character");
-                List<Skill> skills = ((SRCharacter) character).getSkill();
-                Skill skill = new Skill(1,listAdapter.getChild(groupPosition,childPosition).toString(),
-                                        "");
-                skills.add(skill);
+                for (Iterator<Skill> i = skills.iterator(); i.hasNext();
+                        ) {
+                    Skill skill = i.next();
+                    if (skill.getName().equals(listAdapter.getChild(groupPosition,childPosition)))
+                    {
+                        character.getSkill().add(skill);
+                    }else{
+                        updatedSkills.add(skill);
+                    }
+                }
                 Intent intent = new Intent(getContext(),SkillSelection.class);
                 intent.putExtra("Character", character);
+                intent.putExtra("Skills",updatedSkills);
                 startActivity(intent);
                 return false;
             }
@@ -79,84 +89,7 @@ public class SkillTabSingle extends Fragment {
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
-        List<Skill> skills = new ArrayList<Skill>();
-        skills.add(new Skill(0,"Akrobatik","GES"));
-        skills.add(new Skill(0,"Entfesseln","GES"));
-        skills.add(new Skill(0,"Exotische Fernkampfwaffe","GES"));
-        skills.add(new Skill(0,"Exotische Nahkampfwaffe","GES"));
-        skills.add(new Skill(0,"Fingerfertigkeit","GES"));
-        skills.add(new Skill(0,"Geschütze","GES"));
-        skills.add(new Skill(0,"Gewehre","GES"));
-        skills.add(new Skill(0,"Klingenwaffen","GES"));
-        skills.add(new Skill(0,"Knüppel","GES"));
-        skills.add(new Skill(0,"Pistolen","GES"));
-        skills.add(new Skill(0,"Projektilwaffen","GES"));
-        skills.add(new Skill(0,"Schleichen","GES"));
-        skills.add(new Skill(0,"Schlosser","GES"));
-        skills.add(new Skill(0,"Schnellfeuerwaffen","GES"));
-        skills.add(new Skill(0,"Schwere Waffen","GES"));
-        skills.add(new Skill(0,"Waffenloser Kampf","GES"));
-        skills.add(new Skill(0,"Wurfwaffen","GES"));
-        skills.add(new Skill(0,"Freifall","KON"));
-        skills.add(new Skill(0,"Tauchen","KON"));
-        skills.add(new Skill(0,"Bodenfahrzeuge","REA"));
-        skills.add(new Skill(0,"Exotisches Fahrzeug","REA"));
-        skills.add(new Skill(0,"Flugzeuge","REA"));
-        skills.add(new Skill(0,"Läufer","REA"));
-        skills.add(new Skill(0,"Raumfahrzeuge","REA"));
-        skills.add(new Skill(0,"Schiffe","REA"));
-        skills.add(new Skill(0,"Laufen","STR"));
-        skills.add(new Skill(0,"Schwimmen","STR"));
-        skills.add(new Skill(0,"Einschüchtern","CHA"));
-        skills.add(new Skill(0,"Führung","CHA"));
-        skills.add(new Skill(0,"Gebräuche","CHA"));
-        skills.add(new Skill(0,"Tierführung","CHA"));
-        skills.add(new Skill(0,"Überreden","CHA"));
-        skills.add(new Skill(0,"Unterricht","CHA"));
-        skills.add(new Skill(0,"Verhandlung","CHA"));
-        skills.add(new Skill(0,"Verkörperung","CHA"));
-        skills.add(new Skill(0,"Vorführung","CHA"));
-        skills.add(new Skill(0,"Askennen","INT"));
-        skills.add(new Skill(0,"Handwerk","INT"));
-        skills.add(new Skill(0,"Navigation","INT"));
-        skills.add(new Skill(0,"Spurenlesen","INT"));
-        skills.add(new Skill(0,"Verkleiden","INT"));
-        skills.add(new Skill(0,"Wahrnehmung","INT"));
-        skills.add(new Skill(0,"Arkana","LOG"));
-        skills.add(new Skill(0,"Biotechnologie","LOG"));
-        skills.add(new Skill(0,"Chemie","LOG"));
-        skills.add(new Skill(0,"Computer","LOG"));
-        skills.add(new Skill(0,"Elektronische Kriegsführung","LOG"));
-        skills.add(new Skill(0,"Erste Hilfe","LOG"));
-        skills.add(new Skill(0,"Fahrzeugmechanik","LOG"));
-        skills.add(new Skill(0,"Fälschen","LOG"));
-        skills.add(new Skill(0,"Hacking","LOG"));
-        skills.add(new Skill(0,"Hardware","LOG"));
-        skills.add(new Skill(0,"Industriemechanik","LOG"));
-        skills.add(new Skill(0,"Kybernetik","LOG"));
-        skills.add(new Skill(0,"Luftfahrtmechanik","LOG"));
-        skills.add(new Skill(0,"Matrixkampf","LOG"));
-        skills.add(new Skill(0,"Medizin","LOG"));
-        skills.add(new Skill(0,"Seefahrtmechanik","LOG"));
-        skills.add(new Skill(0,"Software","LOG"));
-        skills.add(new Skill(0,"Sprengstoffe","LOG"));
-        skills.add(new Skill(0,"Waffenbau","LOG"));
-        skills.add(new Skill(0,"Astralkampf","WIL"));
-        skills.add(new Skill(0,"Survival","WIL"));
-        skills.add(new Skill(0,"Alchemie","MAG"));
-        skills.add(new Skill(0,"Antimagie","MAG"));
-        skills.add(new Skill(0,"Binden","MAG"));
-        skills.add(new Skill(0,"Entzaubern","MAG"));
-        skills.add(new Skill(0,"Fokusherstellung","MAG"));
-        skills.add(new Skill(0,"Herbeirufen","MAG"));
-        skills.add(new Skill(0,"Ritualzauberei","MAG"));
-        skills.add(new Skill(0,"Spruchzauberei","MAG"));
-        skills.add(new Skill(0,"Verbannen","MAG"));
-        skills.add(new Skill(0,"Dekompilieren","RES"));
-        skills.add(new Skill(0,"Kompilieren","RES"));
-        skills.add(new Skill(0,"Registrieren","RES"));
 
-        ;
         // Adding child data
         listDataHeader.add("Geschicklichkeit");
         listDataHeader.add("Konstitution");
@@ -173,7 +106,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
              ) {
                     Skill skill = i.next();
-                    if (skill.getConnectedAttribute() == "GES")
+                    if (skill.getConnectedAttribute().equals("GES"))
                     {
                         fertigkeitenGES.add(skill.getName());
                     }
@@ -183,7 +116,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "KON")
+            if (skill.getConnectedAttribute().equals("KON"))
             {
                 fertigkeitenKON.add(skill.getName());
             }
@@ -193,7 +126,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "REA")
+            if (skill.getConnectedAttribute().equals("REA"))
             {
                 fertigkeitenREA.add(skill.getName());
             }
@@ -203,7 +136,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "STR")
+            if (skill.getConnectedAttribute().equals("STR"))
             {
                 fertigkeitenSTR.add(skill.getName());
             }
@@ -213,7 +146,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "CHA")
+            if (skill.getConnectedAttribute().equals("CHA"))
             {
                 fertigkeitenCHA.add(skill.getName());
             }
@@ -223,7 +156,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "INT")
+            if (skill.getConnectedAttribute().equals("INT"))
             {
                 fertigkeitenINT.add(skill.getName());
             }
@@ -233,7 +166,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "LOG")
+            if (skill.getConnectedAttribute().equals("LOG"))
             {
                 fertigkeitenLOG.add(skill.getName());
             }
@@ -243,7 +176,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "WIL")
+            if (skill.getConnectedAttribute().equals("WIL"))
             {
                 fertigkeitenWIL.add(skill.getName());
             }
@@ -253,7 +186,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "MAG")
+            if (skill.getConnectedAttribute().equals("MAG"))
             {
                 fertigkeitenMAG.add(skill.getName());
             }
@@ -263,7 +196,7 @@ public class SkillTabSingle extends Fragment {
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "RES")
+            if (skill.getConnectedAttribute().equals("RES"))
             {
                 fertigkeitenRES.add(skill.getName());
             }
