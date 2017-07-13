@@ -8,8 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppBackgroudImage2" parent="AppTheme">
-        <item name="android:background">@drawable/skyline_seattle_schwarz</item>
+    <style name="AppBackgroudImage" parent="AppTheme">
+        <item name="android:background">@drawable/skyline_seattle_weiss</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -40,11 +40,17 @@
 
     <style name="RedBookBox" parent="AppTheme">
         <item name="android:textColor">@color/colorOrangeTitle</item>
+        <item name="android:textColorHint">@color/colorOrangeTitle</item>
         <item name="android:titleTextColor">@color/colorOrangeTitle</item>
         <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
     </style>
-    <style name="AppBackgroudImage">
+    <style name="AppBackgroudImage2">
         <item name="android:background">@drawable/background</item>
+    </style>
+
+    <!-- TEST -->
+    <style name="AppTheme.EditText">
+        <item name="colorControlNormal">@color/colorOrangeTitle</item>
     </style>
 
 </resources>
