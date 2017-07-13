@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,15 +6,16 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
-import com.example.danielojea.srapp.charactercreation.CharacterConcept;
+import com.example.danielojea.srapp.R;
+import com.example.danielojea.srapp.SkillListAdapter;
+import com.example.danielojea.srapp.SkillPicker;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class SkillSelection extends AppCompatActivity {
     ArrayList<Skill> skills;
@@ -26,21 +27,28 @@ public class SkillSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_selection);
+
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");
+        TextView skillpointCounter = (TextView) findViewById(R.id.SkillpointCounter);
+        TextView skillpointPackageCounter = (TextView) findViewById(R.id.SkillpointPackageCounter);
+
+        skillpointCounter.setText("Skillpunkte: "+character.getSkillPoints());
+        skillpointPackageCounter.setText("Skillpaketpunkte: "+character.getSkillPackagePoints());
         if(starterIntent.getSerializableExtra("Skills") == null){
             createSkillList();
         } else{
             skills = (ArrayList<Skill>)starterIntent.getSerializableExtra("Skills");
         }
-        if(character.getSkill()==null){
-            character.setSkill(new ArrayList<Skill>());
+        if(character.getSkills()==null){
+            character.setSkills(new ArrayList<Skill>());
         }
+
         RecyclerView.LayoutManager mLayoutManager;
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SkillListAdapter(character.getSkill());
+        mAdapter = new SkillListAdapter(character);
         recyclerView.setAdapter(mAdapter);
     }
     public void createSkillList(){
@@ -123,8 +131,9 @@ public class SkillSelection extends AppCompatActivity {
     }
 
     public void startCharacterConcept(View v){
-        Intent CharacterConceptIntent = new Intent(this, CharacterConcept.class);
-        startActivity(CharacterConceptIntent);
+        Intent intent = new Intent(this, CharacterConcept.class);
+        intent.putExtra("Character",character);
+        startActivity(intent);
     }
 
     public void AddAbility(View v) {
@@ -135,7 +144,7 @@ public class SkillSelection extends AppCompatActivity {
         startActivity(intent);
     }
     private void updateSkillList(){
-        character.setSkill(mAdapter.getValues());
+        character.setSkills(mAdapter.getValues());
         for (Iterator<Skill> i = mAdapter.getDeletedSkills().iterator(); i.hasNext();
                 ) {
             Skill skill = i.next();
@@ -143,3 +152,4 @@ public class SkillSelection extends AppCompatActivity {
         }
     }
 }
+

@@ -24,7 +24,7 @@ public class CharacterSheet extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    SRCharacter testCharacter =  new SRCharacter("Ole",new Metatyp("human"), R.drawable.metatyp_human);
+    //SRCharacter testCharacter =  new SRCharacter("Ole",new Metatyp("human"), R.drawable.metatyp_human);
 
 
     @Override
@@ -53,7 +53,7 @@ public class CharacterSheet extends AppCompatActivity {
         ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
         characterName.setText(character.getName());
         characterMetaTyp.setText(character.getMetatype().getMetatyp());
-        characterPortrait.setImageResource(character.getProfileImage());
+        characterPortrait.setImageBitmap(character.getProfileImage());
     }
 
     private void prepareListData() {

@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     style="@style/AppBackgroudImage"
     android:fitsSystemWindows="true"
-    tools:context="com.example.danielojea.srapp.PriorityDetailActivity"
+    tools:context="com.example.danielojea.srapp.charactercreation.PriorityDetailActivity"
     tools:ignore="MergeRootFrame">
 
     <android.support.v4.widget.NestedScrollView

@@ -6,7 +6,6 @@ package com.example.danielojea.srapp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
@@ -14,16 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
-
-import org.w3c.dom.Text;
 
 public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
     private ArrayList<Skill> values;
     private ArrayList<Skill> deletedSkills = new ArrayList<Skill>();
+    private SRCharacter character;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -60,8 +58,9 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SkillListAdapter(ArrayList<Skill> myDataset) {
-        values = myDataset;
+    public SkillListAdapter(SRCharacter myDataset) {
+        character = myDataset;
+        values = myDataset.getSkills();
     }
 
     // Create new views (invoked by the layout manager)
@@ -94,21 +93,27 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             @Override
             public void onClick(View v) {
                 if (skill.isPackageBound()){
-                    ArrayList<Skill> updatedValues = new ArrayList<Skill>();
-                    for (Iterator<Skill> i = values.iterator(); i.hasNext();
-                            ) {
-                        Skill iSkill = i.next();
-                        if(iSkill.getConnectedPackage().equals(skill.getConnectedPackage())){
-                            iSkill.setValue(iSkill.getValue()+1);
-                            updatedValues.add(iSkill);
-                        }else{
-                            updatedValues.add(iSkill);
+                    if(character.getSkillPackagePoints() > 0 ) {
+                        ArrayList<Skill> updatedValues = new ArrayList<Skill>();
+                        character.setSkillPackagePoints(character.getSkillPackagePoints() - 1);
+                        for (Iterator<Skill> i = values.iterator(); i.hasNext();
+                                ) {
+                            Skill iSkill = i.next();
+                            if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
+                                iSkill.setValue(iSkill.getValue() + 1);
+                                updatedValues.add(iSkill);
+                            } else {
+                                updatedValues.add(iSkill);
+                            }
                         }
+                        values = updatedValues;
+                        notifyDataSetChanged();
                     }
-                    values = updatedValues;
-                    notifyDataSetChanged();
                 }else{
-                    skill.setValue(skill.getValue()+1);
+                    if(character.getSkillPoints() > 0 && skill.getValue()<6) {
+                        skill.setValue(skill.getValue() + 1);
+                        character.setSkillPoints(character.getSkillPoints() - 1);
+                    }
                 }
                 holder.txtCounter.setText((""+skill.getValue()));
                 ArrayList<Skill> updatedList = new ArrayList<Skill>();
@@ -128,6 +133,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             public void onClick(View v) {
                 if (skill.isPackageBound()){
                     ArrayList<Skill> updatedValues = new ArrayList<Skill>();
+                    character.setSkillPackagePoints(character.getSkillPackagePoints()+1);
                     for (Iterator<Skill> i = values.iterator(); i.hasNext();
                             ) {
                         Skill iSkill = i.next();
@@ -147,6 +153,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     values = updatedValues;
                     notifyDataSetChanged();
                 }else{
+                    character.setSkillPoints(character.getSkillPoints()+1);
                     skill.setValue(skill.getValue()-1);
                     if (skill.getValue() < 1) {
                         skill.setValue(skill.getValue()+1);
@@ -174,4 +181,6 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     public ArrayList<Skill> getDeletedSkills() {
         return deletedSkills;
     }
+
+    public SRCharacter getCharacter() {return character;}
 }

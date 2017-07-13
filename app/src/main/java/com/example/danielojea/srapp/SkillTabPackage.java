@@ -11,8 +11,8 @@ import android.widget.ExpandableListView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
+import com.example.danielojea.srapp.charactercreation.SkillSelection;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -64,7 +64,7 @@ public class SkillTabPackage extends Fragment {
                     if (packageSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString()))
                     {
                         packageSkill.setPackageBound(true);
-                        character.getSkill().add(packageSkill);
+                        character.getSkills().add(packageSkill);
                     }else{
                         updatedSkills.add(packageSkill);
                     }

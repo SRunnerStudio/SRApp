@@ -12,8 +12,8 @@ import android.widget.ScrollView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
+import com.example.danielojea.srapp.charactercreation.SkillSelection;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -64,7 +64,8 @@ public class SkillTabSingle extends Fragment {
                     Skill skill = i.next();
                     if (skill.getName().equals(listAdapter.getChild(groupPosition,childPosition)))
                     {
-                        character.getSkill().add(skill);
+                        character.getSkills().add(skill);
+                        character.setSkillPoints(character.getSkillPoints()-1);
                     }else{
                         updatedSkills.add(skill);
                     }

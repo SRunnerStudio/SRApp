@@ -10,5 +10,5 @@
     android:layout_marginRight="0dp"
     style="@style/AppBackgroudImage"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.danielojea.srapp.PriorityListActivity"
+    tools:context="com.example.danielojea.srapp.charactercreation.PriorityListActivity"
     tools:listitem="@layout/priorityitem_list_content" />

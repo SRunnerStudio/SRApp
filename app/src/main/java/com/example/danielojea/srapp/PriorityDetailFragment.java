@@ -1,6 +1,5 @@
 package com.example.danielojea.srapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.danielojea.srapp.charactercreation.CharacterConcept;
+import com.example.danielojea.srapp.charactercreation.PriorityDetailActivity;
+import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 

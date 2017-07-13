@@ -31,6 +31,7 @@ public class Metatyp implements Serializable {
     private int EDGMax;
     private String Description;
     private String metatyp;
+    private String metatypENG;
 
     private String metatypDescription;
 
@@ -41,6 +42,7 @@ public class Metatyp implements Serializable {
                 STRStart = 1; STRMax = 6; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 6; EDGStart = 2; EDGMax = 7;
                 this.metatyp = "Mensch";
+                metatypENG =metatyp;
                 metatypDescription=
                         "(Homo sapiens sapiens)\n" + "\n" +
                         "Der Mensch ist von allen Metatypen (vielleicht mit einer Aus" +
@@ -55,6 +57,7 @@ public class Metatyp implements Serializable {
                 STRStart = 1; STRMax = 6; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 3; CHAMax = 8; EDGStart = 1; EDGMax = 6;
                 this.metatyp = "Elf";
+                metatypENG =metatyp;
                 metatypDescription=
                         "(Homo sapiens nobilis)\n" + "\n" +
                         "Elfen sind größer und schlanker als Menschen und haben spit" +
@@ -74,6 +77,7 @@ public class Metatyp implements Serializable {
                 STRStart = 3; STRMax = 8; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 5;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 5; EDGStart = 1; EDGMax = 6;
                 this.metatyp = "Zwerg";
+                metatypENG =metatyp;
                 metatypDescription=
                         "(Homo sapiens pumilionis)\n" +
                         "Wie zu erwarten, sind Zwerge kleiner und untersetzter als " +
@@ -94,6 +98,7 @@ public class Metatyp implements Serializable {
                 STRStart = 3; STRMax = 8; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 5; EDGStart = 1; EDGMax = 6;
                 this.metatyp = "Ork";
+                metatypENG =metatyp;
                 metatypDescription =
                         "(Homo sapiens robustus)\n" + "\n" +
                         "Orks sehen wie die Kreaturen aus, die seit fast 150 Jahren in " +
@@ -118,6 +123,7 @@ public class Metatyp implements Serializable {
                 STRStart = 5; STRMax = 10; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 5;
                 INTStart = 1; INTMax = 5; CHAStart = 1; CHAMax = 4; EDGStart = 1; EDGMax = 6;
                 this.metatyp = "Troll";
+                metatypENG =metatyp;
                 metatypDescription =
                         "(Homo sapiens ingentis)\n" + "\n" +
                         "Neben Trollen sehen Orks wie ganz gewöhnliche Bürger aus. Orks sind " +
@@ -150,6 +156,14 @@ public class Metatyp implements Serializable {
                         "Gegenden";
                 return;
         }
+    }
+
+    public String getMetatypENG() {
+        return metatypENG;
+    }
+
+    public void setMetatypENG(String metatypENG) {
+        this.metatypENG = metatypENG;
     }
 
     public String getMetatypDescription() {

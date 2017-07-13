@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
+import com.example.danielojea.srapp.Classes.SRCharacter;
+
 import java.io.Serializable;
 
 public class SkillPicker extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class SkillPicker extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    private Serializable character;
+    private SRCharacter character;
 
     /*ScrollView skillSingleScrollView = (ScrollView) findViewById(R.id.skillPackageScrollView);
     ViewGroup.LayoutParams params = skillSingleScrollView.getLayoutParams();
@@ -54,8 +56,7 @@ public class SkillPicker extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         Intent starterIntent = getIntent();
-        character = starterIntent.getSerializableExtra("Character");
-
+        character = (SRCharacter) starterIntent.getSerializableExtra("Character");
     }
 
     /**

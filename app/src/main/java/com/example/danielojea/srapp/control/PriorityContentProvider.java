@@ -1,8 +1,6 @@
 package com.example.danielojea.srapp.control;
 
-import android.renderscript.RenderScript;
-
-import com.example.danielojea.srapp.Classes.PriorityAbilities;
+import com.example.danielojea.srapp.Classes.PrioritySkills;
 import com.example.danielojea.srapp.Classes.PriorityAttribute;
 import com.example.danielojea.srapp.Classes.PriorityMagic;
 import com.example.danielojea.srapp.Classes.PriorityMetatyp;
@@ -82,7 +80,7 @@ public class PriorityContentProvider {
                         magic.getD()[3][0]+": "+
                         magic.getD()[3][1]+"\n",
                 "Magie Niete\n"}));
-        PriorityAbilities ability = new PriorityAbilities(1);
+        PrioritySkills ability = new PrioritySkills(1);
         addItem(new PriorityContentProvider.PriorityItem("D", "Fertigkeiten" , new String[] {
                 "Du bist Macgyver\n"+ability.getA()[0]+" Fertigkeitenpunkte \n"+ability.getA()[1]+" Paketpunkte",
                 "Du bist ein Multitalent \n"+ability.getB()[0]+" Fertigkeitenpunkte \n"+ability.getB()[1]+" Paketpunkte",

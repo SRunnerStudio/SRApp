@@ -1,6 +1,8 @@
 package com.example.danielojea.srapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +20,8 @@ import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 import com.example.danielojea.srapp.charactercreation.CharacterSheet;
 import com.example.danielojea.srapp.charactercreation.MetatypChoose;
+import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
+import com.example.danielojea.srapp.charactercreation.SkillSelection;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 
 import java.io.Serializable;
@@ -25,24 +30,47 @@ import java.util.List;
 
 
 public class CharacterSelection extends AppCompatActivity {
+    public List<CharacterSelectionContentProvider.CharacterItem> characterList;
+    SRCharacter character;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_selection);
 
+
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
+
+
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(CharacterSelectionContentProvider.ITEMS));
+        SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(CharacterSelectionContentProvider.ITEMS);
+        if(getIntent().getSerializableExtra("Character")!= null) {
+            character = (SRCharacter) getIntent().getSerializableExtra("Character");
+            adapter.addCharacter(character);
+        }
+        adapter.initCharacter();
+        recyclerView.setAdapter(adapter);
     }
+
+
 
     public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<CharacterSelectionContentProvider.CharacterItem> characterList;
+        public void addCharacter(SRCharacter character){
+            characterList.add(new CharacterSelectionContentProvider.CharacterItem(character));
+        }
+
+        public void initCharacter(){
+            //SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.metatyp_human));
+            SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), null);
+            SRCharacter schven = new SRCharacter("Schven",new Metatyp("troll"),null);
+            characterList.add(new CharacterSelectionContentProvider.CharacterItem(ole));
+            characterList.add(new CharacterSelectionContentProvider.CharacterItem(schven));
+        }
 
         public SimpleItemRecyclerViewAdapter(List<CharacterSelectionContentProvider.CharacterItem> items) {
             characterList = items;
@@ -57,7 +85,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.characterPortrait.setImageResource(characterList.get(position).character.getProfileImage());
+            holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage());
             holder.characterName.setText("Name: "+characterList.get(position).character.getName());
             holder.characterMetatyp.setText("Metatyp: "+characterList.get(position).character.getMetatype().getMetatyp());
             holder.character = characterList.get(position).character;
@@ -100,28 +128,6 @@ public class CharacterSelection extends AppCompatActivity {
                 return super.toString() + " '" + characterMetatyp.getText() + "'";
             }
         }
-    }
-
-
-    public void startDaniel(View v){
-        Intent metaIntent = new Intent(this, MetatypChoose.class);
-        startActivity(metaIntent);
-    }
-    public void startOle(View v){
-        Intent metaIntent = new Intent(this, SkillSelection.class);
-        ArrayList<Skill> skills = new ArrayList<Skill>();
-        Serializable character = new SRCharacter("Ole",new Metatyp("human"),R.drawable.metatyp_dwarf);
-        ((SRCharacter)character).setSkill(skills);
-        metaIntent.putExtra("Character",character);
-        startActivity(metaIntent);
-    }
-    public void startSven(View v){
-        Intent metaIntent = new Intent(this, CharacterSheet.class);
-        startActivity(metaIntent);
-    }
-    public void startSven2(View v){
-        Intent metaIntent = new Intent(this, CharacterConcept.class);
-        startActivity(metaIntent);
     }
 
     public void startCreateCharacter(View v){

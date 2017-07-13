@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,14 @@ import android.widget.TextView;
 
 
 import com.example.danielojea.srapp.Classes.Priority;
-import com.example.danielojea.srapp.Classes.PriorityAbilities;
+import com.example.danielojea.srapp.Classes.PrioritySkills;
 import com.example.danielojea.srapp.Classes.PriorityAttribute;
 import com.example.danielojea.srapp.Classes.PriorityMagic;
 import com.example.danielojea.srapp.Classes.PriorityMetatyp;
 import com.example.danielojea.srapp.Classes.PriorityRessource;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.charactercreation.MetatypChoose;
+import com.example.danielojea.srapp.PriorityDetailFragment;
+import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 import java.io.Serializable;
@@ -49,6 +49,9 @@ public class PriorityListActivity extends AppCompatActivity {
     public void startMetatypeActivity(View v){
         if(!validPriorities()){
             Intent metaIntent = new Intent(this, MetatypChoose.class);
+            character.setAttributePoints(character.getPriorityAttribute().getAttributePoints(character.getPriorityAttribute().getPriority()));
+            character.setSkillPoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[0]);
+            character.setSkillPackagePoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[1]);
             metaIntent.putExtra("Character",character);
             startActivity(metaIntent);
         }
@@ -59,18 +62,6 @@ public class PriorityListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_priorityitem_list);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Prioritäten");
-        View recyclerView = findViewById(R.id.priorityitem_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //Log.d("ich bin jetzt in ","onResume ");
         if(getIntent().getSerializableExtra("Position") != null) {
             listItemPosition = (int) getIntent().getSerializableExtra("Position");
             priorityItem = (Priority) getIntent().getSerializableExtra("priorityItem");
@@ -81,25 +72,34 @@ public class PriorityListActivity extends AppCompatActivity {
         {
             initCharacterPriorities();
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Prioritäten");
+        View recyclerView = findViewById(R.id.priorityitem_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
     }
+
     private void initCharacterPriorities(){
         character.setPriorityMetatyp(new PriorityMetatyp(1));
         character.setPriorityAttribute(new PriorityAttribute(2));
         character.setPriorityMagic(new PriorityMagic(3));
-        character.setPriorityAbilities(new PriorityAbilities(4));
+        character.setPrioritySkills(new PrioritySkills(4));
         character.setPriorityRessource(new PriorityRessource(5));
     }
+
     public boolean validPriorities(){
         return((character.getPriorityMetatyp().getPriority()==character.getPriorityAttribute().getPriority())
                 ||(character.getPriorityMetatyp().getPriority()==character.getPriorityMagic().getPriority())
-                ||(character.getPriorityMetatyp().getPriority()==character.getPriorityAbilities().getPriority())
+                ||(character.getPriorityMetatyp().getPriority()==character.getPrioritySkills().getPriority())
                 ||(character.getPriorityMetatyp().getPriority()==character.getPriorityRessource().getPriority())
                 ||(character.getPriorityAttribute().getPriority()==character.getPriorityMagic().getPriority())
-                ||(character.getPriorityAttribute().getPriority()==character.getPriorityAbilities().getPriority())
+                ||(character.getPriorityAttribute().getPriority()==character.getPrioritySkills().getPriority())
                 ||(character.getPriorityAttribute().getPriority()==character.getPriorityRessource().getPriority())
-                ||(character.getPriorityMagic().getPriority()==character.getPriorityAbilities().getPriority())
+                ||(character.getPriorityMagic().getPriority()==character.getPrioritySkills().getPriority())
                 ||(character.getPriorityMagic().getPriority()==character.getPriorityRessource().getPriority())
-                ||(character.getPriorityAbilities().getPriority()==character.getPriorityRessource().getPriority()) );
+                ||(character.getPrioritySkills().getPriority()==character.getPriorityRessource().getPriority()) );
     }
 
     private void setPriorrityItem(int listPosition){
@@ -123,8 +123,8 @@ public class PriorityListActivity extends AppCompatActivity {
                 else {initCharacterPriorities();}
                 return;
             case 3:
-                if (character.getPriorityAttribute()!=null){
-                    character.getPriorityAttribute().setPriority(priorityItem.getPriority());
+                if (character.getPrioritySkills()!=null){
+                    character.getPrioritySkills().setPriority(priorityItem.getPriority());
                 }
                 else {initCharacterPriorities();}
                 return;
@@ -146,7 +146,7 @@ public class PriorityListActivity extends AppCompatActivity {
             case 2:
                 return character.getPriorityMagic();
             case 3:
-                return character.getPriorityAbilities();
+                return character.getPrioritySkills();
             case 4:
                 return character.getPriorityRessource();
         }
