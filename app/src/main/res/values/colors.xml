@@ -2,12 +2,17 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#40fffc</color>
     <color name="colorRunnerRed">#cc0000</color>
     <color name="colorDarkRunnerRed">#b30000</color>
-    <color name="divider_color">#bfbfbf</color>
     <color name="colorVeryDarkRunnerRed">#660000</color>
+    <color name="divider_color">#6d6d6d</color>
     <color name="black_overlay">#000000</color>
+    <color name="colorOrangeTitle">#f9b92e</color>
+    <color name="colorPureWhite">#ffffff</color>
 
 
 </resources>
+
+
+<!--00a64b grün-->

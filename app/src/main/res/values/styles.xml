@@ -11,6 +11,7 @@
     <style name="AppBackgroudImage" parent="AppTheme">
         <item name="android:background">@drawable/skyline_seattle_weiss</item>
     </style>
+
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -36,5 +37,20 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="RedBookBox" parent="AppTheme">
+        <item name="android:textColor">@color/colorOrangeTitle</item>
+        <item name="android:textColorHint">@color/colorOrangeTitle</item>
+        <item name="android:titleTextColor">@color/colorOrangeTitle</item>
+        <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
+    </style>
+    <style name="AppBackgroudImage2">
+        <item name="android:background">@drawable/background</item>
+    </style>
+
+    <!-- TEST -->
+    <style name="AppTheme.EditText">
+        <item name="colorControlNormal">@color/colorOrangeTitle</item>
+    </style>
 
 </resources>

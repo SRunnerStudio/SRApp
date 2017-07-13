@@ -12,12 +12,14 @@ public class Skill implements Serializable {
     private boolean specialization;
     private String specializationName;
     private String connectedAttribute;
+    private String connectedPackage;
     private boolean packageBound;
 
-    public Skill(int value, String name, String connectedAttribute) {
+    public Skill(int value, String name, String connectedAttribute, String connectedPackage) {
         this.value = value;
         this.name = name;
         this.connectedAttribute = connectedAttribute;
+        this.connectedPackage = connectedPackage;
     }
 
     public int getValue() {
@@ -58,6 +60,14 @@ public class Skill implements Serializable {
 
     public void setConnectedAttribute(String connectedAttribute) {
         this.connectedAttribute = connectedAttribute;
+    }
+
+    public String getConnectedPackage() {
+        return connectedPackage;
+    }
+
+    public void setConnectedPackage(String connectedPackage) {
+        this.connectedPackage = connectedPackage;
     }
 
     public boolean isPackageBound() {

@@ -1,6 +1,7 @@
 package com.example.danielojea.srapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,6 +28,8 @@ public class SkillTabPackage extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    SRCharacter character;
+    ArrayList<Skill> skills;
 
     public SkillTabPackage() {
         // Required empty public constructor
@@ -41,6 +46,9 @@ public class SkillTabPackage extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        skills = (ArrayList<Skill>)getActivity().getIntent().getSerializableExtra("Skills");
+        character = (SRCharacter)getActivity().getIntent().getSerializableExtra("Character");
+        final ArrayList<Skill> updatedSkills = new ArrayList<Skill>();
         // get the listview
         expListView = (ExpandableListView) view.findViewById(R.id.skillListPackage);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -50,7 +58,21 @@ public class SkillTabPackage extends Fragment {
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
-
+                for (Iterator<Skill> i = skills.iterator(); i.hasNext();
+                        ) {
+                    Skill packageSkill = i.next();
+                    if (packageSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString()))
+                    {
+                        packageSkill.setPackageBound(true);
+                        character.getSkill().add(packageSkill);
+                    }else{
+                        updatedSkills.add(packageSkill);
+                    }
+                }
+                Intent intent = new Intent(getContext(),SkillSelection.class);
+                intent.putExtra("Character", character);
+                intent.putExtra("Skills",updatedSkills);
+                startActivity(intent);
                 return false;
             }
         });
@@ -67,237 +89,265 @@ public class SkillTabPackage extends Fragment {
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
-        List<Skill> skills = new ArrayList<Skill>();
-        skills.add(new Skill(0,"Akrobatik","Athletik"));
-        skills.add(new Skill(0,"Laufen","Athletik"));
-        skills.add(new Skill(0,"Schwimmen","Athletik"));
-        skills.add(new Skill(0,"Binden","Beschwören"));
-        skills.add(new Skill(0,"Herbeirufen","Beschwören"));
-        skills.add(new Skill(0,"Verbannen","Beschwören"));
-        skills.add(new Skill(0,"Biotechnologie","Biotech"));
-        skills.add(new Skill(0,"Erste Hilfe","Biotech"));
-        skills.add(new Skill(0,"Kybernetik","Biotech"));
-        skills.add(new Skill(0,"Medizin","Biotech"));
-        skills.add(new Skill(0,"Elektronische Kriegsführung","Cracken"));
-        skills.add(new Skill(0,"Hacking","Cracken"));
-        skills.add(new Skill(0,"Matrixkamof","Cracken"));
-        skills.add(new Skill(0,"Führung","Einfluss"));
-        skills.add(new Skill(0,"Gebräuche","Einfluss"));
-        skills.add(new Skill(0,"Verhandlung","Einfluss"));
-        skills.add(new Skill(0,"Computer","Elektronik"));
-        skills.add(new Skill(0,"Hardware","Elektronik"));
-        skills.add(new Skill(0,"Software","Elektronik"));
-        skills.add(new Skill(0,"Gewehre","Feuerwaffen"));
-        skills.add(new Skill(0,"Pistolen","Feuerwaffen"));
-        skills.add(new Skill(0,"Schnellfeuerwaffen","Feuerwaffen"));
-        skills.add(new Skill(0,"Fingerfertigkeit","Heimlichkeit"));
-        skills.add(new Skill(0,"Schleichen","Heimlichkeit"));
-        skills.add(new Skill(0,"Verkleiden","Heimlichkeit"));
-        skills.add(new Skill(0,"Antimagie","Hexerei"));
-        skills.add(new Skill(0,"Ritualzauberei","Hexerei"));
-        skills.add(new Skill(0,"Spruchzauberei","Hexerei"));
-        skills.add(new Skill(0,"Fahrzeugmechanik","Mechanik"));
-        skills.add(new Skill(0,"Industriemechanik","Mechanik"));
-        skills.add(new Skill(0,"Luftfahrtmechanik","Mechanik"));
-        skills.add(new Skill(0,"Seefahrtmechanik","Mechanik"));
-        skills.add(new Skill(0,"Klingenwaffen","Nahkampf"));
-        skills.add(new Skill(0,"Knüppel","Nahkampf"));
-        skills.add(new Skill(0,"Waffenloser Kampf","Nahkampf"));
-        skills.add(new Skill(0,"Navigation","Natur"));
-        skills.add(new Skill(0,"Spurenlesen","Natur"));
-        skills.add(new Skill(0,"Survival","Natur"));
-        skills.add(new Skill(0,"Überreden","Schauspielerei"));
-        skills.add(new Skill(0,"Verkörperung","Schauspielerei"));
-        skills.add(new Skill(0,"Vorführung","Schauspielerei"));
-        skills.add(new Skill(0,"Dekompilieren","Tasken"));
-        skills.add(new Skill(0,"Kompilieren","Tasken"));
-        skills.add(new Skill(0,"Registrieren","Tasken"));
-        skills.add(new Skill(0,"Alchemie","Verzaubern"));
-        skills.add(new Skill(0,"Entzaubern","Verzaubern"));
-        skills.add(new Skill(0,"Fokusherstellung","Verzaubern"));
-
+        int headerCounter = 0;
+        boolean headerAdded = false;
         // Adding child data
-        listDataHeader.add("Athletik");
-        listDataHeader.add("Beschwören");
-        listDataHeader.add("Biotech");
-        listDataHeader.add("Cracken");
-        listDataHeader.add("Einfluss");
-        listDataHeader.add("Elektronik");
-        listDataHeader.add("Feuerwaffen");
-        listDataHeader.add("Heimlichkeit");
-        listDataHeader.add("Hexerei");
-        listDataHeader.add("Mechanik");
-        listDataHeader.add("Nahkampf");
-        listDataHeader.add("Natur");
-        listDataHeader.add("Schauspielerei");
-        listDataHeader.add("Tasken");
-        listDataHeader.add("Verzaubern");
+
+
 
         List<String> fertigkeitenAthletik = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator(); i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Athletik")
+            if (skill.getConnectedPackage().equals("Athletik"))
             {
                 fertigkeitenAthletik.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Athletik");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenAthletik);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenBeschwören = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Beschwören")
+            if (skill.getConnectedPackage().equals("Beschwören"))
             {
                 fertigkeitenBeschwören.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Beschwören");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenBeschwören);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenBiotech = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Biotech")
+            if (skill.getConnectedPackage().equals("Biotech"))
             {
                 fertigkeitenBiotech.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Biotech");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenBiotech);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenCracken = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Cracken")
+            if (skill.getConnectedPackage().equals("Cracken"))
             {
                 fertigkeitenCracken.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Cracken");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenCracken);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenEinfluss = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Einfluss")
+            if (skill.getConnectedPackage().equals("Einfluss"))
             {
                 fertigkeitenEinfluss.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Einfluss");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenEinfluss);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenElektronik = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Elektronik")
+            if (skill.getConnectedPackage().equals("Elektronik"))
             {
                 fertigkeitenElektronik.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Elektronik");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenElektronik);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenFeuerwaffen = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Feuerwaffen")
+            if (skill.getConnectedPackage().equals("Feuerwaffen"))
             {
                 fertigkeitenFeuerwaffen.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Feuerwaffen");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenFeuerwaffen);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenHeimlichkeit = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Heimlichkeit")
+            if (skill.getConnectedPackage().equals("Heimlichkeit"))
             {
                 fertigkeitenHeimlichkeit.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Heimlichkeit");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenHeimlichkeit);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenHexerei = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Hexerei")
+            if (skill.getConnectedPackage().equals("Hexerei"))
             {
                 fertigkeitenHexerei.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Hexerei");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenHexerei);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenMechanik = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Mechanik")
+            if (skill.getConnectedPackage().equals("Mechanik"))
             {
                 fertigkeitenMechanik.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Mechanik");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenMechanik);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenNahkampf = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Nahkampf")
+            if (skill.getConnectedPackage().equals("Nahkampf"))
             {
                 fertigkeitenNahkampf.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Nahkampf");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenNahkampf);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenNatur = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Natur")
+            if (skill.getConnectedPackage().equals("Natur"))
             {
                 fertigkeitenNatur.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Natur");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenNatur);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenSchauspielerei = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Schauspielerei")
+            if (skill.getConnectedPackage().equals("Schauspielerei"))
             {
                 fertigkeitenSchauspielerei.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Schauspielerei");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenSchauspielerei);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenTasken = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Tasken")
+            if (skill.getConnectedPackage().equals("Tasken"))
             {
                 fertigkeitenTasken.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Tasken");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenTasken);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
 
+        headerAdded = false;
         List<String> fertigkeitenVerzaubern = new ArrayList<String>();
         for (Iterator<Skill> i = skills.iterator();i.hasNext();
                 ) {
             Skill skill = i.next();
-            if (skill.getConnectedAttribute() == "Verzaubern")
+            if (skill.getConnectedPackage().equals("Verzaubern"))
             {
                 fertigkeitenVerzaubern.add(skill.getName());
+                if (!headerAdded){
+                    listDataHeader.add("Verzaubern");
+                    listDataChild.put(listDataHeader.get(headerCounter), fertigkeitenVerzaubern);
+                    headerAdded = true;
+                    headerCounter += 1;
+                }
             }
         }
-
-        listDataChild.put(listDataHeader.get(0), fertigkeitenAthletik); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), fertigkeitenBeschwören);
-        listDataChild.put(listDataHeader.get(2), fertigkeitenBiotech);
-        listDataChild.put(listDataHeader.get(3), fertigkeitenCracken);
-        listDataChild.put(listDataHeader.get(4), fertigkeitenEinfluss);
-        listDataChild.put(listDataHeader.get(5), fertigkeitenElektronik);
-        listDataChild.put(listDataHeader.get(6), fertigkeitenFeuerwaffen);
-        listDataChild.put(listDataHeader.get(7), fertigkeitenHeimlichkeit);
-        listDataChild.put(listDataHeader.get(8), fertigkeitenHexerei);
-        listDataChild.put(listDataHeader.get(9), fertigkeitenMechanik);
-        listDataChild.put(listDataHeader.get(10), fertigkeitenNahkampf);
-        listDataChild.put(listDataHeader.get(11), fertigkeitenNatur);
-        listDataChild.put(listDataHeader.get(12), fertigkeitenSchauspielerei);
-        listDataChild.put(listDataHeader.get(13), fertigkeitenTasken);
-        listDataChild.put(listDataHeader.get(14), fertigkeitenVerzaubern);
     }
 
 }
