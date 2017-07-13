@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by Ole on 11.07.2017.
  */
 
-public class Metatype implements Serializable {
+public class Metatyp implements Serializable {
     private int KONStart;
     private int KONMax;
     private int GESStart;
@@ -34,7 +34,7 @@ public class Metatype implements Serializable {
 
     private String metatypDescription;
 
-    public Metatype(String metatyp) {
+    public Metatyp(String metatyp) {
         switch (metatyp){
             case "human":
                 KONStart = 1; KONMax = 6; GESStart = 1; GESMax = 6; REAStart = 1; REAMax = 6;

@@ -5,10 +5,10 @@
     android:id="@+id/character_selection_list"
     android:name="com.example.danielojea.srapp.CharacterSelectionListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
-    style="@style/AppBackgroudImage"
+
     app:layoutManager="LinearLayoutManager"
     tools:context="com.example.danielojea.srapp.CharacterSelection"
     tools:listitem="@layout/character_selection_list_content" />

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Daniel on 12.07.2017.
  */
 
-public class PriorityMetatyp implements Serializable {
+public class PriorityMetatyp implements Priority, Serializable {
     private String[][] A = {{"Mensch","9"},{"Elf","8"},{"Ork","7"},{"Zwerg","7"},{"Troll","5"}};
     private String[][] B = {{"Mensch","9"},{"Elf","6"},{"Ork","4"},{"Zwerg","4"},{"Troll","0"}};
     private String[][] C = {{"Mensch","5"},{"Elf","3"},{"Ork","0"},{"",""},{"",""}};
@@ -23,6 +23,22 @@ public class PriorityMetatyp implements Serializable {
             case 5: return E;
         }
         return E;
+    }
+
+    public String getLetter(int priority){
+        switch (priority) {
+            case 1:
+                return "A";
+            case 2:
+                return "B";
+            case 3:
+                return "C";
+            case 4:
+                return "D";
+            case 5:
+                return "E";
+        }
+        return "";
     }
 
     public PriorityMetatyp(int priority) {

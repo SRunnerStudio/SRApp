@@ -1,5 +1,4 @@
 package com.example.danielojea.srapp;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,12 +10,9 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.danielojea.srapp.Classes.PriorityAbilities;
-import com.example.danielojea.srapp.Classes.PriorityAttribute;
-import com.example.danielojea.srapp.Classes.PriorityMagic;
-import com.example.danielojea.srapp.Classes.PriorityMetatyp;
-import com.example.danielojea.srapp.Classes.PriorityRessource;
-import com.example.danielojea.srapp.charactercreation.Metatyp;
+import com.example.danielojea.srapp.Classes.Priority;
+
+import java.io.Serializable;
 
 /**
  * An activity representing a single PriorityItem detail screen. This
@@ -25,84 +21,98 @@ import com.example.danielojea.srapp.charactercreation.Metatyp;
  * in a {@link PriorityListActivity}.
  */
 public class PriorityDetailActivity extends AppCompatActivity {
+    int listItemPosition;
+    Priority priorityItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_priorityitem_detail);
-
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
             arguments.putString(PriorityDetailFragment.ARG_ITEM_ID, getIntent().getStringExtra(PriorityDetailFragment.ARG_ITEM_ID));
-            //PriorityAbilities testAbility =(PriorityAbilities) getIntent().getSerializableExtra("PriorityAbilities");
-            int listItemPosition =(int) getIntent().getSerializableExtra("Position");
+
             PriorityDetailFragment fragment = new PriorityDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.priorityitem_detail_container, fragment)
                     .commit();
-            setCurrentPriority(checkCurrentPriority(listItemPosition));
-        }
-    }
-    private int checkCurrentPriority( int listItemPosition){
-        switch (listItemPosition) {
-            case 0:
-                PriorityMetatyp priorityMetatyp =(PriorityMetatyp) getIntent().getSerializableExtra("PriorityMetatyp");
-                return priorityMetatyp.getPriority();
-            case 1:
-                PriorityAttribute priorityAttribute =(PriorityAttribute) getIntent().getSerializableExtra("PriorityMetatyp");
-                return priorityAttribute.getPriority();
-            case 2:
-                PriorityMagic priorityMagic =(PriorityMagic) getIntent().getSerializableExtra("PriorityMetatyp");
-                return priorityMagic.getPriority();
-            case 3:
-                PriorityAbilities priorityAbilities =(PriorityAbilities) getIntent().getSerializableExtra("PriorityMetatyp");
-                return priorityAbilities.getPriority();
-            case 4:
-                PriorityRessource priorityRessource =(PriorityRessource) getIntent().getSerializableExtra("PriorityMetatyp");
-                return priorityRessource.getPriority();
-        }
-        return 0;
-    }
 
-    public void setCurrentPriority(int priority){
-        switch (priority) {
-            case 1:
-                setA();
-                return;
-            case 2:
-                setB();
-                return;
-            case 3:
-                setC();
-                return;
-            case 4:
-                setD();
-                return;
-            case 5:
-                setE();
-                return;
+            listItemPosition =(int) getIntent().getSerializableExtra("Position");
+            priorityItem=(Priority) getIntent().getSerializableExtra("priorityItem");
         }
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityA(View v){
-        setA();
+        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        priorityItem.setPriority(1);
+        Intent i = new Intent(this,PriorityListActivity.class);
+        i.putExtra("Position",listItemPosition);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        startActivity(i);
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityB(View v){
-        setB();
+        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        priorityItem.setPriority(2);
+        Intent i = new Intent(this,PriorityListActivity.class);
+        i.putExtra("Position",listItemPosition);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        startActivity(i);
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityC(View v){
-        setC();
+        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        priorityItem.setPriority(3);
+        Intent i = new Intent(this,PriorityListActivity.class);
+        i.putExtra("Position",listItemPosition);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        startActivity(i);
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityD(View v){
-        setD();
+        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        priorityItem.setPriority(4);
+        Intent i = new Intent(this,PriorityListActivity.class);
+        i.putExtra("Position",listItemPosition);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        startActivity(i);
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityE(View v){
-        setE();
+        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+        priorityItem.setPriority(5);
+        Intent i = new Intent(this,PriorityListActivity.class);
+        i.putExtra("Position",listItemPosition);
+        i.putExtra("priorityItem", (Serializable) priorityItem);
+        startActivity(i);
     }
 
+    //@RequiresApi(api = Build.VERSION_CODES.M)
+  /*
     public void setA(){
         ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
         ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
@@ -138,7 +148,7 @@ public class PriorityDetailActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
         ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
     }
-
+    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

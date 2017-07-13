@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     style="@style/AppBackgroudImage"
     android:onClick="resetImageChoosen"
-    tools:context="com.example.danielojea.srapp.charactercreation.Metatyp"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="69dp">
+    tools:context="com.example.danielojea.srapp.charactercreation.MetatypChoose">
 
 
     <Button

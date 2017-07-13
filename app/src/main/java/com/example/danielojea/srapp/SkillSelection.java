@@ -16,31 +16,28 @@ import java.util.ArrayList;
 
 public class SkillSelection extends AppCompatActivity {
     ArrayList<Skill> skills;
-    Intent starterIntent = getIntent();
-    Serializable character;
+    SRCharacter character;
     RecyclerView recyclerView;
     SkillListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent starterIntent = getIntent();
-        character = starterIntent.getSerializableExtra("Character");
         setContentView(R.layout.activity_skill_selection);
+
+        Intent starterIntent = getIntent();
+        character = (SRCharacter)starterIntent.getSerializableExtra("Character");
+        if(character.getSkill()==null){
+            character.setSkill(new ArrayList<Skill>());
+        }
+        skills = character.getSkill();
+
         RecyclerView.LayoutManager mLayoutManager;
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        skills = ((SRCharacter)character).getSkill();
         mAdapter = new SkillListAdapter(skills);
         recyclerView.setAdapter(mAdapter);
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Intent starterIntent = getIntent();
-        character = starterIntent.getSerializableExtra("Character");
-        skills = ((SRCharacter)character).getSkill();
     }
 /*    public void prepareAbilityData (){
         RecyclerView recyclerView;

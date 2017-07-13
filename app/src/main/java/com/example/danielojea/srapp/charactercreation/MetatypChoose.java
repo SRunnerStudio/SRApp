@@ -6,17 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.danielojea.srapp.Classes.Metatyp;
+import com.example.danielojea.srapp.Classes.Priority;
+import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
 
-public class Metatyp extends AppCompatActivity {
+public class MetatypChoose extends AppCompatActivity {
     boolean imageChoosen =false;
+    SRCharacter character;
 
     String chosenMetatyp = "default";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metatyp);
+        character = (SRCharacter) getIntent().getSerializableExtra("Character");
     }
 //Auswahl des Metatypen.
     public void changeElf(View v){
@@ -119,6 +124,7 @@ public class Metatyp extends AppCompatActivity {
             //Startet neue activity (MetatypDetail)
             Intent startMetatypDetail = new Intent(this, MetatypDetail.class);
             startMetatypDetail.putExtra("Metatyp", chosenMetatyp);
+            startMetatypDetail.putExtra("Character",character);
             startActivity(startMetatypDetail);
         }
     }

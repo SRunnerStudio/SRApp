@@ -1,12 +1,8 @@
 package com.example.danielojea.srapp.Classes;
 
-import android.graphics.Bitmap;
-import com.example.danielojea.srapp.charactercreation.Metatyp;
-
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by User on 11.07.2017.
@@ -15,7 +11,7 @@ import java.util.List;
 public class SRCharacter implements Serializable {
 
     private String name;
-    private Metatype metatype;
+    private Metatyp metatype;
     private int profileImage;
     private String gender;
     private int age;
@@ -29,6 +25,11 @@ public class SRCharacter implements Serializable {
     private Quality advantageAndDisadvantage;
     private Contact connection;
     private String background;
+    private PriorityAbilities priorityAbilities;
+    private PriorityAttribute priorityAttribute;
+    private PriorityMagic priorityMagic;
+    private PriorityMetatyp priorityMetatyp;
+    private PriorityRessource priorityRessource;
 
     public SRCharacter() {
     }
@@ -37,12 +38,12 @@ public class SRCharacter implements Serializable {
         this.name = name;
     }
 
-    public SRCharacter(String name, Metatype metatype) {
+    public SRCharacter(String name, Metatyp metatype) {
         this.name = name;
         this.metatype = metatype;
     }
 
-    public SRCharacter(String name, Metatype metatype, int profileImage) {
+    public SRCharacter(String name, Metatyp metatype, int profileImage) {
         this.name = name;
         this.metatype = metatype;
         this.profileImage = profileImage;
@@ -148,11 +149,11 @@ public class SRCharacter implements Serializable {
         this.connection = connection;
     }
 
-    public Metatype getMetatype() {
+    public Metatyp getMetatype() {
         return metatype;
     }
 
-    public void setMetatype(Metatype metatype) {
+    public void setMetatype(Metatyp metatype) {
         this.metatype = metatype;
     }
 
@@ -164,7 +165,45 @@ public class SRCharacter implements Serializable {
         this.background = background;
     }
 
+    public PriorityAbilities getPriorityAbilities() {
+        return priorityAbilities;
+    }
 
+    public void setPriorityAbilities(PriorityAbilities priorityAbilities) {
+        this.priorityAbilities = priorityAbilities;
+    }
+
+    public PriorityAttribute getPriorityAttribute() {
+        return priorityAttribute;
+    }
+
+    public void setPriorityAttribute(PriorityAttribute priorityAttribute) {
+        this.priorityAttribute = priorityAttribute;
+    }
+
+    public PriorityMagic getPriorityMagic() {
+        return priorityMagic;
+    }
+
+    public void setPriorityMagic(PriorityMagic priorityMagic) {
+        this.priorityMagic = priorityMagic;
+    }
+
+    public PriorityMetatyp getPriorityMetatyp() {
+        return priorityMetatyp;
+    }
+
+    public void setPriorityMetatyp(PriorityMetatyp priorityMetatyp) {
+        this.priorityMetatyp = priorityMetatyp;
+    }
+
+    public PriorityRessource getPriorityRessource() {
+        return priorityRessource;
+    }
+
+    public void setPriorityRessource(PriorityRessource priorityRessource) {
+        this.priorityRessource = priorityRessource;
+    }
 }
 
 

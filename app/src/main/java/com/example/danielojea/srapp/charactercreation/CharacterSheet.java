@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.Classes.Metatype;
+import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.ExpandableListAdapter;
 import com.example.danielojea.srapp.R;
 
@@ -24,7 +24,7 @@ public class CharacterSheet extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    SRCharacter testCharacter =  new SRCharacter("Ole",new Metatype("human"), R.drawable.metatyp_human);
+    SRCharacter testCharacter =  new SRCharacter("Ole",new Metatyp("human"), R.drawable.metatyp_human);
 
 
     @Override

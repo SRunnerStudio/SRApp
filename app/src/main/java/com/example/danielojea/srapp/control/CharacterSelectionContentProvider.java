@@ -1,7 +1,7 @@
 package com.example.danielojea.srapp.control;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.Classes.Metatype;
+import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.R;
 
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class CharacterSelectionContentProvider {
     public static final Map<String, CharacterSelectionContentProvider.CharacterItem> ITEM_MAP = new HashMap<String, CharacterSelectionContentProvider.CharacterItem>();
 
     static {
-        SRCharacter ole = new SRCharacter("Ole",new Metatype("human"), R.drawable.metatyp_human);
-        SRCharacter schven = new SRCharacter("Schven",new Metatype("troll"),R.drawable.metatyp_troll);
-        SRCharacter daniel = new SRCharacter("Daniel",new Metatype("dwarf"),R.drawable.metatyp_dwarf);
-        SRCharacter ojea = new SRCharacter("Ojea",new Metatype("elf"),R.drawable.metatyp_elf);
+        SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), R.drawable.metatyp_human);
+        SRCharacter schven = new SRCharacter("Schven",new Metatyp("troll"),R.drawable.metatyp_troll);
+        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),R.drawable.metatyp_dwarf);
+        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),R.drawable.metatyp_elf);
         addItem(new CharacterSelectionContentProvider.CharacterItem(ole));
         addItem(new CharacterSelectionContentProvider.CharacterItem(schven));
         addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));

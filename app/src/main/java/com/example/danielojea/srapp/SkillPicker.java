@@ -31,6 +31,11 @@ public class SkillPicker extends AppCompatActivity {
     private ViewPager mViewPager;
     private Serializable character;
 
+    /*ScrollView skillSingleScrollView = (ScrollView) findViewById(R.id.skillPackageScrollView);
+    ViewGroup.LayoutParams params = skillSingleScrollView.getLayoutParams();
+    params.height = 500;
+    skillSingleScrollView.setLayoutParams(params);*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

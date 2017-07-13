@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityRessource implements Serializable {
+public class PriorityRessource implements Priority, Serializable {
     private int A = 450000;
     private int B = 275000;
     private int C = 140000;
@@ -23,6 +23,22 @@ public class PriorityRessource implements Serializable {
             case 5: return E;
         }
         return 0;
+    }
+
+    public String getLetter(int priority){
+        switch (priority) {
+            case 1:
+                return "A";
+            case 2:
+                return "B";
+            case 3:
+                return "C";
+            case 4:
+                return "D";
+            case 5:
+                return "E";
+        }
+        return "";
     }
 
     public PriorityRessource(int priority) {

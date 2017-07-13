@@ -12,11 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.Classes.Metatype;
+import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.charactercreation.CharacterConcept;
 import com.example.danielojea.srapp.charactercreation.CharacterSheet;
-import com.example.danielojea.srapp.charactercreation.Metatyp;
+import com.example.danielojea.srapp.charactercreation.MetatypChoose;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 
 import java.io.Serializable;
@@ -104,13 +104,13 @@ public class CharacterSelection extends AppCompatActivity {
 
 
     public void startDaniel(View v){
-        Intent metaIntent = new Intent(this, Metatyp.class);
+        Intent metaIntent = new Intent(this, MetatypChoose.class);
         startActivity(metaIntent);
     }
     public void startOle(View v){
         Intent metaIntent = new Intent(this, SkillSelection.class);
         ArrayList<Skill> skills = new ArrayList<Skill>();
-        Serializable character = new SRCharacter("Ole",new Metatype("human"),R.drawable.metatyp_dwarf);
+        Serializable character = new SRCharacter("Ole",new Metatyp("human"),R.drawable.metatyp_dwarf);
         ((SRCharacter)character).setSkill(skills);
         metaIntent.putExtra("Character",character);
         startActivity(metaIntent);

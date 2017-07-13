@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityMagic implements Serializable {
+public class PriorityMagic implements Priority, Serializable {
     private String[][] A = {{"Zauberer oder Magieradept","Magie 6, zwei Magische Fertigkeiten auf Stufe 5, 10 Zauber,Rituale und/oder Alchemische Zauber"},
                             {"Technomancer","Resonanz 6, zwei Resonanzfertigkeiten auf Stufe 5, 5 Komplexe Formen"},
                             {"",""},{"",""},{"",""}};
@@ -42,6 +42,22 @@ public class PriorityMagic implements Serializable {
             case 5: return E;
         }
         return E;
+    }
+
+    public String getLetter(int priority){
+        switch (priority) {
+            case 1:
+                return "A";
+            case 2:
+                return "B";
+            case 3:
+                return "C";
+            case 4:
+                return "D";
+            case 5:
+                return "E";
+        }
+        return "";
     }
 
     public String[][] getA() {
