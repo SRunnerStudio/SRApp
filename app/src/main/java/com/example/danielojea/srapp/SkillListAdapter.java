@@ -35,6 +35,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         public TextView txtSpecialization;
         public FloatingActionButton plusButton;
         public FloatingActionButton minusButton;
+        public FloatingActionButton upgradeButton;
         public TextView txtPackage;
 
         public ViewHolder(View v) {
@@ -47,6 +48,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             txtPackage = (TextView) v.findViewById(R.id.txtPackage);
             plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
             minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
+            upgradeButton = (FloatingActionButton) v.findViewById(R.id.UpgradeButton);
         }
     }
 
@@ -174,6 +176,12 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                         holder.txtCounter.setText(("" + skill.getValue()));
                     }
                 }
+            }
+        });
+        holder.upgradeButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.upgradeButton.setVisibility(View.INVISIBLE);
             }
         });
     }
