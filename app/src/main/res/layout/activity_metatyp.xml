@@ -60,7 +60,7 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/DummyImageMetatype"
         app:layout_constraintRight_toRightOf="@+id/DummyImageMetatype"
-        app:srcCompat="@drawable/metatyp_dwarf_bw" />
+        app:srcCompat="@drawable/metatyp_dwarf_blackwhite" />
 
     <ImageButton
         android:id="@+id/OrcButton"

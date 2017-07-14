@@ -86,7 +86,7 @@ public class MetatypChoose extends AppCompatActivity {
 
         elfButton.setImageResource(R.drawable.metatyp_elf_bw);
         humanButton.setImageResource(R.drawable.metatyp_human_bw);
-        dwarfButton.setImageResource(R.drawable.metatyp_dwarf_bw);
+        dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
         orcButton.setImageResource(R.drawable.metatyp_orc_bw);
         trollButton.setImageResource(R.drawable.metatyp_troll_bw);
     }
@@ -101,7 +101,7 @@ public class MetatypChoose extends AppCompatActivity {
         if(metatyp =="elf"){
             elfButton.setImageResource(R.drawable.metatyp_elf);
             humanButton.setImageResource(R.drawable.metatyp_human_bw);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_bw);
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
             orcButton.setImageResource(R.drawable.metatyp_orc_bw);
             trollButton.setImageResource(R.drawable.metatyp_troll_bw);
         }
@@ -109,7 +109,7 @@ public class MetatypChoose extends AppCompatActivity {
         if(metatyp =="human"){
             elfButton.setImageResource(R.drawable.metatyp_elf_bw);
             humanButton.setImageResource(R.drawable.metatyp_human);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_bw);
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
             orcButton.setImageResource(R.drawable.metatyp_orc_bw);
             trollButton.setImageResource(R.drawable.metatyp_troll_bw);
         }
@@ -125,7 +125,7 @@ public class MetatypChoose extends AppCompatActivity {
         if(metatyp =="orc"){
             elfButton.setImageResource(R.drawable.metatyp_elf_bw);
             humanButton.setImageResource(R.drawable.metatyp_human_bw);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_bw);
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
             orcButton.setImageResource(R.drawable.metatyp_orc);
             trollButton.setImageResource(R.drawable.metatyp_troll_bw);
         }
@@ -133,7 +133,7 @@ public class MetatypChoose extends AppCompatActivity {
         if(metatyp =="troll"){
             elfButton.setImageResource(R.drawable.metatyp_elf_bw);
             humanButton.setImageResource(R.drawable.metatyp_human_bw);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_bw);
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
             orcButton.setImageResource(R.drawable.metatyp_orc_bw);
             trollButton.setImageResource(R.drawable.metatyp_troll);
         }
