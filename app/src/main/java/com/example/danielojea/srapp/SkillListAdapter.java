@@ -110,7 +110,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     if (character.getSkillPackagePoints() > 0) {
                         ArrayList<Skill> updatedValues = new ArrayList<Skill>();
                         character.setSkillPackagePoints(character.getSkillPackagePoints() - 1);
-                        skillPointCounterPackage.setText("" + character.getSkillPackagePoints());
+                        skillPointCounterPackage.setText("Skillpaketpunkte: " + character.getSkillPackagePoints());
                         for (Iterator<Skill> i = values.iterator(); i.hasNext();
                                 ) {
                             Skill iSkill = i.next();
@@ -128,7 +128,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     if (character.getSkillPoints() > 0 && skill.getValue() < 6) {
                         skill.setValue(skill.getValue() + 1);
                         character.setSkillPoints(character.getSkillPoints() - 1);
-                        skillPointCounter.setText("" + character.getSkillPoints());
+                        skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                     }
                 }
                 holder.txtCounter.setText(("" + skill.getValue()));
@@ -149,12 +149,17 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                 if (skill.isPackageBound()) {
                     ArrayList<Skill> updatedValues = new ArrayList<Skill>();
                     character.setSkillPackagePoints(character.getSkillPackagePoints() + 1);
-                    skillPointCounterPackage.setText("" + character.getSkillPackagePoints());
+                    skillPointCounterPackage.setText("Skillpaketpunkte: " + character.getSkillPackagePoints());
                     for (Iterator<Skill> i = values.iterator(); i.hasNext();
                             ) {
                         Skill iSkill = i.next();
                         if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
                             iSkill.setValue(iSkill.getValue() - 1);
+                            if (iSkill.isSpecialization()){
+                                iSkill.setSpecialization(false);
+                                iSkill.setSpecializationName("");
+                                character.setSkillPoints(character.getSkillPoints()+1);
+                            }
                             if (iSkill.getValue() < 1) {
                                 iSkill.setValue(iSkill.getValue() + 1);
                                 deletedSkills.add(iSkill);
@@ -170,7 +175,12 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     notifyDataSetChanged();
                 } else {
                     character.setSkillPoints(character.getSkillPoints() + 1);
-                    skillPointCounter.setText("" + character.getSkillPoints());
+                    if (skill.isSpecialization()){
+                        skill.setSpecialization(false);
+                        skill.setSpecializationName("");
+                        character.setSkillPoints(character.getSkillPoints() + 1);
+                    }
+                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                     skill.setValue(skill.getValue() - 1);
                     if (skill.getValue() < 1) {
                         skill.setValue(skill.getValue() + 1);
@@ -186,29 +196,33 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         holder.upgradeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.upgradeButton.setVisibility(View.INVISIBLE);
-                holder.downgradeButton.setVisibility(View.VISIBLE);
-                skill.setSpecialization(true);
-                character.setSkillPoints(character.getSkillPoints() - 1);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
+                if (character.getSkillPoints() > 0) {
+                    holder.upgradeButton.setVisibility(View.INVISIBLE);
+                    holder.downgradeButton.setVisibility(View.VISIBLE);
+                    skill.setSpecialization(true);
+                    character.setSkillPoints(character.getSkillPoints() - 1);
+                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
-                final EditText et = new EditText(v.getContext());
+                    final EditText et = new EditText(v.getContext());
 
-                // set prompts.xml to alertdialog builder
-                alertDialogBuilder.setView(et);
+                    // set prompts.xml to alertdialog builder
+                    alertDialogBuilder.setView(et);
 
-                // set dialog message
-                alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        skill.setSpecializationName(et.getText().toString());
-                    }
-                });
+                    // set dialog message
+                    alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            String test = et.getText().toString();
+                            skill.setSpecializationName(et.getText().toString());
+                            notifyDataSetChanged();
+                        }
+                    });
 
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                // show it
-                alertDialog.show();
-
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    // show it
+                    alertDialog.show();
+                }
             }
         });
         holder.downgradeButton.setOnClickListener(new OnClickListener() {
@@ -219,6 +233,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                 skill.setSpecialization(false);
                 skill.setSpecializationName("");
                 character.setSkillPoints(character.getSkillPoints() + 1);
+                skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                notifyDataSetChanged();
             }
         });
     }
