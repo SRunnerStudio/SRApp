@@ -33,7 +33,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:onClick="startSkillSelection"
-            android:text="WEITER"
+            android:text="@string/btnContinue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"

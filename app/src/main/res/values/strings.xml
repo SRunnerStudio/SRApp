@@ -25,5 +25,11 @@
     <string name="background">Beschreibung/Hintergrund</string>
     <!-- //END Character\\ -->
 
+    <string name="btnFinish">Fertig</string>
+    <string name="btnContinue">Weiter</string>
+
+    <string name="skillpoints">Fertigkeitenpunkte:</string>
+    <string name="packetpoints">Paketpunkte:</string>
+
 
 </resources>
