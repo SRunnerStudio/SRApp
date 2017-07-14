@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:text="Größe:"
+        android:text="@string/size"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
@@ -158,23 +158,12 @@
         app:layout_constraintTop_toTopOf="@+id/textViewSize" />
 
     <TextView
-        android:id="@+id/textViewSizeUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:text="cm"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintLeft_toRightOf="@+id/textViewSizeValue"
-        android:layout_marginStart="2dp"
-        app:layout_constraintTop_toTopOf="@+id/textViewSize" />
-
-    <TextView
         android:id="@+id/textViewWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginRight="18dp"
-        android:text="Gewicht:"
+        android:text="@string/weight"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintTop_toBottomOf="@+id/textViewSex"
         app:layout_constraintRight_toLeftOf="@+id/textViewWeightValue" />
@@ -196,7 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="7dp"
-        android:text="Ethnie:"
+        android:text="@string/ethnicity"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSize"
@@ -248,7 +237,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:onClick="testButton"
-        android:text="Button"
+        android:text="@string/btnContinue"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
