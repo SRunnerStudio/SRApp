@@ -31,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:onClick="startCharacterConcept"
-        android:text="Weiter"
+        android:text="@string/btnContinue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -53,7 +53,7 @@
         android:id="@+id/SkillpointCounter"
         android:layout_width="353dp"
         android:layout_height="28dp"
-        android:text="Skillpunkte:"
+        android:text="@string/skillpoints"
         app:layout_constraintBottom_toTopOf="@+id/skillList"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:text="Paketpunkte:"
+        android:text="@string/packetpoints"
         tools:layout_editor_absoluteY="2dp"
         android:layout_marginRight="32dp"
         app:layout_constraintRight_toRightOf="parent" />
