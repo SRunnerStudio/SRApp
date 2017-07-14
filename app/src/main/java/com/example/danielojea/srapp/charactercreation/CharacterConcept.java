@@ -66,15 +66,16 @@ public class CharacterConcept extends AppCompatActivity {
 
     public void finishCharacterCreation(View v){
         Intent intent = new Intent(this , CharacterSelection.class);
-        character.setName((findViewById(R.id.editTextName).toString()));
-        character.setStreetName((findViewById(R.id.editTextStreetName).toString()));
-        character.setArchetype((findViewById(R.id.editTextArchtype).toString()));
-        //character.setGender((findViewById(R.id.editTextSex).getText().toString()));
-        //character.setAge(Integer.parseInt(findViewById(R.id.editTextAge).toString()));
-        //character.setHeigt(Integer.parseInt((findViewById(R.id.editTextSize).toString())));
-        //character.setMass(Integer.parseInt((findViewById(R.id.editTextWeight).toString())));
-        //character.setEthnicity((findViewById(R.id.editTextEthnicity).getText().toString()));
-        //character.setBackground((findViewById(R.id.editTextBackground).getText().toString()));
+        TextView name = (TextView) findViewById(R.id.editTextName);
+        character.setName(name.getText().toString());
+        character.setStreetName((((TextView)findViewById(R.id.editTextStreetName)).getText().toString()));
+        character.setArchetype((((TextView)findViewById(R.id.editTextArchtype)).getText().toString()));
+        character.setGender((((TextView)findViewById(R.id.editTextSex)).getText().toString()));
+        character.setAge(Integer.parseInt(((TextView)findViewById(R.id.editTextAge)).getText().toString()));
+        character.setHeigt(Integer.parseInt(((TextView)findViewById(R.id.editTextSize)).getText().toString()));
+        character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
+        character.setEthnicity((((TextView)findViewById(R.id.editTextEthnicity)).getText().toString()));
+        character.setBackground((((TextView)findViewById(R.id.editTextBackground)).getText().toString()));
 
         intent.putExtra("Character",character);
         startActivity(intent);

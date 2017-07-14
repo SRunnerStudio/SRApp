@@ -33,15 +33,14 @@ public class CharacterSelectionContentProvider {
         addItem(new CharacterSelectionContentProvider.CharacterItem(ole));
     }
 
-//    static {
+    static {
+        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),null);
+        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),null);
 
-//        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),R.drawable.metatyp_dwarf);
-//        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),R.drawable.metatyp_elf);
-
-//        addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
-//        addItem(new CharacterSelectionContentProvider.CharacterItem(ojea));
-//        //addItem(new PriorityContentProvider.PriorityItem("B", "Attribute
-//   }
+        addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
+        addItem(new CharacterSelectionContentProvider.CharacterItem(ojea));
+        //addItem(new PriorityContentProvider.PriorityItem("B", "Attribute
+   }
 
 
     private static void addItem(CharacterSelectionContentProvider.CharacterItem item) {

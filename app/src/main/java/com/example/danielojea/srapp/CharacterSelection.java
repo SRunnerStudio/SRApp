@@ -52,7 +52,6 @@ public class CharacterSelection extends AppCompatActivity {
             character = (SRCharacter) getIntent().getSerializableExtra("Character");
             adapter.addCharacter(character);
         }
-        adapter.initCharacter();
         recyclerView.setAdapter(adapter);
     }
 
