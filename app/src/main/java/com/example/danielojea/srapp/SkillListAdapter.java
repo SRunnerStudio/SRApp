@@ -7,12 +7,15 @@ package com.example.danielojea.srapp;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -36,6 +39,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         public FloatingActionButton plusButton;
         public FloatingActionButton minusButton;
         public FloatingActionButton upgradeButton;
+        public FloatingActionButton downgradeButton;
         public TextView txtPackage;
 
         public ViewHolder(View v) {
@@ -49,6 +53,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
             minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
             upgradeButton = (FloatingActionButton) v.findViewById(R.id.UpgradeButton);
+            downgradeButton = (FloatingActionButton) v.findViewById(R.id.DowngradeButton);
         }
     }
 
@@ -182,6 +187,38 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             @Override
             public void onClick(View v) {
                 holder.upgradeButton.setVisibility(View.INVISIBLE);
+                holder.downgradeButton.setVisibility(View.VISIBLE);
+                skill.setSpecialization(true);
+                character.setSkillPoints(character.getSkillPoints() - 1);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
+
+                final EditText et = new EditText(v.getContext());
+
+                // set prompts.xml to alertdialog builder
+                alertDialogBuilder.setView(et);
+
+                // set dialog message
+                alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        skill.setSpecializationName(et.getText().toString());
+                    }
+                });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                // show it
+                alertDialog.show();
+
+            }
+        });
+        holder.downgradeButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.downgradeButton.setVisibility(View.INVISIBLE);
+                holder.upgradeButton.setVisibility(View.VISIBLE);
+                skill.setSpecialization(false);
+                skill.setSpecializationName("");
+                character.setSkillPoints(character.getSkillPoints() + 1);
             }
         });
     }
