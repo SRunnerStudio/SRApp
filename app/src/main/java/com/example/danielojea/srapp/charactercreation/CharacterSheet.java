@@ -53,7 +53,7 @@ public class CharacterSheet extends AppCompatActivity {
         ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
         characterName.setText(character.getName());
         characterMetaTyp.setText(character.getMetatype().getMetatyp());
-        characterPortrait.setImageBitmap(character.getProfileImage());
+        characterPortrait.setImageBitmap(character.getProfileImage().bitmap);
     }
 
     private void prepareListData() {

@@ -4,17 +4,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.CharacterSelection;
 import com.example.danielojea.srapp.Classes.SRCharacter;
+import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.R;
 
 import java.io.FileNotFoundException;
@@ -26,15 +24,16 @@ public class CharacterConcept extends AppCompatActivity {
     ImageView imageView;
     final int requcode = 3;
     Uri bilduri;
-    Bitmap bm;
+    SerialBitmap profilePicture;
     InputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_concept);
-        Intent starterIntent = getIntent();
-        character = (SRCharacter)starterIntent.getSerializableExtra("Character");
+        character = (SRCharacter)getIntent().getSerializableExtra("Character");
+        imageView = (ImageView) findViewById(R.id.imageViewCharacter);
+        imageView.setImageBitmap(character.getProfileImage().bitmap);
     }
 
     @Override
@@ -47,8 +46,8 @@ public class CharacterConcept extends AppCompatActivity {
                 bilduri = data.getData();
                 try {
                     is = getContentResolver().openInputStream(bilduri);
-                    bm = BitmapFactory.decodeStream(is);
-                    imageView.setImageBitmap(bm);
+                    profilePicture = new SerialBitmap(is);
+                    imageView.setImageBitmap(profilePicture.bitmap);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -57,8 +56,7 @@ public class CharacterConcept extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void testButtonClick(View v) {
-        imageView = (ImageView) findViewById(R.id.imageViewCharacter);
+    public void loadCharacterPortraitFromData(View v) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, requcode);
@@ -71,11 +69,12 @@ public class CharacterConcept extends AppCompatActivity {
         character.setStreetName((((TextView)findViewById(R.id.editTextStreetName)).getText().toString()));
         character.setArchetype((((TextView)findViewById(R.id.editTextArchtype)).getText().toString()));
         character.setGender((((TextView)findViewById(R.id.editTextSex)).getText().toString()));
-        character.setAge(Integer.parseInt(((TextView)findViewById(R.id.editTextAge)).getText().toString()));
-        character.setHeigt(Integer.parseInt(((TextView)findViewById(R.id.editTextSize)).getText().toString()));
-        character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
         character.setEthnicity((((TextView)findViewById(R.id.editTextEthnicity)).getText().toString()));
         character.setBackground((((TextView)findViewById(R.id.editTextBackground)).getText().toString()));
+        character.setProfileImage(profilePicture);
+        //character.setAge(Integer.parseInt(((TextView)findViewById(R.id.editTextAge)).getText().toString()));
+        //character.setHeigt(Integer.parseInt(((TextView)findViewById(R.id.editTextSize)).getText()
+        //character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
 
         intent.putExtra("Character",character);
         startActivity(intent);

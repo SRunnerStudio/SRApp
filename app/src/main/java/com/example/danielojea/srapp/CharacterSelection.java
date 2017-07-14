@@ -38,10 +38,8 @@ public class CharacterSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_selection);
 
-
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
-
 
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -56,20 +54,12 @@ public class CharacterSelection extends AppCompatActivity {
     }
 
 
-
     public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         public void addCharacter(SRCharacter character){
             characterList.add(new CharacterSelectionContentProvider.CharacterItem(character));
         }
 
-        public void initCharacter(){
-            //SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.metatyp_human));
-            SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), null);
-            SRCharacter schven = new SRCharacter("Schven",new Metatyp("troll"),null);
-            characterList.add(new CharacterSelectionContentProvider.CharacterItem(ole));
-            characterList.add(new CharacterSelectionContentProvider.CharacterItem(schven));
-        }
 
         public SimpleItemRecyclerViewAdapter(List<CharacterSelectionContentProvider.CharacterItem> items) {
             characterList = items;
@@ -84,7 +74,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage());
+            holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
             holder.characterName.setText("Name: "+characterList.get(position).character.getName());
             holder.characterMetatyp.setText("Metatyp: "+characterList.get(position).character.getMetatype().getMetatyp());
             holder.character = characterList.get(position).character;

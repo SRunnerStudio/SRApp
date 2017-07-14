@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Metatyp;
+import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.R;
 
 import java.io.InputStream;
@@ -26,20 +27,14 @@ public class CharacterSelectionContentProvider {
      * An array of sample (dummy) items.
      */
     public static final List<CharacterSelectionContentProvider.CharacterItem> ITEMS = new ArrayList<CharacterSelectionContentProvider.CharacterItem>();
-
-
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.metatyp_elf);
     {
-        SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"),BitmapFactory.decodeResource(context.getResources(), R.drawable.metatyp_human));
-        addItem(new CharacterSelectionContentProvider.CharacterItem(ole));
-    }
 
-    static {
-        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),null);
-        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),null);
+        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),new SerialBitmap(icon));
+        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),new SerialBitmap(icon));
 
         addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
         addItem(new CharacterSelectionContentProvider.CharacterItem(ojea));
-        //addItem(new PriorityContentProvider.PriorityItem("B", "Attribute
    }
 
 

@@ -1,6 +1,8 @@
 package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.example.danielojea.srapp.Classes.AttributeValue;
 import com.example.danielojea.srapp.Classes.Attributes;
 import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.Classes.SRCharacter;
+import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.R;
 
 public class MetatypDetail extends AppCompatActivity {
@@ -20,10 +23,11 @@ public class MetatypDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        character = (SRCharacter) getIntent().getSerializableExtra("Character");
         setContentView(R.layout.activity_metatyp_detail);
         metatyp =new Metatyp(getIntent().getExtras().getString("Metatyp"));
         choosePortraitMetertyp(metatyp);
-        character = (SRCharacter) getIntent().getSerializableExtra("Character");
+
     }
 
     public void startSkillSelection(View v){
@@ -40,11 +44,10 @@ public class MetatypDetail extends AppCompatActivity {
                 new AttributeValue(character.getMetatype().getCHAMax(),character.getMetatype().getCHAStart(),character.getMetatype().getCHAStart()),
                 new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()) );
         character.setAttribute(attributes);
-
         character.getAttribute().calculateStats();
-        Intent startSkillSelectionIntent = new Intent(this, SkillSelection.class);
-        startSkillSelectionIntent.putExtra("Character", character);
-        startActivity(startSkillSelectionIntent);
+        Intent intent = new Intent(this, SkillSelection.class);
+        intent.putExtra("Character", character);
+        startActivity(intent);
     }
 //Erkennt und übergibt das gewählte Portait des Metatypen
     public void choosePortraitMetertyp(Metatyp metatyp){
@@ -57,31 +60,35 @@ public class MetatypDetail extends AppCompatActivity {
         switch (metatyp.getMetatypENG()) {
             case "elf":
                 portraitButton.setImageResource(R.drawable.metatyp_elf);
+                character.setProfileImage(new SerialBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.metatyp_elf)));
                 contentProvidingMetatyp = new Metatyp("elf");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
-
                 return;
             case "human":
                 portraitButton.setImageResource(R.drawable.metatyp_human);
+                character.setProfileImage(new SerialBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.metatyp_human)));
                 contentProvidingMetatyp = new Metatyp("human");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
                 return;
             case "dwarf":
                 portraitButton.setImageResource(R.drawable.metatyp_dwarf);
+                character.setProfileImage(new SerialBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.metatyp_dwarf)));
                 contentProvidingMetatyp = new Metatyp("dwarf");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
                 return;
             case "orc":
                 portraitButton.setImageResource(R.drawable.metatyp_orc);
+                character.setProfileImage(new SerialBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.metatyp_orc)));
                 contentProvidingMetatyp = new Metatyp("orc");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
                 return;
             case "troll":
                 portraitButton.setImageResource(R.drawable.metatyp_troll);
+                character.setProfileImage(new SerialBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.metatyp_troll)));
                 contentProvidingMetatyp = new Metatyp("troll");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
