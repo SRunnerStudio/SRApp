@@ -4,10 +4,15 @@ package com.example.danielojea.srapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -30,6 +35,7 @@ public class SkillTabSingle extends Fragment {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     ScrollView scrollView;
+    LinearLayout linearLayout;
     SRCharacter character;
     ArrayList<Skill> skills;
 
@@ -40,11 +46,12 @@ public class SkillTabSingle extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_skill_tab_single, container, false);
 
+
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -59,21 +66,23 @@ public class SkillTabSingle extends Fragment {
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
-                for (Iterator<Skill> i = skills.iterator(); i.hasNext();
-                        ) {
-                    Skill skill = i.next();
-                    if (skill.getName().equals(listAdapter.getChild(groupPosition,childPosition)))
-                    {
-                        character.getSkills().add(skill);
-                        character.setSkillPoints(character.getSkillPoints()-1);
-                    }else{
-                        updatedSkills.add(skill);
+                if (character.getSkillPoints() > 0) {
+                    for (Iterator<Skill> i = skills.iterator(); i.hasNext();
+                            ) {
+                        Skill skill = i.next();
+                        if (skill.getName().equals(listAdapter.getChild(groupPosition, childPosition))) {
+                            character.getSkills().add(skill);
+                            character.setSkillPoints(character.getSkillPoints() - 1);
+                        } else {
+                            updatedSkills.add(skill);
+                        }
                     }
+                    Intent intent = new Intent(getContext(), SkillSelection.class);
+                    intent.putExtra("Character", character);
+                    intent.putExtra("Skills", updatedSkills);
+                    startActivity(intent);
+                    return false;
                 }
-                Intent intent = new Intent(getContext(),SkillSelection.class);
-                intent.putExtra("Character", character);
-                intent.putExtra("Skills",updatedSkills);
-                startActivity(intent);
                 return false;
             }
         });
@@ -84,7 +93,6 @@ public class SkillTabSingle extends Fragment {
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
-
     }
 
     private void prepareListData() {
@@ -214,5 +222,4 @@ public class SkillTabSingle extends Fragment {
         listDataChild.put(listDataHeader.get(8), fertigkeitenMAG);
         listDataChild.put(listDataHeader.get(9), fertigkeitenRES);
     }
-
 }

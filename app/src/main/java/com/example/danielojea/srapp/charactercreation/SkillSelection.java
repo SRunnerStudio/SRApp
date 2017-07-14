@@ -1,10 +1,15 @@
 package com.example.danielojea.srapp.charactercreation;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,7 +53,7 @@ public class SkillSelection extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SkillListAdapter(character);
+        mAdapter = new SkillListAdapter(character,(TextView)findViewById(R.id.SkillpointCounter),(TextView)findViewById(R.id.SkillpointPackageCounter));
         recyclerView.setAdapter(mAdapter);
     }
     public void createSkillList(){
@@ -139,10 +144,12 @@ public class SkillSelection extends AppCompatActivity {
     public void AddAbility(View v) {
         updateSkillList();
         Intent intent = new Intent(this,SkillPicker.class);
+        character=mAdapter.getCharacter();
         intent.putExtra("Character", character);
         intent.putExtra("Skills",skills);
         startActivity(intent);
     }
+
     private void updateSkillList(){
         character.setSkills(mAdapter.getValues());
         for (Iterator<Skill> i = mAdapter.getDeletedSkills().iterator(); i.hasNext();
