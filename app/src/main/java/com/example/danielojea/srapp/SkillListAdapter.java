@@ -22,6 +22,9 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     private ArrayList<Skill> values;
     private ArrayList<Skill> deletedSkills = new ArrayList<Skill>();
     private SRCharacter character;
+    public View layout;
+    public TextView skillPointCounter;
+    public TextView skillPointCounterPackage;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -33,11 +36,11 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         public FloatingActionButton plusButton;
         public FloatingActionButton minusButton;
         public TextView txtPackage;
-        public View layout;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
+
             txtName = (TextView) v.findViewById(R.id.AbilityName);
             txtCounter = (TextView) v.findViewById(R.id.AbilityCounter);
             txtSpecialization = (TextView) v.findViewById(R.id.specialization);
@@ -58,9 +61,11 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SkillListAdapter(SRCharacter myDataset) {
+    public SkillListAdapter(SRCharacter myDataset, TextView txtSkillPointCounter,TextView txtSkillPointCounterPackage) {
         character = myDataset;
         values = myDataset.getSkills();
+        skillPointCounter = txtSkillPointCounter;
+        skillPointCounterPackage = txtSkillPointCounterPackage;
     }
 
     // Create new views (invoked by the layout manager)
@@ -89,13 +94,16 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         if(skill.isPackageBound()){
             holder.txtPackage.setText(skill.getConnectedPackage());
         }
+
+
         holder.plusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (skill.isPackageBound()){
-                    if(character.getSkillPackagePoints() > 0 ) {
+                if (skill.isPackageBound()) {
+                    if (character.getSkillPackagePoints() > 0) {
                         ArrayList<Skill> updatedValues = new ArrayList<Skill>();
                         character.setSkillPackagePoints(character.getSkillPackagePoints() - 1);
+                        skillPointCounterPackage.setText("" + character.getSkillPackagePoints());
                         for (Iterator<Skill> i = values.iterator(); i.hasNext();
                                 ) {
                             Skill iSkill = i.next();
@@ -109,19 +117,19 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                         values = updatedValues;
                         notifyDataSetChanged();
                     }
-                }else{
-                    if(character.getSkillPoints() > 0 && skill.getValue()<6) {
+                } else {
+                    if (character.getSkillPoints() > 0 && skill.getValue() < 6) {
                         skill.setValue(skill.getValue() + 1);
                         character.setSkillPoints(character.getSkillPoints() - 1);
+                        skillPointCounter.setText("" + character.getSkillPoints());
                     }
                 }
-                holder.txtCounter.setText((""+skill.getValue()));
+                holder.txtCounter.setText(("" + skill.getValue()));
                 ArrayList<Skill> updatedList = new ArrayList<Skill>();
                 for (Iterator<Skill> i = deletedSkills.iterator(); i.hasNext();
                         ) {
                     Skill deletedskill = i.next();
-                    if (skill.getName() == deletedskill.getName())
-                    {
+                    if (skill.getName() == deletedskill.getName()) {
                         updatedList.add(skill);
                     }
                 }
@@ -131,37 +139,39 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         holder.minusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (skill.isPackageBound()){
+                if (skill.isPackageBound()) {
                     ArrayList<Skill> updatedValues = new ArrayList<Skill>();
-                    character.setSkillPackagePoints(character.getSkillPackagePoints()+1);
+                    character.setSkillPackagePoints(character.getSkillPackagePoints() + 1);
+                    skillPointCounterPackage.setText("" + character.getSkillPackagePoints());
                     for (Iterator<Skill> i = values.iterator(); i.hasNext();
                             ) {
                         Skill iSkill = i.next();
-                        if(iSkill.getConnectedPackage().equals(skill.getConnectedPackage())){
-                            iSkill.setValue(iSkill.getValue()-1);
-                            if (iSkill.getValue() < 1){
-                                iSkill.setValue(iSkill.getValue()+1);
+                        if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
+                            iSkill.setValue(iSkill.getValue() - 1);
+                            if (iSkill.getValue() < 1) {
+                                iSkill.setValue(iSkill.getValue() + 1);
                                 deletedSkills.add(iSkill);
                                 notifyDataSetChanged();
-                            }else {
+                            } else {
                                 updatedValues.add(iSkill);
                             }
-                        }else{
+                        } else {
                             updatedValues.add(iSkill);
                         }
                     }
                     values = updatedValues;
                     notifyDataSetChanged();
-                }else{
-                    character.setSkillPoints(character.getSkillPoints()+1);
-                    skill.setValue(skill.getValue()-1);
+                } else {
+                    character.setSkillPoints(character.getSkillPoints() + 1);
+                    skillPointCounter.setText("" + character.getSkillPoints());
+                    skill.setValue(skill.getValue() - 1);
                     if (skill.getValue() < 1) {
-                        skill.setValue(skill.getValue()+1);
+                        skill.setValue(skill.getValue() + 1);
                         deletedSkills.add(skill);
                         remove(position);
                         notifyDataSetChanged();
-                    }else {
-                        holder.txtCounter.setText((""+skill.getValue()));
+                    } else {
+                        holder.txtCounter.setText(("" + skill.getValue()));
                     }
                 }
             }

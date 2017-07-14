@@ -58,21 +58,36 @@ public class SkillTabPackage extends Fragment {
                     ExpandableListView parent, View v,
                     int groupPosition, int childPosition,
                     long id) {
-                for (Iterator<Skill> i = skills.iterator(); i.hasNext();
-                        ) {
-                    Skill packageSkill = i.next();
-                    if (packageSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString()))
-                    {
-                        packageSkill.setPackageBound(true);
-                        character.getSkills().add(packageSkill);
-                    }else{
-                        updatedSkills.add(packageSkill);
+                if(character.getSkillPackagePoints() > 0) {
+                    ArrayList<Skill> cUpdatedSkills = new ArrayList<Skill>();
+                    for(Iterator<Skill> j = character.getSkills().iterator(); j.hasNext();){
+                        Skill cSkill = j.next();
+                        if (cSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString())){
+                            character.setSkillPoints(character.getSkillPoints()+cSkill.getValue());
+                            cSkill.setValue(1);
+                            skills.add(cSkill);
+                        }else{
+                            cUpdatedSkills.add(cSkill);
+                        }
                     }
+                    character.setSkills(cUpdatedSkills);
+                    for (Iterator<Skill> i = skills.iterator(); i.hasNext();
+                            ) {
+                        Skill packageSkill = i.next();
+                        if (packageSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString())) {
+                            packageSkill.setPackageBound(true);
+                            character.getSkills().add(packageSkill);
+                        } else {
+                            updatedSkills.add(packageSkill);
+                        }
+                    }
+                    character.setSkillPackagePoints(character.getSkillPackagePoints()-1);
+                    Intent intent = new Intent(getContext(), SkillSelection.class);
+                    intent.putExtra("Character", character);
+                    intent.putExtra("Skills", updatedSkills);
+                    startActivity(intent);
+                    return false;
                 }
-                Intent intent = new Intent(getContext(),SkillSelection.class);
-                intent.putExtra("Character", character);
-                intent.putExtra("Skills",updatedSkills);
-                startActivity(intent);
                 return false;
             }
         });
