@@ -15,6 +15,11 @@ import com.example.danielojea.srapp.R;
 public class MetatypChoose extends AppCompatActivity {
     boolean imageChoosen =false;
     SRCharacter character;
+    ImageButton elfButton;
+    ImageButton humanButton;
+    ImageButton dwarfButton;
+    ImageButton orcButton;
+    ImageButton trollButton;
 
     String chosenMetatyp = "default";
     @Override
@@ -22,6 +27,39 @@ public class MetatypChoose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metatyp);
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
+        initImages();
+    }
+    public void initImages() {
+        elfButton = (ImageButton) findViewById(R.id.ElfButton);
+        humanButton = (ImageButton) findViewById(R.id.HumanButton);
+        dwarfButton = (ImageButton) findViewById(R.id.DwarfButton);
+        orcButton = (ImageButton) findViewById(R.id.OrcButton);
+        trollButton = (ImageButton) findViewById(R.id.TrollButton);
+        if (character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[0][0].equals("Mensch")) {
+            humanButton.setImageResource(R.drawable.metatyp_human);
+        } else {
+            humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
+        }
+        if (character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[1][0].equals("Elf")) {
+            elfButton.setImageResource(R.drawable.metatyp_elf);
+        } else {
+            elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
+        }
+        if (character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[2][0].equals("Ork")) {
+            orcButton.setImageResource(R.drawable.metatyp_orc);
+        } else {
+            orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
+        }
+        if (character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[3][0].equals("Zwerg")) {
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf);
+        } else {
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
+        }
+        if (character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[4][0].equals("Troll")) {
+            trollButton.setImageResource(R.drawable.metatyp_troll);
+        } else {
+            trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+        }
     }
 //Auswahl des Metatypen.
     public void changeHuman(View v){
@@ -31,7 +69,7 @@ public class MetatypChoose extends AppCompatActivity {
             choseMetertyp("human");
             character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[0][1]));
         }
-        else resetImageChoosen();
+        else initImages();
     }
 
     public void changeElf(View v){
@@ -41,7 +79,7 @@ public class MetatypChoose extends AppCompatActivity {
             choseMetertyp("elf");
             character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[1][1]));
         }
-        else resetImageChoosen();
+        else initImages();
     }
 
     public void changeOrc(View v){
@@ -51,7 +89,7 @@ public class MetatypChoose extends AppCompatActivity {
             choseMetertyp("orc");
             character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[2][1]));
         }
-        else resetImageChoosen();
+        else initImages();
     }
 
     public void changeDwarf(View v){
@@ -61,7 +99,7 @@ public class MetatypChoose extends AppCompatActivity {
             choseMetertyp("dwarf");
             character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[3][1]));
         }
-        else resetImageChoosen();
+        else initImages();
     }
 
     public void changeTroll(View v){
@@ -71,71 +109,44 @@ public class MetatypChoose extends AppCompatActivity {
             choseMetertyp("troll");
             character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[4][1]));
         }
-        else resetImageChoosen();
+        else initImages();
     }
 
     public void resetImage(View v){resetImageChoosen();}
     public void  resetImageChoosen(){
         imageChoosen =false;
-
-        ImageButton elfButton = (ImageButton) findViewById(R.id.ElfButton);
-        ImageButton humanButton = (ImageButton) findViewById(R.id.HumanButton);
-        ImageButton dwarfButton = (ImageButton) findViewById(R.id.DwarfButton);
-        ImageButton orcButton = (ImageButton) findViewById(R.id.OrcButton);
-        ImageButton trollButton = (ImageButton) findViewById(R.id.TrollButton);
-
-        elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
-        humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
-        dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
-        orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
-        trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+        initImages();
     }
 //Färbt das Bild des Metatypen bei der Auswahl.
     public void choseMetertyp(String metatyp){
-        ImageButton elfButton = (ImageButton) findViewById(R.id.ElfButton);
-        ImageButton humanButton = (ImageButton) findViewById(R.id.HumanButton);
-        ImageButton dwarfButton = (ImageButton) findViewById(R.id.DwarfButton);
-        ImageButton orcButton = (ImageButton) findViewById(R.id.OrcButton);
-        ImageButton trollButton = (ImageButton) findViewById(R.id.TrollButton);
-
+        elfButton = (ImageButton) findViewById(R.id.ElfButton);
+        humanButton = (ImageButton) findViewById(R.id.HumanButton);
+        dwarfButton = (ImageButton) findViewById(R.id.DwarfButton);
+        orcButton = (ImageButton) findViewById(R.id.OrcButton);
+        trollButton = (ImageButton) findViewById(R.id.TrollButton);
         if(metatyp =="elf"){
-            elfButton.setImageResource(R.drawable.metatyp_elf);
-            humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
-            orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
-            trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+            initImages();
+            elfButton.setImageResource(R.drawable.metatyp_elf_selected);
         }
 
         if(metatyp =="human"){
-            elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
-            humanButton.setImageResource(R.drawable.metatyp_human);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
-            orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
-            trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+            initImages();
+            humanButton.setImageResource(R.drawable.metatyp_human_selected);;
         }
 
         if(metatyp =="dwarf"){
-            elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
-            humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf);
-            orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
-            trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+            initImages();
+            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_selected);;
         }
 
         if(metatyp =="orc"){
-            elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
-            humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
-            orcButton.setImageResource(R.drawable.metatyp_orc);
-            trollButton.setImageResource(R.drawable.metatyp_troll_blackwhite);
+            initImages();
+            orcButton.setImageResource(R.drawable.metatyp_orc_selected);
         }
 
         if(metatyp =="troll"){
-            elfButton.setImageResource(R.drawable.metatyp_elf_blackwhite);
-            humanButton.setImageResource(R.drawable.metatyp_human_blackwhite);
-            dwarfButton.setImageResource(R.drawable.metatyp_dwarf_blackwhite);
-            orcButton.setImageResource(R.drawable.metatyp_orc_blackwhite);
-            trollButton.setImageResource(R.drawable.metatyp_troll);
+            initImages();
+            trollButton.setImageResource(R.drawable.metatyp_troll_selected);
         }
     }
 

@@ -35,7 +35,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintRight_toRightOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        app:srcCompat="@drawable/metatyp_elf_blackwhite" />
+        app:srcCompat="@drawable/metatyp_elf" />
 
     <ImageButton
         android:id="@+id/HumanButton"
@@ -48,7 +48,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintRight_toRightOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        app:srcCompat="@drawable/metatyp_human_blackwhite" />
+        app:srcCompat="@drawable/metatyp_human" />
 
     <ImageButton
         android:id="@+id/DwarfButton"
@@ -67,7 +67,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19999999"
-        app:srcCompat="@drawable/metatyp_dwarf_blackwhite" />
+        app:srcCompat="@drawable/metatyp_dwarf" />
 
     <ImageButton
         android:id="@+id/OrcButton"
@@ -80,7 +80,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintLeft_toLeftOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        app:srcCompat="@drawable/metatyp_orc_blackwhite" />
+        app:srcCompat="@drawable/metatyp_orc" />
 
     <ImageButton
         android:id="@+id/TrollButton"
@@ -93,6 +93,6 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/DwarfButton"
         app:layout_constraintLeft_toLeftOf="@+id/DwarfButton"
-        app:srcCompat="@drawable/metatyp_troll_blackwhite" />
+        app:srcCompat="@drawable/metatyp_troll" />
 
 </android.support.constraint.ConstraintLayout>
