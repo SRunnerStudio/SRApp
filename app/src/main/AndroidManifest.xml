@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/RedBookBox">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Startscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SkillSelection" />
+        <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.MetatypChoose" />
         <activity android:name=".charactercreation.CharacterSheet" />
-        <activity android:name=".SkillSelection" />
+        <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterCreation" />
@@ -37,17 +37,17 @@
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity android:name=".charactercreation.MetatypDetail" />
         <activity
-            android:name=".PriorityListActivity"
+            android:name=".charactercreation.PriorityListActivity"
             android:label="@string/title_priorityitem_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".PriorityDetailActivity"
+            android:name=".charactercreation.PriorityDetailActivity"
             android:label="@string/title_priorityitem_detail"
-            android:parentActivityName=".PriorityListActivity"
+            android:parentActivityName=".charactercreation.PriorityListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danielojea.srapp.PriorityListActivity" />
+                android:value="com.example.danielojea.srapp.charactercreation.PriorityListActivity" />
         </activity>
     </application>
 

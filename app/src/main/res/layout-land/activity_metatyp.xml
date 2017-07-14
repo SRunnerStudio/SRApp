@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppBackgroudImage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppBackgroudImage"
-    tools:layout_editor_absoluteY="73dp"
-    tools:layout_editor_absoluteX="0dp">
+    android:clickable="true"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="73dp">
 
     <Button
         android:id="@+id/weiterButton"
@@ -28,71 +28,71 @@
         android:id="@+id/ElfButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginRight="222dp"
+        android:layout_marginTop="0dp"
         android:background="@null"
         android:onClick="changeElf"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/metatyp_elf_bw"
-        android:layout_marginRight="222dp"
         app:layout_constraintRight_toRightOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        android:layout_marginTop="0dp" />
+        app:srcCompat="@drawable/metatyp_elf_bw" />
 
     <ImageButton
         android:id="@+id/HumanButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginRight="113dp"
+        android:layout_marginTop="62dp"
         android:background="@null"
         android:onClick="changeHuman"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/metatyp_human_bw"
-        android:layout_marginRight="113dp"
         app:layout_constraintRight_toRightOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        android:layout_marginTop="62dp" />
+        app:srcCompat="@drawable/metatyp_human_bw" />
 
     <ImageButton
         android:id="@+id/DwarfButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:onClick="changeDwarf"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/metatyp_dwarf_bw"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/weiterButton"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999"
+        app:srcCompat="@drawable/metatyp_dwarf_bw" />
 
     <ImageButton
         android:id="@+id/OrcButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginLeft="114dp"
+        android:layout_marginTop="62dp"
         android:background="@null"
         android:onClick="changeOrc"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/metatyp_orc_bw"
-        android:layout_marginLeft="114dp"
         app:layout_constraintLeft_toLeftOf="@+id/DwarfButton"
         app:layout_constraintTop_toTopOf="@+id/DwarfButton"
-        android:layout_marginTop="62dp" />
+        app:srcCompat="@drawable/metatyp_orc_bw" />
 
     <ImageButton
         android:id="@+id/TrollButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="229dp"
         android:background="@null"
         android:onClick="changeTroll"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/metatyp_troll_bw"
         app:layout_constraintBottom_toBottomOf="@+id/DwarfButton"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="229dp"
-        app:layout_constraintLeft_toLeftOf="@+id/DwarfButton" />
+        app:layout_constraintLeft_toLeftOf="@+id/DwarfButton"
+        app:srcCompat="@drawable/metatyp_troll_bw" />
 
 </android.support.constraint.ConstraintLayout>

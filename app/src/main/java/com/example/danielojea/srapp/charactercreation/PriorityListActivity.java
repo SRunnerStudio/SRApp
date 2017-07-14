@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,14 @@ import android.widget.TextView;
 
 
 import com.example.danielojea.srapp.Classes.Priority;
-import com.example.danielojea.srapp.Classes.PriorityAbilities;
+import com.example.danielojea.srapp.Classes.PrioritySkills;
 import com.example.danielojea.srapp.Classes.PriorityAttribute;
 import com.example.danielojea.srapp.Classes.PriorityMagic;
 import com.example.danielojea.srapp.Classes.PriorityMetatyp;
 import com.example.danielojea.srapp.Classes.PriorityRessource;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.charactercreation.MetatypChoose;
+import com.example.danielojea.srapp.PriorityDetailFragment;
+import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 import java.io.Serializable;
@@ -39,11 +39,6 @@ public class PriorityListActivity extends AppCompatActivity {
 
     SRCharacter character = new SRCharacter();
     Priority priorityItem;
-    PriorityMetatyp priorityMetatyp = new PriorityMetatyp(1);
-    PriorityAttribute priorityAttribute = new PriorityAttribute(2);
-    PriorityMagic priorityMagic = new PriorityMagic(3);
-    PriorityAbilities priorityAbilities = new PriorityAbilities(4);
-    PriorityRessource priorityRessource = new PriorityRessource(5);
     int listItemPosition = 6;
 
 
@@ -52,89 +47,108 @@ public class PriorityListActivity extends AppCompatActivity {
      * device.
      */
     public void startMetatypeActivity(View v){
-        if(!((priorityMetatyp.getPriority()==priorityAttribute.getPriority())
-                ||(priorityMetatyp.getPriority()==priorityMagic.getPriority())
-                ||(priorityMetatyp.getPriority()==priorityAbilities.getPriority())
-                ||(priorityMetatyp.getPriority()==priorityRessource.getPriority())
-                ||(priorityAttribute.getPriority()==priorityMagic.getPriority())
-                ||(priorityAttribute.getPriority()==priorityAbilities.getPriority())
-                ||(priorityAttribute.getPriority()==priorityRessource.getPriority())
-                ||(priorityMagic.getPriority()==priorityAbilities.getPriority())
-                ||(priorityMagic.getPriority()==priorityRessource.getPriority())
-                ||(priorityAbilities.getPriority()==priorityRessource.getPriority()) )   ){
+        if(!validPriorities()){
             Intent metaIntent = new Intent(this, MetatypChoose.class);
-            character.setPriorityMetatyp(priorityMetatyp);
-            character.setPriorityAttribute(priorityAttribute);
-            character.setPriorityMagic(priorityMagic);
-            character.setPriorityAbilities(priorityAbilities);
-            character.setPriorityRessource(priorityRessource);
+            character.setAttributePoints(character.getPriorityAttribute().getAttributePoints(character.getPriorityAttribute().getPriority()));
+            character.setSkillPoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[0]);
+            character.setSkillPackagePoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[1]);
             metaIntent.putExtra("Character",character);
             startActivity(metaIntent);
         }
-       /* else {
-            Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-        }*/
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_priorityitem_list);
-        priorityMetatyp = new PriorityMetatyp(1);
-        priorityAttribute = new PriorityAttribute(2);
-        priorityMagic = new PriorityMagic(3);
-        priorityAbilities = new PriorityAbilities(4);
-        priorityRessource = new PriorityRessource(5);
+
+        if(getIntent().getSerializableExtra("Position") != null) {
+            listItemPosition = (int) getIntent().getSerializableExtra("Position");
+            priorityItem = (Priority) getIntent().getSerializableExtra("priorityItem");
+            character = (SRCharacter) getIntent().getSerializableExtra("Character");
+            setPriorrityItem(listItemPosition);
+        }
+        else
+        {
+            initCharacterPriorities();
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Prioritäten");
-
         View recyclerView = findViewById(R.id.priorityitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("ich bin jetzt in ","onResume ");
-        if(getIntent().getSerializableExtra("Position") != null) {
-            listItemPosition = (int) getIntent().getSerializableExtra("Position");
-            priorityItem = (Priority) getIntent().getSerializableExtra("priorityItem");
-            setPriorrityItem(listItemPosition);
+    private void initCharacterPriorities(){
+        character.setPriorityMetatyp(new PriorityMetatyp(1));
+        character.setPriorityAttribute(new PriorityAttribute(2));
+        character.setPriorityMagic(new PriorityMagic(3));
+        character.setPrioritySkills(new PrioritySkills(4));
+        character.setPriorityRessource(new PriorityRessource(5));
+    }
 
-        }
+    public boolean validPriorities(){
+        return((character.getPriorityMetatyp().getPriority()==character.getPriorityAttribute().getPriority())
+                ||(character.getPriorityMetatyp().getPriority()==character.getPriorityMagic().getPriority())
+                ||(character.getPriorityMetatyp().getPriority()==character.getPrioritySkills().getPriority())
+                ||(character.getPriorityMetatyp().getPriority()==character.getPriorityRessource().getPriority())
+                ||(character.getPriorityAttribute().getPriority()==character.getPriorityMagic().getPriority())
+                ||(character.getPriorityAttribute().getPriority()==character.getPrioritySkills().getPriority())
+                ||(character.getPriorityAttribute().getPriority()==character.getPriorityRessource().getPriority())
+                ||(character.getPriorityMagic().getPriority()==character.getPrioritySkills().getPriority())
+                ||(character.getPriorityMagic().getPriority()==character.getPriorityRessource().getPriority())
+                ||(character.getPrioritySkills().getPriority()==character.getPriorityRessource().getPriority()) );
     }
 
     private void setPriorrityItem(int listPosition){
         switch (listPosition){
             case 0:
-                priorityMetatyp.setPriority(priorityItem.getPriority());
+                if (character.getPriorityMetatyp()!=null){
+                    character.getPriorityMetatyp().setPriority(priorityItem.getPriority());
+                }
+                else {initCharacterPriorities();}
+                return;
             case 1:
-                priorityAttribute.setPriority(priorityItem.getPriority());
+                if (character.getPriorityAttribute()!=null){
+                    character.getPriorityAttribute().setPriority(priorityItem.getPriority());
+                }
+                else {initCharacterPriorities();}
+                return;
             case 2:
-                priorityMagic.setPriority(priorityItem.getPriority());
+                if (character.getPriorityMagic()!=null){
+                    character.getPriorityMagic().setPriority(priorityItem.getPriority());
+                }
+                else {initCharacterPriorities();}
+                return;
             case 3:
-                priorityAbilities.setPriority(priorityItem.getPriority());
+                if (character.getPrioritySkills()!=null){
+                    character.getPrioritySkills().setPriority(priorityItem.getPriority());
+                }
+                else {initCharacterPriorities();}
+                return;
             case 4:
-                priorityRessource.setPriority(priorityItem.getPriority());
+                if (character.getPriorityRessource()!=null){
+                    character.getPriorityRessource().setPriority(priorityItem.getPriority());
+                }
+                else {initCharacterPriorities();}
+                return;
         }
     }
 
     private Priority getPriorrityItem(int listPosition){
         switch (listPosition){
             case 0:
-                return priorityMetatyp;
+                return character.getPriorityMetatyp();
             case 1:
-                return priorityAttribute;
+                return character.getPriorityAttribute();
             case 2:
-                return priorityMagic;
+                return character.getPriorityMagic();
             case 3:
-                return priorityAbilities;
+                return character.getPrioritySkills();
             case 4:
-                return priorityRessource;
+                return character.getPriorityRessource();
         }
         return null;
     }
@@ -164,7 +178,7 @@ public class PriorityListActivity extends AppCompatActivity {
 
             holder.mItem = mValues.get(position);
             //holder.mIdView.setText(mValues.get(position).id);
-            holder.mIdView.setText(priorityAttribute.getLetter(getPriorrityItem(position).getPriority()));
+            holder.mIdView.setText(character.getPriorityMagic().getLetter(getPriorrityItem(position).getPriority()));
             holder.mContentView.setText(mValues.get(position).content);
             holder.positionInList=position;
             if(position == listItemPosition){
@@ -175,22 +189,12 @@ public class PriorityListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   /* if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(PriorityDetailFragment.ARG_ITEM_ID, holder.mItem.id);
-                        PriorityDetailFragment fragment = new PriorityDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.priorityitem_detail_container, fragment)
-                                .commit();
-
-
-                    } else {*/
                         Context context = v.getContext();
                         Intent intent = new Intent(context, PriorityDetailActivity.class);
                         intent.putExtra(PriorityDetailFragment.ARG_ITEM_ID, holder.mItem.id);
                         intent.putExtra("priorityItem",(Serializable) ((Priority)getPriorrityItem(holder.positionInList)));
                         intent.putExtra("Position",holder.positionInList);
+                        intent.putExtra("Character",character);
                         context.startActivity(intent);
                     }
                // }

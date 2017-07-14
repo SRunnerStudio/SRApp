@@ -24,36 +24,58 @@ public class MetatypChoose extends AppCompatActivity {
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
     }
 //Auswahl des Metatypen.
-    public void changeElf(View v){
-        imageChoosen =true;
-        chosenMetatyp = "elf";
-        choseMetertyp("elf");
-    }
-
     public void changeHuman(View v){
-        imageChoosen =true;
-        chosenMetatyp = "human";
-        choseMetertyp("human");
+        if(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[0][0].equals("Mensch")) {
+            imageChoosen = true;
+            chosenMetatyp = "human";
+            choseMetertyp("human");
+            character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[0][1]));
+        }
+        else resetImageChoosen();
     }
 
-    public void changeDwarf(View v){
-        imageChoosen =true;
-        chosenMetatyp = "dwarf";
-        choseMetertyp("dwarf");
+    public void changeElf(View v){
+        if(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[1][0].equals("Elf")) {
+            imageChoosen = true;
+            chosenMetatyp = "elf";
+            choseMetertyp("elf");
+            character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[1][1]));
+        }
+        else resetImageChoosen();
     }
 
     public void changeOrc(View v){
-        imageChoosen =true;
-        chosenMetatyp = "orc";
-        choseMetertyp("orc");
+        if(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[2][0].equals("Ork")) {
+            imageChoosen = true;
+            chosenMetatyp = "orc";
+            choseMetertyp("orc");
+            character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[2][1]));
+        }
+        else resetImageChoosen();
+    }
+
+    public void changeDwarf(View v){
+        if(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[3][0].equals("Zwerg")) {
+            imageChoosen = true;
+            chosenMetatyp = "dwarf";
+            choseMetertyp("dwarf");
+            character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[3][1]));
+        }
+        else resetImageChoosen();
     }
 
     public void changeTroll(View v){
-        imageChoosen =true;
-        chosenMetatyp = "troll";
-        choseMetertyp("troll");
+        if(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[4][0].equals("Troll")) {
+            imageChoosen = true;
+            chosenMetatyp = "troll";
+            choseMetertyp("troll");
+            character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[4][1]));
+        }
+        else resetImageChoosen();
     }
-    public void  resetImageChoosen(View v){
+
+    public void resetImage(View v){resetImageChoosen();}
+    public void  resetImageChoosen(){
         imageChoosen =false;
 
         ImageButton elfButton = (ImageButton) findViewById(R.id.ElfButton);

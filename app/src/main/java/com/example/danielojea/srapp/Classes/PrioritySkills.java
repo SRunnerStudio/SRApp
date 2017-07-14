@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Daniel.Ojea on 11.07.2017.
  */
 
-public class PriorityAbilities implements Priority, Serializable {
+public class PrioritySkills implements Priority, Serializable {
     private int[] A = {46,10};
     private int[] B = {36,5};
     private int[] C = {28,2};
@@ -14,11 +14,11 @@ public class PriorityAbilities implements Priority, Serializable {
     private int[] E = {18,0};
     private int priority;
 
-    public PriorityAbilities(int priority) {
+    public PrioritySkills(int priority) {
         this.priority = priority;
     }
 
-    public int[] getbilitiePoints(int priority){
+    public int[] getSkillPoints(int priority){
         switch (priority){
             case 1: return A;
             case 2: return B;

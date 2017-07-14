@@ -1,5 +1,7 @@
 package com.example.danielojea.srapp.Classes;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,49 +13,59 @@ import java.util.ArrayList;
 public class SRCharacter implements Serializable {
 
     private String name;
+    private String streetName;
     private Metatyp metatype;
-    private int profileImage;
     private String gender;
+    private String archetype;
+    private String background;
+    private String ethnicity;
     private int age;
-    private DecimalFormat heigt;
-    private DecimalFormat mass;
+    private int heigt;
+    private int mass;
     private int karma;
     private int totalKarma;
-    private String archetype;
+    private Bitmap profileImage;
     private Attributes attribute;
-    private ArrayList<Skill> skill;
+    private ArrayList<Skill> skills;
     private Quality advantageAndDisadvantage;
     private Contact connection;
-    private String background;
-    private PriorityAbilities priorityAbilities;
+    private PrioritySkills prioritySkills;
     private PriorityAttribute priorityAttribute;
     private PriorityMagic priorityMagic;
     private PriorityMetatyp priorityMetatyp;
     private PriorityRessource priorityRessource;
+    private int specialAttributePoints;
+    private int attributePoints;
+    private int skillPoints;
+    private int skillPackagePoints;
 
     public SRCharacter() {
+        karma=25;
     }
 
     public SRCharacter(String name) {
-        this.name = name;
+        this.name = name
+        ;karma=25;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
         this.name = name;
         this.metatype = metatype;
+        karma=25;
     }
 
-    public SRCharacter(String name, Metatyp metatype, int profileImage) {
+    public SRCharacter(String name, Metatyp metatype, Bitmap profileImage) {
         this.name = name;
         this.metatype = metatype;
         this.profileImage = profileImage;
+        karma=25;
     }
 
-    public int getProfileImage() {
+    public Bitmap getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(int profileImage) {
+    public void setProfileImage(int Bitmap) {
         this.profileImage = profileImage;
     }
 
@@ -85,19 +97,19 @@ public class SRCharacter implements Serializable {
         this.age = age;
     }
 
-    public DecimalFormat getHeigt() {
+    public int getHeigt() {
         return heigt;
     }
 
-    public void setHeigt(DecimalFormat heigt) {
+    public void setHeigt(int heigt) {
         this.heigt = heigt;
     }
 
-    public DecimalFormat getMass() {
+    public int getMass() {
         return mass;
     }
 
-    public void setMass(DecimalFormat mass) {
+    public void setMass(int mass) {
         this.mass = mass;
     }
 
@@ -125,12 +137,12 @@ public class SRCharacter implements Serializable {
         this.attribute = attribute;
     }
 
-    public ArrayList<Skill> getSkill() {
-        return skill;
+    public ArrayList<Skill> getSkills() {
+        return skills;
     }
 
-    public void setSkill(ArrayList<Skill> skill) {
-        this.skill = skill;
+    public void setSkills(ArrayList<Skill> skills) {
+        this.skills = skills;
     }
 
     public Quality getAdvantageAndDisadvantage() {
@@ -165,12 +177,12 @@ public class SRCharacter implements Serializable {
         this.background = background;
     }
 
-    public PriorityAbilities getPriorityAbilities() {
-        return priorityAbilities;
+    public PrioritySkills getPrioritySkills() {
+        return prioritySkills;
     }
 
-    public void setPriorityAbilities(PriorityAbilities priorityAbilities) {
-        this.priorityAbilities = priorityAbilities;
+    public void setPrioritySkills(PrioritySkills prioritySkills) {
+        this.prioritySkills = prioritySkills;
     }
 
     public PriorityAttribute getPriorityAttribute() {
@@ -203,6 +215,54 @@ public class SRCharacter implements Serializable {
 
     public void setPriorityRessource(PriorityRessource priorityRessource) {
         this.priorityRessource = priorityRessource;
+    }
+
+    public int getSpecialAttributePoints() {
+        return specialAttributePoints;
+    }
+
+    public void setSpecialAttributePoints(int specialAttributePoints) {
+        this.specialAttributePoints = specialAttributePoints;
+    }
+
+    public int getAttributePoints() {
+        return attributePoints;
+    }
+
+    public void setAttributePoints(int attributePoints) {
+        this.attributePoints = attributePoints;
+    }
+
+    public int getSkillPoints() {
+        return skillPoints;
+    }
+
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
+    }
+
+    public int getSkillPackagePoints() {
+        return skillPackagePoints;
+    }
+
+    public void setSkillPackagePoints(int skillPackagePoints) {
+        this.skillPackagePoints = skillPackagePoints;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getEthnicity() {
+        return ethnicity;
+    }
+
+    public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
     }
 }
 

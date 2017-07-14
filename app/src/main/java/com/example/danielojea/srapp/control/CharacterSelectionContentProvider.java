@@ -1,45 +1,51 @@
 package com.example.danielojea.srapp.control;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.R;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.example.danielojea.srapp.R.id.imageView;
 
 /**
  * Created by Daniel on 10.07.2017.
  */
 
 public class CharacterSelectionContentProvider {
+    Context context;
     /**
      * An array of sample (dummy) items.
      */
     public static final List<CharacterSelectionContentProvider.CharacterItem> ITEMS = new ArrayList<CharacterSelectionContentProvider.CharacterItem>();
 
-    /**
-     * A map of sample (dummy) items, by ID.
-     */
-    public static final Map<String, CharacterSelectionContentProvider.CharacterItem> ITEM_MAP = new HashMap<String, CharacterSelectionContentProvider.CharacterItem>();
 
-    static {
-        SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"), R.drawable.metatyp_human);
-        SRCharacter schven = new SRCharacter("Schven",new Metatyp("troll"),R.drawable.metatyp_troll);
-        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),R.drawable.metatyp_dwarf);
-        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),R.drawable.metatyp_elf);
+    {
+        SRCharacter ole = new SRCharacter("Ole",new Metatyp("human"),BitmapFactory.decodeResource(context.getResources(), R.drawable.metatyp_human));
         addItem(new CharacterSelectionContentProvider.CharacterItem(ole));
-        addItem(new CharacterSelectionContentProvider.CharacterItem(schven));
-        addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
-        addItem(new CharacterSelectionContentProvider.CharacterItem(ojea));
-        //addItem(new PriorityContentProvider.PriorityItem("B", "Attribute
     }
+
+//    static {
+
+//        SRCharacter daniel = new SRCharacter("Daniel",new Metatyp("dwarf"),R.drawable.metatyp_dwarf);
+//        SRCharacter ojea = new SRCharacter("Ojea",new Metatyp("elf"),R.drawable.metatyp_elf);
+
+//        addItem(new CharacterSelectionContentProvider.CharacterItem(daniel));
+//        addItem(new CharacterSelectionContentProvider.CharacterItem(ojea));
+//        //addItem(new PriorityContentProvider.PriorityItem("B", "Attribute
+//   }
 
 
     private static void addItem(CharacterSelectionContentProvider.CharacterItem item) {
         ITEMS.add(item);
-        //ITEM_MAP.put(item.id, item);
     }
 
     /**

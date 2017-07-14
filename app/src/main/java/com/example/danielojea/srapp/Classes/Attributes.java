@@ -15,7 +15,7 @@ public class Attributes implements Serializable {
     private AttributeValue LOG;
     private AttributeValue INT;
     private AttributeValue CHA;
-    private int edge;
+    private AttributeValue edge;
     private int essence = 6;
     private String initiative;
     private String matrixInitiativeAR;
@@ -28,13 +28,25 @@ public class Attributes implements Serializable {
     private int mentalLimit;
     private int socialLimit;
     private int physicalDamageTrack;
-    private int physicalDamageTrackMax;
     private int StunDamageTrack;
+    private int physicalDamageTrackMax;
     private int StunDamageTrackMax;
+
+    public Attributes(AttributeValue CON, AttributeValue AGI, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge) {
+        this.CON = CON;
+        this.AGI = AGI;
+        this.REA = REA;
+        this.STR = STR;
+        this.WIL = WIL;
+        this.LOG = LOG;
+        this.INT = INT;
+        this.CHA = CHA;
+        this.edge = edge;
+    }
 
     public void calculateStats(){
         initiative = "1w6 + " + (REA.getValue()+INT.getValue());
-        matrixInitiativeAR = "1w6"+ (REA.getValue()+INT.getValue());
+        matrixInitiativeAR = "1w6 + "+ (REA.getValue()+INT.getValue());
         physicalLimit = (STR.getValue()*2 + CON.getValue() + REA.getValue())/3;
         mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
         socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
@@ -42,14 +54,10 @@ public class Attributes implements Serializable {
         composure = WIL.getValue()+CHA.getValue();
         Memory = WIL.getValue()+LOG.getValue();
         carry = CON.getValue()+STR.getValue();
-    }
-
-    public int getPhysicalDamageTrack() {
-        return physicalDamageTrack;
-    }
-
-    public void setPhysicalDamageTrack(int physicalDamageTrack) {
-        this.physicalDamageTrack = physicalDamageTrack;
+        physicalDamageTrackMax= 8 + CON.getValue()/2;
+        StunDamageTrackMax = 8 + WIL.getValue()/2;
+        physicalDamageTrack=0;
+        StunDamageTrack=0;
     }
 
     public int getPhysicalDamageTrackMax() {
@@ -60,20 +68,28 @@ public class Attributes implements Serializable {
         this.physicalDamageTrackMax = physicalDamageTrackMax;
     }
 
-    public int getStunDamageTrack() {
-        return StunDamageTrack;
-    }
-
-    public void setStunDamageTrack(int stunDamageTrack) {
-        StunDamageTrack = stunDamageTrack;
-    }
-
     public int getStunDamageTrackMax() {
         return StunDamageTrackMax;
     }
 
     public void setStunDamageTrackMax(int stunDamageTrackMax) {
         StunDamageTrackMax = stunDamageTrackMax;
+    }
+
+    public int getPhysicalDamageTrack() {
+        return physicalDamageTrack;
+    }
+
+    public void setPhysicalDamageTrack(int physicalDamageTrack) {
+        this.physicalDamageTrack = physicalDamageTrack;
+    }
+
+    public int getStunDamageTrack() {
+        return StunDamageTrack;
+    }
+
+    public void setStunDamageTrack(int stunDamageTrack) {
+        StunDamageTrack = stunDamageTrack;
     }
 
     public int getEssence() {
@@ -184,11 +200,11 @@ public class Attributes implements Serializable {
         this.CHA = CHA;
     }
 
-    public int getEdge() {
+    public AttributeValue getEdge() {
         return edge;
     }
 
-    public void setEdge(int edge) {
+    public void setEdge(AttributeValue edge) {
         this.edge = edge;
     }
 

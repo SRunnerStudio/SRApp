@@ -7,40 +7,54 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.Classes.AttributeValue;
+import com.example.danielojea.srapp.Classes.Attributes;
 import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.SkillSelection;
-
-import java.io.Serializable;
 
 public class MetatypDetail extends AppCompatActivity {
     SRCharacter character;
-    String metatyp;
+    Metatyp metatyp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metatyp_detail);
-        metatyp = getIntent().getExtras().getString("Metatyp");
+        metatyp =new Metatyp(getIntent().getExtras().getString("Metatyp"));
         choosePortraitMetertyp(metatyp);
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
     }
+
     public void startSkillSelection(View v){
-        character.setMetatype(new Metatyp(metatyp));
+        character.setMetatype(metatyp);
+
+        Attributes attributes = new Attributes(
+                new AttributeValue(character.getMetatype().getKONMax(),character.getMetatype().getKONStart(),character.getMetatype().getKONStart()),
+                new AttributeValue(character.getMetatype().getGESMax(),character.getMetatype().getGESStart(),character.getMetatype().getGESStart()),
+                new AttributeValue(character.getMetatype().getREAMax(),character.getMetatype().getREAStart(),character.getMetatype().getREAStart()),
+                new AttributeValue(character.getMetatype().getSTRMax(),character.getMetatype().getSTRStart(),character.getMetatype().getSTRStart()),
+                new AttributeValue(character.getMetatype().getWILMax(),character.getMetatype().getWILStart(),character.getMetatype().getWILStart()),
+                new AttributeValue(character.getMetatype().getLOGMax(),character.getMetatype().getLOGStart(),character.getMetatype().getLOGStart()),
+                new AttributeValue(character.getMetatype().getINTMax(),character.getMetatype().getINTStart(),character.getMetatype().getINTStart()),
+                new AttributeValue(character.getMetatype().getCHAMax(),character.getMetatype().getCHAStart(),character.getMetatype().getCHAStart()),
+                new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()) );
+        character.setAttribute(attributes);
+
+        character.getAttribute().calculateStats();
         Intent startSkillSelectionIntent = new Intent(this, SkillSelection.class);
         startSkillSelectionIntent.putExtra("Character", character);
         startActivity(startSkillSelectionIntent);
     }
 //Erkennt und übergibt das gewählte Portait des Metatypen
-    public void choosePortraitMetertyp(String metatyp){
+    public void choosePortraitMetertyp(Metatyp metatyp){
         ImageView portraitButton = (ImageView) findViewById(R.id.metatypPortrait);
         TextView metatypDetailText = (TextView) findViewById(R.id.metatypDetailText);
         TextView metatypDetailHeader =(TextView)findViewById(R.id.metatypDetailHeader);
         Metatyp contentProvidingMetatyp;
 
 
-        switch (metatyp) {
+        switch (metatyp.getMetatypENG()) {
             case "elf":
                 portraitButton.setImageResource(R.drawable.metatyp_elf);
                 contentProvidingMetatyp = new Metatyp("elf");
