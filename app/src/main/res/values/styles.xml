@@ -48,7 +48,7 @@
         <item name="android:background">@drawable/background</item>
     </style>
 
-    <!-- TEST -->
+    <!-- TEST  spans nutzen https://stackoverflow.com/questions/10242274/assigning-text-color-to-text-in-edittext-->
     <style name="AppTheme.EditText">
         <item name="colorControlNormal">@color/colorOrangeTitle</item>
     </style>
