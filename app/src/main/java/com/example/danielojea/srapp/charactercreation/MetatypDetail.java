@@ -1,7 +1,6 @@
 package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,8 +42,8 @@ public class MetatypDetail extends AppCompatActivity {
                 new AttributeValue(character.getMetatype().getINTMax(),character.getMetatype().getINTStart(),character.getMetatype().getINTStart()),
                 new AttributeValue(character.getMetatype().getCHAMax(),character.getMetatype().getCHAStart(),character.getMetatype().getCHAStart()),
                 new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()) );
-        character.setAttribute(attributes);
-        character.getAttribute().calculateStats();
+        character.setAttributes(attributes);
+        character.getAttributes().calculateStats();
         Intent intent = new Intent(this, SkillSelection.class);
         intent.putExtra("Character", character);
         startActivity(intent);

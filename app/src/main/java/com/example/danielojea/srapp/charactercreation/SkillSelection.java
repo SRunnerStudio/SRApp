@@ -1,23 +1,17 @@
 package com.example.danielojea.srapp.charactercreation;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.SkillListAdapter;
-import com.example.danielojea.srapp.SkillPicker;
+import com.example.danielojea.srapp.control.SkillListAdapter;
 
 import java.util.ArrayList;
 import java.util.Iterator;

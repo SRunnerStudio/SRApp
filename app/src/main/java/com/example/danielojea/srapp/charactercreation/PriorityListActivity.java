@@ -20,7 +20,7 @@ import com.example.danielojea.srapp.Classes.PriorityMagic;
 import com.example.danielojea.srapp.Classes.PriorityMetatyp;
 import com.example.danielojea.srapp.Classes.PriorityRessource;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.PriorityDetailFragment;
+import com.example.danielojea.srapp.control.PriorityDetailFragment;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
@@ -153,6 +153,41 @@ public class PriorityListActivity extends AppCompatActivity {
         return null;
     }
 
+    public boolean isInvalidSetupMember(int position){
+        int[] invalidSetup={6,6};
+        if(character.getPriorityMetatyp().getPriority()==character.getPriorityAttribute().getPriority()){
+            invalidSetup = new int[]{0,1};
+        }
+        if(character.getPriorityMetatyp().getPriority()==character.getPriorityMagic().getPriority()){
+            invalidSetup = new int[]{0,2};
+        }
+        if(character.getPriorityMetatyp().getPriority()==character.getPrioritySkills().getPriority()){
+            invalidSetup = new int[]{0,3};
+        }
+        if(character.getPriorityMetatyp().getPriority()==character.getPriorityRessource().getPriority()){
+            invalidSetup = new int[]{0,4};
+        }
+        if(character.getPriorityAttribute().getPriority()==character.getPriorityMagic().getPriority()){
+            invalidSetup = new int[]{1,2};
+        }
+        if(character.getPriorityAttribute().getPriority()==character.getPrioritySkills().getPriority()){
+            invalidSetup = new int[]{1,3};
+        }
+        if(character.getPriorityAttribute().getPriority()==character.getPriorityRessource().getPriority()){
+            invalidSetup = new int[]{1,4};
+        }
+        if(character.getPriorityMagic().getPriority()==character.getPrioritySkills().getPriority()){
+            invalidSetup = new int[]{2,3};
+        }
+        if(character.getPriorityMagic().getPriority()==character.getPriorityRessource().getPriority()){
+            invalidSetup = new int[]{2,4};
+        }
+        if(character.getPrioritySkills().getPriority()==character.getPriorityRessource().getPriority()){
+            invalidSetup = new int[]{3,4};
+        }
+        return (position==invalidSetup[0]||position==invalidSetup[1]);
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(PriorityContentProvider.ITEMS));
     }
@@ -180,6 +215,10 @@ public class PriorityListActivity extends AppCompatActivity {
             //holder.mIdView.setText(mValues.get(position).id);
             holder.mIdView.setText(character.getPriorityMagic().getLetter(getPriorrityItem(position).getPriority()));
             holder.mContentView.setText(mValues.get(position).content);
+            if (isInvalidSetupMember(position))
+            {
+                holder.mIdView.setTextColor(getResources().getColor(R.color.colorRunnerRed));
+            }
             holder.positionInList=position;
             if(position == listItemPosition){
                 Priority priority = getPriorrityItem(listItemPosition);

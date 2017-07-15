@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.control;
 
 /**
  * Created by User on 07.07.2017.
@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
+import com.example.danielojea.srapp.R;
 
 public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
     private ArrayList<Skill> values;

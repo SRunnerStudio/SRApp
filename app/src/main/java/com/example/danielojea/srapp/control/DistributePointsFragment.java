@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.control;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.danielojea.srapp.control.PriorityContentProvider;
+import com.example.danielojea.srapp.R;
 
 /**
  * A fragment representing a list of Items.

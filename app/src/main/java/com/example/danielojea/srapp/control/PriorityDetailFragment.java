@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.control;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.charactercreation.PriorityDetailActivity;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
 import com.example.danielojea.srapp.control.PriorityContentProvider;

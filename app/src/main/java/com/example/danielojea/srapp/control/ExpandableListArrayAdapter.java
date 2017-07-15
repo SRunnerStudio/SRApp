@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.control;
 
 /**
  * Created by Daniel on 06.07.2017.
@@ -10,20 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.danielojea.srapp.R;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
 
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, List<String[]>> _listDataChild;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+    public ExpandableListArrayAdapter(Context context, List<String> listDataHeader,
+                                      HashMap<String, List<String[]>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -44,18 +47,46 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final String[] childText = (String[]) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.expandable_list_item, null);
+            convertView = infalInflater.inflate(R.layout.expandable_list_array_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
+        TextView txtListChildValue = (TextView) convertView.findViewById(R.id.lblListItemValue);
+        TextView txtListChild2 = (TextView) convertView.findViewById(R.id.lblListItem2);
+        TextView txtListChild2Value = (TextView) convertView.findViewById(R.id.lblListItem2Value);
 
-        txtListChild.setText(childText);
+        if(childText.length ==1)
+        {
+            txtListChild.setText(childText[0]);
+            txtListChildValue.setVisibility(View.GONE);
+            txtListChild2.setVisibility(View.GONE);
+            txtListChild2Value.setVisibility(View.GONE);
+        }
+        if(childText.length ==2)
+        {
+            txtListChild.setText(childText[0]);
+            txtListChild2.setText(childText[1]);
+            txtListChildValue.setVisibility(View.GONE);
+            txtListChild2Value.setVisibility(View.GONE);
+        }
+        if(childText.length ==3)
+        {
+            txtListChild.setText(childText[0]);
+            txtListChild2.setText(childText[1]);
+            txtListChild2Value.setText(childText[2]);
+            txtListChildValue.setVisibility(View.GONE);
+        }
+        if(childText.length ==4) {
+            txtListChild.setText(childText[0]);
+            txtListChildValue.setText(childText[1]);
+            txtListChild2.setText(childText[2]);
+            txtListChild2Value.setText(childText[3]);
+        }
         return convertView;
     }
 

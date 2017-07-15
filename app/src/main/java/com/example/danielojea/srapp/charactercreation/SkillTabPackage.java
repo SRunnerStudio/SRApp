@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 
 import android.content.Intent;
@@ -11,7 +11,8 @@ import android.widget.ExpandableListView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
-import com.example.danielojea.srapp.charactercreation.SkillSelection;
+import com.example.danielojea.srapp.control.ExpandableListAdapter;
+import com.example.danielojea.srapp.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

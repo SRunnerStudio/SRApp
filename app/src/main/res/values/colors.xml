@@ -10,6 +10,9 @@
     <color name="black_overlay">#000000</color>
     <color name="colorOrangeTitle">#f9b92e</color>
     <color name="colorPureWhite">#ffffff</color>
+    <color name="damageTrackerSelected">#b30000</color>
+    <color name="bookOrange">#FBB800</color>
+    <color name="damageTracker">#d6d7d7</color>
 
 
 </resources>

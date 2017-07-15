@@ -1,4 +1,4 @@
-package com.example.danielojea.srapp;
+package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -12,8 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
-
-import java.io.Serializable;
+import com.example.danielojea.srapp.R;
 
 public class SkillPicker extends AppCompatActivity {
 

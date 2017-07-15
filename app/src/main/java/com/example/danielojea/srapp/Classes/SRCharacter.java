@@ -1,9 +1,6 @@
 package com.example.danielojea.srapp.Classes;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +22,7 @@ public class SRCharacter implements Serializable {
     private int karma;
     private int totalKarma;
     private SerialBitmap profileImage;
-    private Attributes attribute;
+    private Attributes attributes;
     private ArrayList<Skill> skills;
     private Quality advantageAndDisadvantage;
     private Contact connection;
@@ -44,18 +41,27 @@ public class SRCharacter implements Serializable {
     }
 
     public SRCharacter(String name) {
-        this.name = name
-        ;karma=25;
+        this.name = name;
+        if (name.equals("")){
+            this.name = "Namenlos";
+        }
+        karma=25;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
         this.name = name;
+        if (name.equals("")){
+            this.name = "Namenlos";
+        }
         this.metatype = metatype;
         karma=25;
     }
 
     public SRCharacter(String name, Metatyp metatype, SerialBitmap profileImage) {
         this.name = name;
+        if (name.equals("")){
+            this.name = "Namenlos";
+        }
         this.metatype = metatype;
         this.profileImage = profileImage;
         karma=25;
@@ -129,12 +135,12 @@ public class SRCharacter implements Serializable {
         this.archetype = archetype;
     }
 
-    public Attributes getAttribute() {
-        return attribute;
+    public Attributes getAttributes() {
+        return attributes;
     }
 
-    public void setAttribute(Attributes attribute) {
-        this.attribute = attribute;
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
     }
 
     public ArrayList<Skill> getSkills() {

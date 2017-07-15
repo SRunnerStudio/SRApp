@@ -23,14 +23,14 @@
         <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.MetatypChoose" />
-        <activity android:name=".charactercreation.CharacterSheet" />
+        <activity android:name=".CharacterSheet" />
         <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterCreation" />
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity
-            android:name=".SkillPicker"
+            android:name=".charactercreation.SkillPicker"
             android:label="@string/title_activity_ability_picker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.CharacterCreation" />

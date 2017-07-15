@@ -1,12 +1,11 @@
 package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +22,7 @@ public class CharacterConcept extends AppCompatActivity {
     SRCharacter character;
     ImageView imageView;
     final int requcode = 3;
-    Uri bilduri;
+    Uri pictureUri;
     SerialBitmap profilePicture;
     InputStream is;
 
@@ -43,11 +42,12 @@ public class CharacterConcept extends AppCompatActivity {
 
             if(requestCode == requcode){
 
-                bilduri = data.getData();
+                pictureUri = data.getData();
                 try {
-                    is = getContentResolver().openInputStream(bilduri);
+                    is = getContentResolver().openInputStream(pictureUri);
                     profilePicture = new SerialBitmap(is);
                     imageView.setImageBitmap(profilePicture.bitmap);
+                    character.setProfileImage(profilePicture);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -71,10 +71,30 @@ public class CharacterConcept extends AppCompatActivity {
         character.setGender((((TextView)findViewById(R.id.editTextSex)).getText().toString()));
         character.setEthnicity((((TextView)findViewById(R.id.editTextEthnicity)).getText().toString()));
         character.setBackground((((TextView)findViewById(R.id.editTextBackground)).getText().toString()));
-        character.setProfileImage(profilePicture);
-        //character.setAge(Integer.parseInt(((TextView)findViewById(R.id.editTextAge)).getText().toString()));
-        //character.setHeigt(Integer.parseInt(((TextView)findViewById(R.id.editTextSize)).getText()
-        //character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
+        character.setSkillPoints(0);
+        character.setSkillPackagePoints(0);
+        if(((EditText)findViewById(R.id.editTextAge)).getText().toString().equals("")){
+            character.setAge(0);
+        }
+        else {
+            character.setAge(Integer.parseInt(((EditText) findViewById(R.id.editTextAge)).getText().toString()));
+        }
+        if(((EditText)findViewById(R.id.editTextSize)).getText().toString().equals(""))
+        {
+            character.setHeigt(0);
+        }
+        else {
+            character.setHeigt(Integer.parseInt(((TextView) findViewById(R.id.editTextSize)).getText().toString()));
+        }
+
+        if(((EditText)findViewById(R.id.editTextWeight)).getText().toString().equals(""))
+        {
+            character.setMass(0);
+        }
+        else {
+            character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
+        }
+
 
         intent.putExtra("Character",character);
         startActivity(intent);

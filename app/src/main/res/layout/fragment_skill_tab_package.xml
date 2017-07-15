@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppBackgroudImage"
-    tools:context="com.example.danielojea.srapp.SkillTabPackage">
+    tools:context="com.example.danielojea.srapp.charactercreation.SkillTabPackage">
 
     <!-- TODO: Update blank fragment layout -->
 

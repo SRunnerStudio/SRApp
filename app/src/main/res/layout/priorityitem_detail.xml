@@ -40,7 +40,7 @@
             android:onClick="setPriorityA"
             android:text="test"
             android:textIsSelectable="true"
-            tools:context="com.example.danielojea.srapp.PriorityDetailFragment" />
+            tools:context="com.example.danielojea.srapp.control.PriorityDetailFragment" />
     </LinearLayout>
 
     <View

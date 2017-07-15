@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     style="@style/AppBackgroudImage"
-    tools:context="com.example.danielojea.srapp.SkillPicker">
+    tools:context="com.example.danielojea.srapp.charactercreation.SkillPicker">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

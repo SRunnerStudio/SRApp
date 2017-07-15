@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Priority;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.PriorityDetailFragment;
+import com.example.danielojea.srapp.control.PriorityDetailFragment;
 import com.example.danielojea.srapp.R;
 
 import java.io.Serializable;
