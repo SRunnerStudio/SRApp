@@ -108,7 +108,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             @Override
             public void onClick(View v) {
                 if (skill.isPackageBound()) {
-                    if (character.getSkillPackagePoints() > 0) {
+                    if (character.getSkillPackagePoints() > 0 && skill.getValue() < 6) {
                         ArrayList<Skill> updatedValues = new ArrayList<Skill>();
                         character.setSkillPackagePoints(character.getSkillPackagePoints() - 1);
                         skillPointCounterPackage.setText("Skillpaketpunkte: " + character.getSkillPackagePoints());
