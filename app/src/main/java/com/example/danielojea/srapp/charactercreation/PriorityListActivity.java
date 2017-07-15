@@ -25,6 +25,7 @@ import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -154,38 +155,54 @@ public class PriorityListActivity extends AppCompatActivity {
     }
 
     public boolean isInvalidSetupMember(int position){
-        int[] invalidSetup={6,6};
+        List<Integer> invalidSetup =  new ArrayList<>();
         if(character.getPriorityMetatyp().getPriority()==character.getPriorityAttribute().getPriority()){
-            invalidSetup = new int[]{0,1};
+            invalidSetup.add(0);
+            invalidSetup.add(1);
         }
         if(character.getPriorityMetatyp().getPriority()==character.getPriorityMagic().getPriority()){
-            invalidSetup = new int[]{0,2};
+            invalidSetup.add(0);
+            invalidSetup.add(2);
         }
         if(character.getPriorityMetatyp().getPriority()==character.getPrioritySkills().getPriority()){
-            invalidSetup = new int[]{0,3};
+            invalidSetup.add(0);
+            invalidSetup.add(3);
         }
         if(character.getPriorityMetatyp().getPriority()==character.getPriorityRessource().getPriority()){
-            invalidSetup = new int[]{0,4};
+            invalidSetup.add(0);
+            invalidSetup.add(4);
         }
         if(character.getPriorityAttribute().getPriority()==character.getPriorityMagic().getPriority()){
-            invalidSetup = new int[]{1,2};
+            invalidSetup.add(2);
+            invalidSetup.add(1);
         }
         if(character.getPriorityAttribute().getPriority()==character.getPrioritySkills().getPriority()){
-            invalidSetup = new int[]{1,3};
+            invalidSetup.add(3);
+            invalidSetup.add(1);
         }
         if(character.getPriorityAttribute().getPriority()==character.getPriorityRessource().getPriority()){
-            invalidSetup = new int[]{1,4};
+            invalidSetup.add(4);
+            invalidSetup.add(1);
         }
         if(character.getPriorityMagic().getPriority()==character.getPrioritySkills().getPriority()){
-            invalidSetup = new int[]{2,3};
+            invalidSetup.add(2);
+            invalidSetup.add(3);
         }
         if(character.getPriorityMagic().getPriority()==character.getPriorityRessource().getPriority()){
-            invalidSetup = new int[]{2,4};
+            invalidSetup.add(2);
+            invalidSetup.add(4);
         }
         if(character.getPrioritySkills().getPriority()==character.getPriorityRessource().getPriority()){
-            invalidSetup = new int[]{3,4};
+            invalidSetup.add(4);
+            invalidSetup.add(3);
         }
-        return (position==invalidSetup[0]||position==invalidSetup[1]);
+        for (int i:invalidSetup) {
+            if (i == position)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

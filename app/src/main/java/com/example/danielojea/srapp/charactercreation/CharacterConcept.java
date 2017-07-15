@@ -63,40 +63,45 @@ public class CharacterConcept extends AppCompatActivity {
     }
 
     public void finishCharacterCreation(View v){
-        Intent intent = new Intent(this , CharacterSelection.class);
         TextView name = (TextView) findViewById(R.id.editTextName);
-        character.setName(name.getText().toString());
-        character.setStreetName((((TextView)findViewById(R.id.editTextStreetName)).getText().toString()));
-        character.setArchetype((((TextView)findViewById(R.id.editTextArchtype)).getText().toString()));
-        character.setGender((((TextView)findViewById(R.id.editTextSex)).getText().toString()));
-        character.setEthnicity((((TextView)findViewById(R.id.editTextEthnicity)).getText().toString()));
-        character.setBackground((((TextView)findViewById(R.id.editTextBackground)).getText().toString()));
-        character.setSkillPoints(0);
-        character.setSkillPackagePoints(0);
-        if(((EditText)findViewById(R.id.editTextAge)).getText().toString().equals("")){
-            character.setAge(0);
-        }
-        else {
-            character.setAge(Integer.parseInt(((EditText) findViewById(R.id.editTextAge)).getText().toString()));
-        }
-        if(((EditText)findViewById(R.id.editTextSize)).getText().toString().equals(""))
-        {
-            character.setHeigt(0);
-        }
-        else {
-            character.setHeigt(Integer.parseInt(((TextView) findViewById(R.id.editTextSize)).getText().toString()));
-        }
+        if( name.getText().toString().trim().equals("")){
 
-        if(((EditText)findViewById(R.id.editTextWeight)).getText().toString().equals(""))
-        {
-            character.setMass(0);
-        }
-        else {
-            character.setMass(Integer.parseInt(((TextView)findViewById(R.id.editTextWeight)).getText().toString()));
-        }
+            /**
+             *   You can Toast a message here that the Username is Empty
+             **/
 
+            name.setError("Wie willst du dir ohne Namen einen Namen machen?" );
 
-        intent.putExtra("Character",character);
-        startActivity(intent);
+        }else {
+
+            character.setName(name.getText().toString());
+            character.setStreetName((((TextView) findViewById(R.id.editTextStreetName)).getText().toString()));
+            character.setArchetype((((TextView) findViewById(R.id.editTextArchtype)).getText().toString()));
+            character.setGender((((TextView) findViewById(R.id.editTextSex)).getText().toString()));
+            character.setEthnicity((((TextView) findViewById(R.id.editTextEthnicity)).getText().toString()));
+            character.setBackground((((TextView) findViewById(R.id.editTextBackground)).getText().toString()));
+            character.setSkillPoints(0);
+            character.setSkillPackagePoints(0);
+            if (((EditText) findViewById(R.id.editTextAge)).getText().toString().equals("")) {
+                character.setAge(0);
+            } else {
+                character.setAge(Integer.parseInt(((EditText) findViewById(R.id.editTextAge)).getText().toString()));
+            }
+            if (((EditText) findViewById(R.id.editTextSize)).getText().toString().equals("")) {
+                character.setHeigt(0);
+            } else {
+                character.setHeigt(Integer.parseInt(((TextView) findViewById(R.id.editTextSize)).getText().toString()));
+            }
+
+            if (((EditText) findViewById(R.id.editTextWeight)).getText().toString().equals("")) {
+                character.setMass(0);
+            } else {
+                character.setMass(Integer.parseInt(((TextView) findViewById(R.id.editTextWeight)).getText().toString()));
+            }
+
+            Intent intent = new Intent(this, CharacterSelection.class);
+            intent.putExtra("Character", character);
+            startActivity(intent);
+        }
     }
 }

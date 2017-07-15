@@ -45,7 +45,7 @@ public class Attributes implements Serializable {
     }
 
     public void calculateStats(){
-        initiative = "1" + (REA.getValue()+INT.getValue())+"w6";
+        initiative = "1+" + (REA.getValue()+INT.getValue())+"w6";
         matrixInitiativeAR = "1+"+(REA.getValue()+INT.getValue())+"w6";
         physicalLimit = (STR.getValue()*2 + CON.getValue() + REA.getValue())/3;
         mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;

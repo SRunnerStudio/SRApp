@@ -57,7 +57,8 @@ public class CharacterSheet extends AppCompatActivity {
         TextView characterSex = (TextView) findViewById(R.id.textViewSexValue);
         TextView characterSize = (TextView) findViewById(R.id.textViewSizeValue);
         TextView characterWeight = (TextView) findViewById(R.id.textViewWeightValue);
-        TextView characterethnicity = (TextView) findViewById(R.id.textViewEthnicityValue);
+        TextView characterEthnicity = (TextView) findViewById(R.id.textViewEthnicityValue);
+        TextView characterAge = (TextView) findViewById(R.id.textViewAgeValue);
 
         characterPortrait.setImageBitmap(character.getProfileImage().bitmap);
         if(!character.getStreetName().equals("")){
@@ -71,7 +72,8 @@ public class CharacterSheet extends AppCompatActivity {
         characterSex.setText(character.getGender());
         characterSize.setText(character.getHeigt()+"cm");
         characterWeight.setText(character.getMass()+"kg");
-        characterethnicity.setText(character.getEthnicity());
+        characterEthnicity.setText(character.getEthnicity());
+        characterAge.setText(""+character.getAge());
     }
 
     private void prepareListData() {

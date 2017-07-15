@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 
 public class Quality implements Serializable {
+    private String name;
     private String description;
     private int karma;
     private int KONStartModifier;
@@ -35,6 +36,14 @@ public class Quality implements Serializable {
     private int physicalDamageTrackModifier;
     private int stunDamageTrackModifier;
     private int initiativeModifier;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDescription() {
         return description;
