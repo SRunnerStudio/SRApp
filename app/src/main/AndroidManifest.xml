@@ -55,6 +55,8 @@
             android:label="@string/title_activity_qualities"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.QualitySelection"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".charactercreation.CustomizeAttributes"></activity>
     </application>
 
 </manifest>

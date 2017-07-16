@@ -25,11 +25,11 @@ public class MetatypDetail extends AppCompatActivity {
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
         setContentView(R.layout.activity_metatyp_detail);
         metatyp =new Metatyp(getIntent().getExtras().getString("Metatyp"));
-        choosePortraitMetertyp(metatyp);
+        choosePortraitMetatyp(metatyp);
         setTitle(metatyp.getMetatyp());
     }
 
-    public void startSkillSelection(View v){
+    public void startAttributeCustomization(View v){
         character.setMetatype(metatyp);
 
         Attributes attributes = new Attributes(
@@ -44,13 +44,13 @@ public class MetatypDetail extends AppCompatActivity {
                 new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()) );
         character.setAttributes(attributes);
         character.getAttributes().calculateStats();
-        Intent intent = new Intent(this, SkillSelection.class);
+        Intent intent = new Intent(this, CustomizeAttributes.class);
         intent.putExtra("Character", character);
         startActivity(intent);
         finish();
     }
 //Erkennt und übergibt das gewählte Portait des Metatypen
-    public void choosePortraitMetertyp(Metatyp metatyp){
+    public void choosePortraitMetatyp(Metatyp metatyp){
         ImageView portraitButton = (ImageView) findViewById(R.id.metatypPortrait);
         TextView metatypDetailText = (TextView) findViewById(R.id.metatypDetailText);
         TextView metatypDetailHeader =(TextView)findViewById(R.id.metatypDetailHeader);
