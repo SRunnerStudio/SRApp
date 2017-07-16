@@ -15,9 +15,6 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.KnowledgeSkillListAdapter;
-import com.example.danielojea.srapp.control.SkillListAdapter;
-
-import java.util.ArrayList;
 
 public class KnowledgeSkillSelection extends AppCompatActivity {
     SRCharacter character;
@@ -31,7 +28,7 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");
-        character.setSkillKnowledgePoints(character.claculateSkillKnowledgePoints()+10);
+        character.setSkillKnowledgePoints(character.calculateSkillKnowledgePoints()+10);
         TextView skillpointCounter = (TextView) findViewById(R.id.KnowledgeSkillpointCounter);
         skillpointCounter.setText("Skillpunkte: "+character.getSkillKnowledgePoints());
         RecyclerView.LayoutManager mLayoutManager;
@@ -76,5 +73,13 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
             // show it
             alertDialog.show();
         }
+    }
+
+    public void startNextActivity(View v){
+        character = mAdapter.getCharacter();
+        Intent intent = new Intent(this, QualitySelection.class);
+        intent.putExtra("Character",character);
+        startActivity(intent);
+        finish();
     }
 }

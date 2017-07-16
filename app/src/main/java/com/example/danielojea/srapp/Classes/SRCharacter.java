@@ -309,7 +309,7 @@ public class SRCharacter implements Serializable {
         this.skillKnowledgePoints = skillKnowledgePoints;
     }
 
-    public int claculateSkillKnowledgePoints(){
+    public int calculateSkillKnowledgePoints(){
         return ((getAttributes().getLOG().getValue() + getAttributes().getINT().getValue()) * 2);
     }
 }

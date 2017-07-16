@@ -10,11 +10,19 @@ public class AttributeValue implements Serializable {
     private int maxValue;
     private int startValue;
     private int value;
+    private String name;
 
     public AttributeValue(int maxValue, int startValue, int value) {
         this.maxValue = maxValue;
         this.startValue = startValue;
         this.value = value;
+    }
+
+    public AttributeValue(int maxValue, int startValue, int value,String name) {
+        this.maxValue = maxValue;
+        this.startValue = startValue;
+        this.value = value;
+        this.name = name;
     }
 
     public int getMaxValue(){
@@ -34,5 +42,13 @@ public class AttributeValue implements Serializable {
     }
     public void setValue(int value){
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
