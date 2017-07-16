@@ -129,9 +129,8 @@ public class SkillSelection extends AppCompatActivity {
 
     public void startNextActivity(View v){
         //Intent intent = new Intent(this, QualitySelection.class);
-        Intent intent = new Intent(this, CharacterConcept.class);
+        Intent intent = new Intent(this, KnowledgeSkillSelection.class);
         intent.putExtra("Character",character);
-        intent.putExtra("Skills",skills);
         startActivity(intent);
         finish();
     }

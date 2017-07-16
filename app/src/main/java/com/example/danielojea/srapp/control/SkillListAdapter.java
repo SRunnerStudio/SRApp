@@ -161,6 +161,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                                 if (iSkill.isSpecialization()){
                                     iSkill.setSpecialization(false);
                                     iSkill.setSpecializationName("");
+                                    holder.downgradeButton.setVisibility(View.INVISIBLE);
+                                    holder.upgradeButton.setVisibility(View.VISIBLE);
                                     character.setSkillPoints(character.getSkillPoints()+1);
                                     skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                                 }
@@ -176,17 +178,19 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     notifyDataSetChanged();
                 } else {
                     character.setSkillPoints(character.getSkillPoints() + 1);
-                    if (skill.isSpecialization()){
-                        skill.setSpecialization(false);
-                        skill.setSpecializationName("");
-                        character.setSkillPoints(character.getSkillPoints() + 1);
-                    }
-                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                     skill.setValue(skill.getValue() - 1);
                     if (skill.getValue() < 1) {
                         skill.setValue(skill.getValue() + 1);
                         deletedSkills.add(skill);
+                        if (skill.isSpecialization()){
+                            skill.setSpecialization(false);
+                            skill.setSpecializationName("");
+                            holder.downgradeButton.setVisibility(View.INVISIBLE);
+                            holder.upgradeButton.setVisibility(View.VISIBLE);
+                            character.setSkillPoints(character.getSkillPoints() + 1);
+                        }
                         remove(position);
+                        skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                         notifyDataSetChanged();
                     } else {
                         holder.txtCounter.setText(("" + skill.getValue()));
@@ -198,11 +202,6 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             @Override
             public void onClick(View v) {
                 if (character.getSkillPoints() > 0) {
-                    holder.upgradeButton.setVisibility(View.INVISIBLE);
-                    holder.downgradeButton.setVisibility(View.VISIBLE);
-                    skill.setSpecialization(true);
-                    character.setSkillPoints(character.getSkillPoints() - 1);
-                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
                     final EditText et = new EditText(v.getContext());
@@ -213,9 +212,15 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     // set dialog message
                     alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            String test = et.getText().toString();
-                            skill.setSpecializationName(et.getText().toString());
-                            notifyDataSetChanged();
+                            if (!et.getText().toString().equals("")){
+                                skill.setSpecializationName(et.getText().toString());
+                                skill.setSpecialization(true);
+                                notifyDataSetChanged();
+                                holder.upgradeButton.setVisibility(View.INVISIBLE);
+                                holder.downgradeButton.setVisibility(View.VISIBLE);
+                                character.setSkillPoints(character.getSkillPoints() - 1);
+                                skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                            }
                         }
                     });
 
