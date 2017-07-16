@@ -31,8 +31,6 @@ public class SkillTabSingle extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    ScrollView scrollView;
-    LinearLayout linearLayout;
     SRCharacter character;
     ArrayList<Skill> skills;
 
@@ -45,8 +43,6 @@ public class SkillTabSingle extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_skill_tab_single, container, false);
-
-
     }
 
     @Override
@@ -59,16 +55,11 @@ public class SkillTabSingle extends Fragment {
         expListView = (ExpandableListView) view.findViewById(R.id.skillListSingle);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(
-                    ExpandableListView parent, View v,
-                    int groupPosition, int childPosition,
-                    long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (character.getSkillPoints() > 0) {
-                    for (Iterator<Skill> i = skills.iterator(); i.hasNext();
-                            ) {
-                        Skill skill = i.next();
+                    for (Skill skill: skills){
                         if (skill.getName().equals(listAdapter.getChild(groupPosition, childPosition))) {
-                            character.getSkills().add(skill);
+                            character.addSkill(skill);
                             character.setSkillPoints(character.getSkillPoints() - 1);
                         } else {
                             updatedSkills.add(skill);
@@ -78,6 +69,7 @@ public class SkillTabSingle extends Fragment {
                     intent.putExtra("Character", character);
                     intent.putExtra("Skills", updatedSkills);
                     startActivity(intent);
+                    SkillPicker.h.sendEmptyMessage(0);
                     return false;
                 }
                 return false;
@@ -109,19 +101,15 @@ public class SkillTabSingle extends Fragment {
         listDataHeader.add("Resonanz");
 
         List<String> fertigkeitenGES = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-             ) {
-                    Skill skill = i.next();
-                    if (skill.getConnectedAttribute().equals("GES"))
-                    {
-                        fertigkeitenGES.add(skill.getName());
-                    }
+        for (Skill skill: skills) {
+                if (skill.getConnectedAttribute().equals("GES"))
+                {
+                    fertigkeitenGES.add(skill.getName());
+                }
         }
 
         List<String> fertigkeitenKON = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("KON"))
             {
                 fertigkeitenKON.add(skill.getName());
@@ -129,9 +117,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenREA = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("REA"))
             {
                 fertigkeitenREA.add(skill.getName());
@@ -139,9 +125,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenSTR = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("STR"))
             {
                 fertigkeitenSTR.add(skill.getName());
@@ -149,9 +133,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenCHA = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("CHA"))
             {
                 fertigkeitenCHA.add(skill.getName());
@@ -159,9 +141,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenINT = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("INT"))
             {
                 fertigkeitenINT.add(skill.getName());
@@ -169,9 +149,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenLOG = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("LOG"))
             {
                 fertigkeitenLOG.add(skill.getName());
@@ -179,9 +157,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenWIL = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("WIL"))
             {
                 fertigkeitenWIL.add(skill.getName());
@@ -189,9 +165,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenMAG = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("MAG"))
             {
                 fertigkeitenMAG.add(skill.getName());
@@ -199,9 +173,7 @@ public class SkillTabSingle extends Fragment {
         }
 
         List<String> fertigkeitenRES = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedAttribute().equals("RES"))
             {
                 fertigkeitenRES.add(skill.getName());

@@ -32,6 +32,7 @@ public class CharacterSheet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_sheet);
 
+
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         // get the listview
@@ -47,6 +48,7 @@ public class CharacterSheet extends AppCompatActivity {
 
         setCharacterSheetData(character);
         initMaxTrackDamage();
+        setTitle("Charakteransicht " +character.getName());
     }
 
     public void setCharacterSheetData(SRCharacter character){
@@ -104,13 +106,28 @@ public class CharacterSheet extends AppCompatActivity {
 
         List<String[]> skills = new ArrayList<String[]>();
         for (Skill skill: character.getSkills()) {
-            if(skill.isSpecialization())
+            if(skill.isPackageBound())
             {
-                skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName()});
+                if(skill.isSpecialization())
+                {
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
+                }
+                else {
+
+                    skills.add(new String[]{skill.getName(), "" + skill.getValue(),skill.getConnectedPackage()});
+                }
             }
             else {
-                skills.add(new String[]{skill.getName(), "" + skill.getValue()});
+                if(skill.isSpecialization())
+                {
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName()});
+                }
+                else {
+
+                    skills.add(new String[]{skill.getName(), "" + skill.getValue()});
+                }
             }
+
         }
 
         

@@ -46,6 +46,7 @@ public class PriorityDetailActivity extends AppCompatActivity {
             listItemPosition = (int) getIntent().getSerializableExtra("Position");
             priorityItem = (Priority) getIntent().getSerializableExtra("priorityItem");
             character = (SRCharacter) getIntent().getSerializableExtra("Character");
+            setTitle("Prioritäten");
         }
     }
 
@@ -109,49 +110,9 @@ public class PriorityDetailActivity extends AppCompatActivity {
         i.putExtra("Character",character);
         i.putExtra("Position",listItemPosition);
         i.putExtra("priorityItem",(Serializable)priorityItem);
-
         startActivity(i);
-
+        finish();
     }
-
-    //@RequiresApi(api = Build.VERSION_CODES.M)
-  /*
-    public void setA(){
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-    }
-    public void setB(){
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-    }
-    public void setC(){
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-    }
-    public void setD(){
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-    }
-    public void setE(){
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-    }
-    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

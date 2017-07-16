@@ -50,6 +50,10 @@
                 android:value="com.example.danielojea.srapp.charactercreation.PriorityListActivity" />
         </activity>
         <activity android:name=".charactercreation.KnowledgeSkillSelection"></activity>
+        <activity
+            android:name=".charactercreation.QualitiesPicker"
+            android:label="@string/title_activity_qualities"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

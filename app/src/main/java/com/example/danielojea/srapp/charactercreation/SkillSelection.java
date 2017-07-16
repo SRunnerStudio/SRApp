@@ -26,18 +26,15 @@ public class SkillSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_selection);
-
-        Intent starterIntent = getIntent();
-        character = (SRCharacter)starterIntent.getSerializableExtra("Character");
+        character = (SRCharacter)getIntent().getSerializableExtra("Character");
+        skills = (ArrayList<Skill>) getIntent().getSerializableExtra("Skills");
         TextView skillpointCounter = (TextView) findViewById(R.id.SkillpointCounter);
         TextView skillpointPackageCounter = (TextView) findViewById(R.id.SkillpointPackageCounter);
 
         skillpointCounter.setText("Skillpunkte: "+character.getSkillPoints());
         skillpointPackageCounter.setText("Skillpaketpunkte: "+character.getSkillPackagePoints());
-        if(starterIntent.getSerializableExtra("Skills") == null){
+        if(skills == null){
             createSkillList();
-        } else{
-            skills = (ArrayList<Skill>)starterIntent.getSerializableExtra("Skills");
         }
         if(character.getSkills()==null){
             character.setSkills(new ArrayList<Skill>());
@@ -49,6 +46,7 @@ public class SkillSelection extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new SkillListAdapter(character,(TextView)findViewById(R.id.SkillpointCounter),(TextView)findViewById(R.id.SkillpointPackageCounter));
         recyclerView.setAdapter(mAdapter);
+        setTitle("Fertigkeiten");
     }
     public void createSkillList(){
         skills = new ArrayList<Skill>();
@@ -129,19 +127,23 @@ public class SkillSelection extends AppCompatActivity {
         skills.add(new Skill(1,"Registrieren","RES","Tasken"));
     }
 
-    public void startCharacterConcept(View v){
+    public void startNextActivity(View v){
+        //Intent intent = new Intent(this, QualitySelection.class);
         Intent intent = new Intent(this, CharacterConcept.class);
         intent.putExtra("Character",character);
+        intent.putExtra("Skills",skills);
         startActivity(intent);
+        finish();
     }
 
     public void AddAbility(View v) {
         updateSkillList();
-        Intent intent = new Intent(this,SkillPicker.class);
         character=mAdapter.getCharacter();
+        Intent intent = new Intent(this,SkillPicker.class);
         intent.putExtra("Character", character);
         intent.putExtra("Skills",skills);
         startActivity(intent);
+        finish();
     }
 
     private void updateSkillList(){

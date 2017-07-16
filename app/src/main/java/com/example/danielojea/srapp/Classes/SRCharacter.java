@@ -24,7 +24,8 @@ public class SRCharacter implements Serializable {
     private SerialBitmap profileImage;
     private Attributes attributes;
     private ArrayList<Skill> skills;
-    private Quality advantageAndDisadvantage;
+    private ArrayList<Quality> advantages;
+    private ArrayList<Quality> disadvantages;
     private Contact connection;
     private PrioritySkills prioritySkills;
     private PriorityAttribute priorityAttribute;
@@ -68,6 +69,10 @@ public class SRCharacter implements Serializable {
         karma=25;
     }
 
+    public void addSkill(Skill skill){
+        skills.add(skill);
+    }
+
     public SerialBitmap getProfileImage() {
         return profileImage;
     }
@@ -78,6 +83,10 @@ public class SRCharacter implements Serializable {
 
     public int getTotalKarma() {
         return totalKarma;
+    }
+
+    public void setTotalKarma(int totalKarma) {
+        this.totalKarma = totalKarma;
     }
 
     public String getName() {
@@ -152,12 +161,32 @@ public class SRCharacter implements Serializable {
         this.skills = skills;
     }
 
-    public Quality getAdvantageAndDisadvantage() {
-        return advantageAndDisadvantage;
+    public ArrayList<Quality> getAdvantages() {
+        return advantages;
     }
 
-    public void setAdvantageAndDisadvantage(Quality advantageAndDisadvantage) {
-        this.advantageAndDisadvantage = advantageAndDisadvantage;
+    public void setAdvantages(ArrayList<Quality> advantages) {
+        this.advantages = advantages;
+    }
+    public void addAdvantage(Quality advantage){
+         advantages.add(advantage);
+    }
+    public void addDisdvantage(Quality disadvantage){
+        disadvantages.add(disadvantage);
+    }
+    public void removeAdvantage(Quality advantage){
+         advantages.remove(advantage);
+    }
+    public void removeDisdvantage(Quality disadvantage){
+        disadvantages.remove(disadvantage);
+    }
+
+    public ArrayList<Quality> getDisadvantages() {
+        return disadvantages;
+    }
+
+    public void setDisadvantages(ArrayList<Quality> disadvantages) {
+        this.disadvantages = disadvantages;
     }
 
     public Contact getConnection() {

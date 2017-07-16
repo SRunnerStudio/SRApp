@@ -26,7 +26,7 @@ public class MetatypDetail extends AppCompatActivity {
         setContentView(R.layout.activity_metatyp_detail);
         metatyp =new Metatyp(getIntent().getExtras().getString("Metatyp"));
         choosePortraitMetertyp(metatyp);
-
+        setTitle(metatyp.getMetatyp());
     }
 
     public void startSkillSelection(View v){
@@ -47,6 +47,7 @@ public class MetatypDetail extends AppCompatActivity {
         Intent intent = new Intent(this, SkillSelection.class);
         intent.putExtra("Character", character);
         startActivity(intent);
+        finish();
     }
 //Erkennt und übergibt das gewählte Portait des Metatypen
     public void choosePortraitMetertyp(Metatyp metatyp){

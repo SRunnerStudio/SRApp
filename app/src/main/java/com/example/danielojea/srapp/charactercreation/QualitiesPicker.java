@@ -1,23 +1,21 @@
 package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
-public class SkillPicker extends AppCompatActivity {
-    public static Handler h;
+public class QualitiesPicker extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -33,19 +31,16 @@ public class SkillPicker extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
-    /*ScrollView skillSingleScrollView = (ScrollView) findViewById(R.id.skillPackageScrollView);
-    ViewGroup.LayoutParams params = skillSingleScrollView.getLayoutParams();
-    params.height = 500;
-    skillSingleScrollView.setLayoutParams(params);*/
+    SRCharacter character;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_picker);
-
+        setContentView(R.layout.activity_qualities_picker);
+        character = (SRCharacter) getIntent().getSerializableExtra("Character");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("My new title");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -54,22 +49,10 @@ public class SkillPicker extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        h = new Handler() {
-
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-
-                switch(msg.what) {
-
-                    case 0:
-                        finish();
-                        break;
-                }
-            }
-        };
-        setTitle("Fertigkeiten");
+        setTitle("Vor und Nachteile");
     }
 
     /**
@@ -87,11 +70,11 @@ public class SkillPicker extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    SkillTabSingle tabSingle = new SkillTabSingle();
-                    return tabSingle;
+                    QualitiesAdvantages advantages = new QualitiesAdvantages();
+                    return advantages;
                 case 1:
-                    SkillTabPackage tabPackage = new SkillTabPackage();
-                    return tabPackage;
+                    QualitiesDisadvantages disAdvantages = new QualitiesDisadvantages();
+                    return disAdvantages;
                 default:
                     return null;
             }
@@ -99,7 +82,7 @@ public class SkillPicker extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 
@@ -107,11 +90,18 @@ public class SkillPicker extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Fertigkeiten";
+                    return "Vorteile";
                 case 1:
-                    return "Pakete";
+                    return "Nachteile";
             }
             return null;
         }
     }
+    public void startCharacterConcept(View v){
+        Intent intent = new Intent(this, QualitiesPicker.class);
+        //Intent intent = new Intent(this, CharacterConcept.class);
+        intent.putExtra("Character",character);
+        startActivity(intent);
+    }
+
 }

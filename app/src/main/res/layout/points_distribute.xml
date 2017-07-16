@@ -83,18 +83,18 @@
             android:id="@+id/UpgradeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:clickable="true"
             android:visibility="visible"
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabSize="mini"
-            app:srcCompat="@drawable/shadowrunapp_upgrade"
-            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" />
+            app:srcCompat="@drawable/shadowrunapp_upgrade" />
 
         <TextView
             android:id="@+id/AbilityCounter"
