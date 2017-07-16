@@ -35,6 +35,7 @@ public class SRCharacter implements Serializable {
     private int attributePoints;
     private int skillPoints;
     private int skillPackagePoints;
+    private int skillKnowledgePoints;
 
     public SRCharacter() {
         karma=25;
@@ -269,6 +270,14 @@ public class SRCharacter implements Serializable {
 
     public void setEthnicity(String ethnicity) {
         this.ethnicity = ethnicity;
+    }
+
+    public int getSkillKnowledgePoints() {
+        return skillKnowledgePoints;
+    }
+
+    public void setSkillKnowledgePoints(int skillKnowledgePoints) {
+        this.skillKnowledgePoints = skillKnowledgePoints;
     }
 }
 

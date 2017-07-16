@@ -156,15 +156,15 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                         Skill iSkill = i.next();
                         if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
                             iSkill.setValue(iSkill.getValue() - 1);
-                            if (iSkill.isSpecialization()){
-                                iSkill.setSpecialization(false);
-                                iSkill.setSpecializationName("");
-                                character.setSkillPoints(character.getSkillPoints()+1);
-                            }
                             if (iSkill.getValue() < 1) {
                                 iSkill.setValue(iSkill.getValue() + 1);
+                                if (iSkill.isSpecialization()){
+                                    iSkill.setSpecialization(false);
+                                    iSkill.setSpecializationName("");
+                                    character.setSkillPoints(character.getSkillPoints()+1);
+                                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                                }
                                 deletedSkills.add(iSkill);
-                                notifyDataSetChanged();
                             } else {
                                 updatedValues.add(iSkill);
                             }
