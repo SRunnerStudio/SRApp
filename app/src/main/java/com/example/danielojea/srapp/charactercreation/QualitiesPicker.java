@@ -1,6 +1,5 @@
 package com.example.danielojea.srapp.charactercreation;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,16 +30,14 @@ public class QualitiesPicker extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-    SRCharacter character;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qualities_picker);
-        character = (SRCharacter) getIntent().getSerializableExtra("Character");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("My new title");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -97,11 +94,4 @@ public class QualitiesPicker extends AppCompatActivity {
             return null;
         }
     }
-    public void startCharacterConcept(View v){
-        Intent intent = new Intent(this, QualitiesPicker.class);
-        //Intent intent = new Intent(this, CharacterConcept.class);
-        intent.putExtra("Character",character);
-        startActivity(intent);
-    }
-
 }

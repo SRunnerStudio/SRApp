@@ -7,16 +7,6 @@
     style="@style/AppBackgroudImage"
     tools:context="com.example.danielojea.srapp.charactercreation.SkillSelection">
 
-    <Button
-        android:id="@+id/weiterButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="startNextActivity"
-        android:text="@string/btnContinue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addQualityButton"
         android:layout_width="57dp"
@@ -34,14 +24,14 @@
         app:srcCompat="@drawable/shadowrunapp_plus" />
 
     <TextView
-        android:id="@+id/KarmapointCounter"
+        android:id="@+id/karmaCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="7dp"
         android:text="Karma:"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
     <View
         android:id="@+id/view3"
@@ -52,30 +42,30 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/KarmapointCounter" />
+        app:layout_constraintTop_toBottomOf="@+id/karmaCounter" />
+
+    <Button
+        android:id="@+id/weiter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="startNextActivity"
+        android:text="@string/btnContinue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/qualitylList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/weiterButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        tools:listitem="@layout/fragment_points_distribute"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/view3"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/fragment_points_distribute">
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/weiter">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:onClick="startNextActivity"
-            android:text="@string/btnContinue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
     </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

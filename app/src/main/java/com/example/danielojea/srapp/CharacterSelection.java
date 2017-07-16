@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
-import com.example.danielojea.srapp.charactercreation.QualitiesPicker;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 
 import java.util.List;
@@ -35,6 +32,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
         setTitle("Charakterauswahl");
     }
 
@@ -130,6 +128,7 @@ public class CharacterSelection extends AppCompatActivity {
 
     public void startCreateCharacter(View v){
         Intent intent = new Intent(this, PriorityListActivity.class);
+        //Intent intent = new Intent(this, testQualitySelection.class);
         //Intent intent = new Intent(CharacterSelection.this, QualitiesPicker.class);
         startActivity(intent);
     }

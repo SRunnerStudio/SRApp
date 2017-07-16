@@ -14,6 +14,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.control.ExpandableListAdapter;
@@ -85,7 +86,7 @@ public class CharacterSheet extends AppCompatActivity {
         // Adding child data
         listDataHeader.add("Attribute");
         listDataHeader.add("Fertigkeiten");
-        //listDataHeader.add("Vor,-Nachteile");
+        listDataHeader.add("Vor und Nachteile");
 
         // Dummy Data wird später aus dem Charakterobjekt geladen
         List<String[]> attribute = new ArrayList<String[]>();
@@ -131,16 +132,18 @@ public class CharacterSheet extends AppCompatActivity {
         }
 
         
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
+        List<Quality> qualityList = new ArrayList<Quality>();
+        qualityList.addAll(character.getAdvantages());
+        qualityList.addAll(character.getDisadvantages());
+
+        List<String[]> qualities = new ArrayList<String[]>();
+        for (Quality quality:qualityList) {
+            qualities.add(new String[]{quality.getName()});
+        }
 
         listDataChild.put(listDataHeader.get(0), attribute); // Header, Child data
         listDataChild.put(listDataHeader.get(1), skills);
-        //listDataChild.put(listDataHeader.get(2), comingSoon);
+        listDataChild.put(listDataHeader.get(2), qualities);
     }
     public void toggleTrackerLayout(View v){
         ConstraintLayout trackerLayout = (ConstraintLayout) findViewById(R.id.trackerLayout);

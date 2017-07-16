@@ -1,5 +1,6 @@
 package com.example.danielojea.srapp.charactercreation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -30,7 +31,6 @@ public class QualitiesDisadvantages extends Fragment {
     HashMap<String, List<String>> listDataChild;
     SRCharacter character;
     ArrayList<Quality> disadvantages;
-    TextView karmaView;
     private int spendableKarma=25;
 
     public QualitiesDisadvantages() {
@@ -48,35 +48,34 @@ public class QualitiesDisadvantages extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         character = (SRCharacter)getActivity().getIntent().getSerializableExtra("Character");
-        karmaView = (TextView)view.findViewById(R.id.karmaCounter);
-        karmaView.setText("Kara: " + character.getKarma());
+
         // get the listview
         expListView = (ExpandableListView) view.findViewById(R.id.qualitiesListView);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Quality advantage = disadvantages.get(groupPosition);
+                Quality disadvantage = disadvantages.get(groupPosition);
 
-                if (character.getAdvantages() == null) {
+                if (character.getDisadvantages() == null) {
                     ArrayList<Quality> initAdvantages = new ArrayList<Quality>();
                     character.setAdvantages(initAdvantages);
                 }
-                if(!character.getAdvantages().contains(advantage)) {
-                    if (spendableKarma - advantage.getKarma() >= 0) {
-                        character.setKarma(character.getKarma() + advantage.getKarma());
-                        spendableKarma = spendableKarma - advantage.getKarma();
-                        character.addAdvantage(advantage);
-                        //test.setVisibility(View.VISIBLE);
+                if(!character.getDisadvantages().contains(disadvantage)) {
+                    if (spendableKarma - disadvantage.getKarma() >= 0) {
+                        character.setKarma(character.getKarma() + disadvantage.getKarma());
+                        spendableKarma = spendableKarma - disadvantage.getKarma();
+                        character.addDisdvantage(disadvantage);
+                        Intent intent = new Intent(getContext(), QualitySelection.class);
+                        intent.putExtra("Character", character);
+                        startActivity(intent);
                     }
                 }
                 else
                 {
-                    character.setKarma(character.getKarma() - advantage.getKarma());
-                    character.removeAdvantage(advantage);
-                    spendableKarma = spendableKarma + advantage.getKarma();
-                    //test.setVisibility(View.INVISIBLE);
+                    character.setKarma(character.getKarma() - disadvantage.getKarma());
+                    character.removeDisdvantage(disadvantage);
+                    spendableKarma = spendableKarma + disadvantage.getKarma();
                 }
-                karmaView.setText("Kara: " + character.getKarma());
 
                 return false;
             }
@@ -227,77 +226,77 @@ public class QualitiesDisadvantages extends Fragment {
                         "die er tötet oder deren Töten er zulässt, 1 Punkt Karma.",15));
         disadvantages.add(new Quality("Elfenposer",
                 "Ein Elfenposer ist ein Mensch, der gerne ein Elf wäre. Er " +
-                        "sucht die Nähe von Elfen, spricht wie ein Elf und verändert " +
-                        "sein Äußeres entsprechend. Charaktere mit diesem Nachteil " +
-                        "nehmen kosmetische Operationen auf sich, um Elfenohren " +
-                        "und -augen zu bekommen. Sie können durchaus als Elfen " +
-                        "durchgehen und etwaige negative Soziale Modifi katoren umgehen, " +
-                        "die sie als Nicht-Elfen hätten. " +
-                        "Echte Elfen halten Elfenposer für peinlich, und viele Menschen " +
-                        "halten sie für Opportunisten. Andere Metatypen fi nden " +
-                        "Elfenposer einfach lächerlich. Wenn ein Elf das Geheimnis " +
-                        "des Charakters aufdeckt, wird er sich wahrscheinlich feindselig " +
-                        "und angeekelt verhalten (s. Tabelle Soziale Modifi katoren, " +
-                        "S. 140). Ein aufgedeckter Elfenposer könnte von Menschen, " +
-                        "die entsprechende Vorurteile hegen, als „Rassenverräter“ betrachtet " +
-                        "werden. " +
-                        "Nur Menschen dürfen den Nachteil Elfenposer wählen. " +
-                        "Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "eines Charakters um 1.",6));
+                "sucht die Nähe von Elfen, spricht wie ein Elf und verändert " +
+                "sein Äußeres entsprechend. Charaktere mit diesem Nachteil " +
+                "nehmen kosmetische Operationen auf sich, um Elfenohren " +
+                "und -augen zu bekommen. Sie können durchaus als Elfen " +
+                "durchgehen und etwaige negative Soziale Modifi katoren umgehen, " +
+                "die sie als Nicht-Elfen hätten. " +
+                "Echte Elfen halten Elfenposer für peinlich, und viele Menschen " +
+                "halten sie für Opportunisten. Andere Metatypen fi nden " +
+                "Elfenposer einfach lächerlich. Wenn ein Elf das Geheimnis " +
+                "des Charakters aufdeckt, wird er sich wahrscheinlich feindselig " +
+                "und angeekelt verhalten (s. Tabelle Soziale Modifi katoren, " +
+                "S. 140). Ein aufgedeckter Elfenposer könnte von Menschen, " +
+                "die entsprechende Vorurteile hegen, als „Rassenverräter“ betrachtet " +
+                "werden. " +
+                "Nur Menschen dürfen den Nachteil Elfenposer wählen. " +
+                "Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
+                "eines Charakters um 1.",6));
         disadvantages.add(new Quality("Feindliche geister",
                 "Ein Charakter mit diesem Nachteil ist einer bestimmten Art " +
-                        "von Geistern (s. Geister, S. 300) wirklich zuwider. Er hat vielleicht " +
-                        "den Ruf, diese Art von Geistern oft zu verletzen, oder " +
-                        "seine Aura stößt die Geister ab. In jedem Fall bedrängen solche " +
-                        "Geister den Charakter, gehorchen nur unwillig oder wollen " +
-                        "ihm oder seinen Freunden keine Gefallen tun. Wenn Geister " +
-                        "dieser Art den Befehl bekommen, eine Gruppe anzugreifen, " +
-                        "in der sich der Charakter befi ndet, stürzen sie sich zuerst " +
-                        "auf ihn. Sie werden immer tödliche Gewalt gegen den Charakter " +
-                        "einsetzen. Wenn der Charakter versucht, einen Geist dieser " +
-                        "Art herbeizurufen oder zu binden, erhält er für die Probe " +
-                        "einen Würfelpoolmodifi kator von -2. Wenn er versucht, einen " +
-                        "solchen Geist zu verbannen, erhält der Geist einen Würfelpoolbonus " +
-                        "von +2 auf die Widerstandsprobe. Watcher und " +
-                        "Diener können von diesem Nachteil nicht beeinfi usst werden, " +
-                        "da sie nicht herbeigerufen, sondern erschaffen werden. " +
-                        "Dieser Nachteil darf nur von Magieanwendern gewählt " +
-                        "werden. Magieanwender können diesen Nachteil auch für " +
-                        "eine Geisterart besitzen, die nicht Teil ihrer magischen Tradition " +
-                        "ist. Durch diesen Nachteil erhöht",7));
+                "von Geistern (s. Geister, S. 300) wirklich zuwider. Er hat vielleicht " +
+                "den Ruf, diese Art von Geistern oft zu verletzen, oder " +
+                "seine Aura stößt die Geister ab. In jedem Fall bedrängen solche " +
+                "Geister den Charakter, gehorchen nur unwillig oder wollen " +
+                "ihm oder seinen Freunden keine Gefallen tun. Wenn Geister " +
+                "dieser Art den Befehl bekommen, eine Gruppe anzugreifen, " +
+                "in der sich der Charakter befi ndet, stürzen sie sich zuerst " +
+                "auf ihn. Sie werden immer tödliche Gewalt gegen den Charakter " +
+                "einsetzen. Wenn der Charakter versucht, einen Geist dieser " +
+                "Art herbeizurufen oder zu binden, erhält er für die Probe " +
+                "einen Würfelpoolmodifi kator von -2. Wenn er versucht, einen " +
+                "solchen Geist zu verbannen, erhält der Geist einen Würfelpoolbonus " +
+                "von +2 auf die Widerstandsprobe. Watcher und " +
+                "Diener können von diesem Nachteil nicht beeinfi usst werden, " +
+                "da sie nicht herbeigerufen, sondern erschaffen werden. " +
+                "Dieser Nachteil darf nur von Magieanwendern gewählt " +
+                "werden. Magieanwender können diesen Nachteil auch für " +
+                "eine Geisterart besitzen, die nicht Teil ihrer magischen Tradition " +
+                "ist. Durch diesen Nachteil erhöht",7));
         disadvantages.add(new Quality("Gezeichnet",
                 "Ein Gezeichneter Charakter hat neurologische Probleme, " +
-                        "die von Schaden durch Schwarzes IC, Psychotropes IC oder " +
-                        "BTLs verursacht wurden. Die Probleme können Schwächen des " +
-                        "Lang- oder Kurzzeitgedächtnisses, Blackouts, Migräne, Sinneseinschränkungen " +
-                        "(bei Hören, Sehen, Riechen usw.) oder Persönlichkeitsstörungen wie Paranoia oder Angstneurosen sein. " +
-                        "Der Spieler wählt eine bestimmte Auswirkung des Nachteils " +
-                        "aus, die sich behindernd auswirken und dem Spielleiter Plotaufhänger " +
-                        "bieten sollte. Immer, wenn der Charakter in die VR " +
-                        "eintaucht oder einen BTL-Chip einschiebt, muss er eine Probe " +
-                        "auf Konstitution + Willenskraft (4) ablegen. Wenn die Probe " +
-                        "misslingt, erleidet er 6 Stunden lang die entsprechende Auswirkung. " +
-                        "Ein Patzer oder Kritischer Patzer führt dazu, dass die " +
-                        "Auswirkung 24 Stunden lang anhält. Man kann diesen Nachteil " +
-                        "nur loswerden, wenn man sich medizinisch behandeln lässt " +
-                        "und danach Karma ausgibt. Der Charakter behält aber Spuren " +
-                        "seines Gezeichnet-Seins zurück. Wenn er wieder mal ein " +
-                        "schlimmes Erlebnis mit Schwarzem IC, Psychotropem IC oder " +
-                        "BTLs hat, kehrt der Nachteil zurück. Neben den körperlichen " +
-                        "Auswirkungen des Nachteils ist der Charakter auch gegenüber " +
-                        "dem ursprünglichen Auslöser empfi ndlicher. Wenn der " +
-                        "Nachteil durch IC ausgelöst wurde, muss der Charakter, wenn " +
-                        "er damit zu tun hat, eine Probe auf Willenskraft (3) schaffen, " +
-                        "um nicht in Panik zu verfallen. Wenn er es schafft, sich dem " +
-                        "IC zu stellen, das seinen Zustand des Gezeichnet-Seins ausgelöst " +
-                        "hat, erhält er einen Würfelpoolmodifi kator von -2 bei " +
-                        "Schadenswiderstandsproben gegen Schaden durch dieses IC. " +
-                        "Um den Nachteil durch BTLs zu erwerben, muss der Charakter " +
-                        "zumindest eine Leichte BTL-Abhängigkeit und die nötige " +
-                        "Ausrüstung haben, um BTL zu benutzen. " +
-                        "Um den Nachteil für Schwarzes oder Psychotropes IC zu " +
-                        "bekommen, muss der Charakter ein Decker oder Technomancer " +
-                        "sein. Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "(S. 371) eines Charakters um 1.",10));
+                "die von Schaden durch Schwarzes IC, Psychotropes IC oder " +
+                "BTLs verursacht wurden. Die Probleme können Schwächen des " +
+                "Lang- oder Kurzzeitgedächtnisses, Blackouts, Migräne, Sinneseinschränkungen " +
+                "(bei Hören, Sehen, Riechen usw.) oder Persönlichkeitsstörungen wie Paranoia oder Angstneurosen sein. " +
+                "Der Spieler wählt eine bestimmte Auswirkung des Nachteils " +
+                "aus, die sich behindernd auswirken und dem Spielleiter Plotaufhänger " +
+                "bieten sollte. Immer, wenn der Charakter in die VR " +
+                "eintaucht oder einen BTL-Chip einschiebt, muss er eine Probe " +
+                "auf Konstitution + Willenskraft (4) ablegen. Wenn die Probe " +
+                "misslingt, erleidet er 6 Stunden lang die entsprechende Auswirkung. " +
+                "Ein Patzer oder Kritischer Patzer führt dazu, dass die " +
+                "Auswirkung 24 Stunden lang anhält. Man kann diesen Nachteil " +
+                "nur loswerden, wenn man sich medizinisch behandeln lässt " +
+                "und danach Karma ausgibt. Der Charakter behält aber Spuren " +
+                "seines Gezeichnet-Seins zurück. Wenn er wieder mal ein " +
+                "schlimmes Erlebnis mit Schwarzem IC, Psychotropem IC oder " +
+                "BTLs hat, kehrt der Nachteil zurück. Neben den körperlichen " +
+                "Auswirkungen des Nachteils ist der Charakter auch gegenüber " +
+                "dem ursprünglichen Auslöser empfi ndlicher. Wenn der " +
+                "Nachteil durch IC ausgelöst wurde, muss der Charakter, wenn " +
+                "er damit zu tun hat, eine Probe auf Willenskraft (3) schaffen, " +
+                "um nicht in Panik zu verfallen. Wenn er es schafft, sich dem " +
+                "IC zu stellen, das seinen Zustand des Gezeichnet-Seins ausgelöst " +
+                "hat, erhält er einen Würfelpoolmodifi kator von -2 bei " +
+                "Schadenswiderstandsproben gegen Schaden durch dieses IC. " +
+                "Um den Nachteil durch BTLs zu erwerben, muss der Charakter " +
+                "zumindest eine Leichte BTL-Abhängigkeit und die nötige " +
+                "Ausrüstung haben, um BTL zu benutzen. " +
+                "Um den Nachteil für Schwarzes oder Psychotropes IC zu " +
+                "bekommen, muss der Charakter ein Decker oder Technomancer " +
+                "sein. Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
+                "(S. 371) eines Charakters um 1.",10));
     }
 }
