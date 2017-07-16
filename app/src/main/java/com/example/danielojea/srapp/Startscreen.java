@@ -14,6 +14,7 @@ import android.view.View;
  * status bar and navigation/system bar) with user interaction.
  */
 public class Startscreen extends AppCompatActivity {
+    private Handler mHandler = new Handler();
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -93,8 +94,19 @@ public class Startscreen extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
+        mHandler.postDelayed(mUpdateTimeTask, 1500);
     }
-    public void startCharakterSelection(View v){
+
+    private Runnable mUpdateTimeTask = new Runnable() {
+        public void run() {
+            // do what you need to do here after the delay
+            Intent characterSelectionIntent =new Intent(Startscreen.this, CharacterSelection.class);
+            startActivity(characterSelectionIntent);
+            finish();
+        }
+    };
+    public void  startCharakterSelection(View v){
+        mHandler.removeCallbacksAndMessages(null);
         Intent characterSelectionIntent =new Intent(this, CharacterSelection.class);
         startActivity(characterSelectionIntent);
         finish();

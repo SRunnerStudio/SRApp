@@ -61,8 +61,7 @@ public class SkillTabPackage extends Fragment {
                     long id) {
                 if(character.getSkillPackagePoints() > 0) {
                     ArrayList<Skill> cUpdatedSkills = new ArrayList<Skill>();
-                    for(Iterator<Skill> j = character.getSkills().iterator(); j.hasNext();){
-                        Skill cSkill = j.next();
+                    for (Skill cSkill: skills) {
                         if (cSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString())){
                             character.setSkillPoints(character.getSkillPoints()+cSkill.getValue());
                             cSkill.setValue(1);
@@ -87,6 +86,7 @@ public class SkillTabPackage extends Fragment {
                     intent.putExtra("Character", character);
                     intent.putExtra("Skills", updatedSkills);
                     startActivity(intent);
+                    SkillPicker.h.sendEmptyMessage(0);
                     return false;
                 }
                 return false;
@@ -112,9 +112,7 @@ public class SkillTabPackage extends Fragment {
 
 
         List<String> fertigkeitenAthletik = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator(); i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Athletik"))
             {
                 fertigkeitenAthletik.add(skill.getName());
@@ -129,9 +127,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenBeschwören = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Beschwören"))
             {
                 fertigkeitenBeschwören.add(skill.getName());
@@ -146,9 +142,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenBiotech = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Biotech"))
             {
                 fertigkeitenBiotech.add(skill.getName());
@@ -163,9 +157,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenCracken = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Cracken"))
             {
                 fertigkeitenCracken.add(skill.getName());
@@ -180,9 +172,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenEinfluss = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Einfluss"))
             {
                 fertigkeitenEinfluss.add(skill.getName());
@@ -197,9 +187,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenElektronik = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Elektronik"))
             {
                 fertigkeitenElektronik.add(skill.getName());
@@ -214,9 +202,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenFeuerwaffen = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Feuerwaffen"))
             {
                 fertigkeitenFeuerwaffen.add(skill.getName());
@@ -231,9 +217,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenHeimlichkeit = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Heimlichkeit"))
             {
                 fertigkeitenHeimlichkeit.add(skill.getName());
@@ -248,9 +232,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenHexerei = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Hexerei"))
             {
                 fertigkeitenHexerei.add(skill.getName());
@@ -265,9 +247,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenMechanik = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Mechanik"))
             {
                 fertigkeitenMechanik.add(skill.getName());
@@ -282,9 +262,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenNahkampf = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Nahkampf"))
             {
                 fertigkeitenNahkampf.add(skill.getName());
@@ -299,9 +277,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenNatur = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Natur"))
             {
                 fertigkeitenNatur.add(skill.getName());
@@ -316,9 +292,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenSchauspielerei = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Schauspielerei"))
             {
                 fertigkeitenSchauspielerei.add(skill.getName());
@@ -333,9 +307,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenTasken = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Tasken"))
             {
                 fertigkeitenTasken.add(skill.getName());
@@ -350,9 +322,7 @@ public class SkillTabPackage extends Fragment {
 
         headerAdded = false;
         List<String> fertigkeitenVerzaubern = new ArrayList<String>();
-        for (Iterator<Skill> i = skills.iterator();i.hasNext();
-                ) {
-            Skill skill = i.next();
+        for (Skill skill: skills) {
             if (skill.getConnectedPackage().equals("Verzaubern"))
             {
                 fertigkeitenVerzaubern.add(skill.getName());

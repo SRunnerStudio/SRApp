@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
+import com.example.danielojea.srapp.charactercreation.QualitiesPicker;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
+        setTitle("Charakterauswahl");
     }
 
 
@@ -82,9 +84,10 @@ public class CharacterSelection extends AppCompatActivity {
             holder.thisView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent characterSheetIntent = new Intent(CharacterSelection.this, CharacterSheet.class);
-                    characterSheetIntent.putExtra("Character", holder.character);
-                    startActivity(characterSheetIntent);
+                    Intent intent = new Intent(CharacterSelection.this, CharacterSheet.class);
+
+                    intent.putExtra("Character", holder.character);
+                    startActivity(intent);
                 }
             });
         }
@@ -126,7 +129,8 @@ public class CharacterSelection extends AppCompatActivity {
     }
 
     public void startCreateCharacter(View v){
-        Intent metaIntent = new Intent(this, PriorityListActivity.class);
-        startActivity(metaIntent);
+        Intent intent = new Intent(this, PriorityListActivity.class);
+        //Intent intent = new Intent(CharacterSelection.this, QualitiesPicker.class);
+        startActivity(intent);
     }
 }

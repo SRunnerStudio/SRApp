@@ -33,6 +33,7 @@
 
     <string name="skillpoints">Fertigkeitenpunkte:</string>
     <string name="packetpoints">Paketpunkte:</string>
+    <string name="title_activity_qualities">Qualities</string>
 
 
 </resources>

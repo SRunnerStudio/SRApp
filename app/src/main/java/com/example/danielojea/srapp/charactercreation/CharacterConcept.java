@@ -33,6 +33,7 @@ public class CharacterConcept extends AppCompatActivity {
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         imageView = (ImageView) findViewById(R.id.imageViewCharacter);
         imageView.setImageBitmap(character.getProfileImage().bitmap);
+        setTitle("Details");
     }
 
     @Override

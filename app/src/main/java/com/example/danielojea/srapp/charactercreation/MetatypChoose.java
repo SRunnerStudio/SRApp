@@ -28,6 +28,7 @@ public class MetatypChoose extends AppCompatActivity {
         setContentView(R.layout.activity_metatyp);
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
         initImages();
+        setTitle("Metatyp");
     }
     public void initImages() {
         elfButton = (ImageButton) findViewById(R.id.ElfButton);

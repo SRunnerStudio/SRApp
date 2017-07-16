@@ -36,6 +36,38 @@ public class Quality implements Serializable {
     private int physicalDamageTrackModifier;
     private int stunDamageTrackModifier;
     private int initiativeModifier;
+    private boolean increasable;
+    private int maxIncrease;
+
+    public Quality(String name, String description, int karma) {
+        this.name = name;
+        this.description = description;
+        this.karma = karma;
+    }
+
+    public Quality(String name, String description, int karma, boolean increasable, int maxIncrease) {
+        this.name = name;
+        this.description = description;
+        this.karma = karma;
+        this.increasable = increasable;
+        this.maxIncrease = maxIncrease;
+    }
+
+    public boolean isIncreasable() {
+        return increasable;
+    }
+
+    public void setIncreasable(boolean increasable) {
+        this.increasable = increasable;
+    }
+
+    public int isMaxIncrease() {
+        return maxIncrease;
+    }
+
+    public void setMaxIncrease(int maxIncrease) {
+        this.maxIncrease = maxIncrease;
+    }
 
     public String getName() {
         return name;
