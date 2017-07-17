@@ -72,7 +72,7 @@ public class ConnectionSelection extends AppCompatActivity {
     }
     public void startNextActivity(View v){
         character = mAdapter.getCharacter();
-        Intent intent = new Intent(this, CharacterConcept.class);
+        Intent intent = new Intent(this, SpendRemainingPoints.class);
         intent.putExtra("Character",character);
         startActivity(intent);
     }

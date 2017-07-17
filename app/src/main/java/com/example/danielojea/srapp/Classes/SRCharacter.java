@@ -27,7 +27,7 @@ public class SRCharacter implements Serializable {
     private ArrayList<Quality> advantages;
     private ArrayList<Quality> disadvantages;
     private ArrayList<Quality> qualities;
-    private Contact connection;
+    private ArrayList<Contact> connections;
     private PrioritySkills prioritySkills;
     private PriorityAttribute priorityAttribute;
     private PriorityMagic priorityMagic;
@@ -225,12 +225,12 @@ public class SRCharacter implements Serializable {
         this.disadvantages = disadvantages;
     }
 
-    public Contact getConnection() {
-        return connection;
+    public ArrayList<Contact> getConnections() {
+        return connections;
     }
 
-    public void setConnection(Contact connection) {
-        this.connection = connection;
+    public void setConnections(ArrayList<Contact> connections) {
+        this.connections = connections;
     }
 
     public Metatyp getMetatype() {

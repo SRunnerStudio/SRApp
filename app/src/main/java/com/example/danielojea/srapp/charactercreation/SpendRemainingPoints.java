@@ -37,7 +37,7 @@ public class SpendRemainingPoints extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_picker);
+        setContentView(R.layout.activity_spend_remaining_points);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,6 +51,7 @@ public class SpendRemainingPoints extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        /**
         h = new Handler() {
 
             public void handleMessage(Message msg) {
@@ -64,7 +65,8 @@ public class SpendRemainingPoints extends AppCompatActivity {
                 }
             }
         };
-        setTitle("Fertigkeiten");
+         **/
+        setTitle("Restliches Karma");
     }
 
     /**
@@ -82,11 +84,15 @@ public class SpendRemainingPoints extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    SkillSelection skillSelection = new SkillSelection();
-                    //return skillSelection;
+                    return null;
                 case 1:
-                    SkillTabPackage tabPackage = new SkillTabPackage();
-                    return tabPackage;
+                    return null;
+                case 2:
+                    return null;
+                case 3:
+                    return null;
+                case 4:
+                    return null;
                 default:
                     return null;
             }
@@ -94,21 +100,21 @@ public class SpendRemainingPoints extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 2;
+            // Show 5 total pages.
+            return 5;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Fertigkeiten";
-                case 1:
-                    return "Pakete";
-                case 2:
-                    return "Wissen";
-                case 3:
                     return "Attribute";
+                case 1:
+                    return "Fertigkeiten";
+                case 2:
+                    return "Pakete";
+                case 3:
+                    return "Wissen";
                 case 4:
                     return "Connections";
             }
