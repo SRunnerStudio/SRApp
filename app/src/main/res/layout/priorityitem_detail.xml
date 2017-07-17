@@ -65,6 +65,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/RunnerDarkTheme"
             android:id="@+id/b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

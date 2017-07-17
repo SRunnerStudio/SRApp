@@ -11,20 +11,17 @@
         android:id="@+id/AddAbilityBtn"
         android:layout_width="57dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         android:clickable="true"
         android:onClick="AddAbility"
         app:backgroundTint="@android:color/holo_green_light"
         app:elevation="5dp"
         app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91"
-        app:srcCompat="@drawable/shadowrunapp_plus" />
+        app:srcCompat="@drawable/shadowrunapp_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/skillList"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/weiterButton"
@@ -40,24 +37,24 @@
         android:id="@+id/skillList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/fragment_points_distribute" />
+        tools:listitem="@layout/fragment_points_distribute"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/weiterButton"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <TextView
         android:id="@+id/KnowledgeSkillpointCounter"
-        android:layout_width="353dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/skillpoints"
-        app:layout_constraintBottom_toTopOf="@+id/skillList"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp" />
 
     <View
         android:id="@+id/view3"
@@ -66,5 +63,6 @@
         android:background="@color/divider_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/KnowledgeSkillpointCounter" />
+        app:layout_constraintTop_toBottomOf="@+id/KnowledgeSkillpointCounter"
+        android:layout_marginTop="8dp" />
 </android.support.constraint.ConstraintLayout>

@@ -94,7 +94,7 @@ public class Startscreen extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
-        mHandler.postDelayed(mUpdateTimeTask, 1500);
+        mHandler.postDelayed(mUpdateTimeTask, 2000);
     }
 
     private Runnable mUpdateTimeTask = new Runnable() {
