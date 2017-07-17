@@ -26,7 +26,7 @@ public class SRCharacter implements Serializable {
     private ArrayList<Skill> skills;
     private ArrayList<Quality> advantages;
     private ArrayList<Quality> disadvantages;
-    private Contact connection;
+    private ArrayList<Contact> connections;
     private PrioritySkills prioritySkills;
     private PriorityAttribute priorityAttribute;
     private PriorityMagic priorityMagic;
@@ -37,6 +37,7 @@ public class SRCharacter implements Serializable {
     private int skillPoints;
     private int skillPackagePoints;
     private int skillKnowledgePoints;
+    private int connectionPoints;
     private int karmaAdvantages;
     private int karmaDisdvantages;
 
@@ -216,12 +217,12 @@ public class SRCharacter implements Serializable {
         this.disadvantages = disadvantages;
     }
 
-    public Contact getConnection() {
-        return connection;
+    public ArrayList<Contact> getConnections() {
+        return connections;
     }
 
-    public void setConnection(Contact connection) {
-        this.connection = connection;
+    public void setConnections(ArrayList<Contact> connection) {
+        this.connections = connection;
     }
 
     public Metatyp getMetatype() {
@@ -338,6 +339,18 @@ public class SRCharacter implements Serializable {
 
     public int calculateSkillKnowledgePoints(){
         return ((getAttributes().getLOG().getValue() + getAttributes().getINT().getValue()) * 2);
+    }
+
+    public int getConnectionPoints() {
+        return connectionPoints;
+    }
+
+    public void setConnectionPoints(int connectionPoints) {
+        this.connectionPoints = connectionPoints;
+    }
+
+    public int calculateConnectionPoints(){
+        return (getAttributes().getCHA().getValue() * 3);
     }
 }
 
