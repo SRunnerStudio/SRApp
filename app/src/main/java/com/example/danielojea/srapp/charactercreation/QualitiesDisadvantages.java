@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -57,30 +55,20 @@ public class QualitiesDisadvantages extends Fragment {
                 Quality disadvantage = disadvantages.get(groupPosition);
 
                 if (character.getDisadvantages() == null) {
-                    ArrayList<Quality> initAdvantages = new ArrayList<Quality>();
-                    character.setAdvantages(initAdvantages);
+                    ArrayList<Quality> initDisadvantages = new ArrayList<Quality>();
+                    character.setDisadvantages(initDisadvantages);
                 }
-                if(!character.getDisadvantages().contains(disadvantage)) {
-                    if (character.getKarma() + disadvantage.getKarma() <= 50) {
-                        if (character.getKarmaDisdvantages() - disadvantage.getKarma()>= 0) {
-                            character.setKarma(character.getKarma() + disadvantage.getKarma());
-                            character.setKarmaDisdvantages(character.getKarmaDisdvantages() - disadvantage.getKarma());
-                            character.addDisdvantage(disadvantage);
-                            Intent intent = new Intent(getContext(), QualitySelection.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Character", character);
-                            startActivity(intent);
-                        }
+                if (character.getKarma() + disadvantage.getKarma() <= 50) {
+                    if (character.getKarmaDisadvantages() - disadvantage.getKarma()>= 0) {
+                        character.setKarma(character.getKarma() + disadvantage.getKarma());
+                        character.setKarmaDisadvantages(character.getKarmaDisadvantages() - disadvantage.getKarma());
+                        character.addDisadvantage(disadvantage);
+                        Intent intent = new Intent(getContext(), QualitySelection.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Character", character);
+                        startActivity(intent);
                     }
                 }
-                else
-                {
-                    character.setKarma(character.getKarma() - disadvantage.getKarma());
-                    character.setKarmaDisdvantages(character.getKarmaDisdvantages() + disadvantage.getKarma());
-                    character.removeDisdvantage(disadvantage);
-                    spendableKarma = spendableKarma + disadvantage.getKarma();
-                }
-
                 return false;
             }
         });
@@ -100,13 +88,27 @@ public class QualitiesDisadvantages extends Fragment {
         // Header, Child data
 
         // Adding child data
-        for (Quality advantage : disadvantages) {
-            listDataHeader.add(new String[]{advantage.getName(),""+advantage.getKarma()});
-            List<String> description = new ArrayList<String>();
-            description.add(advantage.getDescription());
-            listDataChild.put(advantage.getName(), description);
+        ArrayList<Quality> removedQualities = new ArrayList<Quality>();
+        for (Quality disadvantage : disadvantages) {
+            boolean isCharacterDisadvantage = false;
+            for (Quality characterDisadvantage:character.getDisadvantages()) {
+                if (characterDisadvantage.getName().equals(disadvantage.getName())){
+                    isCharacterDisadvantage=true;
+                }
+            }
+            if(!isCharacterDisadvantage) {
+                listDataHeader.add(new String[]{disadvantage.getName(), "" + disadvantage.getKarma()});
+                List<String> description = new ArrayList<String>();
+                description.add(disadvantage.getDescription());
+                listDataChild.put(disadvantage.getName(), description);
+            }
+            else{
+                removedQualities.add(disadvantage);
+            }
         }
-
+        for (Quality removed: removedQualities) {
+            disadvantages.remove(removed);
+        }
     }
     public void createDisadvantages() {
         disadvantages = new ArrayList<Quality>();

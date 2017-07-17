@@ -40,13 +40,14 @@ public class SRCharacter implements Serializable {
     private int skillKnowledgePoints;
     private int connectionPoints;
     private int karmaAdvantages;
-    private int karmaDisdvantages;
+    private int karmaDisadvantages;
+    private ArrayList<Contact> connections;
 
 
     public SRCharacter() {
         karma=25;
         karmaAdvantages=25;
-        karmaDisdvantages=25;
+        karmaDisadvantages =25;
     }
 
     public SRCharacter(String name) {
@@ -56,7 +57,7 @@ public class SRCharacter implements Serializable {
         }
         karma=25;
         karmaAdvantages=25;
-        karmaDisdvantages=25;
+        karmaDisadvantages =25;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
@@ -67,7 +68,7 @@ public class SRCharacter implements Serializable {
         this.metatype = metatype;
         karma=25;
         karmaAdvantages=25;
-        karmaDisdvantages=25;
+        karmaDisadvantages =25;
     }
 
     public SRCharacter(String name, Metatyp metatype, SerialBitmap profileImage) {
@@ -79,7 +80,7 @@ public class SRCharacter implements Serializable {
         this.profileImage = profileImage;
         karma=25;
         karmaAdvantages=25;
-        karmaDisdvantages=25;
+        karmaDisadvantages =25;
     }
 
     public ArrayList<Quality> getQualities() {
@@ -97,12 +98,12 @@ public class SRCharacter implements Serializable {
         this.karmaAdvantages = karmaAdvantages;
     }
 
-    public int getKarmaDisdvantages() {
-        return karmaDisdvantages;
+    public int getKarmaDisadvantages() {
+        return karmaDisadvantages;
     }
 
-    public void setKarmaDisdvantages(int karmaDisdvantages) {
-        this.karmaDisdvantages = karmaDisdvantages;
+    public void setKarmaDisadvantages(int karmaDisadvantages) {
+        this.karmaDisadvantages = karmaDisadvantages;
     }
 
     public void addSkill(Skill skill){
@@ -207,13 +208,13 @@ public class SRCharacter implements Serializable {
     public void addAdvantage(Quality advantage){
          advantages.add(advantage);
     }
-    public void addDisdvantage(Quality disadvantage){
+    public void addDisadvantage(Quality disadvantage){
         disadvantages.add(disadvantage);
     }
     public void removeAdvantage(Quality advantage){
          advantages.remove(advantage);
     }
-    public void removeDisdvantage(Quality disadvantage){
+    public void removeDisadvantage(Quality disadvantage){
         disadvantages.remove(disadvantage);
     }
 
@@ -231,6 +232,14 @@ public class SRCharacter implements Serializable {
 
     public void setConnection(Contact connection) {
         this.connection = connection;
+    }
+
+    public ArrayList<Contact> getConnections() {
+        return connections;
+    }
+
+    public void setConnections(ArrayList<Contact> connections) {
+        this.connections = connections;
     }
 
     public Metatyp getMetatype() {

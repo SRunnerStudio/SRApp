@@ -4,16 +4,12 @@ package com.example.danielojea.srapp.control;
  * Created by User on 07.07.2017.
  */
 
-import android.content.DialogInterface;
-import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Quality;
@@ -22,9 +18,6 @@ import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import static java.lang.System.in;
 
 public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.ViewHolder> {
     private ArrayList<Quality> values;
@@ -81,11 +74,10 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
             character.setAdvantages(initAdvantages);
         }
         if(character.getDisadvantages() == null) {
-            ArrayList<Quality> initDisdvantages = new ArrayList<Quality>();
-            character.setDisadvantages(initDisdvantages);
+            ArrayList<Quality> initDisadvantages = new ArrayList<Quality>();
+            character.setDisadvantages(initDisadvantages);
         }
-        values = character.getAdvantages();
-        values.addAll(character.getDisadvantages());
+        values = character.getQualities();
         karmaCounter = txtQualityPointCounter;
     }
 
@@ -128,22 +120,25 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
             @Override
             public void onClick(View v) {
                 ArrayList<Quality> updatedValues = new ArrayList<Quality>();
-                character.setKarma(character.getKarma() + quality.getKarma());
                 if(quality.isAdvantage()){
-                    character.setKarmaAdvantages(character.getKarma() + quality.getKarma());
+                    character.setKarmaAdvantages(character.getKarmaAdvantages() + quality.getKarma());
+                    character.removeAdvantage(quality);
+                    character.setKarma(character.getKarma() + quality.getKarma());
                 }
                 else{
-                    character.setKarmaDisdvantages(character.getKarma() +  quality.getKarma());
+                    character.setKarmaDisadvantages(character.getKarmaDisadvantages() +  quality.getKarma());
+                    character.removeDisadvantage(quality);
+                    character.setKarma(character.getKarma() - quality.getKarma());
                 }
                 karmaCounter.setText("Karma: "+character.getKarma());
+
                 for (Quality iteratorQuality:values) {
-                for (Quality iteratorCharacterQuality:character.getQualities()) {
-                        if(!iteratorCharacterQuality.equals(iteratorQuality)) {
-                            updatedValues.add(iteratorQuality);
-                        }
+                    if(character.getQualities().contains(iteratorQuality)) {
+                        updatedValues.add(iteratorQuality);
                     }
                 }
                 //character.getQualities();
+                values = updatedValues;
                 notifyDataSetChanged();
             }
         });

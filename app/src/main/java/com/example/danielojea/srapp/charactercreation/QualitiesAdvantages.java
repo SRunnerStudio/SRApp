@@ -59,7 +59,6 @@ public class QualitiesAdvantages extends Fragment {
                     ArrayList<Quality> initAdvantages = new ArrayList<Quality>();
                     character.setAdvantages(initAdvantages);
                 }
-                if(!character.getAdvantages().contains(advantage)) {
                     if (character.getKarma() - advantage.getKarma() >= 0) {
                         if (character.getKarmaAdvantages() - advantage.getKarma()>= 0) {
                             character.setKarma(character.getKarma() - advantage.getKarma());
@@ -71,14 +70,6 @@ public class QualitiesAdvantages extends Fragment {
                             startActivity(intent);
                         }
                     }
-                }
-                else
-                {
-                    character.setKarma(character.getKarma() + advantage.getKarma());
-                    character.setKarmaAdvantages(character.getKarmaAdvantages() + advantage.getKarma());
-                    character.removeAdvantage(advantage);
-                }
-
                 return false;
             }
         });
@@ -98,13 +89,27 @@ public class QualitiesAdvantages extends Fragment {
         // Header, Child data
 
         // Adding child data
+        ArrayList<Quality> removedQualities = new ArrayList<Quality>();
         for (Quality advantage : advantages) {
-            listDataHeader.add(new String[]{advantage.getName(),""+advantage.getKarma()});
-            List<String> description = new ArrayList<String>();
-            description.add(advantage.getDescription());
-            listDataChild.put(advantage.getName(), description);
+            boolean isCharacterAdvantage = false;
+            for (Quality characterAdvantage:character.getAdvantages()) {
+                if (characterAdvantage.getName().equals(advantage.getName())){
+                    isCharacterAdvantage=true;
+                }
+            }
+            if(!isCharacterAdvantage) {
+                listDataHeader.add(new String[]{advantage.getName(), "" + advantage.getKarma()});
+                List<String> description = new ArrayList<String>();
+                description.add(advantage.getDescription());
+                listDataChild.put(advantage.getName(), description);
+            }
+            else{
+                removedQualities.add(advantage);
+            }
         }
-
+        for (Quality removed: removedQualities) {
+            advantages.remove(removed);
+        }
     }
     public void createAdvantages() {
         advantages = new ArrayList<Quality>();
