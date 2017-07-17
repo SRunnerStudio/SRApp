@@ -19,6 +19,20 @@
     <!-- Base application theme. -->
 
 
+    <!-- Dark Theme -->
+    <style name="RunnerDarkTheme" parent="AppTheme">
+        <item name="android:textColor">@color/bookOrange</item>
+        <item name="android:textColorHint">@color/colorOrangeTitle</item>
+        <item name="android:titleTextColor">@color/colorOrangeTitle</item>
+        <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
+    </style>
+
+    <style name="AppBackgroudImage2">
+        <item name="android:background">@drawable/background</item>
+    </style>
+    <!-- Dark Theme -->
+
+
     <!-- Fullscreen Theme -->
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
@@ -51,13 +65,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-    <!-- Main Apptheme -->
-    <style name="RunnerDarkTheme" parent="AppTheme">
-        <item name="android:textColor">@color/bookOrange</item>
-        <item name="android:textColorHint">@color/colorOrangeTitle</item>
-        <item name="android:titleTextColor">@color/colorOrangeTitle</item>
-        <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
-    </style>
+
+
 
     <style name="tracker" parent="AppTheme">
         <item name="android:textColor">@color/bookOrange</item>
@@ -66,9 +75,5 @@
         <item name="android:colorButtonNormal">@color/damageTracker</item>
     </style>
 
-    <style name="AppBackgroudImage2">
-        <item name="android:background">@drawable/background</item>
-    </style>
-    <!-- Main Apptheme -->
 
 </resources>

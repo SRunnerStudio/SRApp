@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:clickable="true"
         android:onClick="AddConnection"
-        app:backgroundTint="@android:color/holo_green_light"
+        app:backgroundTint="@color/colorRunnerRed"
         app:elevation="5dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
