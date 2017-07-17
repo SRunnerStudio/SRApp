@@ -60,19 +60,22 @@ public class QualitiesAdvantages extends Fragment {
                     character.setAdvantages(initAdvantages);
                 }
                 if(!character.getAdvantages().contains(advantage)) {
-                    if (spendableKarma - advantage.getKarma() >= 0) {
-                        character.setKarma(character.getKarma() - advantage.getKarma());
-                        spendableKarma = spendableKarma - advantage.getKarma();
-                        character.addAdvantage(advantage);
-                        Intent intent = new Intent(getContext(), QualitySelection.class);
-                        intent.putExtra("Character", character);
-                        startActivity(intent);
+                    if (character.getKarma() - advantage.getKarma() >= 0) {
+                        if (character.getKarmaAdvantages() - advantage.getKarma()>= 0) {
+                            character.setKarma(character.getKarma() - advantage.getKarma());
+                            character.setKarma(character.getKarma() - advantage.getKarma());
+                            character.setKarmaAdvantages(character.getKarmaAdvantages() - advantage.getKarma());
+                            character.addAdvantage(advantage);
+                            Intent intent = new Intent(getContext(), QualitySelection.class);
+                            intent.putExtra("Character", character);
+                            startActivity(intent);
+                        }
                     }
                 }
                 else
                 {
                     character.setKarma(character.getKarma() + advantage.getKarma());
-                    spendableKarma = spendableKarma + advantage.getKarma();
+                    character.setKarmaAdvantages(character.getKarmaAdvantages() + advantage.getKarma());
                     character.removeAdvantage(advantage);
                 }
 

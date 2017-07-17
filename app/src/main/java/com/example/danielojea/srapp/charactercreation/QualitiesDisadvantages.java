@@ -61,22 +61,24 @@ public class QualitiesDisadvantages extends Fragment {
                     character.setAdvantages(initAdvantages);
                 }
                 if(!character.getDisadvantages().contains(disadvantage)) {
-                    if (spendableKarma - disadvantage.getKarma() >= 0) {
-                        character.setKarma(character.getKarma() + disadvantage.getKarma());
-                        spendableKarma = spendableKarma - disadvantage.getKarma();
-                        character.addDisdvantage(disadvantage);
-                        Intent intent = new Intent(getContext(), QualitySelection.class);
-                        intent.putExtra("Character", character);
-                        startActivity(intent);
+                    if (character.getKarma() - disadvantage.getKarma() >= 0) {
+                        if (character.getKarmaDisdvantages() - disadvantage.getKarma()>= 0) {
+                            character.setKarma(character.getKarma() + disadvantage.getKarma());
+                            character.setKarmaDisdvantages(character.getKarmaDisdvantages() - disadvantage.getKarma());
+                            character.addDisdvantage(disadvantage);
+                            Intent intent = new Intent(getContext(), QualitySelection.class);
+                            intent.putExtra("Character", character);
+                            startActivity(intent);
+                        }
                     }
                 }
                 else
                 {
                     character.setKarma(character.getKarma() - disadvantage.getKarma());
+                    character.setKarmaDisdvantages(character.getKarmaDisdvantages() + disadvantage.getKarma());
                     character.removeDisdvantage(disadvantage);
                     spendableKarma = spendableKarma + disadvantage.getKarma();
                 }
-                karmaView.setText("Kara: " + character.getKarma());
 
                 return false;
             }

@@ -50,4 +50,5 @@ public class QualitySelection extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }

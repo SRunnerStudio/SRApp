@@ -33,6 +33,7 @@ public class CustomizeAttributes extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new AttributeListAdapter(character,attributeCounter);
         recyclerView.setAdapter(mAdapter);
+        setTitle("Attribute");
     }
 
     public void startSkillSelectionActivity(View v){

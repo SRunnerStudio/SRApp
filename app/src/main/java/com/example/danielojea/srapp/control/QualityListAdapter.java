@@ -86,6 +86,7 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
     }
 
     // Create new views (invoked by the layout manager)
+
     @Override
     public QualityListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                             int viewType) {
@@ -94,6 +95,7 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.points_distribute, parent, false);
+
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;

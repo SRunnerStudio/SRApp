@@ -37,6 +37,7 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new KnowledgeSkillListAdapter(character,skillpointCounter);
         recyclerView.setAdapter(mAdapter);
+        setTitle("Wissens");
     }
 
     public void AddAbility(View v) {

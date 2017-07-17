@@ -37,6 +37,9 @@ public class SRCharacter implements Serializable {
     private int skillPoints;
     private int skillPackagePoints;
     private int skillKnowledgePoints;
+    private int karmaAdvantages;
+    private int karmaDisdvantages;
+
 
     public SRCharacter() {
         karma=25;
@@ -48,6 +51,8 @@ public class SRCharacter implements Serializable {
             this.name = "Namenlos";
         }
         karma=25;
+        karmaAdvantages=25;
+        karmaDisdvantages=25;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
@@ -57,6 +62,8 @@ public class SRCharacter implements Serializable {
         }
         this.metatype = metatype;
         karma=25;
+        karmaAdvantages=25;
+        karmaDisdvantages=25;
     }
 
     public SRCharacter(String name, Metatyp metatype, SerialBitmap profileImage) {
@@ -67,6 +74,24 @@ public class SRCharacter implements Serializable {
         this.metatype = metatype;
         this.profileImage = profileImage;
         karma=25;
+        karmaAdvantages=25;
+        karmaDisdvantages=25;
+    }
+
+    public int getKarmaAdvantages() {
+        return karmaAdvantages;
+    }
+
+    public void setKarmaAdvantages(int karmaAdvantages) {
+        this.karmaAdvantages = karmaAdvantages;
+    }
+
+    public int getKarmaDisdvantages() {
+        return karmaDisdvantages;
+    }
+
+    public void setKarmaDisdvantages(int karmaDisdvantages) {
+        this.karmaDisdvantages = karmaDisdvantages;
     }
 
     public void addSkill(Skill skill){

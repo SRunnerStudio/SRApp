@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.R;
@@ -59,18 +60,23 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         TextView txtListChildValue = (TextView) convertView.findViewById(R.id.lblListItemValue);
         TextView txtListChild2 = (TextView) convertView.findViewById(R.id.lblListItem2);
         TextView txtListChild2Value = (TextView) convertView.findViewById(R.id.lblListItem2Value);
+        LinearLayout secondRow = (LinearLayout) convertView.findViewById(R.id.secondRow);
 
         if(childText.length ==1)
         {
-            txtListChild.setText(childText[0]);
             txtListChildValue.setVisibility(View.GONE);
             txtListChild2.setVisibility(View.GONE);
             txtListChild2Value.setVisibility(View.GONE);
+            secondRow.setVisibility(View.GONE);
+            txtListChild.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0.1f));
+            txtListChild.setText(childText[0]);
+
         }
         if(childText.length ==2)
         {
             txtListChild.setText(childText[0]);
             txtListChild2.setText(childText[1]);
+            secondRow.setVisibility(View.GONE);
             txtListChildValue.setVisibility(View.GONE);
             txtListChild2Value.setVisibility(View.GONE);
         }
