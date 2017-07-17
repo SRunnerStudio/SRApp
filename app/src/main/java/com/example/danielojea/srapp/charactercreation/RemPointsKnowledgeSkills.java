@@ -2,9 +2,9 @@ package com.example.danielojea.srapp.charactercreation;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,13 +15,14 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.KnowledgeSkillListAdapter;
+import com.example.danielojea.srapp.control.RemPointsKnowledgeSkillListAdapter;
 
 import java.util.ArrayList;
 
-public class KnowledgeSkillSelection extends AppCompatActivity {
+public class RemPointsKnowledgeSkills extends AppCompatActivity {
     SRCharacter character;
     RecyclerView recyclerView;
-    KnowledgeSkillListAdapter mAdapter;
+    RemPointsKnowledgeSkillListAdapter mAdapter;
     ArrayList<Skill> skillList;
 
     @Override
@@ -31,21 +32,19 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");
-        skillList = (ArrayList<Skill>)starterIntent.getSerializableExtra("Skills");
-        character.setSkillKnowledgePoints(character.calculateSkillKnowledgePoints()+10);
-        TextView skillpointCounter = (TextView) findViewById(R.id.KnowledgeSkillpointCounter);
-        skillpointCounter.setText("Skillpunkte: "+character.getSkillKnowledgePoints());
+        TextView pointCounter = (TextView) findViewById(R.id.KnowledgeSkillpointCounter);
+        pointCounter.setText("Karmapunkte: "+character.getKarma());
         RecyclerView.LayoutManager mLayoutManager;
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new KnowledgeSkillListAdapter(character,skillpointCounter);
+        mAdapter = new RemPointsKnowledgeSkillListAdapter(character,pointCounter);
         recyclerView.setAdapter(mAdapter);
         setTitle("Wissen");
     }
 
     public void AddAbility(View v) {
-        if (character.getSkillKnowledgePoints() > 0) {
+        if (character.getKarma() > 2) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
             final EditText et = new EditText(v.getContext());
@@ -66,7 +65,7 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
                         if (!skillExisting) {
                             Skill skill = new Skill(1, "" + et.getText().toString(), "KNOWLEDGE", "");
                             character.getSkills().add(skill);
-                            character.setSkillKnowledgePoints(character.getSkillKnowledgePoints() - 1);
+                            character.setKarma(character.getKarma() - 2);
                             mAdapter.setValues(character);
                         }
                     }
@@ -88,9 +87,8 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
             cUpdatedSkills.add(cSkill);
         }
         character.setSkills(cUpdatedSkills);
-        Intent intent = new Intent(this, QualitySelection.class);
+        Intent intent = new Intent(this, RemPointsConnectionSelection.class);
         intent.putExtra("Character",character);
-        intent.putExtra("Skills", skillList);
         startActivity(intent);
     }
 }

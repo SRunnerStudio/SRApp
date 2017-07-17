@@ -22,7 +22,7 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 
-public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.ViewHolder> {
+public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSkillListAdapter.ViewHolder> {
     private ArrayList<Skill> values;
     private ArrayList<Skill> deletedSkills = new ArrayList<Skill>();
     private SRCharacter character;
@@ -69,7 +69,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SkillListAdapter(SRCharacter myDataset, TextView txtSkillPointCounter,TextView txtSkillPointCounterPackage) {
+    public RemPointsSkillListAdapter(SRCharacter myDataset, TextView txtSkillPointCounter,TextView txtSkillPointCounterPackage) {
         character = myDataset;
         values = myDataset.getSkills();
         skillPointCounter = txtSkillPointCounter;
@@ -78,7 +78,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
 
     // Create new views (invoked by the layout manager)
     @Override
-    public SkillListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public RemPointsSkillListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                           int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
@@ -102,16 +102,20 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         if(skill.isPackageBound()){
             holder.txtPackage.setText(skill.getConnectedPackage());
         }
+        if(skill.isSpecialization()){
+            holder.upgradeButton.setVisibility(View.INVISIBLE);
+            holder.downgradeButton.setVisibility(View.INVISIBLE);
+        }
 
 
         holder.plusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (skill.isPackageBound()) {
-                    if (character.getSkillPackagePoints() > 0 && skill.getValue() < 6) {
+                    if ((character.getKarma() > ((skill.getValue()+1)*5)) && skill.getValue() < 6) {
                         ArrayList<Skill> updatedValues = new ArrayList<Skill>();
-                        character.setSkillPackagePoints(character.getSkillPackagePoints() - 1);
-                        skillPointCounterPackage.setText("Skillpaketpunkte: " + character.getSkillPackagePoints());
+                        character.setKarma(character.getKarma()-((skill.getValue()+1)*5));
+                        skillPointCounter.setText("Karmapunkte: " + character.getKarma());
                         for (Iterator<Skill> i = values.iterator(); i.hasNext();
                                 ) {
                             Skill iSkill = i.next();
@@ -126,10 +130,10 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                         notifyDataSetChanged();
                     }
                 } else {
-                    if (character.getSkillPoints() > 0 && skill.getValue() < 6) {
+                    if ((character.getSkillPoints() > ((skill.getValue()+1)*2)) && skill.getValue() < 6) {
                         skill.setValue(skill.getValue() + 1);
-                        character.setSkillPoints(character.getSkillPoints() - 1);
-                        skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                        character.setKarma(character.getKarma()-(skill.getValue()*2));
+                        skillPointCounter.setText("Karmapunkte: " + character.getKarma());
                     }
                 }
                 holder.txtCounter.setText(("" + skill.getValue()));
@@ -147,55 +151,57 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         holder.minusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (skill.isPackageBound()) {
-                    ArrayList<Skill> updatedValues = new ArrayList<Skill>();
-                    character.setSkillPackagePoints(character.getSkillPackagePoints() + 1);
-                    skillPointCounterPackage.setText("Skillpaketpunkte: " + character.getSkillPackagePoints());
-                    for (Iterator<Skill> i = values.iterator(); i.hasNext();
-                            ) {
-                        Skill iSkill = i.next();
-                        if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
-                            iSkill.setValue(iSkill.getValue() - 1);
-                            if (iSkill.getValue() < 1) {
-                                iSkill.setValue(iSkill.getValue() + 1);
-                                if (iSkill.isSpecialization()){
-                                    iSkill.setSpecialization(false);
-                                    iSkill.setSpecializationName("");
-                                    holder.downgradeButton.setVisibility(View.INVISIBLE);
-                                    holder.upgradeButton.setVisibility(View.VISIBLE);
-                                    character.setSkillPoints(character.getSkillPoints()+1);
-                                    skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                if (skill.getValue() > skill.getStartValue()){
+                    if (skill.isPackageBound()) {
+                        ArrayList<Skill> updatedValues = new ArrayList<Skill>();
+                        character.setKarma(character.getKarma()+(skill.getValue()*5));
+                        skillPointCounter.setText("Karmapunkte: " + character.getKarma());
+                        for (Iterator<Skill> i = values.iterator(); i.hasNext();
+                                ) {
+                            Skill iSkill = i.next();
+                            if (iSkill.getConnectedPackage().equals(skill.getConnectedPackage())) {
+                                iSkill.setValue(iSkill.getValue() - 1);
+                                if (iSkill.getValue() < 1) {
+                                    iSkill.setValue(iSkill.getValue() + 1);
+                                    if (iSkill.isSpecialization()){
+                                        iSkill.setSpecialization(false);
+                                        iSkill.setSpecializationName("");
+                                        holder.downgradeButton.setVisibility(View.INVISIBLE);
+                                        holder.upgradeButton.setVisibility(View.VISIBLE);
+                                        character.setKarma(character.getKarma()+7);
+                                        skillPointCounter.setText("Karmapunkte: " + character.getKarma());
+                                    }
+                                    deletedSkills.add(iSkill);
+                                } else {
+                                    updatedValues.add(iSkill);
                                 }
-                                deletedSkills.add(iSkill);
                             } else {
                                 updatedValues.add(iSkill);
                             }
-                        } else {
-                            updatedValues.add(iSkill);
                         }
-                    }
-                    values = updatedValues;
-                    notifyDataSetChanged();
-                } else {
-                    character.setSkillPoints(character.getSkillPoints() + 1);
-                    skill.setValue(skill.getValue() - 1);
-                    if (skill.getValue() < 1) {
-                        skill.setValue(skill.getValue() + 1);
-                        deletedSkills.add(skill);
-                        if (skill.isSpecialization()){
-                            skill.setSpecialization(false);
-                            skill.setSpecializationName("");
-                            holder.downgradeButton.setVisibility(View.INVISIBLE);
-                            holder.upgradeButton.setVisibility(View.VISIBLE);
-                            character.setSkillPoints(character.getSkillPoints() + 1);
-                        }
-                        remove(position);
-                        skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                        values = updatedValues;
                         notifyDataSetChanged();
                     } else {
-                        holder.txtCounter.setText(("" + skill.getValue()));
-                        skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
-                        notifyDataSetChanged();
+                        character.setKarma(character.getKarma()+(skill.getValue()*2));
+                        skill.setValue(skill.getValue() - 1);
+                        if (skill.getValue() < 1) {
+                            skill.setValue(skill.getValue() + 1);
+                            deletedSkills.add(skill);
+                            if (skill.isSpecialization()) {
+                                skill.setSpecialization(false);
+                                skill.setSpecializationName("");
+                                holder.downgradeButton.setVisibility(View.INVISIBLE);
+                                holder.upgradeButton.setVisibility(View.VISIBLE);
+                                character.setKarma(character.getKarma()+7);
+                            }
+                            remove(position);
+                            skillPointCounter.setText("Karmapunkte: " + character.getKarma());
+                            notifyDataSetChanged();
+                        } else {
+                            holder.txtCounter.setText(("" + skill.getValue()));
+                            skillPointCounter.setText("Karmapunkte: " + character.getKarma());
+                            notifyDataSetChanged();
+                        }
                     }
                 }
             }
@@ -203,7 +209,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         holder.upgradeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (character.getSkillPoints() > 0) {
+                if (character.getKarma() > 6) {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
                     final EditText et = new EditText(v.getContext());
@@ -220,8 +226,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                                 notifyDataSetChanged();
                                 holder.upgradeButton.setVisibility(View.INVISIBLE);
                                 holder.downgradeButton.setVisibility(View.VISIBLE);
-                                character.setSkillPoints(character.getSkillPoints() - 1);
-                                skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                                character.setKarma(character.getKarma() - 7);
+                                skillPointCounter.setText("karmapunkte: " + character.getKarma());
                             }
                         }
                     });
@@ -240,8 +246,8 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                 holder.upgradeButton.setVisibility(View.VISIBLE);
                 skill.setSpecialization(false);
                 skill.setSpecializationName("");
-                character.setSkillPoints(character.getSkillPoints() + 1);
-                skillPointCounter.setText("Skillpunkte: " + character.getSkillPoints());
+                character.setKarma(character.getKarma()+7);
+                skillPointCounter.setText("Karmapunkte: " + character.getKarma());
                 notifyDataSetChanged();
             }
         });

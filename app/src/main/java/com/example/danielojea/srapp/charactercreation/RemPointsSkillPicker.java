@@ -1,22 +1,19 @@
 package com.example.danielojea.srapp.charactercreation;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
-public class SpendRemainingPoints extends AppCompatActivity {
+public class RemPointsSkillPicker extends AppCompatActivity {
     public static Handler h;
 
     /**
@@ -37,7 +34,7 @@ public class SpendRemainingPoints extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spend_remaining_points);
+        setContentView(R.layout.activity_skill_picker);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,20 +79,11 @@ public class SpendRemainingPoints extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    SkillTabPackage tabPackage = new SkillTabPackage();
-                    return tabPackage;
+                    RemPointsSkillTabSingle tabSingle = new RemPointsSkillTabSingle();
+                    return tabSingle;
                 case 1:
-                    SkillTabPackage tabPackage2 = new SkillTabPackage();
-                    return tabPackage2;
-                case 2:
-                    SkillTabPackage tabPackage3 = new SkillTabPackage();
-                    return tabPackage3;
-                case 3:
-                    SkillTabPackage tabPackage4 = new SkillTabPackage();
-                    return tabPackage4;
-                case 4:
-                    SkillTabPackage tabPackage5 = new SkillTabPackage();
-                    return tabPackage5;
+                    RemPointsSkillTabPackage tabPackage = new RemPointsSkillTabPackage();
+                    return tabPackage;
                 default:
                     return null;
             }
@@ -103,23 +91,17 @@ public class SpendRemainingPoints extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 5 total pages.
-            return 4;
+            // Show 3 total pages.
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Attribute";
-                case 1:
                     return "Fertigkeiten";
-                case 2:
+                case 1:
                     return "Pakete";
-                case 3:
-                    return "Wissen";
-                case 4:
-                    return "Connections";
             }
             return null;
         }

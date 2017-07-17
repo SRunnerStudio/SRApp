@@ -9,13 +9,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.SRCharacter;
+import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.QualityListAdapter;
+
+import java.util.ArrayList;
 
 public class QualitySelection extends AppCompatActivity {
     SRCharacter character;
     RecyclerView recyclerView;
     QualityListAdapter mAdapter;
+    ArrayList<Skill> skillList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,7 @@ public class QualitySelection extends AppCompatActivity {
         setContentView(R.layout.activity_qualities_selection);
 
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
+        skillList = (ArrayList<Skill>)getIntent().getSerializableExtra("Skills");
         TextView karmaCounter = (TextView) findViewById(R.id.karmaCounter);
 
         karmaCounter.setText("Karma: " +character.getKarma());
@@ -40,6 +45,7 @@ public class QualitySelection extends AppCompatActivity {
     public void startNextActivity(View v){
         Intent intent = new Intent(this, ConnectionSelection.class);
         intent.putExtra("Character",character);
+        intent.putExtra("Skills",skillList);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

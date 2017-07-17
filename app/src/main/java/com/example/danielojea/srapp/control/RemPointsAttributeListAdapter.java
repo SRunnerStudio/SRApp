@@ -20,38 +20,38 @@ import java.util.ArrayList;
  * Created by Ole on 17.07.2017.
  */
 
-public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdapter.ViewHolder> {
+public class RemPointsAttributeListAdapter extends RecyclerView.Adapter<RemPointsAttributeListAdapter.ViewHolder> {
     private ArrayList<AttributeValue> values;
     private SRCharacter character;
     public TextView attributePointCounter;
     public View layout;
 
-    public AttributeListAdapter(SRCharacter myDataset, TextView txtAttributePointCounter) {
+    public RemPointsAttributeListAdapter(SRCharacter myDataset, TextView txtAttributePointCounter) {
         character = myDataset;
         values = new ArrayList<AttributeValue>();
         Attributes attributes = character.getAttributes();
-        values.add(new AttributeValue(attributes.getCON().getMaxValue(),attributes.getCON().getStartValue(),attributes.getCON().getStartValue(),"KON"));
-        values.add(new AttributeValue(attributes.getAGI().getMaxValue(),attributes.getAGI().getStartValue(),attributes.getAGI().getStartValue(),"GES"));
-        values.add(new AttributeValue(attributes.getREA().getMaxValue(),attributes.getREA().getStartValue(),attributes.getREA().getStartValue(),"REA"));
-        values.add(new AttributeValue(attributes.getSTR().getMaxValue(),attributes.getSTR().getStartValue(),attributes.getSTR().getStartValue(),"STR"));
-        values.add(new AttributeValue(attributes.getWIL().getMaxValue(),attributes.getWIL().getStartValue(),attributes.getWIL().getStartValue(),"WIL"));
-        values.add(new AttributeValue(attributes.getLOG().getMaxValue(),attributes.getLOG().getStartValue(),attributes.getLOG().getStartValue(),"LOG"));
-        values.add(new AttributeValue(attributes.getINT().getMaxValue(),attributes.getINT().getStartValue(),attributes.getINT().getStartValue(),"INT"));
-        values.add(new AttributeValue(attributes.getCHA().getMaxValue(),attributes.getCHA().getStartValue(),attributes.getCHA().getStartValue(),"CHA"));
+        values.add(new AttributeValue(attributes.getCON().getMaxValue(),attributes.getCON().getStartValue(),attributes.getCON().getValue(),"KON"));
+        values.add(new AttributeValue(attributes.getAGI().getMaxValue(),attributes.getAGI().getStartValue(),attributes.getAGI().getValue(),"GES"));
+        values.add(new AttributeValue(attributes.getREA().getMaxValue(),attributes.getREA().getStartValue(),attributes.getREA().getValue(),"REA"));
+        values.add(new AttributeValue(attributes.getSTR().getMaxValue(),attributes.getSTR().getStartValue(),attributes.getSTR().getValue(),"STR"));
+        values.add(new AttributeValue(attributes.getWIL().getMaxValue(),attributes.getWIL().getStartValue(),attributes.getWIL().getValue(),"WIL"));
+        values.add(new AttributeValue(attributes.getLOG().getMaxValue(),attributes.getLOG().getStartValue(),attributes.getLOG().getValue(),"LOG"));
+        values.add(new AttributeValue(attributes.getINT().getMaxValue(),attributes.getINT().getStartValue(),attributes.getINT().getValue(),"INT"));
+        values.add(new AttributeValue(attributes.getCHA().getMaxValue(),attributes.getCHA().getStartValue(),attributes.getCHA().getValue(),"CHA"));
 
         attributePointCounter = txtAttributePointCounter;
     }
 
     @Override
-    public AttributeListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                   int viewType) {
+    public RemPointsAttributeListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                              int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.points_distribute, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        AttributeListAdapter.ViewHolder vh = new AttributeListAdapter.ViewHolder(v);
+        RemPointsAttributeListAdapter.ViewHolder vh = new RemPointsAttributeListAdapter.ViewHolder(v);
         return vh;
     }
 
@@ -86,7 +86,7 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
         }
     }
     @Override
-    public void onBindViewHolder(final AttributeListAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RemPointsAttributeListAdapter.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final AttributeValue attribute = values.get(position);
@@ -100,10 +100,10 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
         holder.plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((attribute.getValue() != attribute.getMaxValue()) && (character.getAttributePoints() > 0)){
-                    character.setAttributePoints(character.getAttributePoints()-1);
+                if((attribute.getValue() != attribute.getMaxValue()) && (character.getKarma() >= ((attribute.getValue() + 1 ) * 5))){
                     attribute.setValue(attribute.getValue()+1);
-                    attributePointCounter.setText("Attributpunkte: "+character.getAttributePoints());
+                    character.setKarma(character.getKarma()-(attribute.getValue() * 5));
+                    attributePointCounter.setText("Karmapunkte: "+character.getKarma());
                     notifyDataSetChanged();
                 }
             }
@@ -112,9 +112,9 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
             @Override
             public void onClick(View v) {
                 if(attribute.getValue() != attribute.getStartValue()){
-                    character.setAttributePoints(character.getAttributePoints()+1);
+                    character.setKarma(character.getKarma()+(attribute.getValue() * 5));
                     attribute.setValue(attribute.getValue()-1);
-                    attributePointCounter.setText("Attributpunkte: "+character.getAttributePoints());
+                    attributePointCounter.setText("Karmapunkte: "+character.getKarma());
                     notifyDataSetChanged();
                 }
             }

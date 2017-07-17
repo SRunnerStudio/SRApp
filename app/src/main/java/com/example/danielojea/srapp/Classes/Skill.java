@@ -14,6 +14,7 @@ public class Skill implements Serializable {
     private String connectedAttribute;
     private String connectedPackage;
     private boolean packageBound;
+    private int startValue;
 
     public Skill(int value, String name, String connectedAttribute, String connectedPackage) {
         this.value = value;
@@ -76,5 +77,13 @@ public class Skill implements Serializable {
 
     public void setPackageBound(boolean packageBound) {
         this.packageBound = packageBound;
+    }
+
+    public int getStartValue() {
+        return startValue;
+    }
+
+    public void setStartValue(int startValue) {
+        this.startValue = startValue;
     }
 }
