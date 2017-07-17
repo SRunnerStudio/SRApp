@@ -61,10 +61,10 @@ public class SkillTabPackage extends Fragment {
                     long id) {
                 if(character.getSkillPackagePoints() > 0) {
                     ArrayList<Skill> cUpdatedSkills = new ArrayList<Skill>();
-                    for (Skill cSkill: skills) {
+                    for (Skill cSkill: character.getSkills()) {
                         if (cSkill.getConnectedPackage().equals(listAdapter.getGroup(groupPosition).toString())){
-                            character.setSkillPoints(character.getSkillPoints()+cSkill.getValue());
                             cSkill.setValue(1);
+                            character.setSkillPoints(character.getSkillPoints()+cSkill.getValue());
                             skills.add(cSkill);
                         }else{
                             cUpdatedSkills.add(cSkill);
@@ -86,7 +86,6 @@ public class SkillTabPackage extends Fragment {
                     intent.putExtra("Character", character);
                     intent.putExtra("Skills", updatedSkills);
                     startActivity(intent);
-                    SkillPicker.h.sendEmptyMessage(0);
                     return false;
                 }
                 return false;
