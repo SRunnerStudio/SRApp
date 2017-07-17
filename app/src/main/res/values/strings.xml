@@ -32,6 +32,9 @@
     <string name="btnContinue">Weiter</string>
 
     <string name="skillpoints">Fertigkeitenpunkte:</string>
+    <string name="connectionpoints">Punkte:</string>
+    <string name="loyalty">Loaylität</string>
+    <string name="influence">Einfluss</string>
     <string name="packetpoints">Paketpunkte:</string>
     <string name="title_activity_qualities">Qualities</string>
 

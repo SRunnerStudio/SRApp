@@ -11,6 +11,12 @@ public class Contact implements Serializable {
     private int loyalty;
     private int influence;
 
+    public Contact(String name, int loyalty, int influence) {
+        this.name = name;
+        this.loyalty = loyalty;
+        this.influence = influence;
+    }
+
     public String getName() {
         return name;
     }

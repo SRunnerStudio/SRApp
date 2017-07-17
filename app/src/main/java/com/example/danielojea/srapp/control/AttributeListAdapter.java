@@ -121,5 +121,15 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
         });
     }
 
-    public SRCharacter getCharacter() {return character;}
+    public SRCharacter getCharacter() {
+        character.getAttributes().setCON(values.get(0));
+        character.getAttributes().setAGI(values.get(1));
+        character.getAttributes().setREA(values.get(2));
+        character.getAttributes().setSTR(values.get(3));
+        character.getAttributes().setWIL(values.get(4));
+        character.getAttributes().setLOG(values.get(5));
+        character.getAttributes().setINT(values.get(6));
+        character.getAttributes().setCHA(values.get(7));
+
+        return character;}
 }

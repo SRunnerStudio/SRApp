@@ -38,7 +38,7 @@ public class QualitySelection extends AppCompatActivity {
     }
 
     public void startNextActivity(View v){
-        Intent intent = new Intent(this, CharacterConcept.class);
+        Intent intent = new Intent(this, ConnectionSelection.class);
         intent.putExtra("Character",character);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
