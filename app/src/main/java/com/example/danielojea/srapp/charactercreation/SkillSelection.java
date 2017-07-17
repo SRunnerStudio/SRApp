@@ -133,8 +133,8 @@ public class SkillSelection extends AppCompatActivity {
         Intent intent = new Intent(this, KnowledgeSkillSelection.class);
         intent.putExtra("Character",character);
         intent.putExtra("Skills",skills);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
     }
 
     public void AddAbility(View v) {

@@ -41,6 +41,5 @@ public class CustomizeAttributes extends AppCompatActivity {
         Intent intent = new Intent(this, SkillSelection.class);
         intent.putExtra("Character", character);
         startActivity(intent);
-        finish();
     }
 }

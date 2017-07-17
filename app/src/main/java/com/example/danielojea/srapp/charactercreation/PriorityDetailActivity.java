@@ -106,12 +106,12 @@ public class PriorityDetailActivity extends AppCompatActivity {
     }
 
     private void updatePriorityDetailList() {
-    Intent i = new Intent(this, PriorityListActivity.class);
-        i.putExtra("Character",character);
-        i.putExtra("Position",listItemPosition);
-        i.putExtra("priorityItem",(Serializable)priorityItem);
-        startActivity(i);
-        finish();
+    Intent intent = new Intent(this, PriorityListActivity.class);
+        intent.putExtra("Character",character);
+        intent.putExtra("Position",listItemPosition);
+        intent.putExtra("priorityItem",(Serializable)priorityItem);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

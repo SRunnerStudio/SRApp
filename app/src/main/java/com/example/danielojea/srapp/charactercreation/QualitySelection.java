@@ -40,6 +40,7 @@ public class QualitySelection extends AppCompatActivity {
     public void startNextActivity(View v){
         Intent intent = new Intent(this, CharacterConcept.class);
         intent.putExtra("Character",character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -47,8 +48,8 @@ public class QualitySelection extends AppCompatActivity {
         character=mAdapter.getCharacter();
         Intent intent = new Intent(this, QualitiesPicker.class);
         intent.putExtra("Character", character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
     }
 
 }

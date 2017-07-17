@@ -43,6 +43,8 @@ public class SRCharacter implements Serializable {
 
     public SRCharacter() {
         karma=25;
+        karmaAdvantages=25;
+        karmaDisdvantages=25;
     }
 
     public SRCharacter(String name) {

@@ -63,11 +63,11 @@ public class QualitiesAdvantages extends Fragment {
                     if (character.getKarma() - advantage.getKarma() >= 0) {
                         if (character.getKarmaAdvantages() - advantage.getKarma()>= 0) {
                             character.setKarma(character.getKarma() - advantage.getKarma());
-                            character.setKarma(character.getKarma() - advantage.getKarma());
                             character.setKarmaAdvantages(character.getKarmaAdvantages() - advantage.getKarma());
                             character.addAdvantage(advantage);
                             Intent intent = new Intent(getContext(), QualitySelection.class);
                             intent.putExtra("Character", character);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
                     }

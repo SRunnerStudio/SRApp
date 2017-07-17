@@ -61,12 +61,13 @@ public class QualitiesDisadvantages extends Fragment {
                     character.setAdvantages(initAdvantages);
                 }
                 if(!character.getDisadvantages().contains(disadvantage)) {
-                    if (character.getKarma() - disadvantage.getKarma() >= 0) {
+                    if (character.getKarma() + disadvantage.getKarma() <= 50) {
                         if (character.getKarmaDisdvantages() - disadvantage.getKarma()>= 0) {
                             character.setKarma(character.getKarma() + disadvantage.getKarma());
                             character.setKarmaDisdvantages(character.getKarmaDisdvantages() - disadvantage.getKarma());
                             character.addDisdvantage(disadvantage);
                             Intent intent = new Intent(getContext(), QualitySelection.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Character", character);
                             startActivity(intent);
                         }

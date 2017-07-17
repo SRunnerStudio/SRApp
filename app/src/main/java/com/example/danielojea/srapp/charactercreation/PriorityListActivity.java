@@ -252,6 +252,7 @@ public class PriorityListActivity extends AppCompatActivity {
                         intent.putExtra("priorityItem",(Serializable) ((Priority)getPriorrityItem(holder.positionInList)));
                         intent.putExtra("Position",holder.positionInList);
                         intent.putExtra("Character",character);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         context.startActivity(intent);
                     }
                // }

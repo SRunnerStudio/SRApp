@@ -81,6 +81,5 @@ public class KnowledgeSkillSelection extends AppCompatActivity {
         Intent intent = new Intent(this, QualitySelection.class);
         intent.putExtra("Character",character);
         startActivity(intent);
-        finish();
     }
 }
