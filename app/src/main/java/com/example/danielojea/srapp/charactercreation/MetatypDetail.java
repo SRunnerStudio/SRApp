@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.danielojea.srapp.Classes.AttributeValue;
 import com.example.danielojea.srapp.Classes.Attributes;
 import com.example.danielojea.srapp.Classes.Metatyp;
+import com.example.danielojea.srapp.Classes.ReplaceFont;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.R;
@@ -27,6 +28,7 @@ public class MetatypDetail extends AppCompatActivity {
         metatyp =new Metatyp(getIntent().getExtras().getString("Metatyp"));
         choosePortraitMetatyp(metatyp);
         setTitle(metatyp.getMetatyp());
+        ReplaceFont.replaceDefaultFont(this,"DEFAULT", "Fonts/rationalinteger.ttf");
     }
 
     public void startAttributeCustomization(View v){
