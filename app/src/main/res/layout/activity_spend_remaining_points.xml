@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    style="@style/AppBackgroudImage"
-    tools:context="com.example.danielojea.srapp.charactercreation.SpendRemainingPoints">
+    style="@style/AppTheme.NoActionBar"
+    tools:context="com.example.danielojea.srapp.charactercreation.SkillPicker">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -40,3 +40,4 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
+

@@ -13,7 +13,7 @@
         <!-- <item name="colorAccent">@color/colorAccent</item> -->
     </style>
 
-    <style name="AppBackgroudImage" parent="AppTheme">
+    <style name="AppBackgroudImage2" parent="AppTheme">
         <item name="android:background">@drawable/skyline_seattle_weiss</item>
     </style>
     <!-- Base application theme. -->
@@ -27,7 +27,7 @@
         <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
     </style>
 
-    <style name="AppBackgroudImage2">
+    <style name="AppBackgroudImage">
         <item name="android:background">@drawable/background</item>
     </style>
     <!-- Dark Theme -->

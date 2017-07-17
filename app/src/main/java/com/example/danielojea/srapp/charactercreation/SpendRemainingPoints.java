@@ -51,7 +51,6 @@ public class SpendRemainingPoints extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        /**
         h = new Handler() {
 
             public void handleMessage(Message msg) {
@@ -65,8 +64,7 @@ public class SpendRemainingPoints extends AppCompatActivity {
                 }
             }
         };
-         **/
-        setTitle("Restliches Karma");
+        setTitle("Fertigkeiten");
     }
 
     /**
@@ -84,15 +82,20 @@ public class SpendRemainingPoints extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    return null;
+                    SkillTabPackage tabPackage = new SkillTabPackage();
+                    return tabPackage;
                 case 1:
-                    return null;
+                    SkillTabPackage tabPackage2 = new SkillTabPackage();
+                    return tabPackage2;
                 case 2:
-                    return null;
+                    SkillTabPackage tabPackage3 = new SkillTabPackage();
+                    return tabPackage3;
                 case 3:
-                    return null;
+                    SkillTabPackage tabPackage4 = new SkillTabPackage();
+                    return tabPackage4;
                 case 4:
-                    return null;
+                    SkillTabPackage tabPackage5 = new SkillTabPackage();
+                    return tabPackage5;
                 default:
                     return null;
             }
@@ -101,7 +104,7 @@ public class SpendRemainingPoints extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 5 total pages.
-            return 5;
+            return 4;
         }
 
         @Override
