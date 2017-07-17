@@ -16,7 +16,7 @@
         android:layout_marginRight="16dp"
         android:clickable="true"
         android:onClick="AddAbility"
-        app:backgroundTint="@color/colorRunnerRed"
+        app:backgroundTint="@android:color/holo_green_light"
         app:elevation="5dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@+id/skillList"
