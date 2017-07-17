@@ -160,4 +160,8 @@ public class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListAd
         values.remove(position);
         notifyItemRemoved(position);
     }
+
+    public SRCharacter getCharacter() {
+        return character;
+    }
 }

@@ -51,7 +51,8 @@
         <activity android:name=".charactercreation.QualitySelection" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.CustomizeAttributes" />
-        <activity android:name=".charactercreation.ConnectionSelection"></activity>
+        <activity android:name=".charactercreation.ConnectionSelection" />
+        <activity android:name=".charactercreation.SpendRemainingPoints"></activity>
     </application>
 
 </manifest>

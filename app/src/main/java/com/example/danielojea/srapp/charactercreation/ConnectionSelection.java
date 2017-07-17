@@ -70,4 +70,10 @@ public class ConnectionSelection extends AppCompatActivity {
             alertDialog.show();
         }
     }
+    public void startNextActivity(View v){
+        character = mAdapter.getCharacter();
+        Intent intent = new Intent(this, CharacterConcept.class);
+        intent.putExtra("Character",character);
+        startActivity(intent);
+    }
 }
