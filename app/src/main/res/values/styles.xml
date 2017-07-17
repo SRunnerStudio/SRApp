@@ -1,17 +1,25 @@
 <resources>
 
+    <style name="UsedStyle" parent="@style/RunnerDarkTheme">
+    </style>
+
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorRunnerRed</item>
         <item name="colorPrimaryDark">@color/colorDarkRunnerRed</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="colorAccent">@color/colorAccent</item> -->
     </style>
 
     <style name="AppBackgroudImage" parent="AppTheme">
         <item name="android:background">@drawable/skyline_seattle_weiss</item>
     </style>
+    <!-- Base application theme. -->
 
+
+    <!-- Fullscreen Theme -->
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -23,11 +31,15 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    <!-- Fullscreen Theme -->
+
+
 
     <style name="ToolBarTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -38,20 +50,25 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="RedBookBox" parent="AppTheme">
-        <item name="android:textColor">@color/colorOrangeTitle</item>
+
+    <!-- Main Apptheme -->
+    <style name="RunnerDarkTheme" parent="AppTheme">
+        <item name="android:textColor">@color/bookOrange</item>
         <item name="android:textColorHint">@color/colorOrangeTitle</item>
         <item name="android:titleTextColor">@color/colorOrangeTitle</item>
         <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
     </style>
 
+    <style name="tracker" parent="AppTheme">
+        <item name="android:textColor">@color/bookOrange</item>
+        <item name="android:textColorHint">@color/colorOrangeTitle</item>
+        <item name="android:titleTextColor">@color/colorOrangeTitle</item>
+        <item name="android:colorButtonNormal">@color/damageTracker</item>
+    </style>
+
     <style name="AppBackgroudImage2">
         <item name="android:background">@drawable/background</item>
     </style>
-
-    <!-- TEST  spans nutzen https://stackoverflow.com/questions/10242274/assigning-text-color-to-text-in-edittext-->
-    <style name="AppTheme.EditText">
-        <item name="colorControlNormal">@color/colorOrangeTitle</item>
-    </style>
+    <!-- Main Apptheme -->
 
 </resources>
