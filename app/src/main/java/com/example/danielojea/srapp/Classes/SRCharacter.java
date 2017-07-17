@@ -26,6 +26,7 @@ public class SRCharacter implements Serializable {
     private ArrayList<Skill> skills;
     private ArrayList<Quality> advantages;
     private ArrayList<Quality> disadvantages;
+    private ArrayList<Quality> qualities;
     private Contact connection;
     private PrioritySkills prioritySkills;
     private PriorityAttribute priorityAttribute;
@@ -78,6 +79,13 @@ public class SRCharacter implements Serializable {
         karma=25;
         karmaAdvantages=25;
         karmaDisdvantages=25;
+    }
+
+    public ArrayList<Quality> getQualities() {
+        qualities=new ArrayList<Quality>();
+        qualities.addAll(advantages);
+        qualities.addAll(disadvantages);
+        return qualities;
     }
 
     public int getKarmaAdvantages() {
@@ -195,15 +203,19 @@ public class SRCharacter implements Serializable {
     public void setAdvantages(ArrayList<Quality> advantages) {
         this.advantages = advantages;
     }
+
     public void addAdvantage(Quality advantage){
          advantages.add(advantage);
     }
+
     public void addDisdvantage(Quality disadvantage){
         disadvantages.add(disadvantage);
     }
+
     public void removeAdvantage(Quality advantage){
          advantages.remove(advantage);
     }
+
     public void removeDisdvantage(Quality disadvantage){
         disadvantages.remove(disadvantage);
     }

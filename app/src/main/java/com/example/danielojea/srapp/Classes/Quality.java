@@ -1,7 +1,5 @@
 package com.example.danielojea.srapp.Classes;
 
-import android.util.EventLogTags;
-
 import java.io.Serializable;
 
 /**
@@ -38,19 +36,34 @@ public class Quality implements Serializable {
     private int initiativeModifier;
     private boolean increasable;
     private int maxIncrease;
+    private boolean advantage;
 
-    public Quality(String name, String description, int karma) {
+    public Quality(String name, String description, int karma, boolean qualityTyp) {
         this.name = name;
         this.description = description;
         this.karma = karma;
+        this.advantage = qualityTyp;
     }
 
-    public Quality(String name, String description, int karma, boolean increasable, int maxIncrease) {
+    public Quality(String name, String description, int karma, boolean qualityTyp, boolean increasable, int maxIncrease) {
         this.name = name;
         this.description = description;
         this.karma = karma;
         this.increasable = increasable;
         this.maxIncrease = maxIncrease;
+        this.advantage = qualityTyp;
+    }
+
+    public int getMaxIncrease() {
+        return maxIncrease;
+    }
+
+    public boolean isAdvantage() {
+        return advantage;
+    }
+
+    public void setAdvantage(boolean advantage) {
+        this.advantage = advantage;
     }
 
     public boolean isIncreasable() {

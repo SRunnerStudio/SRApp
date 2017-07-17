@@ -5,6 +5,7 @@ package com.example.danielojea.srapp.control;
  */
 
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,8 @@ import com.example.danielojea.srapp.R;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import static java.lang.System.in;
 
 public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.ViewHolder> {
     private ArrayList<Quality> values;
@@ -55,6 +58,7 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
             plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
             minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
             upgradeButton = (FloatingActionButton) v.findViewById(R.id.UpgradeButton);
+            downgradeButton = (FloatingActionButton) v.findViewById(R.id.DowngradeButton);
             downgradeButton = (FloatingActionButton) v.findViewById(R.id.DowngradeButton);
         }
     }
@@ -109,13 +113,40 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
         final Quality quality = values.get(position);
         holder.txtName.setText(quality.getName());
 
-       holder.txtCounter.setVisibility(View.GONE);
-       holder.txtSpecialization.setVisibility(View.GONE);
-       holder.txtPackage.setVisibility(View.GONE);
-       holder.plusButton.setVisibility(View.GONE);
-       holder.minusButton.setVisibility(View.GONE);
-       holder.upgradeButton.setVisibility(View.GONE);
-       holder.downgradeButton.setVisibility(View.GONE);
+        holder.txtCounter.setVisibility(View.GONE);
+        holder.txtSpecialization.setVisibility(View.GONE);
+        holder.txtPackage.setVisibility(View.GONE);
+        holder.plusButton.setVisibility(View.GONE);
+        holder.upgradeButton.setVisibility(View.GONE);
+        holder.downgradeButton.setVisibility(View.GONE);
+        //holder.minusButton.setBackgroundTintList(ColorStateList.valueOf(holder.getClass().getResource("").getColor(android.R.color.transparent)));
+      /*  holder.minusButton.setBackgroundTintList(ColorStateList.valueOf(android.R.color.transparent));
+        holder.minusButton.setForegroundTintList(ColorStateList.valueOf(android.R.color.holo_red_dark));
+        holder.minusButton.setElevation(0);*/
+
+        holder.minusButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Quality> updatedValues = new ArrayList<Quality>();
+                character.setKarma(character.getKarma() + quality.getKarma());
+                if(quality.isAdvantage()){
+                    character.setKarmaAdvantages(character.getKarma() + quality.getKarma());
+                }
+                else{
+                    character.setKarmaDisdvantages(character.getKarma() +  quality.getKarma());
+                }
+                karmaCounter.setText("Karma: "+character.getKarma());
+                for (Quality iteratorQuality:values) {
+                for (Quality iteratorCharacterQuality:character.getQualities()) {
+                        if(!iteratorCharacterQuality.equals(iteratorQuality)) {
+                            updatedValues.add(iteratorQuality);
+                        }
+                    }
+                }
+                //character.getQualities();
+                notifyDataSetChanged();
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

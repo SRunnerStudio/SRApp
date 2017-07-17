@@ -119,7 +119,7 @@ public class QualitiesAdvantages extends Fragment {
                         "von Mustern, Analysieren oder Finden von Hinweisen " +
                         "oder das Lösen von Rätseln geht. Außerdem senkt dieser Vorteil " +
                         "die Zeit, die der Charakter für das Lösen solcher Aufgaben " +
-                        "braucht, um die Hälfte (aufgerundet).", 5));
+                        "braucht, um die Hälfte (aufgerundet).", 5,true));
         advantages.add(new Quality("Astrales Chamäleon",
                 "Durch diesen Vorteil verschwimmt die astrale Signatur eines " +
                         "Charakters vor dem Hintergrund des Astralraums und " +
@@ -129,7 +129,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Charakter hinterlassen hat, askennen will, erhält dafür einen" +
                         "Würfelpoolmodifikator von -2 auf seine Askennenprobe. Nur" +
                         "Charaktere, die ein Magieattribut haben und astrale Spuren" +
-                        "hinterlassen können, dürfen diesen Vorteil haben.",10));
+                        "hinterlassen können, dürfen diesen Vorteil haben.",10,true));
         advantages.add(new Quality("Aussergewöhnliches Attribut",
                 "Der Vorteil Außergewöhnliches Attribut ermöglicht charismatische" +
                         "Trolle oder geschickte Zwerge. Damit kann man ein" +
@@ -143,13 +143,13 @@ public class QualitiesAdvantages extends Fragment {
                         "darf nur ein einziges Außergewöhnliches Attribut besitzen," +
                         "und das auch nur mit Zustimmung des Spielleiters. Außerdem" +
                         "darf er, wenn er diesen Vorteil hat, den Vorteil Glück nicht" +
-                        "mehr erwerben.",14));
+                        "mehr erwerben.",14,true));
         advantages.add(new Quality("Beidhändigkeit",
                 "Ein beidhändiger Charakter kann Gegenstände mit beiden" +
                         "Händen gleich gut benutzen. Ohne diesen Vorteil erhält man" +
                         "bei jeder Handlung (zum Beispiel beim Schießen), die nur mit" +
                         "der Nebenhand durchgeführt wird, einen Würfelpoolmodifi" +
-                        "kator von -2",4));
+                        "kator von -2",4,true));
         advantages.add(new Quality("Bewegungstalent",
                 "Ein Charakter mit diesem Vorteil besitzt eine angeborene " +
                         "Kombination von Fitness, Gleichgewichtssinn und athletischem " +
@@ -158,7 +158,7 @@ public class QualitiesAdvantages extends Fragment {
                         "herausholen, ist aber für seine Größe und Gewichtsklasse in " +
                         "hervorragender körperlicher Verfassung. Ein Bewegungstalent " +
                         "erhält einen Würfelpoolmodifikator von +2 auf alle Laufen " +
-                        "und Akrobatikproben.",7));
+                        "und Akrobatikproben.",7,true));
         advantages.add(new Quality("Durchsetzungskraft",
                 "Körper und Verstand mögen ihre Grenzen haben, aber " +
                         "manche Leute haben den eisernen Willen, diese Grenzen " +
@@ -167,7 +167,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Körperlich oder Sozial) um +1. Er kann bis zu drei Stufen des " +
                         "Vorteils erwerben und damit beliebige Kombinationen von Erhöhungen " +
                         "erreichen (ein Limit um +3, drei Limits um +1 oder " +
-                        "ein Limit um +1 und eines um +2).",8,true,3));
+                        "ein Limit um +1 und eines um +2).",8,true,true,3));
         advantages.add(new Quality("Erhöhte Konzentrationsfähigkeit",
                 "Ein Technomancer oder Magieanwender mit dem Vorteil " +
                         "Erhöhte Konzentrationsfähigkeit kann Mana oder Resonanz " +
@@ -184,12 +184,12 @@ public class QualitiesAdvantages extends Fragment {
                         "zusätzlicher Zauber oder Komplexer Formen verursacht den " +
                         "üblichen Würfelpoolmodifikator von -2 pro Zauber bzw. Komplexer " +
                         "Form. Dieser Vorteil steht nur Magieanwendern, die " +
-                        "Zauber wirken können, und Technomancern zur Verfügung.",4,true,6));
+                        "Zauber wirken können, und Technomancern zur Verfügung.",4,true,true,6));
         advantages.add(new Quality("Fotografisches Gedächtnis",
                         "Ein Charakter mit einem Fotogra schen Gedächtnis kann " +
                         "sich an Zahlen, Daten, Fakten und alles, was er gesehen oder " +
                         "gehört hat, erinnern. Er erhält für alle Erinnerungsproben einen " +
-                        "Würfelpoolmodi kator von +2.",6));
+                        "Würfelpoolmodi kator von +2.",6,true));
         advantages.add(new Quality("Freundliche Geister",
                         "Dieser Vorteil ist nur für Magieanwender erhältlich. Freundliche " +
                         "Geister führt dazu, dass ein Charakter auf eine Art von " +
@@ -204,7 +204,7 @@ public class QualitiesAdvantages extends Fragment {
                         "zusätzlichen Dienst von jedem Geist dieser Art sowie einen " +
                         "Würfelpoolmodi kator von +1 auf Bindenproben. " +
                         "Magieanwender können diesen Vorteil auch für eine Geisterart " +
-                        "besitzen, die nicht Teil ihrer magischen Tradition ist.",7 ));
+                        "besitzen, die nicht Teil ihrer magischen Tradition ist.",7,true ));
         advantages.add(new Quality("Glück",
                         "Würfel, Münzen und Karten fallen auffallend oft so, wie der " +
                         "Charakter es möchte, und der Umgebung bleibt staunend vor " +
@@ -217,7 +217,7 @@ public class QualitiesAdvantages extends Fragment {
                         "darf nur einmal und nur mit Zustimmung des Spielleiters " +
                         "gewählt werden. Er kann nicht mit dem Vorteil Außergewöhnliches " +
                         "Attribut kombiniert werden. Durch diesen Vorteil wird " +
-                        "der Schlechte Ruf (S. 371) eines Charakters um 1 gesenkt.",12));
+                        "der Schlechte Ruf (S. 371) eines Charakters um 1 gesenkt.",12,true));
         advantages.add(new Quality("Gummigelenke",
                         "Ein Charakter mit Gummigelenken ist außergewöhnlich gelenkig " +
                         "und kann seinen Körper in ganz extreme Haltungen " +
@@ -225,7 +225,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Entfesselnproben. Außerdem kann er sich nach Maßgabe des " +
                         "Spielleiters durch enge Öffnungen oder in kleine Räume zwängen, " +
                         "die weniger Gelenkigen unzugänglich sind. Und er kann " +
-                        "Leute in Bars oder auf Partys damit prächtig beeindrucken.",5));
+                        "Leute in Bars oder auf Partys damit prächtig beeindrucken.",5,true));
         advantages.add(new Quality("Hohe Schmerztoleranz",
                         "Hohe Schmerztoleranz lässt einen Charakter weiter austeilen, " +
                         "auch wenn er selbst schon viel eingesteckt hat. Ein Charakter " +
@@ -237,7 +237,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Kästchen Schaden. Erst beim fünften Kästchen käme der Verletzungsmodi-" +
                         "kator von -1 zum Tragen. Dieser Vorteil darf nicht " +
                         "gemeinsam mit der Adeptenkraft Schmerzresistenz, einem " +
-                        "Schmerzeditor oder Schadenskompensatoren genutzt werden.",7,true,3));
+                        "Schmerzeditor oder Schadenskompensatoren genutzt werden.",7,true,true,3));
         advantages.add(new Quality("Katzenhaft",
                         "Ein Charakter mit diesem Vorteil besitzt eine unheimliche " +
                         "Eleganz, einen sanften Schritt und die beinahe übernatürliche " +
@@ -245,7 +245,7 @@ public class QualitiesAdvantages extends Fragment {
                         "behaupten sogar, immer auf den Füßen zu landen, lassen " +
                         "aber selten zu, dass andere Leute sie fallen lassen, um das " +
                         "auszuprobieren. Dieser Vorteil verleiht einen Würfelpoolmodi- " +
-                        "kator von +2 auf Schleichenproben.",7));
+                        "kator von +2 auf Schleichenproben.",7,true));
         advantages.add(new Quality("Magieresistenz",
                         "Dies ist die wundersame Fähigkeit, einen Feuerball mit " +
                         "dem Kopf abzuwehren. Für je 6 Karma, die für Magieresistenz " +
@@ -257,7 +257,7 @@ public class QualitiesAdvantages extends Fragment {
                         "die das zwingend vorschreiben. Solche Zauber schlagen " +
                         "automatisch fehl. " +
                         "Charaktere, die ein Magieattribut besitzen, können diesen " +
-                        "Vorteil nicht erwerben.",6,true,4));
+                        "Vorteil nicht erwerben.",6,true,true,4));
         advantages.add(new Quality("Menschliches Aussehen",
                         "Ein Metamensch mit diesem Vorteil kann in den meisten " +
                         "Fällen als Mensch durchgehen. Menschliche NSCs reagieren " +
@@ -267,20 +267,20 @@ public class QualitiesAdvantages extends Fragment {
                         "haben, können aber unfreundlich auf den Charakter reagieren, " +
                         "wenn sie ihn für einen Menschen halten oder es fragwürdig " +
                         "finden, dass er versucht, wie ein Mensch auszusehen. " +
-                        "Nur Elfen, Zwerge und Orks dürfen diesen Vorteil erwerben.",6));
+                        "Nur Elfen, Zwerge und Orks dürfen diesen Vorteil erwerben.",6,true));
         advantages.add(new Quality("Mut",
                         "Wenn man einem Insektengeist mit gifttropfenden Mandibeln " +
                         "gegenübersteht, braucht es Mut, um nicht schreiend davonzulaufen. " +
                         "Mut verleiht dem Charakter einen Würfelpoolmodi" +
                         "kator von +2 auf Proben zum Widerstand gegen Angst " +
                         "und Einschüchterung, einschließlich magisch – also durch " +
-                        "Zauber oder Critterkräfte – hervorgerufener Furcht.",10));
+                        "Zauber oder Critterkräfte – hervorgerufener Furcht.",10,true));
         advantages.add(new Quality("Natürliche Härte",
                         "Dieser Vorteil macht die neuralen Verbindungen eines Charakters " +
                         "unempfindlicher gegenüber Feedback. Dadurch erhält " +
                         "er 1 Punkt natürlichen Biofeedback-Filter, der kumulativ mit " +
                         "dem Programm Biofeedback-Filter oder der Firewall eines " +
-                        "Technomancers ist.",10));
+                        "Technomancers ist.",10,true));
         advantages.add(new Quality("Natürliche Immunität",
                         "Die Fähigkeit, den Schierlingsbecher ohne Folgen zu leeren, " +
                         "sollte man nie unterschätzen. Ein Charakter mit Natürlicher " +
@@ -304,7 +304,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Ein Charakter, der gegenüber einer Krankheit eine Natürliche " +
                         "Immunität besitzt, kann dennoch Krankheitsträger sein " +
                         "und andere in zieren, auch wenn er selbst keine Symptome " +
-                        "zeigt.",4,true,10));
+                        "zeigt.",4,true,true,10));
         advantages.add(new Quality("Pathogen- und Toxinresistenz",
                         "Ein Charakter mit Pathogen- und Toxinresistenz kann mit " +
                         "Krankheiten und Drogen besser fertig werden als andere und " +
@@ -312,7 +312,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Widerstandsproben. Diesen Vorteil gibt es in zwei Stufen: " +
                         "Für 4 Karma ist der Charakter entweder gegen Pathogene " +
                         "oder Toxine resistent, nicht gegenüber beiden. Für 8 Karma " +
-                        "erhält er den Bonus von +1 in beiden Fällen.", 4,true,8));
+                        "erhält er den Bonus von +1 in beiden Fällen.", 4,true,true,8));
         advantages.add(new Quality("Programmiergenie",
                         "Einsen und Nullen sind für das Programmiergenie quasi " +
                         "die Muttersprache. Der Charakter beherrscht eine bestimmte " +
@@ -320,7 +320,7 @@ public class QualitiesAdvantages extends Fragment {
                         "besonders gut und erhält, wenn er sie durchführt, einen " +
                         "Würfelpoolmodi kator von +2. Dieser Vorteil kann nur für " +
                         "Matrixhandlungen (S. 234) gewählt werden, die eine Probe " +
-                        "erfordern.",10));
+                        "erfordern.",10,true));
         advantages.add(new Quality("Rennpilot",
                         "Der Rennpilot ist dafür zuständig, im richtigen Moment das " +
                         "Pedal durchzutreten. Er ist der geborene Fahrer, Flieger oder " +
@@ -339,11 +339,11 @@ public class QualitiesAdvantages extends Fragment {
                         "überfordert das Fahrzeug oder die Drohne, was die Gefahr erheblichen " +
                         "Schadens mit sich bringt. Für jede Minute, die der " +
                         "Bonus zusätzlich genutzt wird, erleidet das Fahrzeug automatisch " +
-                        "(ohne Widerstandsprobe) 1 Kästchen Schaden.",11));
+                        "(ohne Widerstandsprobe) 1 Kästchen Schaden.",11,true));
         advantages.add(new Quality("Schnellheilung",
                         "Der Charakter erhält für alle Proben bei Genesung und Heilung, " +
                         "die von ihm oder für ihn abgelegt werden (einschließlich " +
-                        "magischer Heilung), einen Würfelpoolmodi kator von +2.",3));
+                        "magischer Heilung), einen Würfelpoolmodi kator von +2.",3,true));
         advantages.add(new Quality("Schutzgeist",
                         "Jeder braucht im Leben etwas Hilfe, selbst wenn sie von " +
                         "einer etwas durchscheinenden, substanzlosen Seite kommt. " +
@@ -364,7 +364,7 @@ public class QualitiesAdvantages extends Fragment {
                         "eher „Totems“. Die Namen mögen unterschiedlich sein, " +
                         "aber die Auswirkungen sind dieselben. " +
                         "Dieser Vorteil darf nur von Charakteren mit einem Magieattribut " +
-                        "gewählt werden.",5));
+                        "gewählt werden.",5,true));
         advantages.add(new Quality("Soziales Chamäleon",
                         "Mit diesem Vorteil fällt es einem Charakter leicht, sich in " +
                         "neue Situationen, Gruppen und Arbeitsverhältnisse einzufügen. " +
@@ -376,7 +376,7 @@ public class QualitiesAdvantages extends Fragment {
                         "Soziale Proben wie Überreden oder Verhandlung. Bei " +
                         "folgenden Zusammenkünften zählt dieser Bonus nicht. Durch " +
                         "diesen Vorteil wird der Schlechte Ruf (S. 371) eines Charakters " +
-                        "um 1 gesenkt.",11));
+                        "um 1 gesenkt.",11,true));
         advantages.add(new Quality("Talentiert",
                         "Durch diesen Vorteil kann man besser werden als die Besten " +
                         "der Welt. Das normale Maximum für Fertigkeiten beträgt " +
@@ -385,7 +385,7 @@ public class QualitiesAdvantages extends Fragment {
                         "überirdisch gut ist. Mit diesem Vorteil darf ein Charakter eine " +
                         "Fertigkeit bei der Erschaffung auf Stufe 7 lernen und diese " +
                         "später bis auf Stufe 13 erhöhen. Diesen Vorteil darf ein Charakter " +
-                        "nur einmal (nur für eine einzige Fertigkeit) wählen.",14));
+                        "nur einmal (nur für eine einzige Fertigkeit) wählen.",14,true));
         advantages.add(new Quality("Technisches Improvisationstalent",
                         "Technisches Improvisationstalent verleiht dem Charakter " +
                         "ein intuitives Verständnis für die inneren Abläufe und Funktionsweisen " +
@@ -418,7 +418,7 @@ public class QualitiesAdvantages extends Fragment {
                         "zur einmaligen Benutzung basteln. Der Spielleiter entscheidet, " +
                         "ob dafür passende Teile verfügbar sind. " +
                         "• Ein improvisiertes Mittel finden, um ein Sicherheitssystem " +
-                        "wie Lichtschranken oder Druckplatten zu umgehen.",10));
+                        "wie Lichtschranken oder Druckplatten zu umgehen.",10,true));
         advantages.add(new Quality("Überlebenswille",
                         "Für jede Stufe dieses Vorteils erhält der Charakter 1 Kästchen " +
                         "mehr für Überzähligen Schaden (siehe S. 172). Diese zusätzlichen " +
@@ -426,7 +426,7 @@ public class QualitiesAdvantages extends Fragment {
                         "bevor er stirbt. Sie ändern nichts an seinem Zustandsmonitor; " +
                         "der Charakter wird also zur selben Zeit kampfunfähig " +
                         "wie ohne den Vorteil und erhält auch ganz normale Verletzungsmodi" +
-                        "fikatoren.", 3,true,3));
+                        "fikatoren.", 3,true,true,3));
         advantages.add(new Quality("Unauffälligkeit",
                         "Der Charakter taucht in jeder Menge unter, wird selten " +
                         "bemerkt und leicht vergessen. Er ist in jeder Hinsicht eine " +
@@ -455,7 +455,7 @@ public class QualitiesAdvantages extends Fragment {
                         "– egal, wie durchschnittlich seine Hörner sein mögen. Der " +
                         "Charakter erhält die Effekte des Vorteils erst wieder, wenn die " +
                         "Situation sich ändert. Durch diesen Vorteil wird der Schlechte " +
-                        "Ruf (S. 371) eines Charakters um 1 gesenkt.",8));
+                        "Ruf (S. 371) eines Charakters um 1 gesenkt.",8,true));
         advantages.add(new Quality("Vertrautes Terrain",
                         "Wenn ein Charakter sein Viertel besser kennt als irgendjemand " +
                         "sonst – alle Abkürzungen, Verstecke und vertrauenswürdigen " +
@@ -522,18 +522,18 @@ public class QualitiesAdvantages extends Fragment {
                         "Dieser Vorteil kann mehrfach erworben werden, wobei immer " +
                         "eine der obigen Kategorien ausgewählt wird. Die Ausdehnung " +
                         "und genaue Lage des vertrauten Terrains sollten Sie " +
-                        "mit dem Spielleiter absprechen.",10));
+                        "mit dem Spielleiter absprechen.",10,true));
         advantages.add(new Quality("Zähigkeit",
                         "Charaktere mit dem Vorteil Zähigkeit halten mehr Schaden " +
                         "aus als andere. Sie erhalten einen Würfelpoolmodifikator von " +
-                        "+1 auf ihre Konstitution bei Schadenswiderstandsproben.",9));
+                        "+1 auf ihre Konstitution bei Schadenswiderstandsproben.",9,true));
         advantages.add(new Quality("Zweisprachig",
                         "Ein Charakter mit diesem Vorteil liest, schreibt und spricht " +
                         "eine zweite Sprache fließend. Er kann eine zweite Sprache " +
                         "als Muttersprache wählen (s. Sprachfertigkeiten, S. 151). Dieser " +
                         "Vorteil kann nur während der Charaktererschaffung gewählt " +
                         "werden. Dadurch erhält der Charakter in Schritt vier: Fertigkeiten " +
-                        "kaufen (S. 72) eine zweite Sprache gratis.",5));
+                        "kaufen (S. 72) eine zweite Sprache gratis.",5,true));
 
     }
 }

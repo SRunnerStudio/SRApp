@@ -116,7 +116,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "auch doppelt so lange erhalten, wie sie eigentlich sollte. Wenn " +
                         "man versucht, sie zu askennen, sinkt der Schwellenwert für die " +
                         "Askennenprobe außerdem um 1. Nur Charaktere, die ein Magieattribut " +
-                        "besitzen, können diesen Nachteil haben.", 10));
+                        "besitzen, können diesen Nachteil haben.", 10,false));
         disadvantages.add(new Quality("Auffälliger stil",
                 "Ein Charakter mit diesem Nachteil besitzt mindestens ein " +
                         "auffälliges Merkmal, verhält sich auffällig oder fällt durch seine " +
@@ -138,7 +138,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "1 (bis zu einem Minimum von 1). " +
                         "Dieser Nachteil ist physischer Natur und gilt nicht für astrale" +
                         "Suchen. Er kann nur einmal gewählt werden. Der Nachteil ist " +
-                        "nicht mit Unauffälligkeit kompatibel.",5));
+                        "nicht mit Unauffälligkeit kompatibel.",5,false));
         disadvantages.add(new Quality("Berüchtigt",
                 "Ein Berüchtigter Charakter hat einen hartnäckigen, dunklen " +
                         "Fleck auf seinem Ruf. Er könnte sich früher bei Knight Errant " +
@@ -151,7 +151,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "dass jedermann den Charakter so sieht. Der Charakter " +
                         "beginnt das Spiel mit 3 Punkten Schlechtem Ruf (S. 371), die er " +
                         "nur loswerden kann, wenn er die Wurzel seines Schlechten Rufs " +
-                        "beseitigt. Erst dann kann er den Nachteil mit Karma entfernen.",7));
+                        "beseitigt. Erst dann kann er den Nachteil mit Karma entfernen.",7,false));
         disadvantages.add(new Quality("Ehrenkodex",
                 "Der Charakter folgt einem Ehrenkodex, der ihm verbietet, " +
                         "Angehörige einer bestimmten Gruppe zu töten. Er wählt eine " +
@@ -227,7 +227,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "wird, der sich nicht verteidigen kann (wie durch Querschläger " +
                         "oder Scharfschützen). Der Charakter verliert für " +
                         "jede unbewaffnete oder nicht verteidigungsfähige Person, " +
-                        "die er tötet oder deren Töten er zulässt, 1 Punkt Karma.",15));
+                        "die er tötet oder deren Töten er zulässt, 1 Punkt Karma.",15,false));
         disadvantages.add(new Quality("Elfenposer",
                 "Ein Elfenposer ist ein Mensch, der gerne ein Elf wäre. Er " +
                         "sucht die Nähe von Elfen, spricht wie ein Elf und verändert " +
@@ -246,7 +246,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "werden. " +
                         "Nur Menschen dürfen den Nachteil Elfenposer wählen. " +
                         "Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "eines Charakters um 1.",6));
+                        "eines Charakters um 1.",6,false));
         disadvantages.add(new Quality("Feindliche geister",
                 "Ein Charakter mit diesem Nachteil ist einer bestimmten Art " +
                         "von Geistern (s. Geister, S. 300) wirklich zuwider. Er hat vielleicht " +
@@ -267,7 +267,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Dieser Nachteil darf nur von Magieanwendern gewählt " +
                         "werden. Magieanwender können diesen Nachteil auch für " +
                         "eine Geisterart besitzen, die nicht Teil ihrer magischen Tradition " +
-                        "ist. Durch diesen Nachteil erhöht",7));
+                        "ist. Durch diesen Nachteil erhöht",7,false));
         disadvantages.add(new Quality("Gezeichnet",
                 "Ein Gezeichneter Charakter hat neurologische Probleme, " +
                         "die von Schaden durch Schwarzes IC, Psychotropes IC oder " +
@@ -301,7 +301,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Um den Nachteil für Schwarzes oder Psychotropes IC zu " +
                         "bekommen, muss der Charakter ein Decker oder Technomancer " +
                         "sein. Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "(S. 371) eines Charakters um 1.",10));
+                        "(S. 371) eines Charakters um 1.",10,false));
         disadvantages.add(new Quality("Gremlins",
                         "Charaktere mit diesem Nachteil haben Schwierigkeiten mit " +
                         "Technologie. Auf unerklärliche Weise funktionieren Geräte " +
@@ -335,7 +335,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "wieder von den Gremlins betroffen wären. " +
                         "Dieser Nachteil betrifft nur externe Ausrüstung, keine Bodytech " +
                         "wie Cyber- oder Bioware. Durch diesen Nachteil erhöht " +
-                        "sich der Schlechte Ruf (S. 371) eines Charakters um 1.",4));
+                        "sich der Schlechte Ruf (S. 371) eines Charakters um 1.",4,false));
         disadvantages.add(new Quality("Händezittern",
                         "Ein Charakter mit Händezittern hat einen leichten Tremor, " +
                         "der die Fingerfertigkeit und Geschicklichkeit seiner Hände beeinträchtigt. " +
@@ -351,7 +351,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Kampf) eine Probe auf Geschicklichkeit + Konstitution (4) ablegen. " +
                         "Wenn er die Probe schafft, leidet er (vorerst) nicht unter " +
                         "den Symptomen. Bei einem Scheitern leidet der Charakter bis " +
-                        "zum Ende des Runs unter dem Händezittern und dem Malus.",7));
+                        "zum Ende des Runs unter dem Händezittern und dem Malus.",7,false));
         disadvantages.add(new Quality("Immunabstossung",
                         "Ein Charakter mit diesem Nachteil hat wegen einer Immunabstoßung " +
                         "Probleme mit Implantaten. Der Essenzverlust " +
@@ -368,7 +368,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "dieser Probe führt dazu, dass der Entzug oder Schwund " +
                         "für die folgende Widerstandsprobe um +2 steigt. Die Energie, " +
                         "die durch den Körper rast, verursacht bei ihm einfach mehr " +
-                        "Schaden.",12));
+                        "Schaden.",12,false));
         disadvantages.add(new Quality("Inkompetenz",
                         "Ein Charakter mit Inkompetenz ist in einer Fertigkeitsgruppe " +
                         "völlig unfähig und unwissend oder – was vielleicht noch " +
@@ -402,7 +402,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "erwerben und so weiter. " +
                         "Man kann diesen Nachteil nur einmal erwerben. Durch diesen " +
                         "Nachteil erhöht sich der Schlechte Ruf (S. 371) eines Charakters " +
-                        "um 1.",5));
+                        "um 1.",5,false));
         disadvantages.add(new Quality("Kampflähmung",
                         "Ein Charakter mit Kampflähmung ist in Kampfsituationen " +
                         "(auch im Astral- und Matrixkampf) wie gelähmt. In der ersten " +
@@ -413,13 +413,13 @@ public class QualitiesDisadvantages extends Fragment {
                         "fikator von -3. Wenn er in einer Kampfsituation eine " +
                         "Selbstbeherrschungsprobe (S. 153) ablegen muss, steigt der " +
                         "Schwellenwert dafür um 1. Durch diesen Nachteil erhöht sich " +
-                        "der Schlechte Ruf (S. 371) eines Charakters um 1.",12));
+                        "der Schlechte Ruf (S. 371) eines Charakters um 1.",12,false));
         disadvantages.add(new Quality("Niedrige Schmerztoleranz",
                         "Ein Charakter mit Niedriger Schmerztoleranz ist besonders " +
                         "schmerzempfindlich. Er erhält für je 2 volle Kästchen Schaden " +
                         "(statt der üblichen 3) einen Verletzungsmodifikator von " +
                         "-1. Dies gilt sowohl für Körperlichen als auch für Geistigen " +
-                        "Schaden.",9));
+                        "Schaden.",9,false));
         disadvantages.add(new Quality("Orkposer",
                         "Ein Orkposer ist ein Elf oder Mensch, der von Goblin Rock " +
                         "oder hysterischen Orxploitation-Trends beeinflusst ist und " +
@@ -437,7 +437,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Vorurteile habe, als „Rasseverräter“ gelten. " +
                         "Nur Menschen und Elfen können Orkposer werden. Durch " +
                         "diesen Nachteil erhöht sich der Schlechte Ruf (S. 371) eines " +
-                        "Charakters um 1.",6));
+                        "Charakters um 1.",6,false));
         disadvantages.add(new Quality("Programmierniete",
                         "Ein Charakter mit diesem Nachteil hat immer Schwierigkeiten " +
                         "mit einer bestimmten Matrixhandlung. Jedes Mal, wenn " +
@@ -446,7 +446,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Matrixhandlungen gewählt werden, die eine Probe verlangen " +
                         "(siehe S. 234). Ein Charakter kann Programmierniete nicht " +
                         "für Hacking-Handlungen wählen, die er wahrscheinlich nie " +
-                        "durchführen wird.",10));
+                        "durchführen wird.",10,false));
         disadvantages.add(new Quality("Schlaflosigkeit",
                         "Ein Charakter mit diesem Nachteil hat Einschlafschwierigkeiten " +
                         "und fühlt sich selten richtig ausgeruht. Meist ist das nur " +
@@ -470,7 +470,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Schaden statt findet. Der Charakter muss es dann in einer späteren " +
                         "Ruhephase erneut versuchen. Außerdem müssen auch " +
                         "weitere 24 Stunden vergehen, bevor er wieder Edge zurückerhalten " +
-                        "kann.",10,true,15));
+                        "kann.",10,false,true,15));
         disadvantages.add(new Quality("Schwaches Immunsystem",
                         "Ein Charakter mit Schwachem Immunsystem widersteht Infektionen " +
                         "und Krankheiten schlechter. Erhöhen Sie die Kraft " +
@@ -482,13 +482,13 @@ public class QualitiesDisadvantages extends Fragment {
                         "also kann man mit Recht annehmen, dass Charaktere mit starken " +
                         "Körpermodifikationen diesen Nachteil eher haben. Durch " +
                         "diesen Nachteil erhöht sich der Schlechte Ruf (S. 371) eines " +
-                        "Charakters um 1.",10));
+                        "Charakters um 1.",10,false));
         disadvantages.add(new Quality("Simsinn-Desorientierung",
                         "Charaktere, die unter diesem Nachteil leiden, fühlen sich " +
                         "beim Umgang mit AR, VR und SimSinn (auch Smartlinks, Simrigs " +
                         "und Bildverbindungen) desorientiert. Sie erhalten einen " +
                         "Würfelpoolmodifikator von -2 auf alle Proben im Zusammenhang " +
-                        "mit AR, VR oder SimSinn.",5));
+                        "mit AR, VR oder SimSinn.",5,false));
         disadvantages.add(new Quality("Sin-Mensch",
                         "Es gibt vier Arten von SINs, die diesen Nachteil hervorrufen " +
                         "können: Staatliche SIN, Kriminelle SIN (Staatlich oder von " +
@@ -644,7 +644,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "wird in der Globalen SIN-Registratur als legale SIN aufscheinen, " +
                         "aber keine weiteren Informationen enthalten. Konzernbürger " +
                         "bezahlen etwa 10 % Steuern vom Bruttoeinkommen " +
-                        "an ihren Konzern.",5,true,25));
+                        "an ihren Konzern.",5,false,true,25));
         disadvantages.add(new Quality("Sozialstress",
                          "Der Sozialstress, ob er durch ein Trauma ausgelöst wurde " +
                          "oder angeboren ist, behindert den Charakter beim Umgang " +
@@ -659,7 +659,7 @@ public class QualitiesDisadvantages extends Fragment {
                          "gesenkt. Der Spielleiter sollte von solchen Charakteren mehr " +
                          "Soziale Proben verlangen, um ihre Reaktion auf die Umwelt " +
                          "zu bestimmen, besonders, wenn eine Situation entsteht, die " +
-                         "mit dem Grund des Nachteils zu tun hat.",8));
+                         "mit dem Grund des Nachteils zu tun hat.",8,false));
         disadvantages.add(new Quality("Ungebildet",
                         "Ein Ungebildeter Charakter ist nicht dumm – er hatte nur " +
                         "niemals Gelegenheit zum Lernen. Das kann daran liegen, dass " +
@@ -679,7 +679,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "und es ist gut möglich, dass der Charakter niemals Fertigkeitsgruppen " +
                         "erlernen kann, die zu diesen Fertigkeitskategorien " +
                         "gehören. Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "(S. 371) eines Charakters um 1.",8));
+                        "(S. 371) eines Charakters um 1.",8,false));
         disadvantages.add(new Quality("Ungehobelt",
                         "Ein Charakter mit diesem Nachteil hat es schwer bei der Interaktion " +
                         "mit anderen Leuten. Er reagiert impulsiv, tendiert zu " +
@@ -699,7 +699,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Der Spielleiter kann von einem solchen Charakter auch Proben " +
                         "in sozialen Situationen verlangen, die normalen Charakteren " +
                         "keine Schwierigkeiten machen. Durch diesen Nachteil " +
-                        "erhöht sich der Schlechte Ruf (S. 371) eines Charakters um 1.",14));
+                        "erhöht sich der Schlechte Ruf (S. 371) eines Charakters um 1.",14,false));
         disadvantages.add(new Quality("Unglück",
                         "Dieser Charakter ist wahrhaft verflucht. Das Schicksal wendet " +
                         "sich oft gegen ihn. Wenn er Edge einsetzt, würfeln Sie " +
@@ -717,7 +717,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "übel mitgespielt hat, lässt es ihn bis zur nächsten Spielsitzung " +
                         "in Ruhe, und er muss keinen W6 mehr würfeln, wenn er Edge " +
                         "einsetzt. Durch diesen Nachteil erhöht sich der Schlechte Ruf " +
-                        "(S. 371) eines Charakters um 1.",12));
+                        "(S. 371) eines Charakters um 1.",12,false));
         disadvantages.add(new Quality("Verpflichtungen",
                         "Ein Charakter mit diesem Nachteil ist für ihm Nahestehende " +
                         "Finanziell oder emotional verantwortlich. Solche Personen " +
@@ -758,7 +758,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "könnten sich durch das Zusammenleben im Familienverband, " +
                         "durch pflegebedürftige Angehörige oder ein alleiniges Sorgerecht " +
                         "für Kinder ergeben. Die Lebensstilkosten des Charakters " +
-                        "steigen um 30 %.",6,true,9)); //BONUS: 3, 6 ODER 9 KARMA !!!!!
+                        "steigen um 30 %.",6,false,true,9)); //BONUS: 3, 6 ODER 9 KARMA !!!!!
         disadvantages.add(new Quality("Verunsichert",
                         "Dieser Nachteil bedeutet, dass der Charakter aus irgendeinem " +
                         "Grund das Vertrauen in sich selbst und eine seiner Fähigkeiten " +
@@ -774,7 +774,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "haben. Nur Fertigkeiten mit Stufe 4 oder höher dürfen " +
                         "einen Charakter Verunsichert machen. Außerdem darf bei " +
                         "Proben mit der betroffenen Fertigkeit kein Edge eingesetzt " +
-                        "werden.",10));
+                        "werden.",10,false));
         disadvantages.add(new Quality("Vorurteile",
                         "Dieser Nachteil führt dazu, dass der Charakter bestimmten " +
                         "Leuten gegenüber Vorurteile hat. Beispiel dafür sind Metas, " +
@@ -798,7 +798,7 @@ public class QualitiesDisadvantages extends Fragment {
                         "Wenn also ein Charakter radikale Vorurteile gegenüber " +
                         "Erwachten hat und versucht, mit einem solchen zu verhandeln, " +
                         "erhält er -6 auf seine Verhandlungsprobe, während das " +
-                        "Ziel einen Würfelpoolmodifikator von +6 erhält.",3,true,10));
+                        "Ziel einen Würfelpoolmodifikator von +6 erhält.",3,false,true,10));
 
     }
 }
