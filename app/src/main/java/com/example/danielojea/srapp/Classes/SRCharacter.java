@@ -38,6 +38,7 @@ public class SRCharacter implements Serializable {
     private int skillPoints;
     private int skillPackagePoints;
     private int skillKnowledgePoints;
+    private int connectionPoints;
     private int karmaAdvantages;
     private int karmaDisdvantages;
 
@@ -203,19 +204,15 @@ public class SRCharacter implements Serializable {
     public void setAdvantages(ArrayList<Quality> advantages) {
         this.advantages = advantages;
     }
-
     public void addAdvantage(Quality advantage){
          advantages.add(advantage);
     }
-
     public void addDisdvantage(Quality disadvantage){
         disadvantages.add(disadvantage);
     }
-
     public void removeAdvantage(Quality advantage){
          advantages.remove(advantage);
     }
-
     public void removeDisdvantage(Quality disadvantage){
         disadvantages.remove(disadvantage);
     }
@@ -350,6 +347,18 @@ public class SRCharacter implements Serializable {
 
     public int calculateSkillKnowledgePoints(){
         return ((getAttributes().getLOG().getValue() + getAttributes().getINT().getValue()) * 2);
+    }
+
+    public int getConnectionPoints() {
+        return connectionPoints;
+    }
+
+    public void setConnectionPoints(int connectionPoints) {
+        this.connectionPoints = connectionPoints;
+    }
+
+    public int calculateConnectionPoints(){
+        return (getAttributes().getCHA().getValue() * 3);
     }
 }
 

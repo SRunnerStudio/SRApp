@@ -18,6 +18,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/priorityitem_detailA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +67,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,6 +80,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/priorityitem_detailB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,6 +113,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,6 +125,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/priorityitem_detailC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,6 +158,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/d"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,6 +170,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/priorityitem_detailD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -195,6 +203,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/e"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -206,6 +215,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <TextView
+            style="@style/UsedStyle"
             android:id="@+id/priorityitem_detailE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

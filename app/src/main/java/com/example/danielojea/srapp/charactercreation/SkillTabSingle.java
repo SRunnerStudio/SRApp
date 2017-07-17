@@ -69,7 +69,6 @@ public class SkillTabSingle extends Fragment {
                     intent.putExtra("Character", character);
                     intent.putExtra("Skills", updatedSkills);
                     startActivity(intent);
-                    SkillPicker.h.sendEmptyMessage(0);
                     return false;
                 }
                 return false;
