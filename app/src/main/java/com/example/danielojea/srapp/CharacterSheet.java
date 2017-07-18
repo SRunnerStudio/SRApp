@@ -64,8 +64,8 @@ public class CharacterSheet extends AppCompatActivity {
 
     public void setCharacterSheetData(SRCharacter character){
         getProfileImageforMetatyp();
-        //characterPortrait.setImageBitmap(character.getProfileImage().bitmap);
-
+        setTracker("stun",character.getAttributes().getStunDamageTrack());
+        setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
@@ -200,9 +200,9 @@ public class CharacterSheet extends AppCompatActivity {
         attribute.add(new String[]{"CHA ",""+character.getAttributes().getCHA().getValue(),"Erinnerungsvermögen ",""+character.getAttributes().getMemory()});
         attribute.add(new String[]{"EDGE ",""+character.getAttributes().getEdge().getValue(),"Heben/tragen ",""+character.getAttributes().getCarry()});
         attribute.add(new String[]{" ","","Bewegung ",""+character.getAttributes().getMovement()});
-        attribute.add(new String[]{"körperliches Limit",""+character.getAttributes().getPhysicalLimit()});
-        attribute.add(new String[]{"Geistiges Limit",""+character.getAttributes().getMentalLimit()});
-        attribute.add(new String[]{"Soziales Limit",""+character.getAttributes().getSocialLimit()});
+        attribute.add(new String[]{"körperliches Limit          "+character.getAttributes().getPhysicalLimit(),""+character.getAttributes().getPhysicalLimit()});
+        attribute.add(new String[]{"Geistiges Limit          "+character.getAttributes().getMentalLimit(),""+character.getAttributes().getMentalLimit()});
+        attribute.add(new String[]{"Soziales Limit          "+character.getAttributes().getSocialLimit(),""+character.getAttributes().getSocialLimit()});
 
 
         List<String[]> skills = new ArrayList<String[]>();
@@ -211,21 +211,21 @@ public class CharacterSheet extends AppCompatActivity {
             {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
+                    skills.add(new String []{skill.getName()+"\u0009\u0009"+skill.getValue()+"\u0009\u0009"+skill.getValue()+skill.getConnectedAttribute(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
                 }
                 else {
 
-                    skills.add(new String[]{skill.getName(), "" + skill.getValue(),skill.getConnectedPackage()});
+                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue(),skill.getConnectedPackage()});
                 }
             }
             else {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName()});
+                    skills.add(new String []{skill.getName() +"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName()});
                 }
                 else {
 
-                    skills.add(new String[]{skill.getName(), "" + skill.getValue()});
+                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue()});
                 }
             }
 
@@ -260,21 +260,25 @@ public class CharacterSheet extends AppCompatActivity {
     }
 
     public void markTracker(View v){
-        String idName;
         //v.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerColor));
         int stringLength = getResources().getResourceName(v.getId()).length();
         String damageType = getResources().getResourceName(v.getId()).substring(stringLength -12,stringLength-8);
         int number = Integer.parseInt(getResources().getResourceName(v.getId()).substring(stringLength -2));
+
+        setTracker(damageType,number);
+    }
+
+    public void setTracker(String damageType,int number) {
         int maxDamage;
+        String idName;
 
 
-        if (damageType.equals("stun")){
+        if (damageType.equals("stun")) {
             maxDamage = character.getAttributes().getStunDamageTrackMax();
+        } else {
+            maxDamage = character.getAttributes().getPhysicalDamageTrackMax();
         }
-        else {
-            maxDamage =character.getAttributes().getPhysicalDamageTrackMax();
-        }
-        for(int i=maxDamage;i>0;i--) {
+        for (int i = maxDamage; i > 0; i--) {
             if (("" + i).length() == 1) {
                 idName = damageType + "Damage0" + i;
             } else {
@@ -282,38 +286,34 @@ public class CharacterSheet extends AppCompatActivity {
             }
             int nextButtonId = getResources().getIdentifier(idName, "id", getPackageName());
             Button nextButton = (Button) findViewById(nextButtonId);
-            if(i> number) {
+            if (i > number) {
                 nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTracker));
-            }
-            else{
-                if(i==number){
-                    if (damageType.equals("stun")){
-                        if(number == character.getAttributes().getStunDamageTrack()){
+            } else {
+                if (i == number) {
+                    if (damageType.equals("stun")) {
+                        if (number == character.getAttributes().getStunDamageTrack()) {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTracker));
-                            character.getAttributes().setStunDamageTrack(number-1);
-                        }
-                        else{
+                            character.getAttributes().setStunDamageTrack(number - 1);
+                        } else {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerSelected));
                             character.getAttributes().setStunDamageTrack(number);
                         }
-                    }
-                    else {
-                        if(number == character.getAttributes().getPhysicalDamageTrack()){
+                    } else {
+                        if (number == character.getAttributes().getPhysicalDamageTrack()) {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTracker));
-                            character.getAttributes().setPhysicalDamageTrack(number-1);
-                        }
-                        else{
+                            character.getAttributes().setPhysicalDamageTrack(number - 1);
+                        } else {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerSelected));
                             character.getAttributes().setPhysicalDamageTrack(number);
                         }
                     }
-                }
-                else {
+                } else {
                     nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerSelected));
                 }
             }
         }
     }
+
     public void initMaxTrackDamage(){
         int maxStunDamage = character.getAttributes().getStunDamageTrackMax();
         int maxPhysDamage = character.getAttributes().getPhysicalDamageTrackMax();

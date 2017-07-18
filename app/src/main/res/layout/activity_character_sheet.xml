@@ -534,7 +534,7 @@
 
         <ScrollView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="1500dp"
             android:layout_marginBottom="0dp"
             android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -597,5 +597,15 @@
         app:layout_constraintRight_toRightOf="@+id/imageViewChar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/skull_graffiti" />
+
+    <TextView
+        android:id="@+id/textViewStreetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

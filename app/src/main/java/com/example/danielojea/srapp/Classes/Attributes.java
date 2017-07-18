@@ -60,6 +60,10 @@ public class Attributes implements Serializable {
         StunDamageTrack=0;
     }
 
+    public void getValue(AttributeValue attributeValue){
+
+    }
+
     public int getPhysicalDamageTrackMax() {
         return physicalDamageTrackMax;
     }
