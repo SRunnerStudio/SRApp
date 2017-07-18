@@ -85,7 +85,7 @@ public class CharacterSelection extends AppCompatActivity {
                                 nudecounter++;
                             }
                         });
-                killCharDialog.setNegativeButton("GIBMIRMEIN CHARAKTER WIEDER!",
+                killCharDialog.setNegativeButton("GIB MIR MEIN CHARAKTER WIEDER!",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 //dismiss the dialog
