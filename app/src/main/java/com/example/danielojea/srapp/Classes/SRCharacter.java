@@ -41,7 +41,6 @@ public class SRCharacter implements Serializable {
     private int connectionPoints;
     private int karmaAdvantages;
     private int karmaDisadvantages;
-    private ArrayList<Contact> connections;
     private boolean isDead;
 
 
@@ -243,13 +242,6 @@ public class SRCharacter implements Serializable {
         this.connections = connections;
     }
 
-    public ArrayList<Contact> getConnections() {
-        return connections;
-    }
-
-    public void setConnections(ArrayList<Contact> connections) {
-        this.connections = connections;
-    }
 
     public Metatyp getMetatype() {
         return metatype;
