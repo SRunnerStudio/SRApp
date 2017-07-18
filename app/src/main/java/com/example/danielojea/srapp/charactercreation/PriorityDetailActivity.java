@@ -52,55 +52,30 @@ public class PriorityDetailActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityA(View v) {
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
         priorityItem.setPriority(1);
         updatePriorityDetailList();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityB(View v) {
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
         priorityItem.setPriority(2);
         updatePriorityDetailList();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityC(View v) {
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
         priorityItem.setPriority(3);
         updatePriorityDetailList();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityD(View v) {
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
         priorityItem.setPriority(4);
         updatePriorityDetailList();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setPriorityE(View v) {
-        ((TextView) findViewById(R.id.a)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.b)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.c)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.d)).setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
-        ((TextView) findViewById(R.id.e)).setTextAppearance(R.style.TextAppearance_AppCompat_Large);
         priorityItem.setPriority(5);
         updatePriorityDetailList();
     }

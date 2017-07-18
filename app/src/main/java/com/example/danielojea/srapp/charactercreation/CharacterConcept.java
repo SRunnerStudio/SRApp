@@ -100,6 +100,7 @@ public class CharacterConcept extends AppCompatActivity {
                 character.setMass(Integer.parseInt(((TextView) findViewById(R.id.editTextWeight)).getText().toString()));
             }
 
+            character.setProfileImage(null);
             Intent intent = new Intent(this, CharacterSelection.class);
             intent.putExtra("Character", character);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
