@@ -80,7 +80,6 @@ public class CharacterSheet extends AppCompatActivity {
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
-        TextView textViewStreetName = (TextView) findViewById(R.id.textViewStreetName);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
         TextView characterArchetyp = (TextView) findViewById(R.id.textViewClassValue);
         TextView characterSex = (TextView) findViewById(R.id.textViewSexValue);
@@ -214,9 +213,9 @@ public class CharacterSheet extends AppCompatActivity {
         attribute.add(new String[]{"CHA ",""+character.getAttributes().getCHA().getValue(),"Erinnerungsvermögen ",""+character.getAttributes().getMemory()});
         attribute.add(new String[]{"EDGE ",""+character.getAttributes().getEdge().getValue(),"Heben/tragen ",""+character.getAttributes().getCarry()});
         attribute.add(new String[]{" ","","Bewegung ",""+character.getAttributes().getMovement()});
-        attribute.add(new String[]{"körperliches Limit          "+character.getAttributes().getPhysicalLimit(),""+character.getAttributes().getPhysicalLimit()});
-        attribute.add(new String[]{"Geistiges Limit          "+character.getAttributes().getMentalLimit(),""+character.getAttributes().getMentalLimit()});
-        attribute.add(new String[]{"Soziales Limit          "+character.getAttributes().getSocialLimit(),""+character.getAttributes().getSocialLimit()});
+        attribute.add(new String[]{"körperliches Limit ",""+character.getAttributes().getPhysicalLimit()});
+        attribute.add(new String[]{"Geistiges Limit",""+character.getAttributes().getMentalLimit()});
+        attribute.add(new String[]{"Soziales Limit",""+character.getAttributes().getSocialLimit()});
 
 
         List<String[]> skills = new ArrayList<String[]>();
@@ -225,21 +224,20 @@ public class CharacterSheet extends AppCompatActivity {
             {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName()+"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
                 }
                 else {
 
-                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue(),skill.getConnectedPackage()});
+                    skills.add(new String[]{skill.getName(), "" + skill.getValue(),skill.getConnectedPackage()});
                 }
             }
             else {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName() +"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName()});
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getSpecializationName()});
                 }
                 else {
-
-                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue()});
+                    skills.add(new String[]{skill.getName(), "" + skill.getValue()});
                 }
             }
 

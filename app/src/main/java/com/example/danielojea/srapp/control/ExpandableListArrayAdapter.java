@@ -61,6 +61,7 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         TextView txtListChildValue = (TextView) convertView.findViewById(R.id.lblListItemValue);
         TextView txtListChild2 = (TextView) convertView.findViewById(R.id.lblListItem2);
         TextView txtListChild2Value = (TextView) convertView.findViewById(R.id.lblListItem2Value);
+        TextView txtListChild3Value = (TextView) convertView.findViewById(R.id.lblListItem3);
         LinearLayout secondRow = (LinearLayout) convertView.findViewById(R.id.secondRow);
 
         if(childText.length ==1)
@@ -77,7 +78,6 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         {
             txtListChild.setText(childText[0]);
             txtListChild2.setText(childText[1]);
-            secondRow.setVisibility(View.GONE);
             txtListChildValue.setVisibility(View.GONE);
             txtListChild2Value.setVisibility(View.GONE);
         }
@@ -85,14 +85,15 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         {
             txtListChild.setText(childText[0]);
             txtListChild2.setText(childText[1]);
-            txtListChild2Value.setText(childText[2]);
-            txtListChildValue.setVisibility(View.GONE);
+            txtListChild3Value.setText(childText[2]);
+            txtListChild2Value.setVisibility(View.GONE);
         }
         if(childText.length ==4) {
             txtListChild.setText(childText[0]);
             txtListChildValue.setText(childText[1]);
             txtListChild2.setText(childText[2]);
             txtListChild2Value.setText(childText[3]);
+            txtListChild3Value.setVisibility(View.GONE);
         }
         return convertView;
     }
