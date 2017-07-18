@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/shadowrun_ambient_2" />
+        app:srcCompat="@drawable/sr_rempoints_startscreen" />
 
     <Button
         android:id="@+id/button2"
