@@ -55,7 +55,7 @@ public class CharacterSheet extends AppCompatActivity {
         setCharacterSheetData(character);
         initMaxTrackDamage();
         if(character.isDead()){
-            setTitle("Charakteransicht " +character.getName()+ " TOT");
+            setTitle("Charakteransicht " +character.getName()+ " tOT");
         }
         else {
             setTitle("Charakteransicht " + character.getName());
