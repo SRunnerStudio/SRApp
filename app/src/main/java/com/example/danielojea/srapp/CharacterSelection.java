@@ -134,11 +134,11 @@ public class CharacterSelection extends AppCompatActivity {
         if(character!= null){adapter.addCharacter(character);}
         recyclerView.setAdapter(adapter);
         if(getIntent().getSerializableExtra("Character")!= null) {
-            //saveCharacters();
+            saveCharacters();
         }
         else
         {
-            //loadCharacters();
+            loadCharacters();
         }
     }
 
@@ -163,6 +163,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
+            if(characterList.get(position).character.getProfileImage()!=null)
             holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
             if(characterList.get(position).character.isDead()){
                 holder.deadCharSkull.setVisibility(View.VISIBLE);
@@ -420,7 +421,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void saveCharacters() {
         // add-write text into file
         try {
-            FileOutputStream fileout = openFileOutput("Character.txt", MODE_PRIVATE);
+            FileOutputStream fileout = openFileOutput("NullPic.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             Gson gson = new Gson();
             if(save == null){
@@ -442,7 +443,7 @@ public class CharacterSelection extends AppCompatActivity {
         //reading text from file
         try {
             String json;
-            FileInputStream fis = openFileInput("Character.txt");
+            FileInputStream fis = openFileInput("NullPic.txt");
             FileChannel fc = fis.getChannel();
             MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 

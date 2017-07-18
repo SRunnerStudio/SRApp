@@ -103,8 +103,8 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
             holder.txtPackage.setText(skill.getConnectedPackage());
         }
         if(skill.isSpecialization()){
-            holder.upgradeButton.setVisibility(View.INVISIBLE);
-            holder.downgradeButton.setVisibility(View.INVISIBLE);
+            holder.upgradeButton.setVisibility(View.GONE);
+            holder.downgradeButton.setVisibility(View.GONE);
         }
 
 
@@ -166,7 +166,7 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
                                     if (iSkill.isSpecialization()){
                                         iSkill.setSpecialization(false);
                                         iSkill.setSpecializationName("");
-                                        holder.downgradeButton.setVisibility(View.INVISIBLE);
+                                        holder.downgradeButton.setVisibility(View.GONE);
                                         holder.upgradeButton.setVisibility(View.VISIBLE);
                                         character.setKarma(character.getKarma()+7);
                                         skillPointCounter.setText("Karmapunkte: " + character.getKarma());
@@ -190,7 +190,7 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
                             if (skill.isSpecialization()) {
                                 skill.setSpecialization(false);
                                 skill.setSpecializationName("");
-                                holder.downgradeButton.setVisibility(View.INVISIBLE);
+                                holder.downgradeButton.setVisibility(View.GONE);
                                 holder.upgradeButton.setVisibility(View.VISIBLE);
                                 character.setKarma(character.getKarma()+7);
                             }
@@ -224,7 +224,7 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
                                 skill.setSpecializationName(et.getText().toString());
                                 skill.setSpecialization(true);
                                 notifyDataSetChanged();
-                                holder.upgradeButton.setVisibility(View.INVISIBLE);
+                                holder.upgradeButton.setVisibility(View.GONE);
                                 holder.downgradeButton.setVisibility(View.VISIBLE);
                                 character.setKarma(character.getKarma() - 7);
                                 skillPointCounter.setText("karmapunkte: " + character.getKarma());
@@ -242,7 +242,7 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
         holder.downgradeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.downgradeButton.setVisibility(View.INVISIBLE);
+                holder.downgradeButton.setVisibility(View.GONE);
                 holder.upgradeButton.setVisibility(View.VISIBLE);
                 skill.setSpecialization(false);
                 skill.setSpecializationName("");
