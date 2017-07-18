@@ -4,7 +4,6 @@
     </style>
 
     <style name="Ojea" parent="AppTheme">
-        <item name="android:popupMenuStyle">@style/PopupMenu</item>
         <item name="android:textColor">@color/bookOrange</item>
         <item name="android:textColorHint">@color/colorOrangeTitle</item>
         <item name="android:titleTextColor">@color/colorOrangeTitle</item>

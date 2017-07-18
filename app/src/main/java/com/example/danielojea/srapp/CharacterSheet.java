@@ -246,15 +246,16 @@ public class CharacterSheet extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(2), qualities);
     }
     public void toggleTrackerLayout(View v){
-        ConstraintLayout trackerLayout = (ConstraintLayout) findViewById(R.id.trackerLayout);
-        FloatingActionButton trackerButton = (FloatingActionButton)findViewById(R.id.trackerButton);
-        if(trackerLayout.getVisibility() == v.VISIBLE) {
-            trackerLayout.setVisibility(v.GONE);
-            trackerButton.setImageResource(R.drawable.shadowrunapp_downgrade);
-        }
-        else{
-            trackerLayout.setVisibility(v.VISIBLE);
-            trackerButton.setImageResource(R.drawable.shadowrunapp_upgrade);
+        if(!character.isDead()) {
+            ConstraintLayout trackerLayout = (ConstraintLayout) findViewById(R.id.trackerLayout);
+            FloatingActionButton trackerButton = (FloatingActionButton) findViewById(R.id.trackerButton);
+            if (trackerLayout.getVisibility() == v.VISIBLE) {
+                trackerLayout.setVisibility(v.GONE);
+                trackerButton.setImageResource(R.drawable.shadowrunapp_downgrade);
+            } else {
+                trackerLayout.setVisibility(v.VISIBLE);
+                trackerButton.setImageResource(R.drawable.shadowrunapp_upgrade);
+            }
         }
     }
 
@@ -312,7 +313,6 @@ public class CharacterSheet extends AppCompatActivity {
                 }
             }
         }
-
     }
     public void initMaxTrackDamage(){
         int maxStunDamage = character.getAttributes().getStunDamageTrackMax();
