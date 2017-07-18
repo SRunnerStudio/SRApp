@@ -130,7 +130,7 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
                         notifyDataSetChanged();
                     }
                 } else {
-                    if ((character.getSkillPoints() > ((skill.getValue()+1)*2)) && skill.getValue() < 6) {
+                    if ((character.getKarma() > ((skill.getValue()+1)*2)) && skill.getValue() < 6) {
                         skill.setValue(skill.getValue() + 1);
                         character.setKarma(character.getKarma()-(skill.getValue()*2));
                         skillPointCounter.setText("Karmapunkte: " + character.getKarma());
