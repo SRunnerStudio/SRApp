@@ -89,6 +89,7 @@ public class RemPointsKnowledgeSkills extends AppCompatActivity {
         character.setSkills(cUpdatedSkills);
         Intent intent = new Intent(this, RemPointsConnectionSelection.class);
         intent.putExtra("Character",character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

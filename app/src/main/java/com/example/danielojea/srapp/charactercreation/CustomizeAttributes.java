@@ -40,6 +40,7 @@ public class CustomizeAttributes extends AppCompatActivity {
         character = mAdapter.getCharacter();
         Intent intent = new Intent(this, SkillSelection.class);
         intent.putExtra("Character", character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

@@ -48,6 +48,7 @@ public class MetatypDetail extends AppCompatActivity {
         character.getAttributes().calculateStats();
         Intent intent = new Intent(this, CustomizeAttributes.class);
         intent.putExtra("Character", character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }

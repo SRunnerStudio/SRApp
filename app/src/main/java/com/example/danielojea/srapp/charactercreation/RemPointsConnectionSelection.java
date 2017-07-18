@@ -76,6 +76,7 @@ public class RemPointsConnectionSelection extends AppCompatActivity {
         character = mAdapter.getCharacter();
         Intent intent = new Intent(this, CharacterConcept.class);
         intent.putExtra("Character",character);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
