@@ -48,11 +48,11 @@ public class PriorityContentProvider {
         }));
         PriorityAttribute attribute = new PriorityAttribute(1);
         addItem(new PriorityContentProvider.PriorityItem("B", "Attribute" , new String[] {
-                "In dir Gipfeln Jahrtausende von Evolution\n"+attribute.getA()+" Attributpunkte",
+                "In dir gipfeln Jahrtausende von Evolution\n"+attribute.getA()+" Attributpunkte",
                 "Mit dir legt sich keiner so schnell an\n"+attribute.getB()+" Attributpunkte",
-                "In der Schule wurdest du immer verprügelt\n"+attribute.getB()+" Attributpunkte",
+                "In der Schule wurdest du immer verprügelt\n"+attribute.getC()+" Attributpunkte",
                 "Amöbenniveau\n"+attribute.getD()+" Attributpunkte",
-                "Deine Eltern haben dich kevin genannt\n"+attribute.getE()+" Attributpunkte"}));
+                "Deine Eltern haben dich Kevin genannt\n"+attribute.getE()+" Attributpunkte"}));
         PriorityMagic magic = new PriorityMagic(1);
         addItem(new PriorityContentProvider.PriorityItem("C", "Magie" ,new String[] {
                         magic.getA()[0][0]+": "+

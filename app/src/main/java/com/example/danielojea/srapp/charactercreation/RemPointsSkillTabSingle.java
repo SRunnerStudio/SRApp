@@ -65,6 +65,7 @@ public class RemPointsSkillTabSingle extends Fragment {
                     Intent intent = new Intent(getContext(), RemainingPointsSkills.class);
                     intent.putExtra("Character", character);
                     intent.putExtra("Skills", updatedSkills);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     return false;
                 }

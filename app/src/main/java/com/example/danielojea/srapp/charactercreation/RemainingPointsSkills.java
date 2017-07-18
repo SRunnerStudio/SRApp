@@ -141,8 +141,8 @@ public class RemainingPointsSkills extends AppCompatActivity {
         Intent intent = new Intent(this,RemPointsSkillPicker.class);
         intent.putExtra("Character", character);
         intent.putExtra("Skills",skills);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
     }
 
     private void updateSkillList(){
