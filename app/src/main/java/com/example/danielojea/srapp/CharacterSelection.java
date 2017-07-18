@@ -3,6 +3,7 @@ package com.example.danielojea.srapp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -160,11 +161,31 @@ public class CharacterSelection extends AppCompatActivity {
                     .inflate(R.layout.character_selection_list_content, parent, false);
             return new ViewHolder(view);
         }
+        public int getProfileImageforMetatyp(int position){
+            switch (characterList.get(position).character.getMetatype().getMetatypENG()) {
+                case "elf":
+                    return(R.drawable.metatyp_elf);
+                case "human":
+                    return(R.drawable.metatyp_human);
+                case "dwarf":
+                    return(R.drawable.metatyp_dwarf);
+                case "orc":
+                    return(R.drawable.metatyp_orc);
+                case "troll":
+                    return(R.drawable.metatyp_troll);
+            }
+            return 6;
+        }
+
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            if(characterList.get(position).character.getProfileImage()!=null)
-            holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
+            if(characterList.get(position).character.getProfileImage()!=null){
+                holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
+            }
+            else{
+                holder.characterPortrait.setImageResource(getProfileImageforMetatyp(position));
+            }
             if(characterList.get(position).character.isDead()){
                 holder.deadCharSkull.setVisibility(View.VISIBLE);
             }
@@ -206,7 +227,7 @@ public class CharacterSelection extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             //dismiss the dialog
                                             characterList.remove(characterposition);
-                                            //saveCharacters();
+                                            saveCharacters();
                                             Intent intent = new Intent(CharacterSelection.this, CharacterSelection.class);
                                             startActivity(intent);
                                             finish();
@@ -232,7 +253,7 @@ public class CharacterSelection extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //dismiss the dialog
                                                 characterList.get(characterposition).character.setDead(true);
-                                                //saveCharacters();
+                                                saveCharacters();
                                                 Intent intent = new Intent(CharacterSelection.this, CharacterSelection.class);
                                                 startActivity(intent);
                                                 finish();
@@ -370,7 +391,6 @@ public class CharacterSelection extends AppCompatActivity {
                 }
             });
         }
-
         @Override
         public int getItemCount() {
             return characterList.size();
@@ -460,3 +480,4 @@ public class CharacterSelection extends AppCompatActivity {
         }
     }
 }
+

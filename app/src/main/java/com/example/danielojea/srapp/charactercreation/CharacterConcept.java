@@ -58,9 +58,9 @@ public class CharacterConcept extends AppCompatActivity {
     }
 
     public void loadCharacterPortraitFromData(View v) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, requcode);
+        /*Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image*//*");
+        startActivityForResult(intent, requcode);*/
     }
 
     public void finishCharacterCreation(View v){

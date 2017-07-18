@@ -33,7 +33,6 @@ public class CharacterSheet extends AppCompatActivity {
     List<String> listDataHeader;
     HashMap<String, List<String[]>> listDataChild;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,9 @@ public class CharacterSheet extends AppCompatActivity {
     }
 
     public void setCharacterSheetData(SRCharacter character){
-        ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
+        getProfileImageforMetatyp();
+        //characterPortrait.setImageBitmap(character.getProfileImage().bitmap);
+
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
@@ -75,7 +76,7 @@ public class CharacterSheet extends AppCompatActivity {
         TextView characterEthnicity = (TextView) findViewById(R.id.textViewEthnicityValue);
         TextView characterAge = (TextView) findViewById(R.id.textViewAgeValue);
 
-        characterPortrait.setImageBitmap(character.getProfileImage().bitmap);
+
         if(!character.getStreetName().equals("")){
             characterName.setText(character.getName()+ " ["+character.getStreetName()+"]");
         }
@@ -93,7 +94,28 @@ public class CharacterSheet extends AppCompatActivity {
             deadCharSkull.setVisibility(View.VISIBLE);
         }
     }
-    @Override
+    public void getProfileImageforMetatyp(){
+        ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
+        switch (character.getMetatype().getMetatypENG()) {
+            case "elf":
+                characterPortrait.setImageResource(R.drawable.metatyp_elf);
+                return;
+            case "human":
+                characterPortrait.setImageResource(R.drawable.metatyp_human);
+                return;
+            case "dwarf":
+                characterPortrait.setImageResource(R.drawable.metatyp_dwarf);
+                return;
+            case "orc":
+                characterPortrait.setImageResource(R.drawable.metatyp_orc);
+                return;
+            case "troll":
+                characterPortrait.setImageResource(R.drawable.metatyp_troll);
+                return;
+        }
+        return;
+    }
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.character_menu, menu);
@@ -155,7 +177,7 @@ public class CharacterSheet extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();

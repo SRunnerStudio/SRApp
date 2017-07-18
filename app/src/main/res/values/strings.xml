@@ -32,6 +32,7 @@
 
     <string name="btnFinish">Fertig</string>
     <string name="btnContinue">Weiter</string>
+    <string name="btnFInishChar">Charaktererstellung abschließen</string>
 
     <string name="skillpoints">Fertigkeitenpunkte:</string>
     <string name="connectionpoints">Punkte:</string>
