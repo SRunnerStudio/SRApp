@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/UsedStyle"><!--android:theme="@style/AppTheme">-->
+        android:theme="@style/UsedStyle"> <!-- android:theme="@style/AppTheme"> -->
         <activity
             android:name=".Startscreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -23,8 +23,9 @@
         <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.MetatypChoose" />
-        <activity android:name=".CharacterSheet"
-            android:theme="@style/tracker"/>
+        <activity
+            android:name=".CharacterSheet"
+            android:theme="@style/tracker" />
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity
             android:name=".charactercreation.SkillPicker"
@@ -53,7 +54,15 @@
         android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.CustomizeAttributes" />
         <activity android:name=".charactercreation.ConnectionSelection" />
-        <activity android:name=".charactercreation.SpendRemainingPoints"></activity>
+        <activity android:name=".charactercreation.RemainingPointsAttributes" />
+        <activity android:name=".charactercreation.RemainingPointsSkills" />
+        <activity
+            android:name=".charactercreation.RemPointsSkillPicker"
+            android:label="@string/title_activity_ability_picker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".charactercreation.RemPointsKnowledgeSkills" />
+        <activity android:name=".charactercreation.RemainingPointsStartScreen"></activity>
+        <activity android:name=".charactercreation.RemPointsConnectionSelection" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

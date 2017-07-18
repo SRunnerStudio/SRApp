@@ -10,6 +10,8 @@ public class Contact implements Serializable {
     private String name;
     private int loyalty;
     private int influence;
+    private int startLoyalty;
+    private int startInfluence;
 
     public Contact(String name, int loyalty, int influence) {
         this.name = name;
@@ -39,5 +41,21 @@ public class Contact implements Serializable {
 
     public void setInfluence(int influence) {
         this.influence = influence;
+    }
+
+    public int getStartLoyalty() {
+        return startLoyalty;
+    }
+
+    public void setStartLoyalty(int startLoyalty) {
+        this.startLoyalty = startLoyalty;
+    }
+
+    public int getStartInfluence() {
+        return startInfluence;
+    }
+
+    public void setStartInfluence(int startInfluence) {
+        this.startInfluence = startInfluence;
     }
 }

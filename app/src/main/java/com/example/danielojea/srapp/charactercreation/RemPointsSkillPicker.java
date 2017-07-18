@@ -1,22 +1,19 @@
 package com.example.danielojea.srapp.charactercreation;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
-public class SpendRemainingPoints extends AppCompatActivity {
+public class RemPointsSkillPicker extends AppCompatActivity {
     public static Handler h;
 
     /**
@@ -82,10 +79,10 @@ public class SpendRemainingPoints extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             switch (position) {
                 case 0:
-                    SkillSelection skillSelection = new SkillSelection();
-                    //return skillSelection;
+                    RemPointsSkillTabSingle tabSingle = new RemPointsSkillTabSingle();
+                    return tabSingle;
                 case 1:
-                    SkillTabPackage tabPackage = new SkillTabPackage();
+                    RemPointsSkillTabPackage tabPackage = new RemPointsSkillTabPackage();
                     return tabPackage;
                 default:
                     return null;
@@ -105,12 +102,6 @@ public class SpendRemainingPoints extends AppCompatActivity {
                     return "Fertigkeiten";
                 case 1:
                     return "Pakete";
-                case 2:
-                    return "Wissen";
-                case 3:
-                    return "Attribute";
-                case 4:
-                    return "Connections";
             }
             return null;
         }
