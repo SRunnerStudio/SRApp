@@ -72,6 +72,13 @@ public class RemPointsSkillListAdapter extends RecyclerView.Adapter<RemPointsSki
     public RemPointsSkillListAdapter(SRCharacter myDataset, TextView txtSkillPointCounter,TextView txtSkillPointCounterPackage) {
         character = myDataset;
         values = myDataset.getSkills();
+        ArrayList<Skill> updatedSkills = new ArrayList<Skill>();
+        for(Skill cSkill: values){
+            if (!cSkill.getConnectedAttribute().equals("KNOWLEDGE")){
+                updatedSkills.add(cSkill);
+            }
+        }
+        values = updatedSkills;
         skillPointCounter = txtSkillPointCounter;
         skillPointCounterPackage = txtSkillPointCounterPackage;
     }

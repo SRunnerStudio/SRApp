@@ -44,6 +44,8 @@ public class ConnectionSelection extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ConnectionListAdapter(character,connectionPointCounter);
         recyclerView.setAdapter(mAdapter);
+        mAdapter.setValues(character);
+        mAdapter.notifyDataSetChanged();
         setTitle("Connections");
     }
 

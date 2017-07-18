@@ -59,6 +59,7 @@ public class RemPointsConnectionSelection extends AppCompatActivity {
                         character.setKarma(character.getKarma()-2);
                         character.getConnections().add(new Contact(et.getText().toString(),1,1));
                         mAdapter.setValues(character);
+                        mAdapter.notifyDataSetChanged();
                     }
                 }
             });
