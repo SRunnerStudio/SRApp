@@ -134,11 +134,11 @@ public class CharacterSelection extends AppCompatActivity {
         if(character!= null){adapter.addCharacter(character);}
         recyclerView.setAdapter(adapter);
         if(getIntent().getSerializableExtra("Character")!= null) {
-            saveCharacters();
+            //saveCharacters();
         }
         else
         {
-            loadCharacters();
+            //loadCharacters();
         }
     }
 
@@ -205,7 +205,7 @@ public class CharacterSelection extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             //dismiss the dialog
                                             characterList.remove(characterposition);
-                                            saveCharacters();
+                                            //saveCharacters();
                                             Intent intent = new Intent(CharacterSelection.this, CharacterSelection.class);
                                             startActivity(intent);
                                             finish();
@@ -231,7 +231,7 @@ public class CharacterSelection extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //dismiss the dialog
                                                 characterList.get(characterposition).character.setDead(true);
-                                                saveCharacters();
+                                                //saveCharacters();
                                                 Intent intent = new Intent(CharacterSelection.this, CharacterSelection.class);
                                                 startActivity(intent);
                                                 finish();

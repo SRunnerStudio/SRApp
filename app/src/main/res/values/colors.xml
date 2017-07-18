@@ -3,7 +3,7 @@
 
 
 
-    <color name="bookOrange">#fbb800</color>
+    <color name="bookOrange">#FBB800</color>
 
     <color name="colorAccent">#f9b92e</color>
 
@@ -23,7 +23,6 @@
     <color name="upgradeBlue">#303f9f</color>
     <color name="downgradeOrange">#f9b92e</color>
     <color name="buttonGreen">#1d9300</color>
-    <color name="transparent">#1d9300</color>
 
 </resources>
 
