@@ -40,6 +40,8 @@ public class RemPointsConnectionSelection extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RemPointsConnectionListAdapter(character,pointCounter);
         recyclerView.setAdapter(mAdapter);
+        mAdapter.setValues(character);
+        mAdapter.notifyDataSetChanged();
         setTitle("Connections");
     }
 
