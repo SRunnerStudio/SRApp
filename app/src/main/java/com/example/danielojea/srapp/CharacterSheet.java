@@ -80,6 +80,7 @@ public class CharacterSheet extends AppCompatActivity {
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
+        TextView textViewStreetName = (TextView) findViewById(R.id.textViewStreetName);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
         TextView characterArchetyp = (TextView) findViewById(R.id.textViewClassValue);
         TextView characterSex = (TextView) findViewById(R.id.textViewSexValue);
@@ -88,12 +89,13 @@ public class CharacterSheet extends AppCompatActivity {
         TextView characterEthnicity = (TextView) findViewById(R.id.textViewEthnicityValue);
         TextView characterAge = (TextView) findViewById(R.id.textViewAgeValue);
 
-
+        characterName.setText(character.getName());
         if(!character.getStreetName().equals("")){
             characterName.setText(character.getName()+ " ["+character.getStreetName()+"]");
+            character.setStreetName(""+character.getStreetName()+"");
         }
         else{
-            characterName.setText(character.getName()+ ""+character.getStreetName());
+            character.setStreetName("["+character.getStreetName()+"]");
         }
         characterMetaTyp.setText(character.getMetatype().getMetatyp());
         characterArchetyp.setText(character.getArchetype());
@@ -223,7 +225,7 @@ public class CharacterSheet extends AppCompatActivity {
             {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName()+"\u0009\u0009"+skill.getValue()+"\u0009\u0009"+skill.getValue()+skill.getConnectedAttribute(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
+                    skills.add(new String []{skill.getName()+"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
                 }
                 else {
 
