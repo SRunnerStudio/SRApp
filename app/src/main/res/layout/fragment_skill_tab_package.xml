@@ -15,6 +15,7 @@
 
         <ExpandableListView
             android:id="@+id/skillListPackage"
+            style="@android:style/Widget.ExpandableListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </ScrollView>

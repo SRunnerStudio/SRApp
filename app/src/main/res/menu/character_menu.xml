@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.danielojea.srapp.CharacterSelection">
+    <item
+        android:id="@+id/deleteCharacter"
+        android:orderInCategory="100"
+        android:title="@string/deleteCharacter"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/killCharacter"
+        android:orderInCategory="100"
+        android:title="@string/killCharacter"
+        app:showAsAction="never" />
+</menu>

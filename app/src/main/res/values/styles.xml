@@ -14,7 +14,7 @@
     </style>
 
     <style name="AppBackgroudImage" parent="AppTheme">
-        <item name="android:background">@drawable/skyline_seattle_weiss</item>
+        <item name="android:background">@drawable/skyline_seattle_schwarz</item>
     </style>
     <!-- Base application theme. -->
 
@@ -24,7 +24,7 @@
         <item name="android:textColor">@color/bookOrange</item>
         <item name="android:textColorHint">@color/colorOrangeTitle</item>
         <item name="android:titleTextColor">@color/colorOrangeTitle</item>
-        <item name="android:colorButtonNormal">@color/colorRunnerRed</item>
+        <item name="android:colorButtonNormal">@color/colorDarkRunnerRed</item>
     </style>
 
     <style name="AppBackgroudImage2">

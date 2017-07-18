@@ -42,6 +42,7 @@ public class SRCharacter implements Serializable {
     private int karmaAdvantages;
     private int karmaDisadvantages;
     private ArrayList<Contact> connections;
+    private boolean isDead;
 
 
     public SRCharacter() {
@@ -88,6 +89,14 @@ public class SRCharacter implements Serializable {
         qualities.addAll(advantages);
         qualities.addAll(disadvantages);
         return qualities;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 
     public int getKarmaAdvantages() {

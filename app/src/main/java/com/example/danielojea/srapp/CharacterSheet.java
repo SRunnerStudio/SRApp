@@ -1,18 +1,24 @@
 package com.example.danielojea.srapp;
 
+import android.content.DialogInterface;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -49,11 +55,17 @@ public class CharacterSheet extends AppCompatActivity {
 
         setCharacterSheetData(character);
         initMaxTrackDamage();
-        setTitle("Charakteransicht " +character.getName());
+        if(character.isDead()){
+            setTitle("Charakteransicht " +character.getName()+ " TOT");
+        }
+        else {
+            setTitle("Charakteransicht " + character.getName());
+        }
     }
 
     public void setCharacterSheetData(SRCharacter character){
         ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
+        ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
         TextView characterArchetyp = (TextView) findViewById(R.id.textViewClassValue);
@@ -77,6 +89,72 @@ public class CharacterSheet extends AppCompatActivity {
         characterWeight.setText(character.getMass()+"kg");
         characterEthnicity.setText(character.getEthnicity());
         characterAge.setText(""+character.getAge());
+        if(character.isDead()){
+            deadCharSkull.setVisibility(View.VISIBLE);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.character_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.deleteCharacter) {
+            AlertDialog.Builder deleteCharDialog  = new AlertDialog.Builder(this);
+            deleteCharDialog.setTitle("Charakter Löschen");
+            deleteCharDialog.setMessage("wenn sie einen Charakter Löschen ist er nicht wieder her zu stellen.");
+            deleteCharDialog.setCancelable(true);
+            deleteCharDialog.setPositiveButton("Löschen",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                            //characterList
+                            Toast.makeText(CharacterSheet.this, "Charakter gelöscht", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            deleteCharDialog.setNegativeButton("Abbrechen",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                            Toast.makeText(CharacterSheet.this, "nicht gelöscht", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            deleteCharDialog.create().show();
+            return true;
+        }
+        if (id == R.id.killCharacter) {
+            AlertDialog.Builder killCharDialog  = new AlertDialog.Builder(this);
+            killCharDialog.setTitle("Charakter Töten");
+            killCharDialog.setMessage("wenn sie einen Charakter Töten kann er nicht mehr weiter bearbeitet werden.");
+            killCharDialog.setCancelable(true);
+
+            killCharDialog.setPositiveButton("Töten",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                            Toast.makeText(CharacterSheet.this, "Charakter tot", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            killCharDialog.setNegativeButton("Abbrechen",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss the dialog
+                            Toast.makeText(CharacterSheet.this, "Charakter nicht tot", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            killCharDialog.create().show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void prepareListData() {

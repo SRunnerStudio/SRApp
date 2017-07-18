@@ -55,5 +55,5 @@
         <activity android:name=".charactercreation.ConnectionSelection" />
         <activity android:name=".charactercreation.SpendRemainingPoints"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

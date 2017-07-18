@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:clickable="true"
-    android:gravity="center"
     android:divider="@android:drawable/divider_horizontal_dark"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -16,126 +17,177 @@
 
         <ImageView
             android:id="@+id/characterSelectionPortrait"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_weight="4"
             android:gravity="center"
             android:scaleType="centerInside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_weight="2"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/characterSelectionPortrait"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/characterSelectionNameTag"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="Name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-                    android:visibility="gone" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/characterSelectionName"
+                    <TextView
+                        android:id="@+id/characterSelectionNameTag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/characterSelectionName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Hans"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="Hans"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterSelectionStreetnameTag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Straßenname"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/characterSelectionStreetname"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="[der absolute Killer]"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterSelectionMetatypTag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="5"
+                        android:text="Matatyp:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <TextView
+                        android:id="@+id/characterSelectionMetatyp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="3"
+                        android:gravity="left"
+
+                        android:text="Mensch"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterSelectionArchetypTag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="Archetyp:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <TextView
+                        android:id="@+id/characterSelectionArchetyp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="left"
+                        android:text="Decker"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal">
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/characterSelectionStreetnameTag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="Straßenname"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/characterSelectionStreetname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="3"
-                    android:gravity="left"
-                    android:text="[der absolute Killer]"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
+                <ImageButton
+                    android:id="@+id/characterItemTreeDotMenu"
+                    android:layout_width="90dp"
+                    android:layout_height="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="doThis"
+                    android:scaleType="centerCrop"
+                    android:tint="@color/colorVeryDarkRunnerRed"
+                    app:srcCompat="@drawable/three_dot_white" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/characterSelectionMetatypTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Matatyp:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-                <TextView
-                    android:id="@+id/characterSelectionMetatyp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="left"
-                    android:text="Mensch"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/characterSelectionArchetypTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Archetyp:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-                <TextView
-                    android:id="@+id/characterSelectionArchetyp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:gravity="left"
-                    android:text="Decker"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-            </LinearLayout>
-
         </LinearLayout>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/deadCharSkull"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="@+id/characterSelectionPortrait"
+            app:layout_constraintTop_toTopOf="@+id/characterSelectionPortrait"
+            app:srcCompat="@drawable/skull_graffiti" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <View
-        android:background="@color/divider_color"
+        android:layout_width="fill_parent"
         android:layout_height="2dp"
 
-        android:layout_width="fill_parent"/>
+        android:background="@color/divider_color" />
 
 
 </LinearLayout>

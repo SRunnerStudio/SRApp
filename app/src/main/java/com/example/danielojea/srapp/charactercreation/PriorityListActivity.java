@@ -53,6 +53,7 @@ public class PriorityListActivity extends AppCompatActivity {
             character.setAttributePoints(character.getPriorityAttribute().getAttributePoints(character.getPriorityAttribute().getPriority()));
             character.setSkillPoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[0]);
             character.setSkillPackagePoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[1]);
+            //character.setDead(true);
             metaIntent.putExtra("Character",character);
             startActivity(metaIntent);
             setTitle("Prioritäten");

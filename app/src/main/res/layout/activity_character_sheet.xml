@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppBackgroudImage"
+    android:drawSelectorOnTop="false"
+    android:listSelector="@android:color/darker_gray"
     tools:context="com.example.danielojea.srapp.CharacterSheet">
 
     <ImageView
@@ -61,7 +63,7 @@
         android:layout_marginTop="8dp"
         android:text="Ork"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintLeft_toRightOf="@+id/textViewMeta"
+        app:layout_constraintLeft_toRightOf="@+id/textViewClass"
         app:layout_constraintTop_toBottomOf="@+id/textViewName"
         android:layout_marginStart="8dp" />
 
@@ -128,12 +130,12 @@
         android:id="@+id/textViewSexValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:text="weiblich"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewSex"
-        android:layout_marginEnd="16dp" />
+        app:layout_constraintLeft_toRightOf="@+id/textViewSex"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/textViewSize"
@@ -177,9 +179,9 @@
         android:text="257 kg"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintTop_toTopOf="@+id/textViewWeight"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="16dp" />
+        app:layout_constraintLeft_toRightOf="@+id/textViewWeight"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/textViewEthnicity"
@@ -584,5 +586,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeight"
         app:srcCompat="@drawable/shadowrunapp_downgrade" />
+
+    <ImageView
+        android:id="@+id/deadCharSkull"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="@+id/imageViewChar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/skull_graffiti" />
 
 </android.support.constraint.ConstraintLayout>

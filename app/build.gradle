@@ -10,6 +10,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            compile 'com.google.code.gson:gson:2.2.4'
+        }
     }
     buildTypes {
         release {
@@ -18,6 +25,13 @@ android {
         }
         debug {
             debuggable true
+        }
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            compile 'com.google.code.gson:gson:2.2.4'
         }
     }
 }
