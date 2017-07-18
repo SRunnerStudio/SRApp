@@ -125,6 +125,7 @@ public class SkillSelection extends AppCompatActivity {
         skills.add(new Skill(1,"Dekompilieren","RES","Tasken"));
         skills.add(new Skill(1,"Kompilieren","RES","Tasken"));
         skills.add(new Skill(1,"Registrieren","RES","Tasken"));
+        skills.add(new Skill(1,"Verkleiden","INT","Heimlichkeit"));
     }
 
     public void startNextActivity(View v){
