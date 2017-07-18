@@ -10,7 +10,6 @@
         <item name="colorPrimary">@color/colorRunnerRed</item>
         <item name="colorPrimaryDark">@color/colorDarkRunnerRed</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="test">@color/colorAccent</item>
         <!-- <item name="colorAccent">@color/colorAccent</item> -->
     </style>
 
