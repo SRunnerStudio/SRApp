@@ -25,6 +25,7 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
     private HashMap<String, List<String[]>> _listDataChild;
+    private int lastExpandedPosition = -1;
 
     public ExpandableListArrayAdapter(Context context, List<String> listDataHeader,
                                       HashMap<String, List<String[]>> listChildData) {
@@ -145,4 +146,11 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
+    public int getLastExpandedPosition() {
+        return lastExpandedPosition;
+    }
+
+    public void setLastExpandedPosition(int lastExpandedPosition) {
+        this.lastExpandedPosition = lastExpandedPosition;
+    }
 }

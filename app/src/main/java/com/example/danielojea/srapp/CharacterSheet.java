@@ -60,6 +60,18 @@ public class CharacterSheet extends AppCompatActivity {
         else {
             setTitle("Charakteransicht " + character.getName());
         }
+        listAdapter.setLastExpandedPosition(-1);
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if (listAdapter.getLastExpandedPosition() != -1
+                        && groupPosition != listAdapter.getLastExpandedPosition()) {
+                    expListView.collapseGroup(listAdapter.getLastExpandedPosition());
+                }
+                listAdapter.setLastExpandedPosition(groupPosition);
+            }
+        });
     }
 
     public void setCharacterSheetData(SRCharacter character){
