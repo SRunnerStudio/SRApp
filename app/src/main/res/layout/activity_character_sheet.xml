@@ -134,8 +134,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintTop_toTopOf="@+id/textViewSex"
         app:layout_constraintLeft_toRightOf="@+id/textViewSex"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/textViewSize"
@@ -180,8 +180,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintTop_toTopOf="@+id/textViewWeight"
         app:layout_constraintLeft_toRightOf="@+id/textViewWeight"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/textViewEthnicity"
@@ -206,406 +206,195 @@
         app:layout_constraintTop_toTopOf="@+id/textViewEthnicity"
         android:layout_marginStart="8dp" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackerButton">
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/trackerLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/physDamageTracker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Körperlicher Zustandsmonitor"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/physDamage01"
-                style="@style/tracker"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="6dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamageTracker"
-                app:layout_constraintTop_toBottomOf="@+id/physDamageTracker" />
-
-            <Button
-                android:id="@+id/physDamage02"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage01"
-                app:layout_constraintTop_toTopOf="@+id/physDamage01" />
-
-            <Button
-                android:id="@+id/physDamage03"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-1"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage02"
-                app:layout_constraintTop_toTopOf="@+id/physDamage02" />
-
-            <Button
-                android:id="@+id/physDamage04"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamage01"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage01" />
-
-            <Button
-                android:id="@+id/physDamage05"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage04"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage02" />
-
-            <Button
-                android:id="@+id/physDamage06"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-2"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage05"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage03" />
-
-            <Button
-                android:id="@+id/physDamage07"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamage04"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage04" />
-
-            <Button
-                android:id="@+id/physDamage08"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage07"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage05" />
-
-            <Button
-                android:id="@+id/physDamage09"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-3"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage08"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage06" />
-
-            <Button
-                android:id="@+id/physDamage10"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamage07"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage07" />
-
-            <Button
-                android:id="@+id/physDamage11"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage10"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage08" />
-
-            <Button
-                android:id="@+id/physDamage12"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-4"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage11"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage09" />
-
-            <Button
-                android:id="@+id/physDamage13"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamage10"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage10" />
-
-            <Button
-                android:id="@+id/physDamage14"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage13"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage11" />
-
-            <Button
-                android:id="@+id/physDamage15"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-5"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage14"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage12" />
-
-            <Button
-                android:id="@+id/physDamage16"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/physDamage13"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage13" />
-
-            <Button
-                android:id="@+id/physDamage17"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage16"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage14" />
-
-            <Button
-                android:id="@+id/physDamage18"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:onClick="markTracker"
-                android:text="-6"
-                app:layout_constraintLeft_toRightOf="@+id/physDamage17"
-                app:layout_constraintTop_toBottomOf="@+id/physDamage15" />
-
-            <TextView
-                android:id="@+id/stunDamageTracker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Geistiger Zustandsmonitor"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/stunDamage01"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamageTracker"
-                app:layout_constraintTop_toTopOf="@+id/stunDamage02" />
-
-            <Button
-                android:id="@+id/stunDamage02"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/stunDamage01"
-                app:layout_constraintTop_toTopOf="@+id/stunDamage03" />
-
-            <Button
-                android:id="@+id/stunDamage03"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="4dp"
-                android:onClick="markTracker"
-                android:text="-1"
-                app:layout_constraintLeft_toRightOf="@+id/stunDamage02"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamageTracker" />
-
-            <Button
-                android:id="@+id/stunDamage04"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage01"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage01" />
-
-            <Button
-                android:id="@+id/stunDamage05"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage02"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage02" />
-
-            <Button
-                android:id="@+id/stunDamage06"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                android:text="-2"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage03"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage03" />
-
-            <Button
-                android:id="@+id/stunDamage07"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage04"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage04" />
-
-            <Button
-                android:id="@+id/stunDamage08"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/stunDamage04"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage05" />
-
-            <Button
-                android:id="@+id/stunDamage09"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                android:text="-3"
-                app:layout_constraintLeft_toRightOf="@+id/stunDamage08"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage06" />
-
-            <Button
-                android:id="@+id/stunDamage10"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:backgroundTint="?attr/colorButtonNormal"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage07"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage07" />
-
-            <Button
-                android:id="@+id/stunDamage11"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                app:layout_constraintLeft_toRightOf="@+id/stunDamage07"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage08" />
-
-            <Button
-                android:id="@+id/stunDamage12"
-                android:layout_width="@dimen/tracker_button_size"
-                android:layout_height="@dimen/tracker_button_size"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:onClick="markTracker"
-                android:text="-4"
-                app:layout_constraintLeft_toLeftOf="@+id/stunDamage09"
-                app:layout_constraintTop_toBottomOf="@+id/stunDamage09" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="310dp"
-            android:layout_marginBottom="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trackerLayout"
-            app:layout_constraintVertical_bias="0.0">
-
-            <ExpandableListView
-                android:id="@+id/listview"
-                style="@android:style/Widget.ExpandableListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="9dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewEthnicityValue"
-                app:layout_constraintVertical_bias="1.0" />
-        </ScrollView>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:text="Zustandsmonitore"
-        app:layout_constraintRight_toLeftOf="@+id/trackerButton"
-        app:layout_constraintTop_toTopOf="@+id/textViewEthnicityValue"
-        android:layout_marginEnd="16dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/trackerButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:clickable="true"
-        android:onClick="toggleTrackerLayout"
-        android:tint="@color/colorRunnerRed"
-        app:backgroundTint="@android:color/transparent"
-        app:elevation="0dp"
-        app:fabSize="mini"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWeight"
-        app:srcCompat="@drawable/shadowrunapp_downgrade" />
-
     <ImageView
         android:id="@+id/deadCharSkull"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="gone"
         app:layout_constraintRight_toRightOf="@+id/imageViewChar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/skull_graffiti" />
 
-    <TextView
-        android:id="@+id/textViewStreetName"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="2500dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trackerLine">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEthnicityValue">
+
+            <LinearLayout
+                android:id="@+id/attributeLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:onClick="toggleAttributeLayout"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trackerLayout">
+
+                <ImageButton
+                    android:id="@+id/attributButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="toggleAttributeLayout"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/colorRunnerRed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/attr"
+                    app:srcCompat="@drawable/shadowrunapp_downgrade" />
+
+                <TextView
+                    android:id="@+id/attr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Attribute"
+                    android:textAppearance="@android:style/TextAppearance.Material.Widget.ActionBar.Title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trackerLayout" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/trackerLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <include
+                        android:id="@+id/trackerInclude"
+                        layout="@layout/activity_character_sheet_tracker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </ScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/attributeLayout"
+                android:layout_width="0dp"
+                android:layout_height="285dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/attributeLine">
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <include
+                        android:id="@+id/attributeInclude"
+                        layout="@layout/activity_character_sheet_attributes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        tools:layout_editor_absoluteY="89dp" />
+                </ScrollView>
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="500dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/attributeLayout">
+
+                <ExpandableListView
+                    android:id="@+id/listview"
+                    style="@android:style/Widget.ExpandableListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="9dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewEthnicityValue"
+                    app:layout_constraintVertical_bias="1.0" />
+            </ScrollView>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/trackerLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="7dp"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:onClick="toggleTrackerLayout"
+        android:orientation="horizontal"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeight">
+
+        <ImageButton
+            android:id="@+id/trackerButton"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@android:color/transparent"
+            android:onClick="toggleTrackerLayout"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorRunnerRed"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeightValue"
+            app:srcCompat="@drawable/shadowrunapp_downgrade" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="115dp"
+            android:layout_height="17dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:text="Zustandsmonitore"
+            app:layout_constraintRight_toRightOf="@+id/textViewWeight"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeight" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

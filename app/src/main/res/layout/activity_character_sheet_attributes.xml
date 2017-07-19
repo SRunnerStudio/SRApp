@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view22"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memory" />
+
+    <View
+        android:id="@+id/view21"
+        android:layout_width="1dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/divider_color"
+        app:layout_constraintRight_toLeftOf="@+id/textView40"
+        app:layout_constraintTop_toBottomOf="@+id/view19"
+        android:layout_marginEnd="8dp" />
+
+    <View
+        android:id="@+id/view17"
+        android:layout_width="1dp"
+        android:layout_height="22dp"
+        android:background="@color/divider_color"
+        app:layout_constraintTop_toBottomOf="@+id/view19"
+        app:layout_constraintRight_toLeftOf="@+id/physicalLimit"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="272dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/divider_color"
+        app:layout_constraintRight_toLeftOf="@+id/HebenTragenTxt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memory"
+        android:id="@+id/view19" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mentalLimit" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EdgeTxt"
+        android:layout_marginTop="0dp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CharismaTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IntuitionTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LogikTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WillenskraftTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StarkeTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ReaktionTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GeschicklichkeitTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/KonstitutionTxt" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/KonstitutionTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Konstitution"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/konValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="konValue"
+        app:layout_constraintLeft_toRightOf="@+id/GeschicklichkeitTxt"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/EssenzTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Essenz"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/essValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="essValue"
+        app:layout_constraintLeft_toRightOf="@+id/SelbstbeherrschungTxt"
+        app:layout_constraintTop_toTopOf="@+id/EssenzTxt"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/GeschicklichkeitTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Geschicklichkeit"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/KonstitutionTxt" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="185dp" />
+
+    <TextView
+        android:id="@+id/SelbstbeherrschungTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selbstbeherrschung"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/AstraleInitiativeTxt" />
+
+    <TextView
+        android:id="@+id/gesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="gesValue"
+        app:layout_constraintTop_toTopOf="@+id/GeschicklichkeitTxt"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue" />
+
+    <TextView
+        android:id="@+id/ReaktionTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Reaktion"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/GeschicklichkeitTxt" />
+
+    <TextView
+        android:id="@+id/StarkeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Stärke"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/ReaktionTxt" />
+
+    <TextView
+        android:id="@+id/WillenskraftTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Willenskraft"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/StarkeTxt" />
+
+    <TextView
+        android:id="@+id/LogikTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Logik"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/WillenskraftTxt" />
+
+    <TextView
+        android:id="@+id/IntuitionTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Intuition"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/LogikTxt" />
+
+    <TextView
+        android:id="@+id/CharismaTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Charisma"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/IntuitionTxt" />
+
+    <TextView
+        android:id="@+id/EdgeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Edge"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/CharismaTxt" />
+
+    <TextView
+        android:id="@+id/reaValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="reaValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/gesValue" />
+
+    <TextView
+        android:id="@+id/strValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="strValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/reaValue" />
+
+    <TextView
+        android:id="@+id/wilValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="wilValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/strValue" />
+
+    <TextView
+        android:id="@+id/logValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="logValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/wilValue" />
+
+    <TextView
+        android:id="@+id/intValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="intValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/logValue" />
+
+    <TextView
+        android:id="@+id/chValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="chValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/intValue" />
+
+    <TextView
+        android:id="@+id/edgValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="edgValue"
+        app:layout_constraintLeft_toLeftOf="@+id/konValue"
+        app:layout_constraintTop_toBottomOf="@+id/chValue" />
+
+    <TextView
+        android:id="@+id/MagieResonanzTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Magie/Resonanz"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/EssenzTxt" />
+
+    <TextView
+        android:id="@+id/InitiativeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Initiative"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/MagieResonanzTxt" />
+
+    <TextView
+        android:id="@+id/MatrixInitiativeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Matrix-Initiative"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/InitiativeTxt" />
+
+    <TextView
+        android:id="@+id/AstraleInitiativeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Astrale Initiative"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/MatrixInitiativeTxt" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Menschenkentniss"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/SelbstbeherrschungTxt" />
+
+    <TextView
+        android:id="@+id/HebenTragenTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Heben/Tragen"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/BewegungTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Bewegung (m)"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/HebenTragenTxt" />
+
+    <TextView
+        android:id="@+id/magResValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="magResValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/essValue" />
+
+    <TextView
+        android:id="@+id/initValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="initValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/magResValue" />
+
+    <TextView
+        android:id="@+id/matIniValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="matIniValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/initValue" />
+
+    <TextView
+        android:id="@+id/astIniValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="astIniValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/matIniValue" />
+
+    <TextView
+        android:id="@+id/selbstBValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="selbstBValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/astIniValue" />
+
+    <TextView
+        android:id="@+id/menkValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="menkValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/selbstBValue" />
+
+    <TextView
+        android:id="@+id/carryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="carryValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/menkValue" />
+
+    <TextView
+        android:id="@+id/moveValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="moveValue"
+        app:layout_constraintLeft_toLeftOf="@+id/essValue"
+        app:layout_constraintTop_toBottomOf="@+id/carryValue" />
+
+    <TextView
+        android:id="@+id/mentalLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:text="Geistiges Limit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view19"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/physicalLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Körperl. Limit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mentalLimit"
+        android:layout_marginTop="0dp"
+        app:layout_constraintHorizontal_bias="0.48" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:text="Soziales Limit"
+        app:layout_constraintRight_toLeftOf="@+id/socialLimitValue"
+        app:layout_constraintTop_toTopOf="@+id/physicalLimit"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/physlimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/mentalLimit"
+        app:layout_constraintTop_toTopOf="@+id/mentalLimit"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/mentLimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/physicalLimit"
+        app:layout_constraintTop_toTopOf="@+id/physicalLimit"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/socialLimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintTop_toTopOf="@+id/textView40"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Erinnergungsver."
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/BewegungTxt" />
+
+    <TextView
+        android:id="@+id/EdgeCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="EdgeCounter"
+        app:layout_constraintLeft_toLeftOf="@+id/KonstitutionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/EdgeTxt" />
+
+    <TextView
+        android:id="@+id/memoryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="memoryValue"
+        app:layout_constraintLeft_toLeftOf="@+id/moveValue"
+        app:layout_constraintTop_toBottomOf="@+id/moveValue" />
+
+</android.support.constraint.ConstraintLayout>

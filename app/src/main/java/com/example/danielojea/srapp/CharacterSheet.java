@@ -1,9 +1,8 @@
 package com.example.danielojea.srapp;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,14 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
-import com.example.danielojea.srapp.control.ExpandableListAdapter;
 import com.example.danielojea.srapp.control.ExpandableListArrayAdapter;
 
 public class CharacterSheet extends AppCompatActivity {
@@ -74,13 +72,13 @@ public class CharacterSheet extends AppCompatActivity {
         });
     }
 
+
     public void setCharacterSheetData(SRCharacter character){
         getProfileImageforMetatyp();
         setTracker("stun",character.getAttributes().getStunDamageTrack());
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
-        TextView textViewStreetName = (TextView) findViewById(R.id.textViewStreetName);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
         TextView characterArchetyp = (TextView) findViewById(R.id.textViewClassValue);
         TextView characterSex = (TextView) findViewById(R.id.textViewSexValue);
@@ -129,94 +127,104 @@ public class CharacterSheet extends AppCompatActivity {
         }
         return;
     }
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.character_menu, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.deleteCharacter) {
-            AlertDialog.Builder deleteCharDialog  = new AlertDialog.Builder(this);
-            deleteCharDialog.setTitle("Charakter Löschen");
-            deleteCharDialog.setMessage("wenn sie einen Charakter Löschen ist er nicht wieder her zu stellen.");
-            deleteCharDialog.setCancelable(true);
-            deleteCharDialog.setPositiveButton("Löschen",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //dismiss the dialog
-                            //characterList
-                            Toast.makeText(CharacterSheet.this, "Charakter gelöscht", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            deleteCharDialog.setNegativeButton("Abbrechen",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //dismiss the dialog
-                            Toast.makeText(CharacterSheet.this, "nicht gelöscht", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            deleteCharDialog.create().show();
-            return true;
-        }
-        if (id == R.id.killCharacter) {
-            AlertDialog.Builder killCharDialog  = new AlertDialog.Builder(this);
-            killCharDialog.setTitle("Charakter Töten");
-            killCharDialog.setMessage("wenn sie einen Charakter Töten kann er nicht mehr weiter bearbeitet werden.");
-            killCharDialog.setCancelable(true);
-
-            killCharDialog.setPositiveButton("Töten",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //dismiss the dialog
-                            Toast.makeText(CharacterSheet.this, "Charakter tot", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            killCharDialog.setNegativeButton("Abbrechen",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //dismiss the dialog
-                            Toast.makeText(CharacterSheet.this, "Charakter nicht tot", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            killCharDialog.create().show();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String[]>>();
+        character.getAttributes().calculateStats();
+
+        TextView konValue = (TextView) findViewById(R.id.konValue);
+        TextView gesValue = (TextView) findViewById(R.id.gesValue);
+        TextView reaValue = (TextView) findViewById(R.id.reaValue);
+        TextView strValue = (TextView) findViewById(R.id.strValue);
+        TextView wilValue = (TextView) findViewById(R.id.wilValue);
+        TextView logValue = (TextView) findViewById(R.id.logValue);
+        TextView intValue = (TextView) findViewById(R.id.intValue);
+        TextView chValue = (TextView) findViewById(R.id.chValue);
+        TextView edgValue = (TextView) findViewById(R.id.edgValue);
+        TextView essValue = (TextView) findViewById(R.id.essValue);
+        TextView magResValue = (TextView) findViewById(R.id.magResValue);
+        TextView initValue = (TextView) findViewById(R.id.initValue);
+        TextView matIniValue = (TextView) findViewById(R.id.matIniValue);
+        TextView astIniValue = (TextView) findViewById(R.id.astIniValue);
+        TextView selbstBValue = (TextView) findViewById(R.id.selbstBValue);
+        TextView menkValue = (TextView) findViewById(R.id.menkValue);
+        TextView carryValue = (TextView) findViewById(R.id.carryValue);
+        TextView moveValue = (TextView) findViewById(R.id.moveValue);
+        TextView memoryValue = (TextView) findViewById(R.id.memoryValue);
+        TextView physlimitValue = (TextView) findViewById(R.id.physlimitValue);
+        TextView mentLimitValue = (TextView) findViewById(R.id.mentLimitValue);
+        TextView socialLimitValue = (TextView) findViewById(R.id.socialLimitValue);
+
+        konValue.setText(""+character.getAttributes().getCON().getValue());
+        highligthValue(character.getAttributes().getCON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        gesValue.setText(""+character.getAttributes().getAGI().getValue());
+        highligthValue(character.getAttributes().getAGI().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        reaValue.setText(""+character.getAttributes().getREA().getValue());
+        highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        strValue.setText(""+character.getAttributes().getSTR().getValue());
+        highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        wilValue.setText(""+character.getAttributes().getWIL().getValue());
+        highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        logValue.setText(""+character.getAttributes().getLOG().getValue());
+        highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        intValue.setText(""+character.getAttributes().getINT().getValue());
+        highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        chValue.setText(""+character.getAttributes().getCHA().getValue());
+        highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        edgValue.setText(""+character.getAttributes().getEdge().getValue());
+        highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        essValue.setText(""+character.getAttributes().getEssence());
+        highligthValue(character.getAttributes().getEssence(),essValue,2,5);
+
+        magResValue.setText("0");
+        highligthValue(0,magResValue,2,7);
+
+        initValue.setText(""+character.getAttributes().getInitiative()+"+1w6");
+        int init= character.getAttributes().getREA().getValue()+character.getAttributes().getINT().getValue();
+        highligthValue(init,initValue,5,10);
+
+        matIniValue.setText(""+character.getAttributes().getMatrixInitiativeAR()+"+1w6");
+        highligthValue(init,matIniValue,5,10);
+
+        astIniValue.setText(""+character.getAttributes().getAstralInitiative()+"+2w6");
+
+        selbstBValue.setText(""+character.getAttributes().getComposure());
+        highligthValue(character.getAttributes().getComposure(),selbstBValue,5,12);
+
+        menkValue.setText(""+character.getAttributes().getJudgeIntentions());
+        highligthValue(character.getAttributes().getJudgeIntentions(),menkValue,5,12);
+
+        carryValue.setText(""+character.getAttributes().getCarry());
+        highligthValue(character.getAttributes().getCarry(),carryValue,5,12);
+
+        moveValue.setText(""+character.getAttributes().getMovementWalk()+"/"+character.getAttributes().getMovementRun()+"/+"+character.getAttributes().getMovementSprint());
+        highligthValue(character.getAttributes().getAGI().getValue(),moveValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+
+        memoryValue.setText(""+character.getAttributes().getMemory());
+        highligthValue(character.getAttributes().getMemory(),memoryValue,5,12);
+
+        physlimitValue.setText(""+character.getAttributes().getPhysicalLimit());
+        highligthValue(character.getAttributes().getPhysicalLimit(),physlimitValue,3,7);
+
+        mentLimitValue.setText(""+character.getAttributes().getMentalLimit());
+        highligthValue(character.getAttributes().getMentalLimit(),mentLimitValue,3,7);
+
+        socialLimitValue.setText(""+character.getAttributes().getSocialLimit());
+        highligthValue(character.getAttributes().getSocialLimit(),socialLimitValue,3,7);
+
 
         // Adding child data
-        listDataHeader.add("Attribute");
         listDataHeader.add("Fertigkeiten");
         listDataHeader.add("Vor und Nachteile");
-
-        // Dummy Data wird später aus dem Charakterobjekt geladen
-        List<String[]> attribute = new ArrayList<String[]>();
-        attribute.add(new String[]{"KON ",""+character.getAttributes().getCON().getValue(),"ESS ",""+character.getAttributes().getEssence()});
-        attribute.add(new String[]{"GES ",""+character.getAttributes().getAGI().getValue(),"Magie ",""});
-        attribute.add(new String[]{"REA ",""+character.getAttributes().getREA().getValue(),"Initiative ",""+character.getAttributes().getInitiative()});
-        attribute.add(new String[]{"STR ",""+character.getAttributes().getSTR().getValue(),"Matrix-Ini ",""+character.getAttributes().getMatrixInitiativeAR()});
-        attribute.add(new String[]{"WIL ",""+character.getAttributes().getWIL().getValue(),"Astral-Ini","1+2w6"});
-        attribute.add(new String[]{"LOG ",""+character.getAttributes().getLOG().getValue(),"Selbstbeherrschung ",""+character.getAttributes().getComposure()});
-        attribute.add(new String[]{"INT ",""+character.getAttributes().getINT().getValue(),"Menschenkentnis ",""+character.getAttributes().getJudgeIntentions()});
-        attribute.add(new String[]{"CHA ",""+character.getAttributes().getCHA().getValue(),"Erinnerungsvermögen ",""+character.getAttributes().getMemory()});
-        attribute.add(new String[]{"EDGE ",""+character.getAttributes().getEdge().getValue(),"Heben/tragen ",""+character.getAttributes().getCarry()});
-        attribute.add(new String[]{" ","","Bewegung ",""+character.getAttributes().getMovement()});
-        attribute.add(new String[]{"körperliches Limit          "+character.getAttributes().getPhysicalLimit(),""+character.getAttributes().getPhysicalLimit()});
-        attribute.add(new String[]{"Geistiges Limit          "+character.getAttributes().getMentalLimit(),""+character.getAttributes().getMentalLimit()});
-        attribute.add(new String[]{"Soziales Limit          "+character.getAttributes().getSocialLimit(),""+character.getAttributes().getSocialLimit()});
 
 
         List<String[]> skills = new ArrayList<String[]>();
@@ -225,21 +233,21 @@ public class CharacterSheet extends AppCompatActivity {
             {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName()+"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName(),skill.getConnectedPackage()});
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getConnectedPackage(),skill.getSpecializationName()});
                 }
                 else {
 
-                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue(),skill.getConnectedPackage()});
+                    skills.add(new String[]{skill.getName(),""+ skill.getValue(),skill.getConnectedPackage(),""});
                 }
             }
             else {
                 if(skill.isSpecialization())
                 {
-                    skills.add(new String []{skill.getName() +"\u0009\u0009"+skill.getValue(),""+skill.getValue(),skill.getSpecializationName()});
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),"",skill.getSpecializationName()});
                 }
                 else {
 
-                    skills.add(new String[]{skill.getName()+"\u0009\u0009"+skill.getValue(), "" + skill.getValue()});
+                    skills.add(new String[]{skill.getName(),"" + skill.getValue(),"",""});
                 }
             }
 
@@ -252,23 +260,45 @@ public class CharacterSheet extends AppCompatActivity {
 
         List<String[]> qualities = new ArrayList<String[]>();
         for (Quality quality:qualityList) {
-            qualities.add(new String[]{quality.getName()});
+            qualities.add(new String[]{quality.getName(),"","",""});
         }
 
-        listDataChild.put(listDataHeader.get(0), attribute); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), skills);
-        listDataChild.put(listDataHeader.get(2), qualities);
+        listDataChild.put(listDataHeader.get(0), skills); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), qualities);
     }
+
     public void toggleTrackerLayout(View v){
         if(!character.isDead()) {
-            ConstraintLayout trackerLayout = (ConstraintLayout) findViewById(R.id.trackerLayout);
-            FloatingActionButton trackerButton = (FloatingActionButton) findViewById(R.id.trackerButton);
+            LinearLayout trackerLayout = (LinearLayout) findViewById(R.id.trackerLayout);
+            ImageButton trackerButton = (ImageButton) findViewById(R.id.trackerButton);
             if (trackerLayout.getVisibility() == v.VISIBLE) {
                 trackerLayout.setVisibility(v.GONE);
                 trackerButton.setImageResource(R.drawable.shadowrunapp_downgrade);
             } else {
                 trackerLayout.setVisibility(v.VISIBLE);
                 trackerButton.setImageResource(R.drawable.shadowrunapp_upgrade);
+            }
+        }
+    }
+
+    public void toggleAttributeLayout(View v){
+        LinearLayout attributLayout = (LinearLayout) findViewById(R.id.attributeLayout);
+        ImageButton attributButton = (ImageButton) findViewById(R.id.attributButton);
+        if (attributLayout.getVisibility() == v.VISIBLE) {
+            attributLayout.setVisibility(v.GONE);
+            attributButton.setImageResource(R.drawable.shadowrunapp_downgrade);
+        } else {
+            attributLayout.setVisibility(v.VISIBLE);
+            attributButton.setImageResource(R.drawable.shadowrunapp_upgrade);
+        }
+    }
+
+    public void highligthValue(int attributValue, TextView attributField,int low,int high){
+        if (attributValue >= high) {
+            attributField.setTextColor(getResources().getColor(R.color.GreenValue));
+        } else {
+            if (attributValue <= low) {
+                attributField.setTextColor(getResources().getColor(R.color.RedValue));
             }
         }
     }

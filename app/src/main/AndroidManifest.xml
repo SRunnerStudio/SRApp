@@ -20,12 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".CharacterSelection" />
+        <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".charactercreation.MetatypChoose" />
-        <activity
-            android:name=".CharacterSheet"
-            android:theme="@style/tracker" />
+        <activity android:name=".CharacterSheet"
+            android:theme="@style/tracker"/>
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity
             android:name=".charactercreation.SkillPicker"

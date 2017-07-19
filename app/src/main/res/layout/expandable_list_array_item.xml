@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="8dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center|left"
             android:text="listitem"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
@@ -25,8 +25,8 @@
             android:id="@+id/lblListItemValue"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="2"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="8"
             android:gravity="center|left"
             android:text="listitem"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -45,7 +45,7 @@
             android:id="@+id/lblListItem2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:gravity="center|left"
             android:text="listitem" />
@@ -55,8 +55,8 @@
             android:id="@+id/lblListItem2Value"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="3"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
             android:gravity="center|left"
             android:text="listitem" />
     </LinearLayout>

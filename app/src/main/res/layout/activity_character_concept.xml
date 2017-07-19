@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ok_button_height"
         android:onClick="finishCharacterCreation"
         android:text="@string/btnFInishChar"
         app:layout_constraintBottom_toBottomOf="parent"

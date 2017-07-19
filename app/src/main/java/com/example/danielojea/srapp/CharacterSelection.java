@@ -132,14 +132,18 @@ public class CharacterSelection extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(CharacterSelectionContentProvider.ITEMS);
-        if(character!= null){adapter.addCharacter(character);}
-        recyclerView.setAdapter(adapter);
+
         if(getIntent().getSerializableExtra("Character")!= null) {
+            loadCharacters();
+            adapter.addCharacter(character);
+            recyclerView.setAdapter(adapter);
             saveCharacters();
         }
         else
         {
             loadCharacters();
+            if(character!= null){adapter.addCharacter(character);}
+            recyclerView.setAdapter(adapter);
         }
     }
 
@@ -441,7 +445,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void saveCharacters() {
         // add-write text into file
         try {
-            FileOutputStream fileout = openFileOutput("NullPic.txt", MODE_PRIVATE);
+            FileOutputStream fileout = openFileOutput("SRCharacters.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             Gson gson = new Gson();
             if(save == null){
@@ -463,7 +467,7 @@ public class CharacterSelection extends AppCompatActivity {
         //reading text from file
         try {
             String json;
-            FileInputStream fis = openFileInput("NullPic.txt");
+            FileInputStream fis = openFileInput("SRCharacters.txt");
             FileChannel fc = fis.getChannel();
             MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 

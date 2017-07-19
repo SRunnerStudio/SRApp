@@ -43,7 +43,8 @@ public class MetatypDetail extends AppCompatActivity {
                 new AttributeValue(character.getMetatype().getLOGMax(),character.getMetatype().getLOGStart(),character.getMetatype().getLOGStart()),
                 new AttributeValue(character.getMetatype().getINTMax(),character.getMetatype().getINTStart(),character.getMetatype().getINTStart()),
                 new AttributeValue(character.getMetatype().getCHAMax(),character.getMetatype().getCHAStart(),character.getMetatype().getCHAStart()),
-                new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()) );
+                new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()),
+                metatyp);
         character.setAttributes(attributes);
         character.getAttributes().calculateStats();
         Intent intent = new Intent(this, CustomizeAttributes.class);

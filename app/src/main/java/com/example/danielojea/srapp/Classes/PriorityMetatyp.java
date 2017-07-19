@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class PriorityMetatyp implements Priority, Serializable {
     private String[][] A = {{"Mensch","9"},{"Elf","8"},{"Ork","7"},{"Zwerg","7"},{"Troll","5"}};
-    private String[][] B = {{"Mensch","9"},{"Elf","6"},{"Ork","4"},{"Zwerg","4"},{"Troll","0"}};
+    private String[][] B = {{"Mensch","7"},{"Elf","6"},{"Ork","4"},{"Zwerg","4"},{"Troll","0"}};
     private String[][] C = {{"Mensch","5"},{"Elf","3"},{"Ork","0"},{"",""},{"",""}};
     private String[][] D = {{"Mensch","3"},{"Elf","0"},{"",""},{"",""},{"",""}};
     private String[][] E = {{"Mensch","1"},{"",""},{"",""},{"",""},{"",""}};

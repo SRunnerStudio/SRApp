@@ -40,9 +40,8 @@
 
         <Button
             android:id="@+id/priorityOkButton"
-            style="@style/UsedStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/ok_button_height"
             android:layout_gravity="bottom"
             android:layout_margin="0dp"
             android:layout_marginBottom="0dp"
