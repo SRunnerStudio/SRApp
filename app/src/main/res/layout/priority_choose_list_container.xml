@@ -33,7 +33,7 @@
             android:layout_height="match_parent">
 
             <include
-                layout="@layout/priorityitem_list"
+                layout="@layout/priority_choose_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </ScrollView>

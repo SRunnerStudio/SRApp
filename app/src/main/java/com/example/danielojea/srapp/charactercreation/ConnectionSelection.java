@@ -16,7 +16,6 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.ConnectionListAdapter;
-import com.example.danielojea.srapp.control.KnowledgeSkillListAdapter;
 
 import java.util.ArrayList;
 
@@ -29,7 +28,7 @@ public class ConnectionSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connection_selection);
+        setContentView(R.layout.connection_selection);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");

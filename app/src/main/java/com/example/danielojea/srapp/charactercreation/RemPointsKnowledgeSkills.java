@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.control.KnowledgeSkillListAdapter;
 import com.example.danielojea.srapp.control.RemPointsKnowledgeSkillListAdapter;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class RemPointsKnowledgeSkills extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_knowledge_skill_selection);
+        setContentView(R.layout.knowledge_skill_selection);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");

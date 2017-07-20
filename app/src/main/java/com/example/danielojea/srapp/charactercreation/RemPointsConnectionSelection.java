@@ -13,12 +13,8 @@ import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Contact;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.control.ConnectionListAdapter;
 import com.example.danielojea.srapp.control.RemPointsConnectionListAdapter;
-
-import java.util.ArrayList;
 
 public class RemPointsConnectionSelection extends AppCompatActivity {
     SRCharacter character;
@@ -28,7 +24,7 @@ public class RemPointsConnectionSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connection_selection);
+        setContentView(R.layout.connection_selection);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");

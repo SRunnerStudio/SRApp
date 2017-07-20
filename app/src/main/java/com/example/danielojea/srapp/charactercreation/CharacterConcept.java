@@ -1,6 +1,10 @@
 package com.example.danielojea.srapp.charactercreation;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +18,11 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.R;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class CharacterConcept extends AppCompatActivity {
@@ -23,16 +31,16 @@ public class CharacterConcept extends AppCompatActivity {
     ImageView imageView;
     final int requcode = 3;
     Uri pictureUri;
-    SerialBitmap profilePicture;
+    Bitmap profilePicture;
     InputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_concept);
+        setContentView(R.layout.character_concept);
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         imageView = (ImageView) findViewById(R.id.imageViewCharacter);
-        imageView.setImageBitmap(character.getProfileImage().bitmap);
+        loadImageFromStorage(character.getProfileImage());
         setTitle("Details");
     }
 
@@ -46,9 +54,9 @@ public class CharacterConcept extends AppCompatActivity {
                 pictureUri = data.getData();
                 try {
                     is = getContentResolver().openInputStream(pictureUri);
-                    profilePicture = new SerialBitmap(is);
-                    imageView.setImageBitmap(profilePicture.bitmap);
-                    character.setProfileImage(profilePicture);
+                    profilePicture = BitmapFactory.decodeStream(is);
+                    imageView.setImageBitmap(profilePicture);
+                    character.setProfileImage(saveToInternalStorage(profilePicture));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -57,10 +65,49 @@ public class CharacterConcept extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void loadImageFromStorage(String path)
+    {
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            ImageView img=(ImageView)findViewById(R.id.imageView);
+            img.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
     public void loadCharacterPortraitFromData(View v) {
-        /*Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image*//*");
-        startActivityForResult(intent, requcode);*/
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, requcode);
+    }
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"images.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
     }
 
     public void finishCharacterCreation(View v){
@@ -100,7 +147,6 @@ public class CharacterConcept extends AppCompatActivity {
                 character.setMass(Integer.parseInt(((TextView) findViewById(R.id.editTextWeight)).getText().toString()));
             }
 
-            character.setProfileImage(null);
             Intent intent = new Intent(this, CharacterSelection.class);
             intent.putExtra("Character", character);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

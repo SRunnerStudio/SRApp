@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:listitem="@layout/fragment_points_distribute"
+        tools:listitem="@layout/points_distribute_fragment"
         android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/view3"
         android:layout_marginBottom="0dp"

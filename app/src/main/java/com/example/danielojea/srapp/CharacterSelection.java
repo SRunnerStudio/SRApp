@@ -3,6 +3,7 @@ package com.example.danielojea.srapp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -19,19 +20,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Save;
-import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
@@ -56,7 +54,7 @@ public class CharacterSelection extends AppCompatActivity {
             character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         }
-        setContentView(R.layout.activity_character_selection);
+        setContentView(R.layout.character_selection);
 
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
@@ -162,7 +160,7 @@ public class CharacterSelection extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.character_selection_list_content, parent, false);
+                    .inflate(R.layout.character_selection_list_item, parent, false);
             return new ViewHolder(view);
         }
         public int getProfileImageforMetatyp(int position){
@@ -185,7 +183,9 @@ public class CharacterSelection extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             if(characterList.get(position).character.getProfileImage()!=null){
-                holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
+                if(loadImageFromStorage(character.getProfileImage())!=null) {
+                    holder.characterPortrait.setImageBitmap(loadImageFromStorage(characterList.get(position).character.getProfileImage()));
+                }
             }
             else{
                 holder.characterPortrait.setImageResource(getProfileImageforMetatyp(position));
@@ -445,7 +445,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void saveCharacters() {
         // add-write text into file
         try {
-            FileOutputStream fileout = openFileOutput("SRCharacters.txt", MODE_PRIVATE);
+            FileOutputStream fileout = openFileOutput("SRChar.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             Gson gson = new Gson();
             if(save == null){
@@ -467,7 +467,7 @@ public class CharacterSelection extends AppCompatActivity {
         //reading text from file
         try {
             String json;
-            FileInputStream fis = openFileInput("SRCharacters.txt");
+            FileInputStream fis = openFileInput("SRChar.txt");
             FileChannel fc = fis.getChannel();
             MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 
@@ -481,6 +481,20 @@ public class CharacterSelection extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private Bitmap loadImageFromStorage(String path)
+    {
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            return b;
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 }

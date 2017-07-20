@@ -8,8 +8,8 @@ import java.io.Serializable;
 
 public class Attributes implements Serializable {
     private Metatyp metatyp;
-    private AttributeValue CON;
-    private AttributeValue AGI;
+    private AttributeValue KON;
+    private AttributeValue GES;
     private AttributeValue REA;
     private AttributeValue STR;
     private AttributeValue WIL;
@@ -36,10 +36,10 @@ public class Attributes implements Serializable {
     private int physicalDamageTrackMax;
     private int StunDamageTrackMax;
 
-    public Attributes(AttributeValue CON, AttributeValue AGI, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge,Metatyp metatyp) {
+    public Attributes(AttributeValue KON, AttributeValue GES, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge, Metatyp metatyp) {
         this.metatyp = metatyp;
-        this.CON = CON;
-        this.AGI = AGI;
+        this.KON = KON;
+        this.GES = GES;
         this.REA = REA;
         this.STR = STR;
         this.WIL = WIL;
@@ -53,15 +53,15 @@ public class Attributes implements Serializable {
         initiative = REA.getValue()+INT.getValue();
         matrixInitiativeAR = REA.getValue()+INT.getValue();
         astralInitiative = INT.getValue()*2;
-        physicalLimit = (STR.getValue()*2 + CON.getValue() + REA.getValue())/3;
+        physicalLimit = (STR.getValue()*2 + KON.getValue() + REA.getValue())/3;
         mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
         socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
         judgeIntentions = INT.getValue() +CHA.getValue();
         composure = WIL.getValue()+CHA.getValue();
         Memory = WIL.getValue()+LOG.getValue();
-        carry = CON.getValue()+STR.getValue();
+        carry = KON.getValue()+STR.getValue();
         calcMovements();
-        physicalDamageTrackMax= 8 + CON.getValue()/2;
+        physicalDamageTrackMax= 8 + KON.getValue()/2;
         StunDamageTrackMax = 8 + WIL.getValue()/2;
         physicalDamageTrack=0;
         StunDamageTrack=0;
@@ -70,29 +70,48 @@ public class Attributes implements Serializable {
     public void calcMovements(){
         switch(metatyp.getMetatypENG()){
             case "human":
-                movementWalk = AGI.getValue()*2;
-                movementRun = AGI.getValue()*4;
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
                 movementSprint =2;
             case "elf":
-                movementWalk = AGI.getValue()*2;
-                movementRun = AGI.getValue()*4;
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
                 movementSprint =2;
             case "orc":
-                movementWalk = AGI.getValue()*2;
-                movementRun = AGI.getValue()*4;
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
                 movementSprint =2;
             case "dwarf":
-                movementWalk = AGI.getValue()*2;
-                movementRun = AGI.getValue()*4;
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
                 movementSprint =1;
             case "troll":
-                movementWalk = AGI.getValue()*2;
-                movementRun = AGI.getValue()*4;
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
                 movementSprint =1;
         }
     }
 
-    public void getValue(AttributeValue attributeValue){
+    public int getValue(String attributeName){
+        switch (attributeName) {
+            case "KON":
+                return KON.getValue();
+            case "GES":
+                return GES.getValue();
+            case "REA":
+                return REA.getValue();
+            case "STR":
+                return STR.getValue();
+            case "WIL":
+                return WIL.getValue();
+            case "LOG":
+                return LOG.getValue();
+            case "INT":
+                return INT.getValue();
+            case "CHA":
+                return CHA.getValue();
+        }
+        return 0;
     }
 
     public int getAstralInitiative() {
@@ -175,20 +194,20 @@ public class Attributes implements Serializable {
         return socialLimit;
     }
 
-    public AttributeValue getCON() {
-        return CON;
+    public AttributeValue getKON() {
+        return KON;
     }
 
-    public void setCON(AttributeValue CON) {
-        this.CON = CON;
+    public void setKON(AttributeValue KON) {
+        this.KON = KON;
     }
 
-    public AttributeValue getAGI() {
-        return AGI;
+    public AttributeValue getGES() {
+        return GES;
     }
 
-    public void setAGI(AttributeValue AGI) {
-        this.AGI = AGI;
+    public void setGES(AttributeValue GES) {
+        this.GES = GES;
     }
 
     public AttributeValue getREA() {

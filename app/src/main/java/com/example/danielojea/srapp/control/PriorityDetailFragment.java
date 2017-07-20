@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.charactercreation.PriorityDetailActivity;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
-import com.example.danielojea.srapp.control.PriorityContentProvider;
 
 
 /**
@@ -55,7 +54,7 @@ public class PriorityDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.priorityitem_detail, container, false);
+        rootView = inflater.inflate(R.layout.priority_detail_list, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {

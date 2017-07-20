@@ -1,15 +1,12 @@
 package com.example.danielojea.srapp.charactercreation;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -41,7 +38,7 @@ public class QualitiesAdvantages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_qualities, container, false);
+        return inflater.inflate(R.layout.qualities_fragment, container, false);
     }
 
     @Override

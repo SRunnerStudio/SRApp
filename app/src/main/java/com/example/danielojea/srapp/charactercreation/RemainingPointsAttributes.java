@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.control.AttributeListAdapter;
-import com.example.danielojea.srapp.control.KnowledgeSkillListAdapter;
 import com.example.danielojea.srapp.control.RemPointsAttributeListAdapter;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class RemainingPointsAttributes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customize_attributes);
+        setContentView(R.layout.attributes_customize);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");

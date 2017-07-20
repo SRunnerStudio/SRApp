@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.danielojea.srapp.Classes.Priority;
 import com.example.danielojea.srapp.Classes.SRCharacter;
@@ -30,7 +29,7 @@ public class PriorityDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_priorityitem_detail);
+        setContentView(R.layout.priority_detail_container);
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.

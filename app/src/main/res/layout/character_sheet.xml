@@ -217,10 +217,7 @@
 
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="2500dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trackerLine">
@@ -235,6 +232,39 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewEthnicityValue">
+
+            <ScrollView
+                android:id="@+id/attributeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/attributeLine">
+
+                <LinearLayout
+                    android:id="@+id/attributelinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attributeLine">
+
+                    <include
+                        android:id="@+id/attributeInclude"
+                        layout="@layout/character_sheet_attributes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        tools:layout_editor_absoluteY="89dp" />
+
+                </LinearLayout>
+            </ScrollView>
 
             <LinearLayout
                 android:id="@+id/attributeLine"
@@ -291,7 +321,7 @@
 
                     <include
                         android:id="@+id/trackerInclude"
-                        layout="@layout/activity_character_sheet_tracker"
+                        layout="@layout/character_sheet_tracker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -303,37 +333,9 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/attributeLayout"
-                android:layout_width="0dp"
-                android:layout_height="285dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/attributeLine">
-
-                <ScrollView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <include
-                        android:id="@+id/attributeInclude"
-                        layout="@layout/activity_character_sheet_attributes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        tools:layout_editor_absoluteY="89dp" />
-                </ScrollView>
-
-            </LinearLayout>
-
             <ScrollView
                 android:layout_width="0dp"
-                android:layout_height="500dp"
+                android:layout_height="1000dp"
                 android:fillViewport="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -345,7 +347,7 @@
                     android:id="@+id/listview"
                     style="@android:style/Widget.ExpandableListView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="9dp"
                     app:layout_constraintBottom_toBottomOf="parent"

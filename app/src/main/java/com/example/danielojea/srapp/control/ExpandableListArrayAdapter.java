@@ -63,14 +63,14 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         TextView txtListChild2Value = (TextView) convertView.findViewById(R.id.lblListItem2Value);
         LinearLayout secondRow = (LinearLayout) convertView.findViewById(R.id.secondRow);
 
-      /*  if(childText.length ==1)
+
+        if(childText.length ==1)
         {
-            txtListChildValue.setVisibility(View.GONE);
+            txtListChild.setText(childText[0]);
             txtListChild2.setVisibility(View.GONE);
+            txtListChildValue.setVisibility(View.GONE);
             txtListChild2Value.setVisibility(View.GONE);
             secondRow.setVisibility(View.GONE);
-            txtListChild.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0.1f));
-            txtListChild.setText(childText[0]);
 
         }
         if(childText.length ==2)
@@ -92,22 +92,8 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
             txtListChildValue.setText(childText[1]);
             txtListChild2.setText(childText[2]);
             txtListChild2Value.setText(childText[3]);
-        }*/
-        txtListChild.setText(childText[0]);
-        txtListChildValue.setText(childText[1]);
-        txtListChild2.setText(childText[2]);
-        txtListChild2Value.setText(childText[3]);
-        if(childText[1].equals(""))
-        {
-            if(childText[2].equals("")) {
-                if (childText[3].equals("")){
-                    txtListChild.setText(childText[0]);
-                    txtListChild2.setVisibility(View.GONE);
-                    txtListChildValue.setVisibility(View.GONE);
-                    txtListChild2Value.setVisibility(View.GONE);
-                }
-            }
         }
+
         return convertView;
     }
 

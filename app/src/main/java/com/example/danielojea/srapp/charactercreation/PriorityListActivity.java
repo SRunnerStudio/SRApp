@@ -63,7 +63,7 @@ public class PriorityListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_priorityitem_list);
+        setContentView(R.layout.priority_choose_list_container);
 
         if(getIntent().getSerializableExtra("Position") != null) {
             listItemPosition = (int) getIntent().getSerializableExtra("Position");
@@ -223,7 +223,7 @@ public class PriorityListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.priorityitem_list_content, parent, false);
+                    .inflate(R.layout.priority_choose_item, parent, false);
             return new ViewHolder(view);
         }
 

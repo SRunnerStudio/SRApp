@@ -12,7 +12,6 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 import com.example.danielojea.srapp.control.RemPointsSkillListAdapter;
-import com.example.danielojea.srapp.control.SkillListAdapter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +25,7 @@ public class RemainingPointsSkills extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_selection);
+        setContentView(R.layout.skill_selection);
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         skills = (ArrayList<Skill>) getIntent().getSerializableExtra("Skills");
         TextView skillpointCounter = (TextView) findViewById(R.id.SkillpointCounter);

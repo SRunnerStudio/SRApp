@@ -8,10 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
 public class QualitiesPicker extends AppCompatActivity {
@@ -34,7 +31,7 @@ public class QualitiesPicker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qualities_picker);
+        setContentView(R.layout.qualities_picker);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

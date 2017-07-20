@@ -21,7 +21,7 @@ public class SRCharacter implements Serializable {
     private int mass;
     private int karma;
     private int totalKarma;
-    private SerialBitmap profileImage;
+    private String profileImage;
     private Attributes attributes;
     private ArrayList<Skill> skills;
     private ArrayList<Quality> advantages;
@@ -71,7 +71,7 @@ public class SRCharacter implements Serializable {
         karmaDisadvantages =25;
     }
 
-    public SRCharacter(String name, Metatyp metatype, SerialBitmap profileImage) {
+    public SRCharacter(String name, Metatyp metatype, String profileImage) {
         this.name = name;
         if (name.equals("")){
             this.name = "Namenlos";
@@ -118,11 +118,11 @@ public class SRCharacter implements Serializable {
         skills.add(skill);
     }
 
-    public SerialBitmap getProfileImage() {
+    public String getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(SerialBitmap profileImage) {
+    public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 

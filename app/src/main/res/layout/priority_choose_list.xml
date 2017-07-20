@@ -11,4 +11,4 @@
     style="@style/AppBackgroudImage"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.example.danielojea.srapp.charactercreation.PriorityListActivity"
-    tools:listitem="@layout/priorityitem_list_content" />
+    tools:listitem="@layout/priority_choose_item" />

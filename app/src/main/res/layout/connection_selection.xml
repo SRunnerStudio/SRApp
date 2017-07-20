@@ -90,6 +90,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/fragment_connection_points_distribute"
+        tools:listitem="@layout/connection_points_distribute_fragment"
         android:layout_marginLeft="0dp" />
 </android.support.constraint.ConstraintLayout>

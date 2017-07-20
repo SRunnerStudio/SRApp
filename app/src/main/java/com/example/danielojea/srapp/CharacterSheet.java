@@ -1,24 +1,27 @@
 package com.example.danielojea.srapp;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.example.danielojea.srapp.Classes.Contact;
 import com.example.danielojea.srapp.Classes.Quality;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
@@ -34,7 +37,7 @@ public class CharacterSheet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_sheet);
+        setContentView(R.layout.character_sheet);
 
 
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
@@ -63,18 +66,22 @@ public class CharacterSheet extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (listAdapter.getLastExpandedPosition() != -1
+               /*if (listAdapter.getLastExpandedPosition() != -1
                         && groupPosition != listAdapter.getLastExpandedPosition()) {
                     expListView.collapseGroup(listAdapter.getLastExpandedPosition());
-                }
+                }*/
                 listAdapter.setLastExpandedPosition(groupPosition);
+                expListView.invalidateViews();
+                expListView.refreshDrawableState();
+                listAdapter.notifyDataSetChanged();
             }
         });
     }
 
 
     public void setCharacterSheetData(SRCharacter character){
-        getProfileImageforMetatyp();
+        //getProfileImageforMetatyp();
+        loadImageFromStorage(character.getProfileImage());
         setTracker("stun",character.getAttributes().getStunDamageTrack());
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
@@ -155,11 +162,11 @@ public class CharacterSheet extends AppCompatActivity {
         TextView mentLimitValue = (TextView) findViewById(R.id.mentLimitValue);
         TextView socialLimitValue = (TextView) findViewById(R.id.socialLimitValue);
 
-        konValue.setText(""+character.getAttributes().getCON().getValue());
-        highligthValue(character.getAttributes().getCON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        konValue.setText(""+character.getAttributes().getKON().getValue());
+        highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
 
-        gesValue.setText(""+character.getAttributes().getAGI().getValue());
-        highligthValue(character.getAttributes().getAGI().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        gesValue.setText(""+character.getAttributes().getGES().getValue());
+        highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
 
         reaValue.setText(""+character.getAttributes().getREA().getValue());
         highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
@@ -207,7 +214,7 @@ public class CharacterSheet extends AppCompatActivity {
         highligthValue(character.getAttributes().getCarry(),carryValue,5,12);
 
         moveValue.setText(""+character.getAttributes().getMovementWalk()+"/"+character.getAttributes().getMovementRun()+"/+"+character.getAttributes().getMovementSprint());
-        highligthValue(character.getAttributes().getAGI().getValue(),moveValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getGES().getValue(),moveValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
 
         memoryValue.setText(""+character.getAttributes().getMemory());
         highligthValue(character.getAttributes().getMemory(),memoryValue,5,12);
@@ -225,34 +232,32 @@ public class CharacterSheet extends AppCompatActivity {
         // Adding child data
         listDataHeader.add("Fertigkeiten");
         listDataHeader.add("Vor und Nachteile");
+        listDataHeader.add("Wissen");
+        listDataHeader.add("Kontakte");
 
-
+        List<String[]> knowledge = new ArrayList<String[]>();
         List<String[]> skills = new ArrayList<String[]>();
         for (Skill skill: character.getSkills()) {
-            if(skill.isPackageBound())
-            {
-                if(skill.isSpecialization())
-                {
-                    skills.add(new String []{skill.getName(),""+skill.getValue(),skill.getConnectedPackage(),skill.getSpecializationName()});
+            String dicePool = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getINT().getValue());
+            String dicePoolInt = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getINT().getValue());
+            String dicePoolLog = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getLOG().getValue());
+                if(skill.isSpecialization()) {
+                    skills.add(new String []{skill.getName(),""+skill.getValue(),dicePool+" w6",skill.getSpecializationName()});
                 }
                 else {
-
-                    skills.add(new String[]{skill.getName(),""+ skill.getValue(),skill.getConnectedPackage(),""});
+                    if(skill.getConnectedAttribute().equals("KNOWLEDGE")){
+                        knowledge.add(new String []{skill.getName(),""+skill.getValue(),"S/H "+dicePoolInt+" w6","B/A "+dicePoolLog+" w6"});
+                    }
+                    else {
+                        skills.add(new String[]{skill.getName(), "" + skill.getValue(),dicePool+" w6"+""});
+                    }
                 }
-            }
-            else {
-                if(skill.isSpecialization())
-                {
-                    skills.add(new String []{skill.getName(),""+skill.getValue(),"",skill.getSpecializationName()});
-                }
-                else {
-
-                    skills.add(new String[]{skill.getName(),"" + skill.getValue(),"",""});
-                }
-            }
-
         }
 
+        List<String[]> contacts = new ArrayList<String[]>();
+        for (Contact contact: character.getConnections()) {
+            contacts.add(new String[]{contact.getName(),"Loyalität "+contact.getLoyalty(),"Einfluss "+contact.getInfluence()});
+        }
         
         List<Quality> qualityList = new ArrayList<Quality>();
         qualityList.addAll(character.getAdvantages());
@@ -260,11 +265,13 @@ public class CharacterSheet extends AppCompatActivity {
 
         List<String[]> qualities = new ArrayList<String[]>();
         for (Quality quality:qualityList) {
-            qualities.add(new String[]{quality.getName(),"","",""});
+            qualities.add(new String[]{quality.getName()});
         }
 
         listDataChild.put(listDataHeader.get(0), skills); // Header, Child data
         listDataChild.put(listDataHeader.get(1), qualities);
+        listDataChild.put(listDataHeader.get(2), knowledge);
+        listDataChild.put(listDataHeader.get(3), contacts);
     }
 
     public void toggleTrackerLayout(View v){
@@ -282,7 +289,7 @@ public class CharacterSheet extends AppCompatActivity {
     }
 
     public void toggleAttributeLayout(View v){
-        LinearLayout attributLayout = (LinearLayout) findViewById(R.id.attributeLayout);
+        ScrollView attributLayout = (ScrollView) findViewById(R.id.attributeLayout);
         ImageButton attributButton = (ImageButton) findViewById(R.id.attributButton);
         if (attributLayout.getVisibility() == v.VISIBLE) {
             attributLayout.setVisibility(v.GONE);
@@ -383,4 +390,17 @@ public class CharacterSheet extends AppCompatActivity {
         nextButton.setVisibility(View.GONE);
     }
 
+    private void loadImageFromStorage(String path)
+    {
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            ImageView img=(ImageView)findViewById(R.id.imageViewChar);
+            img.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

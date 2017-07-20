@@ -55,7 +55,7 @@ public class DistributePointsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_points_distribute, container, false);
+        View view = inflater.inflate(R.layout.points_distribute_fragment, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
