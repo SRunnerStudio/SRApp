@@ -1,5 +1,6 @@
 package com.example.danielojea.srapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class CharacterSheet extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String[]>> listDataChild;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +82,13 @@ public class CharacterSheet extends AppCompatActivity {
 
 
     public void setCharacterSheetData(SRCharacter character){
-        //getProfileImageforMetatyp();
-        loadImageFromStorage(character.getProfileImage());
+        if (character.getProfileImage()!=null) {
+            loadImageFromStorage(character.getProfileImage());
+        }
+        else
+        {
+            getProfileImageforMetatyp();
+        }
         setTracker("stun",character.getAttributes().getStunDamageTrack());
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
@@ -134,6 +141,15 @@ public class CharacterSheet extends AppCompatActivity {
         }
         return;
     }
+
+    public void fullscreenProfileImage(View v){
+        if (character.getProfileImage()!=null) {
+            Intent intent = new Intent(this, CharacterSelectionPortrait.class);
+            intent.putExtra("Character", character);
+            startActivity(intent);
+        }
+    }
+
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String[]>>();
@@ -393,7 +409,8 @@ public class CharacterSheet extends AppCompatActivity {
     private void loadImageFromStorage(String path)
     {
         try {
-            File f=new File(path, "profile.jpg");
+            File f=new File(path, ""+character.getName()+character.getArchetype()+character.getGender()
+                    +character.getAge()+character.getHeigt()+character.getMass()+character.getEthnicity()+"images.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             ImageView img=(ImageView)findViewById(R.id.imageViewChar);
             img.setImageBitmap(b);
@@ -403,4 +420,5 @@ public class CharacterSheet extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 }

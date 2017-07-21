@@ -13,10 +13,13 @@
         android:id="@+id/imageViewChar"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:clickable="true"
+        android:onClick="fullscreenProfileImage"
         android:scaleType="fitCenter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@android:drawable/btn_dialog"
+        tools:onClick="fullscreenProfileImage" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -208,8 +211,8 @@
 
     <ImageView
         android:id="@+id/deadCharSkull"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:visibility="gone"
         app:layout_constraintRight_toRightOf="@+id/imageViewChar"
         app:layout_constraintTop_toTopOf="parent"

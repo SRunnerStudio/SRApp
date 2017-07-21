@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.danielojea.srapp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,8 +25,9 @@
         <activity android:name=".CharacterSelection" />
         <activity android:name=".charactercreation.SkillSelection" />
         <activity android:name=".charactercreation.MetatypChoose" />
-        <activity android:name=".CharacterSheet"
-            android:theme="@style/tracker"/>
+        <activity
+            android:name=".CharacterSheet"
+            android:theme="@style/tracker" />
         <activity android:name=".charactercreation.CharacterConcept" />
         <activity
             android:name=".charactercreation.SkillPicker"
@@ -60,8 +63,13 @@
             android:label="@string/title_activity_ability_picker"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.RemPointsKnowledgeSkills" />
-        <activity android:name=".charactercreation.RemainingPointsStartScreen"></activity>
+        <activity android:name=".charactercreation.RemainingPointsStartScreen" />
         <activity android:name=".charactercreation.RemPointsConnectionSelection" />
+        <activity
+            android:name=".CharacterSelectionPortrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_character_selection_portrait_test"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 </manifest>

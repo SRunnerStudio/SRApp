@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="UsedStyle" parent="@style/RunnerDarkTheme">
-    </style>
+    <style name="UsedStyle" parent="@style/RunnerDarkTheme"></style>
 
     <!-- Dark Theme -->
     <style name="RunnerDarkTheme" parent="AppTheme">
@@ -56,7 +55,6 @@
     <!-- Fullscreen Theme -->
 
 
-
     <style name="ToolBarTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -71,9 +69,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-
 
 
     <style name="tracker" parent="AppTheme">

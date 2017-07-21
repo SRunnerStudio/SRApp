@@ -33,6 +33,7 @@ public class CharacterConcept extends AppCompatActivity {
     Uri pictureUri;
     Bitmap profilePicture;
     InputStream is;
+    boolean imagechoosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,13 @@ public class CharacterConcept extends AppCompatActivity {
         setContentView(R.layout.character_concept);
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         imageView = (ImageView) findViewById(R.id.imageViewCharacter);
-        loadImageFromStorage(character.getProfileImage());
+        if (character.getProfileImage()!=null) {
+            loadImageFromStorage(character.getProfileImage());
+        }
+        else
+        {
+            imageView.setImageResource(getProfileImageforMetatyp());
+        }
         setTitle("Details");
     }
 
@@ -56,7 +63,7 @@ public class CharacterConcept extends AppCompatActivity {
                     is = getContentResolver().openInputStream(pictureUri);
                     profilePicture = BitmapFactory.decodeStream(is);
                     imageView.setImageBitmap(profilePicture);
-                    character.setProfileImage(saveToInternalStorage(profilePicture));
+                    imagechoosen = true;
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -65,10 +72,27 @@ public class CharacterConcept extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public int getProfileImageforMetatyp( ){
+        switch (character.getMetatype().getMetatypENG()) {
+            case "elf":
+                return(R.drawable.metatyp_elf);
+            case "human":
+                return(R.drawable.metatyp_human);
+            case "dwarf":
+                return(R.drawable.metatyp_dwarf);
+            case "orc":
+                return(R.drawable.metatyp_orc);
+            case "troll":
+                return(R.drawable.metatyp_troll);
+        }
+        return 6;
+    }
+
     private void loadImageFromStorage(String path)
     {
         try {
-            File f=new File(path, "profile.jpg");
+            File f=new File(path, ""+character.getName()+character.getArchetype()+character.getGender()
+                    +character.getAge()+character.getHeigt()+character.getMass()+character.getEthnicity()+"images.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             ImageView img=(ImageView)findViewById(R.id.imageView);
             img.setImageBitmap(b);
@@ -91,7 +115,8 @@ public class CharacterConcept extends AppCompatActivity {
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,"images.jpg");
+        File mypath=new File(directory,""+character.getName()+character.getArchetype()+character.getGender()
+                +character.getAge()+character.getHeigt()+character.getMass()+character.getEthnicity()+"images.jpg");
 
         FileOutputStream fos = null;
         try {
@@ -112,45 +137,73 @@ public class CharacterConcept extends AppCompatActivity {
 
     public void finishCharacterCreation(View v){
         TextView name = (TextView) findViewById(R.id.editTextName);
+        TextView streetName = (TextView) findViewById(R.id.editTextStreetName);
+        TextView archetyp = (TextView) findViewById(R.id.editTextArchtype);
+        TextView gender = (TextView) findViewById(R.id.editTextSex);
+        TextView age = (TextView) findViewById(R.id.editTextAge);
+        TextView heigt = (TextView) findViewById(R.id.editTextSize);
+        TextView mass = (TextView) findViewById(R.id.editTextWeight);
+        TextView ethnicity = (TextView) findViewById(R.id.editTextEthnicity);
+
         if( name.getText().toString().trim().equals("")){
-
-            /**
-             *   You can Toast a message here that the Username is Empty
-             **/
-
             name.setError("Wie willst du dir ohne Namen einen Namen machen?" );
-
         }else {
-
-            character.setName(name.getText().toString());
-            character.setStreetName((((TextView) findViewById(R.id.editTextStreetName)).getText().toString()));
-            character.setArchetype((((TextView) findViewById(R.id.editTextArchtype)).getText().toString()));
-            character.setGender((((TextView) findViewById(R.id.editTextSex)).getText().toString()));
-            character.setEthnicity((((TextView) findViewById(R.id.editTextEthnicity)).getText().toString()));
-            character.setBackground((((TextView) findViewById(R.id.editTextBackground)).getText().toString()));
-            character.setSkillPoints(0);
-            character.setSkillPackagePoints(0);
-            if (((EditText) findViewById(R.id.editTextAge)).getText().toString().equals("")) {
-                character.setAge(0);
+            if (archetyp.getText().toString().trim().equals("")) {
+                archetyp.setError("Bitte gib einen Archetypen ein.");
             } else {
-                character.setAge(Integer.parseInt(((EditText) findViewById(R.id.editTextAge)).getText().toString()));
-            }
-            if (((EditText) findViewById(R.id.editTextSize)).getText().toString().equals("")) {
-                character.setHeigt(0);
-            } else {
-                character.setHeigt(Integer.parseInt(((TextView) findViewById(R.id.editTextSize)).getText().toString()));
-            }
+                if (gender.getText().toString().trim().equals("")) {
+                    gender.setError("Bitte wähle ein Geschlecht aus.");
+                } else {
+                    if (age.getText().toString().trim().equals("")) {
+                        age.setError("Bitte gib ein Alter ein.");
+                    } else {
+                        if (heigt.getText().toString().trim().equals("")) {
+                            heigt.setError("Bitte gib eine Größe ein.");
+                        } else {
+                            if (mass.getText().toString().trim().equals("")) {
+                                mass.setError("Bitte gib eine Gewicht ein.");
+                            } else {
+                                if (ethnicity.getText().toString().trim().equals("")) {
+                                    ethnicity.setError("Bitte gib eine Ethnie ein.");
+                                } else {
+                                    character.setName(name.getText().toString());
+                                    character.setStreetName(streetName.getText().toString());
+                                    character.setArchetype(archetyp.getText().toString());
+                                    character.setGender(gender.getText().toString());
+                                    character.setEthnicity(ethnicity.getText().toString());
+                                    character.setBackground((((TextView) findViewById(R.id.editTextBackground)).getText().toString()));
+                                    character.setSkillPoints(0);
+                                    character.setSkillPackagePoints(0);
+                                    if (age.getText().toString().equals("")) {
+                                        character.setAge(0);
+                                    } else {
+                                        character.setAge(Integer.parseInt(((EditText) findViewById(R.id.editTextAge)).getText().toString()));
+                                    }
+                                    if (heigt.getText().toString().equals("")) {
+                                        character.setHeigt(0);
+                                    } else {
+                                        character.setHeigt(Integer.parseInt(((TextView) findViewById(R.id.editTextSize)).getText().toString()));
+                                    }
 
-            if (((EditText) findViewById(R.id.editTextWeight)).getText().toString().equals("")) {
-                character.setMass(0);
-            } else {
-                character.setMass(Integer.parseInt(((TextView) findViewById(R.id.editTextWeight)).getText().toString()));
-            }
+                                    if (mass.getText().toString().equals("")) {
+                                        character.setMass(0);
+                                    } else {
+                                        character.setMass(Integer.parseInt(((TextView) findViewById(R.id.editTextWeight)).getText().toString()));
+                                    }
+                                    if (imagechoosen) {
+                                        character.setProfileImage(saveToInternalStorage(profilePicture));
+                                    }
 
-            Intent intent = new Intent(this, CharacterSelection.class);
-            intent.putExtra("Character", character);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+                                    Intent intent = new Intent(this, CharacterSelection.class);
+                                    intent.putExtra("Character", character);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

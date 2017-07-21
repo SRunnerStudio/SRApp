@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/background"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -69,6 +69,8 @@
                     android:id="@+id/editTextEthnicity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:hint="@string/ethnicityCreation" />
             </android.support.design.widget.TextInputLayout>
 
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/weightCreation"
+                    android:maxLines="1"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
@@ -110,6 +113,7 @@
                     android:id="@+id/editTextSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:hint="@string/sizeCreation"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
@@ -127,12 +131,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                 <EditText
-                    style="@style/UsedStyle"
                     android:id="@+id/editTextAge"
+                    style="@style/UsedStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="@string/age" />
+                    android:maxLines="1"
+                    android:hint="@string/age"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -152,6 +157,8 @@
                     android:id="@+id/editTextSex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:hint="@string/sex" />
             </android.support.design.widget.TextInputLayout>
 
@@ -173,6 +180,8 @@
                     android:id="@+id/editTextArchtype"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:hint="@string/archtype" />
             </android.support.design.widget.TextInputLayout>
 
@@ -210,6 +219,8 @@
                     android:id="@+id/editTextStreetName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:hint="@string/streetName" />
             </android.support.design.widget.TextInputLayout>
 
@@ -228,6 +239,8 @@
                 <EditText
                     style="@style/UsedStyle"
                     android:id="@+id/editTextName"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name" />

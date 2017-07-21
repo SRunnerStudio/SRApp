@@ -183,9 +183,7 @@ public class CharacterSelection extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             if(characterList.get(position).character.getProfileImage()!=null){
-                if(loadImageFromStorage(character.getProfileImage())!=null) {
-                    holder.characterPortrait.setImageBitmap(loadImageFromStorage(characterList.get(position).character.getProfileImage()));
-                }
+                holder.characterPortrait.setImageBitmap(loadImageFromStorage(characterList.get(position).character.getProfileImage(),characterList.get(position).character));
             }
             else{
                 holder.characterPortrait.setImageResource(getProfileImageforMetatyp(position));
@@ -445,7 +443,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void saveCharacters() {
         // add-write text into file
         try {
-            FileOutputStream fileout = openFileOutput("SRChar.txt", MODE_PRIVATE);
+            FileOutputStream fileout = openFileOutput("SRCharacter.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             Gson gson = new Gson();
             if(save == null){
@@ -467,7 +465,7 @@ public class CharacterSelection extends AppCompatActivity {
         //reading text from file
         try {
             String json;
-            FileInputStream fis = openFileInput("SRChar.txt");
+            FileInputStream fis = openFileInput("SRCharacter.txt");
             FileChannel fc = fis.getChannel();
             MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 
@@ -483,13 +481,13 @@ public class CharacterSelection extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    private Bitmap loadImageFromStorage(String path)
+    private Bitmap loadImageFromStorage(String path,SRCharacter character)
     {
         try {
-            File f=new File(path, "profile.jpg");
+            File f=new File(path, ""+character.getName()+character.getArchetype()+character.getGender()
+                    +character.getAge()+character.getHeigt()+character.getMass()+character.getEthnicity()+"images.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             return b;
-
         }
         catch (FileNotFoundException e)
         {
