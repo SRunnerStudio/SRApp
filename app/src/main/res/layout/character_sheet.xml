@@ -10,6 +10,39 @@
     tools:context="com.example.danielojea.srapp.CharacterSheet">
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cyberpunk1" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="100dp"
+        android:layout_height="104dp"
+        android:clickable="true"
+        android:onClick="fullscreenProfileImage"
+        android:scaleType="fitXY"
+        android:tint="@color/darkGreyButton"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/button_dark"
+        tools:onClick="fullscreenProfileImage" />
+
+    <ImageView
         android:id="@+id/imageViewChar"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -19,20 +52,22 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog"
-        tools:onClick="fullscreenProfileImage" />
+        tools:onClick="fullscreenProfileImage"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Name:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textAppearance="@android:style/TextAppearance.Material.Widget.ActionBar.Title"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/imageViewChar"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewNameValue"
@@ -145,11 +180,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:text="@string/size"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:text="@string/size"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColorHint="@color/bookOrange"
+        android:textColorLink="@color/bookOrange"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewAge" />
 
     <TextView
@@ -223,13 +260,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackerLine">
+        app:layout_constraintTop_toBottomOf="@+id/trackerLine"
+        android:id="@+id/scrollView3">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:focusable ="true" android:focusableInTouchMode ="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -242,6 +281,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:visibility="gone"
+                android:focusable ="true" android:focusableInTouchMode ="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/attributeLine">
@@ -401,5 +441,23 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewWeight" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="right"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewClassValue"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@+id/textViewClassValue"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/shadowrun_schriftzug_klein" />
 
 </android.support.constraint.ConstraintLayout>

@@ -84,22 +84,22 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         {
             txtListChild.setText(childText[0]);
             txtListChildValue.setText(childText[1]);
+            txtListChild2.setText(childText[2]);            //z.b 16 w6
+            txtListChild2Value.setVisibility(View.INVISIBLE);
             int stringLength = childText[2].length();
             if(childText[2].substring(stringLength -2).equals("w6")){
                 highligthValue(Integer.parseInt(childText[2].substring(0,stringLength -3)),txtListChild2,6,13);
             }
-            txtListChild2.setText(childText[2]);            //z.b 16 w6
-            txtListChild2Value.setVisibility(View.INVISIBLE);
         }
         if(childText.length ==4) {
             txtListChild.setText(childText[0]);
             txtListChildValue.setText(childText[1]);
             txtListChild2.setText(childText[2]);
+            txtListChild2Value.setText(childText[3]);
             int stringLength = childText[2].length();
             if(childText[2].substring(stringLength -2).equals("w6")){
                 highligthValue(Integer.parseInt(childText[2].substring(0,stringLength -3)),txtListChild2,6,13);
             }
-            txtListChild2Value.setText(childText[3]);
         }
 
 

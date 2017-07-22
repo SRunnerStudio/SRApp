@@ -536,7 +536,7 @@
         android:layout_marginEnd="8dp" />
 
     <TextView
-        android:id="@+id/physlimitValue"
+        android:id="@+id/mentLimitValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -546,13 +546,13 @@
         android:layout_marginStart="8dp" />
 
     <TextView
-        android:id="@+id/mentLimitValue"
+        android:id="@+id/physlimitValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="0"
         app:layout_constraintLeft_toRightOf="@+id/physicalLimit"
-        app:layout_constraintTop_toTopOf="@+id/physicalLimit"
+        app:layout_constraintTop_toTopOf="@+id/mentLimitValue"
         android:layout_marginStart="8dp" />
 
     <TextView

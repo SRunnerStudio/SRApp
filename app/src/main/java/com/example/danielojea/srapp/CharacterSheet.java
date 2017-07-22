@@ -1,8 +1,10 @@
 package com.example.danielojea.srapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -28,8 +30,11 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.control.ExpandableListArrayAdapter;
 
+import static com.example.danielojea.srapp.R.id.attributeLine;
+
 public class CharacterSheet extends AppCompatActivity {
     SRCharacter character;
+    int characterPosition;
     ExpandableListArrayAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -40,8 +45,6 @@ public class CharacterSheet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_sheet);
-
-
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         // get the listview
@@ -58,12 +61,14 @@ public class CharacterSheet extends AppCompatActivity {
         setCharacterSheetData(character);
         initMaxTrackDamage();
         if(character.isDead()){
-            setTitle("Charakteransicht " +character.getName()+ " tOT");
+            setTitle("Charakteransicht " +character.getName()+ " TOT");
         }
         else {
             setTitle("Charakteransicht " + character.getName());
         }
-        listAdapter.setLastExpandedPosition(-1);
+        LinearLayout attributeLine = (LinearLayout) findViewById(R.id.attributeLine);
+        attributeLine.requestFocus();
+       // listAdapter.setLastExpandedPosition(-1);
         expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
@@ -89,8 +94,8 @@ public class CharacterSheet extends AppCompatActivity {
         {
             getProfileImageforMetatyp();
         }
-        setTracker("stun",character.getAttributes().getStunDamageTrack());
-        setTracker("phys",character.getAttributes().getPhysicalDamageTrack());
+        setTracker("stun",character.getAttributes().getStunDamageTrack(),false);
+        setTracker("phys",character.getAttributes().getPhysicalDamageTrack(),false);
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
@@ -120,6 +125,7 @@ public class CharacterSheet extends AppCompatActivity {
             deadCharSkull.setVisibility(View.VISIBLE);
         }
     }
+
     public void getProfileImageforMetatyp(){
         ImageView characterPortrait = (ImageView) findViewById(R.id.imageViewChar);
         switch (character.getMetatype().getMetatypENG()) {
@@ -174,36 +180,36 @@ public class CharacterSheet extends AppCompatActivity {
         TextView carryValue = (TextView) findViewById(R.id.carryValue);
         TextView moveValue = (TextView) findViewById(R.id.moveValue);
         TextView memoryValue = (TextView) findViewById(R.id.memoryValue);
-        TextView physlimitValue = (TextView) findViewById(R.id.physlimitValue);
         TextView mentLimitValue = (TextView) findViewById(R.id.mentLimitValue);
+        TextView physlimitValue = (TextView) findViewById(R.id.physlimitValue);
         TextView socialLimitValue = (TextView) findViewById(R.id.socialLimitValue);
 
         konValue.setText(""+character.getAttributes().getKON().getValue());
-        highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         gesValue.setText(""+character.getAttributes().getGES().getValue());
-        highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         reaValue.setText(""+character.getAttributes().getREA().getValue());
-        highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         strValue.setText(""+character.getAttributes().getSTR().getValue());
-        highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         wilValue.setText(""+character.getAttributes().getWIL().getValue());
-        highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         logValue.setText(""+character.getAttributes().getLOG().getValue());
-        highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         intValue.setText(""+character.getAttributes().getINT().getValue());
-        highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         chValue.setText(""+character.getAttributes().getCHA().getValue());
-        highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         edgValue.setText(""+character.getAttributes().getEdge().getValue());
-        highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
+        highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
 
         essValue.setText(""+character.getAttributes().getEssence());
         highligthValue(character.getAttributes().getEssence(),essValue,2,5);
@@ -213,12 +219,14 @@ public class CharacterSheet extends AppCompatActivity {
 
         initValue.setText(""+character.getAttributes().getInitiative()+"+1w6");
         int init= character.getAttributes().getREA().getValue()+character.getAttributes().getINT().getValue();
-        highligthValue(init,initValue,5,10);
+        highligthValue(init,initValue,5,12);
 
         matIniValue.setText(""+character.getAttributes().getMatrixInitiativeAR()+"+1w6");
-        highligthValue(init,matIniValue,5,10);
+        highligthValue(init,matIniValue,5,12);
 
+        init= character.getAttributes().getINT().getValue()+character.getAttributes().getINT().getValue();
         astIniValue.setText(""+character.getAttributes().getAstralInitiative()+"+2w6");
+        highligthValue(init,astIniValue,5,12);
 
         selbstBValue.setText(""+character.getAttributes().getComposure());
         highligthValue(character.getAttributes().getComposure(),selbstBValue,5,12);
@@ -254,7 +262,7 @@ public class CharacterSheet extends AppCompatActivity {
         List<String[]> knowledge = new ArrayList<String[]>();
         List<String[]> skills = new ArrayList<String[]>();
         for (Skill skill: character.getSkills()) {
-            String dicePool = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getINT().getValue());
+            String dicePool = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute()));
             String dicePoolInt = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getINT().getValue());
             String dicePoolLog = ""+(skill.getValue()+character.getAttributes().getValue(skill.getConnectedAttribute())+character.getAttributes().getLOG().getValue());
                 if(skill.isSpecialization()) {
@@ -262,7 +270,7 @@ public class CharacterSheet extends AppCompatActivity {
                 }
                 else {
                     if(skill.getConnectedAttribute().equals("KNOWLEDGE")){
-                        knowledge.add(new String []{skill.getName(),""+skill.getValue(),"S/H "+dicePoolInt+" w6","B/A "+dicePoolLog+" w6"});
+                        knowledge.add(new String []{skill.getName(),""+skill.getValue(),dicePoolInt+" w6 S/H",dicePoolLog+" w6 B/A"});
                     }
                     else {
                         skills.add(new String[]{skill.getName(), "" + skill.getValue(),dicePool+" w6"+""});
@@ -272,7 +280,7 @@ public class CharacterSheet extends AppCompatActivity {
 
         List<String[]> contacts = new ArrayList<String[]>();
         for (Contact contact: character.getConnections()) {
-            contacts.add(new String[]{contact.getName(),"Loyalität "+contact.getLoyalty(),"Einfluss "+contact.getInfluence()});
+            contacts.add(new String[]{contact.getName(),"","Loyalität      "+contact.getLoyalty(),"Einfluss      "+contact.getInfluence()});
         }
         
         List<Quality> qualityList = new ArrayList<Quality>();
@@ -316,7 +324,7 @@ public class CharacterSheet extends AppCompatActivity {
         }
     }
 
-    public void highligthValue(int attributValue, TextView attributField,int low,int high){
+    public void highligthValue(float attributValue, TextView attributField,int low,int high){
         if (attributValue >= high) {
             attributField.setTextColor(getResources().getColor(R.color.GreenValue));
         } else {
@@ -326,19 +334,35 @@ public class CharacterSheet extends AppCompatActivity {
         }
     }
 
+    public void highligthValue(float attributValue, TextView attributField,int low,int high,int legend){
+
+        if (attributValue >= high) {
+            attributField.setTextColor(getResources().getColor(R.color.GreenValue));
+        } else {
+            if (attributValue <= low) {
+                attributField.setTextColor(getResources().getColor(R.color.RedValue));
+            }
+        }
+        if (attributValue >= legend) {
+            attributField.setTextColor(getResources().getColor(R.color.legendColor));
+            Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+
+            attributField.setTypeface(boldTypeface);
+        }
+    }
+
     public void markTracker(View v){
         //v.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerColor));
         int stringLength = getResources().getResourceName(v.getId()).length();
         String damageType = getResources().getResourceName(v.getId()).substring(stringLength -12,stringLength-8);
         int number = Integer.parseInt(getResources().getResourceName(v.getId()).substring(stringLength -2));
 
-        setTracker(damageType,number);
+        setTracker(damageType,number,true);
     }
 
-    public void setTracker(String damageType,int number) {
+    public void setTracker(String damageType,int number,boolean pressed) {
         int maxDamage;
         String idName;
-
 
         if (damageType.equals("stun")) {
             maxDamage = character.getAttributes().getStunDamageTrackMax();
@@ -358,20 +382,32 @@ public class CharacterSheet extends AppCompatActivity {
             } else {
                 if (i == number) {
                     if (damageType.equals("stun")) {
-                        if (number == character.getAttributes().getStunDamageTrack()) {
+                        if (number == character.getAttributes().getStunDamageTrack()&&pressed) {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTracker));
                             character.getAttributes().setStunDamageTrack(number - 1);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("Character", character );
+                            setResult(Activity.RESULT_OK, resultIntent);
                         } else {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerSelected));
                             character.getAttributes().setStunDamageTrack(number);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("Character", character );
+                            setResult(Activity.RESULT_OK, resultIntent);
                         }
                     } else {
-                        if (number == character.getAttributes().getPhysicalDamageTrack()) {
+                        if (number == character.getAttributes().getPhysicalDamageTrack()&&pressed) {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTracker));
                             character.getAttributes().setPhysicalDamageTrack(number - 1);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("Character", character );
+                            setResult(Activity.RESULT_OK, resultIntent);
                         } else {
                             nextButton.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerSelected));
                             character.getAttributes().setPhysicalDamageTrack(number);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("Character", character );
+                            setResult(Activity.RESULT_OK, resultIntent);
                         }
                     }
                 } else {

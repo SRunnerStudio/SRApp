@@ -2,4 +2,5 @@
 <resources>
     <integer name="lowAttribute">3</integer>
     <integer name="highAttribute">7</integer>
+    <integer name="legendaryAttribute">10</integer>
 </resources>

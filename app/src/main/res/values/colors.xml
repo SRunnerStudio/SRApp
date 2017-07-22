@@ -2,7 +2,7 @@
 <resources>
 
 
-    <color name="bookOrange">#FBB800</color>
+    <color name="bookOrange">#fad899</color>
 
     <color name="colorAccent">#f9b92e</color>
 
@@ -23,6 +23,7 @@
     <color name="darkGreyButton">#1d1d1d</color>
     <color name="RedValue">#ff0004</color>
     <color name="GreenValue">#11ff00</color>
+    <color name="legendColor">#820eff</color>
 
 </resources>
 

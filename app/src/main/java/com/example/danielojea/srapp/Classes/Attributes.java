@@ -17,7 +17,7 @@ public class Attributes implements Serializable {
     private AttributeValue INT;
     private AttributeValue CHA;
     private AttributeValue edge;
-    private int essence = 6;
+    private float essence = 6;
     private int initiative;
     private int matrixInitiativeAR;
     private int astralInitiative;
@@ -51,20 +51,21 @@ public class Attributes implements Serializable {
 
     public void calculateStats(){
         initiative = REA.getValue()+INT.getValue();
-        matrixInitiativeAR = REA.getValue()+INT.getValue();
+        matrixInitiativeAR = REA.getValue() + INT.getValue();
         astralInitiative = INT.getValue()*2;
-        physicalLimit = (STR.getValue()*2 + KON.getValue() + REA.getValue())/3;
-        mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
-        socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
-        judgeIntentions = INT.getValue() +CHA.getValue();
-        composure = WIL.getValue()+CHA.getValue();
-        Memory = WIL.getValue()+LOG.getValue();
-        carry = KON.getValue()+STR.getValue();
+        physicalLimit = roundup(((STR.getValue()*2) + KON.getValue() + REA.getValue())/(float) 3);
+        mentalLimit = roundup(((LOG.getValue()*2) + INT.getValue() + WIL.getValue())/(float)3);
+        socialLimit = roundup(((CHA.getValue()*2) + WIL.getValue() + essence)/(float)3);
+        judgeIntentions = INT.getValue() + CHA.getValue();
+        composure = WIL.getValue() + CHA.getValue();
+        Memory = WIL.getValue() + LOG.getValue();
+        carry = KON.getValue() + STR.getValue();
         calcMovements();
-        physicalDamageTrackMax= 8 + KON.getValue()/2;
-        StunDamageTrackMax = 8 + WIL.getValue()/2;
-        physicalDamageTrack=0;
-        StunDamageTrack=0;
+        physicalDamageTrackMax = roundup(8 + KON.getValue()/(float)2);
+        StunDamageTrackMax = roundup(8 + WIL.getValue()/(float)2);
+    }
+    public static int roundup(float f) {
+        return (f%1==0.0f)?(int)f:(int)(f+1);
     }
 
     public void calcMovements(){
@@ -115,19 +116,19 @@ public class Attributes implements Serializable {
     }
 
     public int getAstralInitiative() {
-        return astralInitiative;
+        return  astralInitiative;
     }
 
     public int getPhysicalDamageTrackMax() {
-        return physicalDamageTrackMax;
+        return  physicalDamageTrackMax;
     }
 
     public int getStunDamageTrackMax() {
-        return StunDamageTrackMax;
+        return  StunDamageTrackMax;
     }
 
     public int getPhysicalDamageTrack() {
-        return physicalDamageTrack;
+        return  physicalDamageTrack;
     }
 
     public void setPhysicalDamageTrack(int physicalDamageTrack) {
@@ -135,14 +136,14 @@ public class Attributes implements Serializable {
     }
 
     public int getStunDamageTrack() {
-        return StunDamageTrack;
+        return  StunDamageTrack;
     }
 
     public void setStunDamageTrack(int stunDamageTrack) {
         StunDamageTrack = stunDamageTrack;
     }
 
-    public int getEssence() {
+    public float getEssence() {
         return essence;
     }
 

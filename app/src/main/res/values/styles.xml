@@ -5,8 +5,8 @@
     <!-- Dark Theme -->
     <style name="RunnerDarkTheme" parent="AppTheme">
         <item name="android:textColor">@color/bookOrange</item>
-        <item name="android:textColorHint">@color/colorOrangeTitle</item>
-        <item name="android:titleTextColor">@color/colorOrangeTitle</item>
+        <item name="android:textColorHint">@color/bookOrange</item>
+        <item name="android:titleTextColor">@color/bookOrange</item>
         <item name="android:colorButtonNormal">@color/colorDarkRunnerRed</item>
         <item name="android:buttonBarStyle">@color/colorDarkRunnerRed</item>
         <item name="colorPrimary">@color/colorDarkRunnerRed</item>
