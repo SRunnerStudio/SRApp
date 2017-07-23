@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,16 +52,18 @@ public class CharacterSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+        setContentView(R.layout.character_selection);
         if(getIntent().getSerializableExtra("Character")!= null) {
             Toast.makeText(CharacterSelection.this, "Charakter erstellt", Toast.LENGTH_SHORT).show();
             character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         }
-        setContentView(R.layout.character_selection);
 
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTitle("Charakterauswahl");
     }
 

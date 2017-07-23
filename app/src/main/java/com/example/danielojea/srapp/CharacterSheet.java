@@ -44,6 +44,7 @@ public class CharacterSheet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.character_sheet);
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
 

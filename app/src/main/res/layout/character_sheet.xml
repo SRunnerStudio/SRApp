@@ -26,7 +26,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/cyberpunk1" />
+        app:srcCompat="@drawable/futuristic_city_dark_2" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -261,13 +261,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trackerLine"
-        android:id="@+id/scrollView3">
+        android:id="@+id/scrollView3"
+        android:layout_marginTop="8dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:focusable ="true" android:focusableInTouchMode ="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -410,7 +411,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="0dp"
         android:clickable="true"
         android:contextClickable="true"
         android:onClick="toggleTrackerLayout"
