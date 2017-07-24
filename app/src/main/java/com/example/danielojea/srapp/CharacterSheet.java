@@ -30,8 +30,6 @@ import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.control.ExpandableListArrayAdapter;
 
-import static com.example.danielojea.srapp.R.id.attributeLine;
-
 public class CharacterSheet extends AppCompatActivity {
     SRCharacter character;
     int characterPosition;
@@ -61,6 +59,7 @@ public class CharacterSheet extends AppCompatActivity {
 
         setCharacterSheetData(character);
         initMaxTrackDamage();
+        initMaxEdge();
         if(character.isDead()){
             setTitle("Charakteransicht " +character.getName()+ " TOT");
         }
@@ -423,15 +422,15 @@ public class CharacterSheet extends AppCompatActivity {
         int maxPhysDamage = character.getAttributes().getPhysicalDamageTrackMax();
 
         String damageType = "stun";
-        for(int i=maxStunDamage+1;i<13;i++) {
-            setButtonGone(i,damageType);
+        for(int i=maxStunDamage+1;i<=12;i++) {
+            setTrackerGone(i,damageType);
         }
         damageType="phys";
-        for(int i=maxPhysDamage+1;i<19;i++) {
-            setButtonGone(i,damageType);
+        for(int i=maxPhysDamage+1;i<=18;i++) {
+            setTrackerGone(i,damageType);
         }
     }
-    public void setButtonGone(int i,String damageType){
+    public void setTrackerGone(int i, String damageType){
         String idName;
         if (("" + i).length() == 1) {
             idName = damageType + "Damage0" + i;
@@ -441,6 +440,20 @@ public class CharacterSheet extends AppCompatActivity {
         int nextButtonId = getResources().getIdentifier(idName, "id", getPackageName());
         Button nextButton = (Button) findViewById(nextButtonId);
         nextButton.setVisibility(View.GONE);
+    }
+
+    public void initMaxEdge(){
+        int maxedge = character.getAttributes().getEdge().getMaxValue();
+
+        for(int i=maxedge+1;i<=6;i++) {
+            setEdgeGone(i);
+        }
+    }
+    public void setEdgeGone(int i){
+        String idName = "edge" + i;
+        int nextEdgeId = getResources().getIdentifier(idName, "id", getPackageName());
+        ImageView nextEdge = (ImageView) findViewById(nextEdgeId);
+        nextEdge.setVisibility(View.GONE);
     }
 
     private void loadImageFromStorage(String path)

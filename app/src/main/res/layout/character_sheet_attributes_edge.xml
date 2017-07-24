@@ -5,20 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="149dp"
-        android:layout_weight="1"
-        android:backgroundTint="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:tint="@color/GreenValue"
-        app:layout_constraintHorizontal_bias="0.053"
+    <ImageView
+        android:id="@+id/edge1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hexagon4" />
+        app:srcCompat="@drawable/hexagon3" />
+
+    <ImageView
+        android:id="@+id/edge2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
+        app:layout_constraintLeft_toRightOf="@+id/edge1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagon3" />
+
+    <ImageView
+        android:id="@+id/edge3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
+        app:layout_constraintLeft_toRightOf="@+id/edge2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagon3" />
+
+    <ImageView
+        android:id="@+id/edeg4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
+        app:layout_constraintLeft_toRightOf="@+id/edge3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagon3" />
+
+    <ImageView
+        android:id="@+id/edge5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
+        app:layout_constraintLeft_toRightOf="@+id/edeg4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagon3" />
+
+    <ImageView
+        android:id="@+id/edge6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:tint="@color/edgefull"
+        app:layout_constraintLeft_toRightOf="@+id/edge5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagon3" />
+
 </android.support.constraint.ConstraintLayout>

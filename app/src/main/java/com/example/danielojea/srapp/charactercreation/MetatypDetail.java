@@ -45,6 +45,7 @@ public class MetatypDetail extends AppCompatActivity {
                 new AttributeValue(character.getMetatype().getCHAMax(),character.getMetatype().getCHAStart(),character.getMetatype().getCHAStart()),
                 new AttributeValue(character.getMetatype().getEDGMax(),character.getMetatype().getEDGStart(),character.getMetatype().getEDGStart()),
                 metatyp);
+        setSpecialAttribute();
         character.setAttributes(attributes);
         character.getAttributes().calculateStats();
         Intent intent = new Intent(this, CustomizeAttributes.class);
@@ -96,6 +97,25 @@ public class MetatypDetail extends AppCompatActivity {
                 contentProvidingMetatyp = new Metatyp("troll");
                 metatypDetailText.setText(contentProvidingMetatyp.getMetatypDescription());
                 metatypDetailHeader.setText(contentProvidingMetatyp.getMetatyp());
+                return;
+        }
+    }
+    public void setSpecialAttribute(){
+        switch (metatyp.getMetatypENG()) {
+            case "elf":
+                character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[1][1]));
+                return;
+            case "human":
+                character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[0][1]));
+                return;
+            case "dwarf":
+                character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[3][1]));
+                return;
+            case "orc":
+                character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[2][1]));
+                return;
+            case "troll":
+                character.setSpecialAttributePoints(Integer.parseInt(character.getPriorityMetatyp().getMetatypes(character.getPriorityMetatyp().getPriority())[4][1]));
                 return;
         }
     }
