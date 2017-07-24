@@ -1,6 +1,5 @@
 package com.example.danielojea.srapp.charactercreation;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
@@ -13,7 +12,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
-import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
 public class SkillPicker extends AppCompatActivity {
@@ -37,7 +35,7 @@ public class SkillPicker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_picker);
+        setContentView(R.layout.skill_picker);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

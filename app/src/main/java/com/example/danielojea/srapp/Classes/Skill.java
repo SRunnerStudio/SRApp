@@ -15,12 +15,32 @@ public class Skill implements Serializable {
     private String connectedPackage;
     private boolean packageBound;
     private int startValue;
+    boolean isknowledge;
 
     public Skill(int value, String name, String connectedAttribute, String connectedPackage) {
         this.value = value;
         this.name = name;
         this.connectedAttribute = connectedAttribute;
         this.connectedPackage = connectedPackage;
+    }
+    public Skill(int value, String name, String connectedAttribute) {
+        this.value = value;
+        this.name = name;
+        this.connectedAttribute = connectedAttribute;
+    }
+    public Skill(int value, String name, String connectedAttribute, boolean isknowledge) {
+        this.value = value;
+        this.name = name;
+        this.connectedAttribute = connectedAttribute;
+        this.isknowledge = isknowledge;
+    }
+
+    public boolean isknowledge() {
+        return isknowledge;
+    }
+
+    public void setIsknowledge(boolean isknowledge) {
+        this.isknowledge = isknowledge;
     }
 
     public int getValue() {

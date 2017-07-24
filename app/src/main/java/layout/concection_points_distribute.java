@@ -65,7 +65,7 @@ public class concection_points_distribute extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_connection_points_distribute, container, false);
+        return inflater.inflate(R.layout.connection_points_distribute_fragment, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

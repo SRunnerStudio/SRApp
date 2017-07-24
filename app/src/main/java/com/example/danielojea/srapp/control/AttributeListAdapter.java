@@ -10,10 +10,8 @@ import android.widget.TextView;
 import com.example.danielojea.srapp.Classes.AttributeValue;
 import com.example.danielojea.srapp.Classes.Attributes;
 import com.example.danielojea.srapp.Classes.SRCharacter;
-import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.R;
 
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +28,8 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
         character = myDataset;
         values = new ArrayList<AttributeValue>();
         Attributes attributes = character.getAttributes();
-        values.add(new AttributeValue(attributes.getCON().getMaxValue(),attributes.getCON().getStartValue(),attributes.getCON().getStartValue(),"KON"));
-        values.add(new AttributeValue(attributes.getAGI().getMaxValue(),attributes.getAGI().getStartValue(),attributes.getAGI().getStartValue(),"GES"));
+        values.add(new AttributeValue(attributes.getKON().getMaxValue(),attributes.getKON().getStartValue(),attributes.getKON().getStartValue(),"KON"));
+        values.add(new AttributeValue(attributes.getGES().getMaxValue(),attributes.getGES().getStartValue(),attributes.getGES().getStartValue(),"GES"));
         values.add(new AttributeValue(attributes.getREA().getMaxValue(),attributes.getREA().getStartValue(),attributes.getREA().getStartValue(),"REA"));
         values.add(new AttributeValue(attributes.getSTR().getMaxValue(),attributes.getSTR().getStartValue(),attributes.getSTR().getStartValue(),"STR"));
         values.add(new AttributeValue(attributes.getWIL().getMaxValue(),attributes.getWIL().getStartValue(),attributes.getWIL().getStartValue(),"WIL"));
@@ -122,8 +120,8 @@ public class AttributeListAdapter extends RecyclerView.Adapter<AttributeListAdap
     }
 
     public SRCharacter getCharacter() {
-        character.getAttributes().setCON(values.get(0));
-        character.getAttributes().setAGI(values.get(1));
+        character.getAttributes().setKON(values.get(0));
+        character.getAttributes().setGES(values.get(1));
         character.getAttributes().setREA(values.get(2));
         character.getAttributes().setSTR(values.get(3));
         character.getAttributes().setWIL(values.get(4));

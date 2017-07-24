@@ -61,17 +61,16 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         TextView txtListChildValue = (TextView) convertView.findViewById(R.id.lblListItemValue);
         TextView txtListChild2 = (TextView) convertView.findViewById(R.id.lblListItem2);
         TextView txtListChild2Value = (TextView) convertView.findViewById(R.id.lblListItem2Value);
-        TextView txtListChild3Value = (TextView) convertView.findViewById(R.id.lblListItem3);
         LinearLayout secondRow = (LinearLayout) convertView.findViewById(R.id.secondRow);
+
 
         if(childText.length ==1)
         {
-            txtListChildValue.setVisibility(View.GONE);
+            txtListChild.setText(childText[0]);
             txtListChild2.setVisibility(View.GONE);
+            txtListChildValue.setVisibility(View.GONE);
             txtListChild2Value.setVisibility(View.GONE);
             secondRow.setVisibility(View.GONE);
-            txtListChild.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0.1f));
-            txtListChild.setText(childText[0]);
 
         }
         if(childText.length ==2)
@@ -84,18 +83,36 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
         if(childText.length ==3)
         {
             txtListChild.setText(childText[0]);
-            txtListChild2.setText(childText[1]);
-            txtListChild3Value.setText(childText[2]);
-            txtListChild2Value.setVisibility(View.GONE);
+            txtListChildValue.setText(childText[1]);
+            txtListChild2.setText(childText[2]);            //z.b 16 w6
+            txtListChild2Value.setVisibility(View.INVISIBLE);
+            int stringLength = childText[2].length();
+            if(childText[2].substring(stringLength -2).equals("w6")){
+                highligthValue(Integer.parseInt(childText[2].substring(0,stringLength -3)),txtListChild2,6,13);
+            }
         }
         if(childText.length ==4) {
             txtListChild.setText(childText[0]);
             txtListChildValue.setText(childText[1]);
             txtListChild2.setText(childText[2]);
             txtListChild2Value.setText(childText[3]);
-            txtListChild3Value.setVisibility(View.GONE);
+            int stringLength = childText[2].length();
+            if(childText[2].substring(stringLength -2).equals("w6")){
+                highligthValue(Integer.parseInt(childText[2].substring(0,stringLength -3)),txtListChild2,6,13);
+            }
         }
+
+
         return convertView;
+    }
+    public void highligthValue(int attributValue, TextView attributField,int low,int high){
+        if (attributValue >= high) {
+            attributField.setTextColor(_context.getResources().getColor(R.color.GreenValue));
+        } else {
+            if (attributValue <= low) {
+                attributField.setTextColor(_context.getResources().getColor(R.color.RedValue));
+            }
+        }
     }
 
     @Override
@@ -154,4 +171,5 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
     public void setLastExpandedPosition(int lastExpandedPosition) {
         this.lastExpandedPosition = lastExpandedPosition;
     }
+
 }

@@ -7,8 +7,9 @@ import java.io.Serializable;
  */
 
 public class Attributes implements Serializable {
-    private AttributeValue CON;
-    private AttributeValue AGI;
+    private Metatyp metatyp;
+    private AttributeValue KON;
+    private AttributeValue GES;
     private AttributeValue REA;
     private AttributeValue STR;
     private AttributeValue WIL;
@@ -16,14 +17,17 @@ public class Attributes implements Serializable {
     private AttributeValue INT;
     private AttributeValue CHA;
     private AttributeValue edge;
-    private int essence = 6;
-    private String initiative;
-    private String matrixInitiativeAR;
+    private float essence = 6;
+    private int initiative;
+    private int matrixInitiativeAR;
+    private int astralInitiative;
     private int judgeIntentions;
     private int composure;
     private int Memory;
     private int carry;
-    private int movement;
+    private int movementWalk;
+    private int movementRun;
+    private int movementSprint;
     private int physicalLimit;
     private int mentalLimit;
     private int socialLimit;
@@ -32,9 +36,10 @@ public class Attributes implements Serializable {
     private int physicalDamageTrackMax;
     private int StunDamageTrackMax;
 
-    public Attributes(AttributeValue CON, AttributeValue AGI, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge) {
-        this.CON = CON;
-        this.AGI = AGI;
+    public Attributes(AttributeValue KON, AttributeValue GES, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge, Metatyp metatyp) {
+        this.metatyp = metatyp;
+        this.KON = KON;
+        this.GES = GES;
         this.REA = REA;
         this.STR = STR;
         this.WIL = WIL;
@@ -45,43 +50,85 @@ public class Attributes implements Serializable {
     }
 
     public void calculateStats(){
-        initiative = "1+" + (REA.getValue()+INT.getValue())+"w6";
-        matrixInitiativeAR = "1+"+(REA.getValue()+INT.getValue())+"w6";
-        physicalLimit = (STR.getValue()*2 + CON.getValue() + REA.getValue())/3;
-        mentalLimit = (LOG.getValue()*2 +INT.getValue()+WIL.getValue())/3;
-        socialLimit = (CHA.getValue()*2 +WIL.getValue()+essence)/3;
-        judgeIntentions = INT.getValue() +CHA.getValue();
-        composure = WIL.getValue()+CHA.getValue();
-        Memory = WIL.getValue()+LOG.getValue();
-        carry = CON.getValue()+STR.getValue();
-        physicalDamageTrackMax= 8 + CON.getValue()/2;
-        StunDamageTrackMax = 8 + WIL.getValue()/2;
-        physicalDamageTrack=0;
-        StunDamageTrack=0;
+        initiative = REA.getValue()+INT.getValue();
+        matrixInitiativeAR = REA.getValue() + INT.getValue();
+        astralInitiative = INT.getValue()*2;
+        physicalLimit = roundup(((STR.getValue()*2) + KON.getValue() + REA.getValue())/(float) 3);
+        mentalLimit = roundup(((LOG.getValue()*2) + INT.getValue() + WIL.getValue())/(float)3);
+        socialLimit = roundup(((CHA.getValue()*2) + WIL.getValue() + essence)/(float)3);
+        judgeIntentions = INT.getValue() + CHA.getValue();
+        composure = WIL.getValue() + CHA.getValue();
+        Memory = WIL.getValue() + LOG.getValue();
+        carry = KON.getValue() + STR.getValue();
+        calcMovements();
+        physicalDamageTrackMax = roundup(8 + KON.getValue()/(float)2);
+        StunDamageTrackMax = roundup(8 + WIL.getValue()/(float)2);
+    }
+    public static int roundup(float f) {
+        return (f%1==0.0f)?(int)f:(int)(f+1);
     }
 
-    public void getValue(AttributeValue attributeValue){
+    public void calcMovements(){
+        switch(metatyp.getMetatypENG()){
+            case "human":
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
+                movementSprint =2;
+            case "elf":
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
+                movementSprint =2;
+            case "orc":
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
+                movementSprint =2;
+            case "dwarf":
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
+                movementSprint =1;
+            case "troll":
+                movementWalk = GES.getValue()*2;
+                movementRun = GES.getValue()*4;
+                movementSprint =1;
+        }
+    }
 
+    public int getValue(String attributeName){
+        switch (attributeName) {
+            case "KON":
+                return KON.getValue();
+            case "GES":
+                return GES.getValue();
+            case "REA":
+                return REA.getValue();
+            case "STR":
+                return STR.getValue();
+            case "WIL":
+                return WIL.getValue();
+            case "LOG":
+                return LOG.getValue();
+            case "INT":
+                return INT.getValue();
+            case "CHA":
+                return CHA.getValue();
+        }
+        return 0;
+    }
+
+    public int getAstralInitiative() {
+        return  astralInitiative;
     }
 
     public int getPhysicalDamageTrackMax() {
-        return physicalDamageTrackMax;
-    }
-
-    public void setPhysicalDamageTrackMax(int physicalDamageTrackMax) {
-        this.physicalDamageTrackMax = physicalDamageTrackMax;
+        return  physicalDamageTrackMax;
     }
 
     public int getStunDamageTrackMax() {
-        return StunDamageTrackMax;
-    }
-
-    public void setStunDamageTrackMax(int stunDamageTrackMax) {
-        StunDamageTrackMax = stunDamageTrackMax;
+        return  StunDamageTrackMax;
     }
 
     public int getPhysicalDamageTrack() {
-        return physicalDamageTrack;
+        return  physicalDamageTrack;
     }
 
     public void setPhysicalDamageTrack(int physicalDamageTrack) {
@@ -89,22 +136,22 @@ public class Attributes implements Serializable {
     }
 
     public int getStunDamageTrack() {
-        return StunDamageTrack;
+        return  StunDamageTrack;
     }
 
     public void setStunDamageTrack(int stunDamageTrack) {
         StunDamageTrack = stunDamageTrack;
     }
 
-    public int getEssence() {
+    public float getEssence() {
         return essence;
     }
 
-    public String getInitiative() {
+    public int getInitiative() {
         return initiative;
     }
 
-    public String getMatrixInitiativeAR() {
+    public int getMatrixInitiativeAR() {
         return matrixInitiativeAR;
     }
 
@@ -124,8 +171,16 @@ public class Attributes implements Serializable {
         return carry;
     }
 
-    public int getMovement() {
-        return movement;
+    public int getMovementWalk() {
+        return movementWalk;
+    }
+
+    public int getMovementRun() {
+        return movementRun;
+    }
+
+    public int getMovementSprint() {
+        return movementSprint;
     }
 
     public int getPhysicalLimit() {
@@ -140,20 +195,20 @@ public class Attributes implements Serializable {
         return socialLimit;
     }
 
-    public AttributeValue getCON() {
-        return CON;
+    public AttributeValue getKON() {
+        return KON;
     }
 
-    public void setCON(AttributeValue CON) {
-        this.CON = CON;
+    public void setKON(AttributeValue KON) {
+        this.KON = KON;
     }
 
-    public AttributeValue getAGI() {
-        return AGI;
+    public AttributeValue getGES() {
+        return GES;
     }
 
-    public void setAGI(AttributeValue AGI) {
-        this.AGI = AGI;
+    public void setGES(AttributeValue GES) {
+        this.GES = GES;
     }
 
     public AttributeValue getREA() {
@@ -207,22 +262,4 @@ public class Attributes implements Serializable {
     public AttributeValue getEdge() {
         return edge;
     }
-
-    public void setEdge(AttributeValue edge) {
-        this.edge = edge;
-    }
-
-    public void setPhysicalLimit(int physicalLimit) {
-        this.physicalLimit = physicalLimit;
-    }
-
-    public void setMentalLimit(int mentalLimit) {
-        this.mentalLimit = mentalLimit;
-    }
-
-    public void setSocialLimit(int socialLimit) {
-        this.socialLimit = socialLimit;
-    }
-
-
 }

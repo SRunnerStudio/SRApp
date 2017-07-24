@@ -109,7 +109,7 @@ public class QualityListAdapter extends RecyclerView.Adapter<QualityListAdapter.
         holder.txtSpecialization.setVisibility(View.GONE);
         holder.txtPackage.setVisibility(View.GONE);
         holder.plusButton.setVisibility(View.GONE);
-        holder.upgradeButton.setVisibility(View.GONE);
+        holder.upgradeButton.setVisibility(View.INVISIBLE);
         holder.downgradeButton.setVisibility(View.GONE);
         //holder.minusButton.setBackgroundTintList(ColorStateList.valueOf(holder.getClass().getResource("").getColor(android.R.color.transparent)));
       /*  holder.minusButton.setBackgroundTintList(ColorStateList.valueOf(android.R.color.transparent));

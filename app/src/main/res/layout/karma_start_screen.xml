@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ok_button_height"
         android:onClick="startNextActivity"
         android:text="@string/btnContinue"
         app:layout_constraintBottom_toBottomOf="parent"

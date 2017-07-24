@@ -24,7 +24,7 @@ public class QualitySelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qualities_selection);
+        setContentView(R.layout.quality_selection);
 
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         skillList = (ArrayList<Skill>)getIntent().getSerializableExtra("Skills");

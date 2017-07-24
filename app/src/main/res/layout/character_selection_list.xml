@@ -11,4 +11,4 @@
     style="@style/AppBackgroudImage"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.example.danielojea.srapp.CharacterSelection"
-    tools:listitem="@layout/character_selection_list_content" />
+    tools:listitem="@layout/character_selection_list_item" />

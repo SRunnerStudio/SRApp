@@ -3,6 +3,7 @@ package com.example.danielojea.srapp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -10,28 +11,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.danielojea.srapp.Classes.Metatyp;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Save;
-import com.example.danielojea.srapp.Classes.SerialBitmap;
 import com.example.danielojea.srapp.charactercreation.PriorityListActivity;
 import com.example.danielojea.srapp.control.CharacterSelectionContentProvider;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
@@ -46,27 +46,35 @@ public class CharacterSelection extends AppCompatActivity {
     private Context context;
     private int nudecounter;
     private int dialogcharacter;
+    public int lastPosition;
     static final int READ_BLOCK_SIZE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+        setContentView(R.layout.character_selection);
         if(getIntent().getSerializableExtra("Character")!= null) {
             Toast.makeText(CharacterSelection.this, "Charakter erstellt", Toast.LENGTH_SHORT).show();
             character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         }
-        setContentView(R.layout.activity_character_selection);
 
         View recyclerView = findViewById(R.id.character_selection_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTitle("Charakterauswahl");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
+            if(requestCode == 1){
+                character = (SRCharacter) data.getSerializableExtra("Character");
+                characterList.get(lastPosition).character.setCharacter(character);
+                saveCharacters();
+            }
 
             if(requestCode == 3){
 
@@ -132,14 +140,18 @@ public class CharacterSelection extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(CharacterSelectionContentProvider.ITEMS);
-        if(character!= null){adapter.addCharacter(character);}
-        recyclerView.setAdapter(adapter);
+
         if(getIntent().getSerializableExtra("Character")!= null) {
+            loadCharacters();
+            adapter.addCharacter(character);
+            recyclerView.setAdapter(adapter);
             saveCharacters();
         }
         else
         {
             loadCharacters();
+            if(character!= null){adapter.addCharacter(character);}
+            recyclerView.setAdapter(adapter);
         }
     }
 
@@ -158,7 +170,7 @@ public class CharacterSelection extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.character_selection_list_content, parent, false);
+                    .inflate(R.layout.character_selection_list_item, parent, false);
             return new ViewHolder(view);
         }
         public int getProfileImageforMetatyp(int position){
@@ -181,7 +193,7 @@ public class CharacterSelection extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             if(characterList.get(position).character.getProfileImage()!=null){
-                holder.characterPortrait.setImageBitmap(characterList.get(position).character.getProfileImage().bitmap);
+                holder.characterPortrait.setImageBitmap(loadImageFromStorage(characterList.get(position).character.getProfileImage(),characterList.get(position).character));
             }
             else{
                 holder.characterPortrait.setImageResource(getProfileImageforMetatyp(position));
@@ -207,7 +219,6 @@ public class CharacterSelection extends AppCompatActivity {
 
                 @Override
                 public void onClick(View view) {
-
                 //creating a popup menu
                 PopupMenu popup = new PopupMenu(CharacterSelection.this, holder.threeDotMenu);
                 //inflating menu from xml resource
@@ -273,104 +284,104 @@ public class CharacterSelection extends AppCompatActivity {
                                 killCharDialog.setTitle("Toter Character");
                                 killCharDialog.setMessage(characterList.get(characterposition).character.getName()+" ist bereits Tot.");
                                 killCharDialog.setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                    }
+                                });
+                                killCharDialog.setNegativeButton("GIB IHN MIR ZURÜCK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                    AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
+                                    killCharDialog.setTitle("Nö");
+                                    killCharDialog.setMessage("");
+                                    killCharDialog.setCancelable(true);
+
+                                    killCharDialog.setPositiveButton("Nagut",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //dismiss the dialog
                                             }
                                         });
-                                        killCharDialog.setNegativeButton("GIB IHN MIR ZURÜCK",
+                                    killCharDialog.setNegativeButton("BITTE!",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //dismiss the dialog
-                                                AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
-                                                killCharDialog.setTitle("Nö");
-                                                killCharDialog.setMessage("");
-                                                killCharDialog.setCancelable(true);
+                                        //dismiss the dialog
+                                        AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
+                                        killCharDialog.setTitle("Ok");
+                                        killCharDialog.setMessage("");
+                                        killCharDialog.setCancelable(true);
+                                        killCharDialog.setPositiveButton("Danke",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    //dismiss the dialog
+                                                    AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
+                                                    killCharDialog.setTitle("Verarscht");
+                                                    killCharDialog.setMessage("");
+                                                    killCharDialog.setCancelable(true);
 
-                                                killCharDialog.setPositiveButton("Nagut",
-                                                        new DialogInterface.OnClickListener() {
-                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                //dismiss the dialog
-                                                            }
-                                                        });
-                                                killCharDialog.setNegativeButton("BITTE!",
+                                                    killCharDialog.setPositiveButton("ARSCHLOCH",
+                                                            new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    //dismiss the dialog
+                                                                }
+                                                            });
+                                                    killCharDialog.setNegativeButton("ach komm schon",
                                                         new DialogInterface.OnClickListener() {
                                                             public void onClick(DialogInterface dialog, int which) {
                                                                 //dismiss the dialog
                                                                 AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
-                                                                killCharDialog.setTitle("Ok");
+                                                                killCharDialog.setTitle("Willst du ihn wirklich wieder haben?");
                                                                 killCharDialog.setMessage("");
                                                                 killCharDialog.setCancelable(true);
-                                                                killCharDialog.setPositiveButton("Danke",
+                                                                killCharDialog.setPositiveButton("Ja",
+                                                                    new DialogInterface.OnClickListener() {
+                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                            //dismiss the dialog
+                                                                            AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
+                                                                            killCharDialog.setTitle("send nudes");
+                                                                            killCharDialog.setMessage("");
+                                                                            killCharDialog.setCancelable(true);
+
+                                                                            killCharDialog.setPositiveButton("Ok",
+                                                                                new DialogInterface.OnClickListener() {
+                                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                                        //dismiss the dialog
+                                                                                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                                                                                        intent.setType("image/*");
+                                                                                        startActivityForResult(intent, 3);
+                                                                                        nudecounter=1;
+                                                                                        dialogcharacter =characterposition;
+                                                                                    }
+                                                                                });
+                                                                            killCharDialog.setNegativeButton("nie im leben!",
+                                                                                new DialogInterface.OnClickListener() {
+                                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                                        //dismiss the dialog
+                                                                                    }
+                                                                                });
+                                                                            killCharDialog.create().show();
+                                                                        }
+                                                                    });
+                                                                killCharDialog.setNegativeButton("doch nicht ",
                                                                         new DialogInterface.OnClickListener() {
                                                                             public void onClick(DialogInterface dialog, int which) {
                                                                                 //dismiss the dialog
-                                                                                AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
-                                                                                killCharDialog.setTitle("Verarscht");
-                                                                                killCharDialog.setMessage("");
-                                                                                killCharDialog.setCancelable(true);
-
-                                                                                killCharDialog.setPositiveButton("ARSCHLOCH",
-                                                                                        new DialogInterface.OnClickListener() {
-                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                //dismiss the dialog
-                                                                                            }
-                                                                                        });
-                                                                                killCharDialog.setNegativeButton("ach komm schon",
-                                                                                        new DialogInterface.OnClickListener() {
-                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                //dismiss the dialog
-                                                                                                AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
-                                                                                                killCharDialog.setTitle("Willst du ihn wirklich wieder haben?");
-                                                                                                killCharDialog.setMessage("");
-                                                                                                killCharDialog.setCancelable(true);
-                                                                                                killCharDialog.setPositiveButton("Ja",
-                                                                                                        new DialogInterface.OnClickListener() {
-                                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                                //dismiss the dialog
-                                                                                                                AlertDialog.Builder killCharDialog = new AlertDialog.Builder(CharacterSelection.this);
-                                                                                                                killCharDialog.setTitle("send nudes");
-                                                                                                                killCharDialog.setMessage("");
-                                                                                                                killCharDialog.setCancelable(true);
-
-                                                                                                                killCharDialog.setPositiveButton("Ok",
-                                                                                                                        new DialogInterface.OnClickListener() {
-                                                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                                                //dismiss the dialog
-                                                                                                                                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                                                                                                                                intent.setType("image/*");
-                                                                                                                                startActivityForResult(intent, 3);
-                                                                                                                                nudecounter=1;
-                                                                                                                                dialogcharacter =characterposition;
-                                                                                                                            }
-                                                                                                                        });
-                                                                                                                killCharDialog.setNegativeButton("nie im leben!",
-                                                                                                                        new DialogInterface.OnClickListener() {
-                                                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                                                //dismiss the dialog
-                                                                                                                            }
-                                                                                                                        });
-                                                                                                                killCharDialog.create().show();
-                                                                                                            }
-                                                                                                        });
-                                                                                                killCharDialog.setNegativeButton("doch nicht ",
-                                                                                                        new DialogInterface.OnClickListener() {
-                                                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                                                //dismiss the dialog
-                                                                                                            }
-                                                                                                        });
-                                                                                                killCharDialog.create().show();
-                                                                                            }
-                                                                                        });
-                                                                                killCharDialog.create().show();
                                                                             }
                                                                         });
                                                                 killCharDialog.create().show();
                                                             }
                                                         });
-                                                killCharDialog.create().show();
+                                                    killCharDialog.create().show();
+                                                }
+                                            });
+                                        killCharDialog.create().show();
                                             }
                                         });
+                                    killCharDialog.create().show();
+                                    }
+                                });
                                 killCharDialog.create().show();
                                 break;
                             }
@@ -387,7 +398,8 @@ public class CharacterSelection extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(CharacterSelection.this, CharacterSheet.class);
                     intent.putExtra("Character", holder.character);
-                    startActivity(intent);
+                    lastPosition = characterposition;
+                    startActivityForResult(intent, 1);
                 }
             });
         }
@@ -441,7 +453,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void saveCharacters() {
         // add-write text into file
         try {
-            FileOutputStream fileout = openFileOutput("NullPic.txt", MODE_PRIVATE);
+            FileOutputStream fileout = openFileOutput("SRCharacter.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             Gson gson = new Gson();
             if(save == null){
@@ -463,7 +475,7 @@ public class CharacterSelection extends AppCompatActivity {
         //reading text from file
         try {
             String json;
-            FileInputStream fis = openFileInput("NullPic.txt");
+            FileInputStream fis = openFileInput("SRCharacter.txt");
             FileChannel fc = fis.getChannel();
             MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 
@@ -477,6 +489,20 @@ public class CharacterSelection extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private Bitmap loadImageFromStorage(String path,SRCharacter character)
+    {
+        try {
+            File f=new File(path, ""+character.getName()+character.getArchetype()+character.getGender()
+                    +character.getAge()+character.getHeigt()+character.getMass()+character.getEthnicity()+"images.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            return b;
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -7,33 +7,48 @@
     style="@style/AppBackgroudImage"
     tools:context="com.example.danielojea.srapp.charactercreation.SkillSelection">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/AddAbilityBtn"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:onClick="AddAbility"
+        android:tint="@color/upgradeBlue"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="5dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/skillList"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/shadowrunapp_plus" />
+
     <Button
         android:id="@+id/weiterButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="startSkillSelectionActivity"
+        android:layout_height="@dimen/ok_button_height"
+        android:onClick="startNextActivity"
         android:text="@string/btnContinue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginBottom="-28dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/AttributeList"
+        android:id="@+id/skillList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:listitem="@layout/fragment_points_distribute"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/view3"
+        tools:listitem="@layout/points_distribute_fragment"
         android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/weiterButton" />
+        app:layout_constraintBottom_toTopOf="@+id/weiterButton"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <TextView
-        android:id="@+id/AttributeCounter"
+        android:id="@+id/KnowledgeSkillpointCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/skillpoints"
@@ -49,6 +64,6 @@
         android:background="@color/divider_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AttributeCounter"
+        app:layout_constraintTop_toBottomOf="@+id/KnowledgeSkillpointCounter"
         android:layout_marginTop="8dp" />
 </android.support.constraint.ConstraintLayout>

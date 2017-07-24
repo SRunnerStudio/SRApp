@@ -25,7 +25,7 @@ public class SkillSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_selection);
+        setContentView(R.layout.skill_selection);
         character = (SRCharacter)getIntent().getSerializableExtra("Character");
         skills = (ArrayList<Skill>) getIntent().getSerializableExtra("Skills");
         TextView skillpointCounter = (TextView) findViewById(R.id.SkillpointCounter);

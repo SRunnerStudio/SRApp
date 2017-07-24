@@ -88,7 +88,7 @@ public class Startscreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_startscreen);
+        setContentView(R.layout.startscreen);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);

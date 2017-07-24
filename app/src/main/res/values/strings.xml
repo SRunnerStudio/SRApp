@@ -41,5 +41,6 @@
     <string name="packetpoints">Paketpunkte:</string>
     <string name="title_activity_qualities">Qualities</string>
 
+    <string name="title_activity_character_selection_portrait_test">CharacterSelectionPortraitTest</string>
 
 </resources>

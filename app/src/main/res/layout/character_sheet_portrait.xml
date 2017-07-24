@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppBackgroudImage"
+    tools:context="com.example.danielojea.srapp.CharacterSelectionPortrait">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <ImageView
+        android:id="@+id/Portrait"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="closePortrait"
+        app:srcCompat="@drawable/shadowrun_ambient_2" />
+
+    <ImageView
+        android:id="@+id/deadCharSkull"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="end"
+        android:visibility="visible"
+        app:srcCompat="@drawable/skull_graffiti" />
+
+</FrameLayout>

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.danielojea.srapp.Classes.Metatyp;
-import com.example.danielojea.srapp.Classes.Priority;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
 
@@ -25,7 +23,7 @@ public class MetatypChoose extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_metatyp);
+        setContentView(R.layout.metatyp_choose);
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
         initImages();
         setTitle("Metatyp");

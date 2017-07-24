@@ -21,7 +21,7 @@ public class SRCharacter implements Serializable {
     private int mass;
     private int karma;
     private int totalKarma;
-    private SerialBitmap profileImage;
+    private String profileImage;
     private Attributes attributes;
     private ArrayList<Skill> skills;
     private ArrayList<Quality> advantages;
@@ -71,7 +71,7 @@ public class SRCharacter implements Serializable {
         karmaDisadvantages =25;
     }
 
-    public SRCharacter(String name, Metatyp metatype, SerialBitmap profileImage) {
+    public SRCharacter(String name, Metatyp metatype, String profileImage) {
         this.name = name;
         if (name.equals("")){
             this.name = "Namenlos";
@@ -88,6 +88,42 @@ public class SRCharacter implements Serializable {
         qualities.addAll(advantages);
         qualities.addAll(disadvantages);
         return qualities;
+    }
+
+    public void setCharacter(SRCharacter srCharacter){
+        this.name = srCharacter.name;
+        this.streetName = srCharacter.streetName;
+        this.metatype = srCharacter.metatype;
+        this.gender = srCharacter.gender;
+        this.archetype = srCharacter.archetype;
+        this.background = srCharacter.background;
+        this.ethnicity = srCharacter.ethnicity;
+        this.age = srCharacter.age;
+        this.heigt = srCharacter.heigt;
+        this.mass = srCharacter.mass;
+        this.karma = srCharacter.karma;
+        this.totalKarma = srCharacter.totalKarma;
+        this.profileImage = srCharacter.profileImage;
+        this.attributes = srCharacter.attributes;
+        this.skills = srCharacter.skills;
+        this.advantages = srCharacter.advantages;
+        this.disadvantages = srCharacter.disadvantages;
+        this.qualities = srCharacter.qualities;
+        this.connections = srCharacter.connections;
+        this.prioritySkills = srCharacter.prioritySkills;
+        this.priorityAttribute = srCharacter.priorityAttribute;
+        this.priorityMagic = srCharacter.priorityMagic;
+        this.priorityMetatyp = srCharacter.priorityMetatyp;
+        this.priorityRessource = srCharacter.priorityRessource;
+        this.specialAttributePoints = srCharacter.specialAttributePoints;
+        this.attributePoints = srCharacter.attributePoints;
+        this.skillPoints = srCharacter.skillPoints;
+        this.skillPackagePoints = srCharacter.skillPackagePoints;
+        this.skillKnowledgePoints = srCharacter.skillKnowledgePoints;
+        this.connectionPoints = srCharacter.connectionPoints;
+        this.karmaAdvantages = srCharacter.karmaAdvantages;
+        this.karmaDisadvantages = srCharacter.karmaDisadvantages;
+        this.isDead = srCharacter.isDead;
     }
 
     public boolean isDead() {
@@ -118,11 +154,11 @@ public class SRCharacter implements Serializable {
         skills.add(skill);
     }
 
-    public SerialBitmap getProfileImage() {
+    public String getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(SerialBitmap profileImage) {
+    public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 

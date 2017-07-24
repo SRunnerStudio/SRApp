@@ -18,7 +18,7 @@ public class RemainingPointsStartScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remaining_points_start_screen);
+        setContentView(R.layout.karma_start_screen);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");
