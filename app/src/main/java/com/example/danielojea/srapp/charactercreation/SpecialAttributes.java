@@ -7,37 +7,36 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.R;
-import com.example.danielojea.srapp.control.AttributeListAdapter;
+import com.example.danielojea.srapp.control.SpecialAttributeListAdapter;
 
-public class CustomizeAttributes extends AppCompatActivity {
+public class SpecialAttributes extends AppCompatActivity {
     SRCharacter character;
     RecyclerView recyclerView;
-    AttributeListAdapter mAdapter;
+    SpecialAttributeListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.attributes_customize);
+        setContentView(R.layout.attributes_customize_special);
 
         Intent starterIntent = getIntent();
         character = (SRCharacter)starterIntent.getSerializableExtra("Character");
-        TextView attributeCounter = (TextView) findViewById(R.id.AttributeCounter);
-        attributeCounter.setText("Attributpunkte: "+character.getAttributePoints());
+        TextView specialAttributeCounter = (TextView) findViewById(R.id.specialAttributeCounter);
+        specialAttributeCounter.setText("Spezial Attributpunkte: "+character.getSpecialAttributePoints());
         RecyclerView.LayoutManager mLayoutManager;
-        recyclerView = (RecyclerView)findViewById(R.id.AttributeList);
+        recyclerView = (RecyclerView)findViewById(R.id.specialAttributeList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AttributeListAdapter(character,attributeCounter);
+        mAdapter = new SpecialAttributeListAdapter(character,specialAttributeCounter);
         recyclerView.setAdapter(mAdapter);
-        setTitle("Attribute");
+        setTitle("Spezial Attribute");
     }
 
     public void startSkillSelectionActivity(View v){
         character = mAdapter.getCharacter();
-        Intent intent = new Intent(this, SpecialAttributes.class);
+        Intent intent = new Intent(this, SkillSelection.class);
         intent.putExtra("Character", character);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

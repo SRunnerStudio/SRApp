@@ -17,6 +17,9 @@ public class Attributes implements Serializable {
     private AttributeValue INT;
     private AttributeValue CHA;
     private AttributeValue edge;
+    private int currentEdge;
+    private AttributeValue MAG;
+    private AttributeValue RES;
     private float essence = 6;
     private int initiative;
     private int matrixInitiativeAR;
@@ -36,7 +39,7 @@ public class Attributes implements Serializable {
     private int physicalDamageTrackMax;
     private int StunDamageTrackMax;
 
-    public Attributes(AttributeValue KON, AttributeValue GES, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge, Metatyp metatyp) {
+    public Attributes(AttributeValue KON, AttributeValue GES, AttributeValue REA, AttributeValue STR, AttributeValue WIL, AttributeValue LOG, AttributeValue INT, AttributeValue CHA, AttributeValue edge, Metatyp metatyp,AttributeValue MAG,AttributeValue RES) {
         this.metatyp = metatyp;
         this.KON = KON;
         this.GES = GES;
@@ -47,6 +50,9 @@ public class Attributes implements Serializable {
         this.INT = INT;
         this.CHA = CHA;
         this.edge = edge;
+        this.MAG = MAG;
+        this.RES = RES;
+
     }
 
     public void calculateStats(){
@@ -261,5 +267,33 @@ public class Attributes implements Serializable {
 
     public AttributeValue getEdge() {
         return edge;
+    }
+
+    public void setEdge(AttributeValue edge) {
+        this.edge = edge;
+    }
+
+    public AttributeValue getMAG() {
+        return MAG;
+    }
+
+    public void setMAG(AttributeValue MAG) {
+        this.MAG = MAG;
+    }
+
+    public AttributeValue getRES() {
+        return RES;
+    }
+
+    public int getCurrentEdge() {
+        return currentEdge;
+    }
+
+    public void setCurrentEdge(int currentEdge) {
+        this.currentEdge = currentEdge;
+    }
+
+    public void setRES(AttributeValue RES) {
+        this.RES = RES;
     }
 }

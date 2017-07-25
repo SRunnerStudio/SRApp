@@ -5,6 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/magicValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        android:text="magicValue"
+        app:layout_constraintLeft_toLeftOf="@+id/memoryValue"
+        app:layout_constraintTop_toBottomOf="@+id/memoryValue" />
+
+    <TextView
+        android:id="@+id/magres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        android:text="Magie/Resonanz"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/memory" />
+
     <View
         android:id="@+id/view22"
         android:layout_width="0dp"
@@ -38,7 +58,7 @@
 
     <View
         android:layout_width="1dp"
-        android:layout_height="272dp"
+        android:layout_height="298dp"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
         android:layout_marginTop="1dp"
@@ -54,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintTop_toBottomOf="@+id/magres"
         android:id="@+id/view19" />
 
     <View

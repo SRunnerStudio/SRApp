@@ -42,12 +42,17 @@ public class SRCharacter implements Serializable {
     private int karmaAdvantages;
     private int karmaDisadvantages;
     private boolean isDead;
+    private boolean gotMagic;
+    private boolean gotResonance;
 
 
     public SRCharacter() {
         karma=25;
         karmaAdvantages=25;
-        karmaDisadvantages =25;
+        karmaDisadvantages=25;
+        isDead=false;
+        gotMagic=false;
+        gotResonance=false;
     }
 
     public SRCharacter(String name) {
@@ -57,7 +62,10 @@ public class SRCharacter implements Serializable {
         }
         karma=25;
         karmaAdvantages=25;
-        karmaDisadvantages =25;
+        karmaDisadvantages=25;
+        isDead=false;
+        gotMagic=false;
+        gotResonance=false;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
@@ -68,7 +76,10 @@ public class SRCharacter implements Serializable {
         this.metatype = metatype;
         karma=25;
         karmaAdvantages=25;
-        karmaDisadvantages =25;
+        karmaDisadvantages=25;
+        isDead=false;
+        gotMagic=false;
+        gotResonance=false;
     }
 
     public SRCharacter(String name, Metatyp metatype, String profileImage) {
@@ -80,7 +91,10 @@ public class SRCharacter implements Serializable {
         this.profileImage = profileImage;
         karma=25;
         karmaAdvantages=25;
-        karmaDisadvantages =25;
+        karmaDisadvantages=25;
+        isDead=false;
+        gotMagic=false;
+        gotResonance=false;
     }
 
     public ArrayList<Quality> getQualities() {
@@ -405,6 +419,22 @@ public class SRCharacter implements Serializable {
 
     public int calculateConnectionPoints(){
         return (getAttributes().getCHA().getValue() * 3);
+    }
+
+    public boolean gotMagic() {
+        return gotMagic;
+    }
+
+    public void setMagic(boolean hasMagic) {
+        this.gotMagic = hasMagic;
+    }
+
+    public boolean gotResonance() {
+        return gotResonance;
+    }
+
+    public void setResonance(boolean hasResonance) {
+        this.gotResonance = hasResonance;
     }
 }
 

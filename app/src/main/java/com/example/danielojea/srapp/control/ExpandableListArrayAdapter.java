@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.danielojea.srapp.R;
@@ -107,10 +106,10 @@ public class ExpandableListArrayAdapter extends BaseExpandableListAdapter {
     }
     public void highligthValue(int attributValue, TextView attributField,int low,int high){
         if (attributValue >= high) {
-            attributField.setTextColor(_context.getResources().getColor(R.color.GreenValue));
+            attributField.setTextColor(_context.getResources().getColor(R.color.highValue));
         } else {
             if (attributValue <= low) {
-                attributField.setTextColor(_context.getResources().getColor(R.color.RedValue));
+                attributField.setTextColor(_context.getResources().getColor(R.color.lowValue));
             }
         }
     }

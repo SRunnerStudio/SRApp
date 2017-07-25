@@ -49,13 +49,18 @@ public class PriorityListActivity extends AppCompatActivity {
      */
     public void startMetatypeActivity(View v){
         if(!validPriorities()){
-            Intent metaIntent = new Intent(this, MetatypChoose.class);
+            Class intentClass = MetatypChoose.class;
+            if(character.getPriorityMagic().getPriority()!=5){
+                intentClass= MagicuserChoose.class;
+            }
+            Intent intent = new Intent(this, intentClass);
+
             character.setAttributePoints(character.getPriorityAttribute().getAttributePoints(character.getPriorityAttribute().getPriority()));
             character.setSkillPoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[0]);
             character.setSkillPackagePoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[1]);
             //character.setDead(true);
-            metaIntent.putExtra("Character",character);
-            startActivity(metaIntent);
+            intent.putExtra("Character",character);
+            startActivity(intent);
             setTitle("Prioritäten");
         }
     }

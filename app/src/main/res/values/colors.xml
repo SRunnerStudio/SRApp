@@ -11,7 +11,9 @@
     <color name="colorVeryDarkRunnerRed">#660000</color>
 
     <color name="divider_color">#6d6d6d</color>
-    <color name="edgefull">#c3dd00</color>
+    <color name="edgefullg">#ffff00</color>
+    <color name="edgefull">#ffffFF</color>
+    <color name="edgefull0">#ff5900</color>
     <color name="edgeused">#6d6d6d</color>
     <color name="black_overlay">#000000</color>
     <color name="black_background">#0B0F12</color>
@@ -24,9 +26,15 @@
     <color name="downgradeOrange">#f9b92e</color>
     <color name="buttonGreen">#1d9300</color>
     <color name="darkGreyButton">#1d1d1d</color>
-    <color name="RedValue">#ff0004</color>
-    <color name="GreenValue">#11ff00</color>
-    <color name="legendColor">#820eff</color>
+    <color name="lowValue">#ae0003</color>
+    <color name="highValue">#11ff00</color>
+    <color name="topValue">#7d22ff</color>
+
+    <color name="commonColor">#ffffff</color>
+    <color name="uncommonColor">#8eff3c</color>
+    <color name="rareColor">#003cff</color>
+    <color name="epicColor">#7d22ff</color>
+    <color name="legendColor">#ff5900</color>
 
 </resources>
 

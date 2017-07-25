@@ -69,7 +69,9 @@
             android:name=".CharacterSelectionPortrait"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_character_selection_portrait_test"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".charactercreation.SpecialAttributes" />
+        <activity android:name=".charactercreation.MagicuserChoose"></activity>
     </application>
 
 </manifest>

@@ -32,15 +32,21 @@
 
     <string name="btnFinish">Fertig</string>
     <string name="btnContinue">Weiter</string>
-    <string name="btnFInishChar">Charaktererstellung abschließen</string>
+    <string name="btnFinishChar">Charaktererstellung abschließen</string>
 
-    <string name="skillpoints">Fertigkeitenpunkte:</string>
+    <string name="attributepoints">Fertigkeitenpunkte:</string>
+    <string name="skillpoints">Skillpunkte:</string>
+    <string name="specialAttributepoints">Spezial Attributpunkte:</string>
     <string name="connectionpoints">Punkte:</string>
     <string name="loyalty">Loaylität</string>
     <string name="influence">Einfluss</string>
     <string name="packetpoints">Paketpunkte:</string>
     <string name="title_activity_qualities">Qualities</string>
 
-    <string name="title_activity_character_selection_portrait_test">CharacterSelectionPortraitTest</string>
+    <string name="magicuser_choose_intro">Bei Shadowrun gibt es vier verschiedene Arten von Magieanwendern:
+            Adepten, Aspektzauberer, Zauberer und Magieradepten. Es
+            folgt eine kurze Zusammenfassung der Merkmale jeder Gruppe.
+            Der Spieler sollte diese Merkmale sorgfältig abwägen, bevor er
+            sich für eine bestimmte Art von Magieanwender entscheidet.</string>
 
 </resources>

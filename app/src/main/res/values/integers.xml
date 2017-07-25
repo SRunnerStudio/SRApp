@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="lowAttribute">3</integer>
-    <integer name="highAttribute">7</integer>
-    <integer name="legendaryAttribute">10</integer>
+    <integer name="lowAttribute">2</integer>
+    <integer name="highAttribute">6</integer>
+    <integer name="topAttribute">10</integer>
+    <integer name="commonAttribute">2</integer>
+    <integer name="uncommonAttribute">4</integer>
+    <integer name="rareAttribute">6</integer>
+    <integer name="epicAttribute">8</integer>
+    <integer name="lowDualAttribute">5</integer>
+    <integer name="highDualAttribute">11</integer>
+    <integer name="lowLimit">2</integer>
+    <integer name="highLimit">6</integer>
+    <integer name="topLimit">10</integer>
 </resources>

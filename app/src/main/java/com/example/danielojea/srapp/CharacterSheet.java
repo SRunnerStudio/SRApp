@@ -96,6 +96,7 @@ public class CharacterSheet extends AppCompatActivity {
         }
         setTracker("stun",character.getAttributes().getStunDamageTrack(),false);
         setTracker("phys",character.getAttributes().getPhysicalDamageTrack(),false);
+        setEdge(character.getAttributes().getCurrentEdge(),false);
         ImageView deadCharSkull = (ImageView) findViewById(R.id.deadCharSkull);
         TextView characterName = (TextView) findViewById(R.id.textViewNameValue);
         TextView characterMetaTyp = (TextView) findViewById(R.id.textViewMetaValue);
@@ -117,8 +118,8 @@ public class CharacterSheet extends AppCompatActivity {
         characterMetaTyp.setText(character.getMetatype().getMetatyp());
         characterArchetyp.setText(character.getArchetype());
         characterSex.setText(character.getGender());
-        characterSize.setText(character.getHeigt()+"cm");
-        characterWeight.setText(character.getMass()+"kg");
+        characterSize.setText(character.getHeigt()+" cm");
+        characterWeight.setText(character.getMass()+" kg");
         characterEthnicity.setText(character.getEthnicity());
         characterAge.setText(""+character.getAge());
         if(character.isDead()){
@@ -171,6 +172,7 @@ public class CharacterSheet extends AppCompatActivity {
         TextView chValue = (TextView) findViewById(R.id.chValue);
         TextView edgValue = (TextView) findViewById(R.id.edgValue);
         TextView essValue = (TextView) findViewById(R.id.essValue);
+        TextView magicValue = (TextView) findViewById(R.id.magicValue);
         TextView magResValue = (TextView) findViewById(R.id.magResValue);
         TextView initValue = (TextView) findViewById(R.id.initValue);
         TextView matIniValue = (TextView) findViewById(R.id.matIniValue);
@@ -184,73 +186,140 @@ public class CharacterSheet extends AppCompatActivity {
         TextView physlimitValue = (TextView) findViewById(R.id.physlimitValue);
         TextView socialLimitValue = (TextView) findViewById(R.id.socialLimitValue);
 
+        if(character.gotMagic()) {
+            magicValue.setText("" + character.getAttributes().getMAG().getValue());
+            highligthValue(character.getAttributes().getMAG().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
+        }
+        else{
+            if(character.gotResonance()){
+                magicValue.setText("" + character.getAttributes().getRES().getValue());
+                highligthValue(character.getAttributes().getRES().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
+            }
+            else{
+                magicValue.setText("N/A");
+            }
+        }
         konValue.setText(""+character.getAttributes().getKON().getValue());
-        highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getKON().getValue(),konValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         gesValue.setText(""+character.getAttributes().getGES().getValue());
-        highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getGES().getValue(),gesValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         reaValue.setText(""+character.getAttributes().getREA().getValue());
-        highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+  /*      highligthValue(character.getAttributes().getREA().getValue(),reaValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         strValue.setText(""+character.getAttributes().getSTR().getValue());
-        highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getSTR().getValue(),strValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         wilValue.setText(""+character.getAttributes().getWIL().getValue());
-        highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getWIL().getValue(),wilValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         logValue.setText(""+character.getAttributes().getLOG().getValue());
-        highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getLOG().getValue(),logValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         intValue.setText(""+character.getAttributes().getINT().getValue());
-        highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getKON().getValue(),intValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         chValue.setText(""+character.getAttributes().getCHA().getValue());
-        highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+/*        highligthValue(character.getAttributes().getCHA().getValue(),chValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         edgValue.setText(""+character.getAttributes().getEdge().getValue());
-        highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.legendaryAttribute));
+        highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
+ /*       highligthValue(character.getAttributes().getEdge().getValue(),edgValue
+                ,getResources().getInteger(R.integer.commonAttribute)
+                ,getResources().getInteger(R.integer.uncommonAttribute)
+                ,getResources().getInteger(R.integer.rareAttribute)
+                ,getResources().getInteger(R.integer.epicAttribute)
+        );*/
 
         essValue.setText(""+character.getAttributes().getEssence());
-        highligthValue(character.getAttributes().getEssence(),essValue,2,5);
+        highligthValue(character.getAttributes().getEssence(),essValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
 
         magResValue.setText("0");
         highligthValue(0,magResValue,2,7);
 
         initValue.setText(""+character.getAttributes().getInitiative()+"+1w6");
         int init= character.getAttributes().getREA().getValue()+character.getAttributes().getINT().getValue();
-        highligthValue(init,initValue,5,12);
+        highligthValue(init,initValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         matIniValue.setText(""+character.getAttributes().getMatrixInitiativeAR()+"+1w6");
-        highligthValue(init,matIniValue,5,12);
+        highligthValue(init,matIniValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         init= character.getAttributes().getINT().getValue()+character.getAttributes().getINT().getValue();
         astIniValue.setText(""+character.getAttributes().getAstralInitiative()+"+2w6");
-        highligthValue(init,astIniValue,5,12);
+        highligthValue(init,astIniValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         selbstBValue.setText(""+character.getAttributes().getComposure());
-        highligthValue(character.getAttributes().getComposure(),selbstBValue,5,12);
+        highligthValue(character.getAttributes().getComposure(),selbstBValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         menkValue.setText(""+character.getAttributes().getJudgeIntentions());
-        highligthValue(character.getAttributes().getJudgeIntentions(),menkValue,5,12);
+        highligthValue(character.getAttributes().getJudgeIntentions(),menkValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         carryValue.setText(""+character.getAttributes().getCarry());
-        highligthValue(character.getAttributes().getCarry(),carryValue,5,12);
+        highligthValue(character.getAttributes().getCarry(),carryValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         moveValue.setText(""+character.getAttributes().getMovementWalk()+"/"+character.getAttributes().getMovementRun()+"/+"+character.getAttributes().getMovementSprint());
         highligthValue(character.getAttributes().getGES().getValue(),moveValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
 
         memoryValue.setText(""+character.getAttributes().getMemory());
-        highligthValue(character.getAttributes().getMemory(),memoryValue,5,12);
+        highligthValue(character.getAttributes().getMemory(),memoryValue,getResources().getInteger(R.integer.lowDualAttribute),getResources().getInteger(R.integer.highDualAttribute));
 
         physlimitValue.setText(""+character.getAttributes().getPhysicalLimit());
-        highligthValue(character.getAttributes().getPhysicalLimit(),physlimitValue,3,7);
+        highligthValue(character.getAttributes().getPhysicalLimit(),physlimitValue,getResources().getInteger(R.integer.lowLimit),getResources().getInteger(R.integer.highLimit),getResources().getInteger(R.integer.topLimit));
 
         mentLimitValue.setText(""+character.getAttributes().getMentalLimit());
-        highligthValue(character.getAttributes().getMentalLimit(),mentLimitValue,3,7);
+        highligthValue(character.getAttributes().getMentalLimit(),mentLimitValue,getResources().getInteger(R.integer.lowLimit),getResources().getInteger(R.integer.highLimit),getResources().getInteger(R.integer.topLimit));
 
         socialLimitValue.setText(""+character.getAttributes().getSocialLimit());
-        highligthValue(character.getAttributes().getSocialLimit(),socialLimitValue,3,7);
+        highligthValue(character.getAttributes().getSocialLimit(),socialLimitValue,getResources().getInteger(R.integer.lowLimit),getResources().getInteger(R.integer.highLimit),getResources().getInteger(R.integer.topLimit));
 
 
         // Adding child data
@@ -326,10 +395,10 @@ public class CharacterSheet extends AppCompatActivity {
 
     public void highligthValue(float attributValue, TextView attributField,int low,int high){
         if (attributValue >= high) {
-            attributField.setTextColor(getResources().getColor(R.color.GreenValue));
+            attributField.setTextColor(getResources().getColor(R.color.highValue));
         } else {
             if (attributValue <= low) {
-                attributField.setTextColor(getResources().getColor(R.color.RedValue));
+                attributField.setTextColor(getResources().getColor(R.color.lowValue));
             }
         }
     }
@@ -337,17 +406,33 @@ public class CharacterSheet extends AppCompatActivity {
     public void highligthValue(float attributValue, TextView attributField,int low,int high,int legend){
 
         if (attributValue >= high) {
-            attributField.setTextColor(getResources().getColor(R.color.GreenValue));
+            attributField.setTextColor(getResources().getColor(R.color.highValue));
         } else {
             if (attributValue <= low) {
-                attributField.setTextColor(getResources().getColor(R.color.RedValue));
+                attributField.setTextColor(getResources().getColor(R.color.lowValue));
             }
         }
         if (attributValue >= legend) {
-            attributField.setTextColor(getResources().getColor(R.color.legendColor));
+            attributField.setTextColor(getResources().getColor(R.color.topValue));
             Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
 
             attributField.setTypeface(boldTypeface);
+        }
+    }
+
+    public void highligthValue(float attributValue, TextView attributField,int common,int uncommon,int rare,int epic){
+        attributField.setTextColor(getResources().getColor(R.color.commonColor));
+        if (attributValue > common) {
+            attributField.setTextColor(getResources().getColor(R.color.uncommonColor));
+        }
+        if (attributValue > uncommon) {
+            attributField.setTextColor(getResources().getColor(R.color.rareColor));
+        }
+        if (attributValue > rare) {
+            attributField.setTextColor(getResources().getColor(R.color.epicColor));
+        }
+        if (attributValue > epic) {
+            attributField.setTextColor(getResources().getColor(R.color.legendColor));
         }
     }
 
@@ -417,6 +502,51 @@ public class CharacterSheet extends AppCompatActivity {
         }
     }
 
+    public void markEdge(View v){
+        //v.setBackgroundTintList(this.getResources().getColorStateList(R.color.damageTrackerColor));
+        int stringLength = getResources().getResourceName(v.getId()).length();
+        int number = Integer.parseInt(getResources().getResourceName(v.getId()).substring(stringLength -1));
+
+        setEdge(number,true);
+    }
+
+    public void setEdge(int number,boolean pressed) {
+        int maxEdge;
+        String idName;
+
+        maxEdge = character.getAttributes().getEdge().getValue();
+
+        for (int i = maxEdge; i > 0; i--) {
+            idName = "edge" + i;
+
+
+
+            int nextEdgeId = getResources().getIdentifier(idName, "id", getPackageName());
+            ImageView nextEdge = (ImageView) findViewById(nextEdgeId);
+            if (i > number) {
+                nextEdge.setImageTintList(this.getResources().getColorStateList(R.color.edgeused));
+            } else {
+                if (i == number) {
+                    if (number == character.getAttributes().getCurrentEdge()&&pressed) {
+                        nextEdge.setImageTintList(this.getResources().getColorStateList(R.color.edgeused));
+                        character.getAttributes().setCurrentEdge(number - 1);
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("Character", character );
+                        setResult(Activity.RESULT_OK, resultIntent);
+                    } else {
+                        nextEdge.setImageTintList(this.getResources().getColorStateList(R.color.edgefull));
+                        character.getAttributes().setCurrentEdge(number);
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("Character", character );
+                        setResult(Activity.RESULT_OK, resultIntent);
+                    }
+                } else {
+                    nextEdge.setImageTintList(this.getResources().getColorStateList(R.color.edgefull));
+                }
+            }
+        }
+    }
+
     public void initMaxTrackDamage(){
         int maxStunDamage = character.getAttributes().getStunDamageTrackMax();
         int maxPhysDamage = character.getAttributes().getPhysicalDamageTrackMax();
@@ -443,12 +573,13 @@ public class CharacterSheet extends AppCompatActivity {
     }
 
     public void initMaxEdge(){
-        int maxedge = character.getAttributes().getEdge().getMaxValue();
+        int maxedge = character.getAttributes().getEdge().getValue();
 
         for(int i=maxedge+1;i<=6;i++) {
             setEdgeGone(i);
         }
     }
+
     public void setEdgeGone(int i){
         String idName = "edge" + i;
         int nextEdgeId = getResources().getIdentifier(idName, "id", getPackageName());

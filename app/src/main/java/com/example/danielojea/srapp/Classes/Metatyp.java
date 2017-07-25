@@ -29,6 +29,10 @@ public class Metatyp implements Serializable {
     private int CHAMax;
     private int EDGStart;
     private int EDGMax;
+    private int MAGStart;
+    private int MAGMax;
+    private int RESStart;
+    private int RESMax;
     private String Description;
     private String metatyp;
     private String metatypENG;
@@ -41,6 +45,7 @@ public class Metatyp implements Serializable {
                 KONStart = 1; KONMax = 6; GESStart = 1; GESMax = 6; REAStart = 1; REAMax = 6;
                 STRStart = 1; STRMax = 6; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 6; EDGStart = 2; EDGMax = 7;
+                MAGStart = 1; MAGMax = 6; RESStart = 1; RESMax = 6;
                 this.metatyp = "Mensch";
                 metatypENG =metatyp;
                 metatypDescription=
@@ -56,6 +61,7 @@ public class Metatyp implements Serializable {
                 KONStart = 1; KONMax = 6; GESStart = 2; GESMax = 7; REAStart = 1; REAMax = 6;
                 STRStart = 1; STRMax = 6; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 3; CHAMax = 8; EDGStart = 1; EDGMax = 6;
+                MAGStart = 1; MAGMax = 6; RESStart = 1; RESMax = 6;
                 this.metatyp = "Elf";
                 metatypENG =metatyp;
                 metatypDescription=
@@ -76,6 +82,7 @@ public class Metatyp implements Serializable {
                 KONStart = 3; KONMax = 8; GESStart = 1; GESMax = 6; REAStart = 1; REAMax = 5;
                 STRStart = 3; STRMax = 8; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 5;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 5; EDGStart = 1; EDGMax = 6;
+                MAGStart = 1; MAGMax = 6; RESStart = 1; RESMax = 6;
                 this.metatyp = "Zwerg";
                 metatypENG =metatyp;
                 metatypDescription=
@@ -97,6 +104,7 @@ public class Metatyp implements Serializable {
                 KONStart = 4; KONMax = 9; GESStart = 1; GESMax = 6; REAStart = 1; REAMax = 6;
                 STRStart = 3; STRMax = 8; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 6;
                 INTStart = 1; INTMax = 6; CHAStart = 1; CHAMax = 5; EDGStart = 1; EDGMax = 6;
+                MAGStart = 1; MAGMax = 6; RESStart = 1; RESMax = 6;
                 this.metatyp = "Ork";
                 metatypENG =metatyp;
                 metatypDescription =
@@ -122,6 +130,7 @@ public class Metatyp implements Serializable {
                 KONStart = 5; KONMax = 10; GESStart = 1; GESMax = 5; REAStart = 1; REAMax = 6;
                 STRStart = 5; STRMax = 10; WILStart = 1; WILMax = 6; LOGStart = 1; LOGMax = 5;
                 INTStart = 1; INTMax = 5; CHAStart = 1; CHAMax = 4; EDGStart = 1; EDGMax = 6;
+                MAGStart = 1; MAGMax = 6; RESStart = 1; RESMax = 6;
                 this.metatyp = "Troll";
                 metatypENG =metatyp;
                 metatypDescription =
@@ -329,4 +338,6 @@ public class Metatyp implements Serializable {
     public void setDescription(String description) {
         Description = description;
     }
+
+
 }
