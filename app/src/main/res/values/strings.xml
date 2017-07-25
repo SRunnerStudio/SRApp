@@ -42,6 +42,8 @@
     <string name="influence">Einfluss</string>
     <string name="packetpoints">Paketpunkte:</string>
     <string name="title_activity_qualities">Qualities</string>
+    <string name="title_activity_character_selection_portrait_test">title_activity_character_selection_portrait_test</string>
+
 
     <string name="magicuser_choose_intro">Bei Shadowrun gibt es vier verschiedene Arten von Magieanwendern:
             Adepten, Aspektzauberer, Zauberer und Magieradepten. Es

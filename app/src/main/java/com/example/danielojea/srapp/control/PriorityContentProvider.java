@@ -90,7 +90,7 @@ public class PriorityContentProvider {
         //addItem(new PriorityContentProvider.PriorityItem("E", "Ressourcen" ,new String[] {"Krasser Reichtum","Du hast was gespart","Du klaust bei der Tafel","Du hast zwei Hypoteken auf deinem Wellblech Haus","Vögel bewerfen dich mit Brot"}));
         PriorityRessource ressource = new PriorityRessource(0);
         addItem(new PriorityContentProvider.PriorityItem("E", "Ressourcen", new String[] {
-                "Krasser Reichtum von "+ressource.getA()+"\t¥",
+                "Krasser Reichtum von "+ressource.getA()+"¥",
                 "Du hast "+ressource.getB()+"¥ gespart",
                 "Du klaust bei der Tafel \n"+ressource.getC()+"¥",
                 "Du hast zwei Hypoteken auf deinem Wellblech Haus\n "+ressource.getD()+"¥",

@@ -173,6 +173,7 @@ public class CharacterSheet extends AppCompatActivity {
         TextView edgValue = (TextView) findViewById(R.id.edgValue);
         TextView essValue = (TextView) findViewById(R.id.essValue);
         TextView magicValue = (TextView) findViewById(R.id.magicValue);
+        TextView magres = (TextView) findViewById(R.id.magres);
         TextView magResValue = (TextView) findViewById(R.id.magResValue);
         TextView initValue = (TextView) findViewById(R.id.initValue);
         TextView matIniValue = (TextView) findViewById(R.id.matIniValue);
@@ -189,11 +190,13 @@ public class CharacterSheet extends AppCompatActivity {
         if(character.gotMagic()) {
             magicValue.setText("" + character.getAttributes().getMAG().getValue());
             highligthValue(character.getAttributes().getMAG().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
+            magres.setText("Magie");
         }
         else{
             if(character.gotResonance()){
                 magicValue.setText("" + character.getAttributes().getRES().getValue());
                 highligthValue(character.getAttributes().getRES().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
+                magres.setText("Resonanz");
             }
             else{
                 magicValue.setText("N/A");

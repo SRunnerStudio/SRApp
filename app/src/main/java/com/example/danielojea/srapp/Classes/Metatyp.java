@@ -49,7 +49,7 @@ public class Metatyp implements Serializable {
                 this.metatyp = "Mensch";
                 metatypENG =metatyp;
                 metatypDescription=
-                        "(Homo sapiens sapiens)\n" + "\n" +
+                        "(Homo sapiens sapiens)\n\n" +
                         "Der Mensch ist von allen Metatypen (vielleicht mit einer Aus" +
                         "nahme) am längsten auf der Erde vertreten. Man kennt und" +
                         "liebt sie – und wenn Sie das lesen, sind Sie höchstwahrschein" +
@@ -65,7 +65,7 @@ public class Metatyp implements Serializable {
                 this.metatyp = "Elf";
                 metatypENG =metatyp;
                 metatypDescription=
-                        "(Homo sapiens nobilis)\n" + "\n" +
+                        "(Homo sapiens nobilis)\n\n" +
                         "Elfen sind größer und schlanker als Menschen und haben spit" +
                         "ze Ohren. Sie haben die extrem nervige Gabe, geschickter als " +
                         "Menschen zu sein – und sie sehen auch noch besser aus. Au" +
@@ -86,7 +86,7 @@ public class Metatyp implements Serializable {
                 this.metatyp = "Zwerg";
                 metatypENG =metatyp;
                 metatypDescription=
-                        "(Homo sapiens pumilionis)\n" +
+                        "(Homo sapiens pumilionis)\n\n" +
                         "Wie zu erwarten, sind Zwerge kleiner und untersetzter als " +
                         "Menschen. Sie sind ziemlich stark und sehr zäh. Zwerge er" +
                         "holen sich schnell von Schaden, egal ob durch Schläge auf " +
@@ -108,7 +108,7 @@ public class Metatyp implements Serializable {
                 this.metatyp = "Ork";
                 metatypENG =metatyp;
                 metatypDescription =
-                        "(Homo sapiens robustus)\n" + "\n" +
+                        "(Homo sapiens robustus)\n\n" +
                         "Orks sehen wie die Kreaturen aus, die seit fast 150 Jahren in " +
                         "Fantasy-Filmen und -Trideos massenweise hingemetzelt wer" +
                         "den. Sie haben starke Brauenwülste, vorstehende Hauer, sind " +
@@ -134,7 +134,7 @@ public class Metatyp implements Serializable {
                 this.metatyp = "Troll";
                 metatypENG =metatyp;
                 metatypDescription =
-                        "(Homo sapiens ingentis)\n" + "\n" +
+                        "(Homo sapiens ingentis)\n\n" +
                         "Neben Trollen sehen Orks wie ganz gewöhnliche Bürger aus. Orks sind " +
                         "im Schnitt vielleicht knapp einen " +
                         "Viertelmeter größer als Menschen, " +
