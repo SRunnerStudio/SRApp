@@ -1,6 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:popupTheme="@style/MyDarkToolbarStyle"
     tools:context="com.example.danielojea.srapp.CharacterSelection">
     <item
         android:id="@+id/deleteCharacter"
@@ -10,6 +11,5 @@
     <item
         android:id="@+id/killCharacter"
         android:orderInCategory="100"
-        android:title="@string/killCharacter"
-        app:showAsAction="never" />
+        android:title="@string/killCharacter" />
 </menu>

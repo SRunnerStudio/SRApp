@@ -9,6 +9,7 @@
         <item name="android:titleTextColor">@color/bookOrange</item>
         <item name="android:colorButtonNormal">@color/colorDarkRunnerRed</item>
         <item name="android:buttonBarStyle">@color/colorDarkRunnerRed</item>
+        <item name="android:itemBackground">#2d2d2d</item>
         <item name="colorPrimary">@color/colorDarkRunnerRed</item>
         <item name="colorPrimaryDark">@color/colorVeryDarkRunnerRed</item>
         <item name="android:buttonStyle">@style/ButtonColorRunnerDark</item>
@@ -78,5 +79,9 @@
         <item name="android:colorButtonNormal">@color/damageTracker</item>
     </style>
 
+    <style name="MyDarkToolbarStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/black_overlay</item>
+        <item name="android:textColor">@color/black_overlay</item>
+    </style>
 
 </resources>
