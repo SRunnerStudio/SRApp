@@ -192,7 +192,11 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     if(skill.isFree()&&(skill.getValue() <= skill.getStartValue())){
                         character.setFreeSkill(character.getFreeSkill()+1);
                         if (character.getFreeSkill()>0){
-                            adapterFreePointCounter.setText(character.getFreeSkill()+" Freie Resonanzfertigkeiten");
+                            if(!character.isTechnomancer()) {
+                                adapterFreePointCounter.setText(character.getFreeSkill() + " Freie Magiefertigkeiten");
+                            }else {
+                                adapterFreePointCounter.setText(character.getFreeSkill() + " Freie Resonanzfertigkeiten");
+                            }
                         }
                     }
                     else if(skill.isFree()&&(skill.getValue() <= skill.getStartValue()+1)){
