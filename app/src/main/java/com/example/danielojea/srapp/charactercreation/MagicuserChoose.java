@@ -111,28 +111,19 @@ public class MagicuserChoose extends AppCompatActivity {
     public static String getSectionLine(int fragmentPosition){
         switch (fragmentPosition) {
             case 1:
-                character.setMagic(true);
-                character.setResonance(false);
                 return "ZAUBERER";
             case 2:
-                character.setMagic(true);
-                character.setResonance(false);
                 return "MAGIERADEPTEN";
             case 3:
-                character.setMagic(false);
-                character.setResonance(true);
                 return  "TECHNOMANCER";
             case 4:
-                character.setMagic(true);
-                character.setResonance(false);
                 return "ADEPTEN";
             case 5:
-                character.setMagic(true);
-                character.setResonance(false);
                 return "ASPEKTZAUBERER";
         }
         return "keineÜberschrift";
     }
+
     public static String getSection(int fragmentPosition){
         switch (fragmentPosition) {
             case 1:
@@ -215,9 +206,45 @@ public class MagicuserChoose extends AppCompatActivity {
         return "keineÜberschrift";
     }
 
+    public void chooseShownMagicuser(){
+        int currentItem= mViewPager.getCurrentItem();
+        switch(currentItem) {
+            case 0:
+                character.setMagician();
+                return;
+            case 1:
+                character.setMagicAdept();
+                return;
+            case 2:
+                character.setTechnomancer();
+                return;
+            case 3:
+                character.setAdept();
+                return;
+            case 4:
+                character.setAspectedMagician();
+                return;
+        }
+    }
 
     public void startNextActivity(View v){
-        Intent intent = new Intent(this, MetatypChoose.class);
+        chooseShownMagicuser();
+        if(character.isMagician()){
+            character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[0][1]));
+        }
+        if(character.isMagicAdept()){
+            character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[1][1]));
+        }
+        if(character.isTechnomancer()){
+            character.getAttributes().getRES().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[2][1]));
+        }
+        if(character.isAdept()){
+            character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[3][1]));
+        }
+        if(character.isAspectedMagician()){
+            character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[4][1]));
+        }
+        Intent intent = new Intent(this, CustomizeAttributes.class);
         intent.putExtra("Character",character);
         startActivity(intent);
     }

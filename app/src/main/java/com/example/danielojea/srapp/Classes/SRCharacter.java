@@ -42,8 +42,11 @@ public class SRCharacter implements Serializable {
     private int karmaAdvantages;
     private int karmaDisadvantages;
     private boolean isDead;
-    private boolean gotMagic;
-    private boolean gotResonance;
+    private boolean isMagician;
+    private boolean isMagicAdept;
+    private boolean isTechnomancer;
+    private boolean isAdept;
+    private boolean isAspectedMagician;
 
 
     public SRCharacter() {
@@ -51,8 +54,11 @@ public class SRCharacter implements Serializable {
         karmaAdvantages=25;
         karmaDisadvantages=25;
         isDead=false;
-        gotMagic=false;
-        gotResonance=false;
+        isMagician=false;
+        isMagicAdept=false;
+        isTechnomancer=false;
+        isAdept=false;
+        isAspectedMagician=false;
     }
 
     public SRCharacter(String name) {
@@ -64,8 +70,11 @@ public class SRCharacter implements Serializable {
         karmaAdvantages=25;
         karmaDisadvantages=25;
         isDead=false;
-        gotMagic=false;
-        gotResonance=false;
+        isMagician=false;
+        isMagicAdept=false;
+        isTechnomancer=false;
+        isAdept=false;
+        isAspectedMagician=false;
     }
 
     public SRCharacter(String name, Metatyp metatype) {
@@ -78,8 +87,11 @@ public class SRCharacter implements Serializable {
         karmaAdvantages=25;
         karmaDisadvantages=25;
         isDead=false;
-        gotMagic=false;
-        gotResonance=false;
+        isMagician=false;
+        isMagicAdept=false;
+        isTechnomancer=false;
+        isAdept=false;
+        isAspectedMagician=false;
     }
 
     public SRCharacter(String name, Metatyp metatype, String profileImage) {
@@ -93,8 +105,11 @@ public class SRCharacter implements Serializable {
         karmaAdvantages=25;
         karmaDisadvantages=25;
         isDead=false;
-        gotMagic=false;
-        gotResonance=false;
+        isMagician=false;
+        isMagicAdept=false;
+        isTechnomancer=false;
+        isAdept=false;
+        isAspectedMagician=false;
     }
 
     public ArrayList<Quality> getQualities() {
@@ -421,20 +436,64 @@ public class SRCharacter implements Serializable {
         return (getAttributes().getCHA().getValue() * 3);
     }
 
-    public boolean gotMagic() {
-        return gotMagic;
+    public boolean isMagician() {
+        return isMagician;
     }
 
-    public void setMagic(boolean hasMagic) {
-        this.gotMagic = hasMagic;
+    public void setMagician() {
+        this.isMagician=true;
+        this.isMagicAdept=false;
+        this.isTechnomancer=false;
+        this.isAdept=false;
+        this.isAspectedMagician=false;
     }
 
-    public boolean gotResonance() {
-        return gotResonance;
+    public boolean isMagicAdept() {
+        return isMagicAdept;
     }
 
-    public void setResonance(boolean hasResonance) {
-        this.gotResonance = hasResonance;
+    public void setMagicAdept() {
+        this.isMagician=false;
+        this.isMagicAdept=true;
+        this.isTechnomancer=false;
+        this.isAdept=false;
+        this.isAspectedMagician=false;
+    }
+
+    public boolean isTechnomancer() {
+        return isTechnomancer;
+    }
+
+    public void setTechnomancer() {
+        this.isMagician=false;
+        this.isMagicAdept=false;
+        this.isTechnomancer=true;
+        this.isAdept=false;
+        this.isAspectedMagician=false;
+    }
+
+    public boolean isAdept() {
+        return isAdept;
+    }
+
+    public void setAdept() {
+        this.isMagician=false;
+        this.isMagicAdept=false;
+        this.isTechnomancer=false;
+        this.isAdept=true;
+        this.isAspectedMagician=false;
+    }
+
+    public boolean isAspectedMagician() {
+        return isAspectedMagician;
+    }
+
+    public void setAspectedMagician() {
+        this.isMagician=false;
+        this.isMagicAdept=false;
+        this.isTechnomancer=false;
+        this.isAdept=false;
+        this.isAspectedMagician=true;
     }
 }
 

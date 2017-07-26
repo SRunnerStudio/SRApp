@@ -28,12 +28,12 @@ public class SpecialAttributeListAdapter extends RecyclerView.Adapter<SpecialAtt
         character = myDataset;
         values = new ArrayList<AttributeValue>();
         Attributes attributes = character.getAttributes();
-        values.add(new AttributeValue(attributes.getEdge().getMaxValue(),attributes.getEdge().getStartValue(),attributes.getEdge().getStartValue(),"Edge"));
-        if(character.gotMagic()) {
-            values.add(new AttributeValue(attributes.getMAG().getMaxValue(), attributes.getMAG().getStartValue(), attributes.getMAG().getStartValue(), "Magie"));
+        values.add(new AttributeValue(attributes.getEdge().getMaxValue(),attributes.getEdge().getValue(),attributes.getEdge().getValue(),"Edge"));
+        if(character.isMagician() || character.isMagicAdept() || character.isAdept() || character.isAspectedMagician()) {
+            values.add(new AttributeValue(attributes.getMAG().getMaxValue(), attributes.getMAG().getValue(), attributes.getMAG().getValue(), "Magie"));
         }
-        if(character.gotResonance()) {
-            values.add(new AttributeValue(attributes.getRES().getMaxValue(), attributes.getRES().getStartValue(), attributes.getRES().getStartValue(), "Resonanz"));
+        if(character.isTechnomancer()) {
+            values.add(new AttributeValue(attributes.getRES().getMaxValue(), attributes.getRES().getValue(), attributes.getRES().getValue(), "Resonanz"));
         }
 
 
@@ -122,10 +122,10 @@ public class SpecialAttributeListAdapter extends RecyclerView.Adapter<SpecialAtt
     public SRCharacter getCharacter() {
         character.getAttributes().setEdge(values.get(0));
         character.getAttributes().setCurrentEdge(values.get(0).getValue());
-        if(character.gotMagic()) {
+        if(character.isMagician() || character.isMagicAdept() || character.isAdept() || character.isAspectedMagician()) {
             character.getAttributes().setMAG(values.get(1));
         }
-        if(character.gotResonance()) {
+        if(character.isTechnomancer()) {
             character.getAttributes().setRES(values.get(1));
         }
 

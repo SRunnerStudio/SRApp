@@ -47,13 +47,9 @@ public class PriorityListActivity extends AppCompatActivity {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
-    public void startMetatypeActivity(View v){
+    public void startNextActivity(View v){
         if(!validPriorities()){
-            Class intentClass = MetatypChoose.class;
-            if(character.getPriorityMagic().getPriority()!=5){
-                intentClass= MagicuserChoose.class;
-            }
-            Intent intent = new Intent(this, intentClass);
+            Intent intent = new Intent(this, MetatypChoose.class);
 
             character.setAttributePoints(character.getPriorityAttribute().getAttributePoints(character.getPriorityAttribute().getPriority()));
             character.setSkillPoints(character.getPrioritySkills().getSkillPoints(character.getPrioritySkills().getPriority())[0]);

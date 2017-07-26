@@ -28,14 +28,14 @@ public class RemPointsAttributeListAdapter extends RecyclerView.Adapter<RemPoint
         character = myDataset;
         values = new ArrayList<AttributeValue>();
         Attributes attributes = character.getAttributes();
-        values.add(new AttributeValue(attributes.getKON().getMaxValue(),attributes.getKON().getStartValue(),attributes.getKON().getValue(),"KON"));
-        values.add(new AttributeValue(attributes.getGES().getMaxValue(),attributes.getGES().getStartValue(),attributes.getGES().getValue(),"GES"));
-        values.add(new AttributeValue(attributes.getREA().getMaxValue(),attributes.getREA().getStartValue(),attributes.getREA().getValue(),"REA"));
-        values.add(new AttributeValue(attributes.getSTR().getMaxValue(),attributes.getSTR().getStartValue(),attributes.getSTR().getValue(),"STR"));
-        values.add(new AttributeValue(attributes.getWIL().getMaxValue(),attributes.getWIL().getStartValue(),attributes.getWIL().getValue(),"WIL"));
-        values.add(new AttributeValue(attributes.getLOG().getMaxValue(),attributes.getLOG().getStartValue(),attributes.getLOG().getValue(),"LOG"));
-        values.add(new AttributeValue(attributes.getINT().getMaxValue(),attributes.getINT().getStartValue(),attributes.getINT().getValue(),"INT"));
-        values.add(new AttributeValue(attributes.getCHA().getMaxValue(),attributes.getCHA().getStartValue(),attributes.getCHA().getValue(),"CHA"));
+        values.add(new AttributeValue(attributes.getKON().getMaxValue(),attributes.getKON().getValue(),attributes.getKON().getValue(),"KON"));
+        values.add(new AttributeValue(attributes.getGES().getMaxValue(),attributes.getGES().getValue(),attributes.getGES().getValue(),"GES"));
+        values.add(new AttributeValue(attributes.getREA().getMaxValue(),attributes.getREA().getValue(),attributes.getREA().getValue(),"REA"));
+        values.add(new AttributeValue(attributes.getSTR().getMaxValue(),attributes.getSTR().getValue(),attributes.getSTR().getValue(),"STR"));
+        values.add(new AttributeValue(attributes.getWIL().getMaxValue(),attributes.getWIL().getValue(),attributes.getWIL().getValue(),"WIL"));
+        values.add(new AttributeValue(attributes.getLOG().getMaxValue(),attributes.getLOG().getValue(),attributes.getLOG().getValue(),"LOG"));
+        values.add(new AttributeValue(attributes.getINT().getMaxValue(),attributes.getINT().getValue(),attributes.getINT().getValue(),"INT"));
+        values.add(new AttributeValue(attributes.getCHA().getMaxValue(),attributes.getCHA().getValue(),attributes.getCHA().getValue(),"CHA"));
 
         attributePointCounter = txtAttributePointCounter;
     }

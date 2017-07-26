@@ -54,32 +54,34 @@ public class PriorityContentProvider {
                 "Amöbenniveau\n"+attribute.getD()+" Attributpunkte",
                 "Deine Eltern haben dich Kevin genannt\n"+attribute.getE()+" Attributpunkte"}));
         PriorityMagic magic = new PriorityMagic(1);
+
         addItem(new PriorityContentProvider.PriorityItem("C", "Magie" ,new String[] {
-                        magic.getA()[0][0]+": "+
-                        magic.getA()[0][1]+"\n"+
-                        magic.getA()[1][0]+": "+
-                        magic.getA()[1][1]+"\n",
-                        magic.getB()[0][0]+": "+
-                        magic.getB()[0][1]+"\n"+
-                        magic.getB()[1][0]+": "+
-                        magic.getB()[1][1]+"\n"+
-                        magic.getB()[2][0]+": "+
-                        magic.getB()[2][1]+"\n"+
-                        magic.getB()[3][0]+": "+
-                        magic.getB()[3][1]+"\n",
-                        magic.getC()[0][0]+": "+
-                        magic.getC()[0][1]+"\n"+
-                        magic.getC()[1][0]+": "+
-                        magic.getC()[1][1]+"\n"+
-                        magic.getC()[2][0]+": "+
-                        magic.getC()[2][1]+"\n"+
-                        magic.getC()[3][0]+": "+
-                        magic.getC()[3][1]+"\n",
-                        magic.getD()[2][0]+": "+
-                        magic.getD()[2][1]+"\n"+
-                        magic.getD()[3][0]+": "+
-                        magic.getD()[3][1]+"\n",
+                "Zauberer oder Magieradept: Magie " + magic.getA()[0][1] + ", " + magic.getA()[0][2] +
+                " Magische Fertigkeiten auf Stufe " + magic.getA()[0][3] +", " + magic.getA()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "Technomancer: Resonanz " + magic.getA()[2][1] + ", " + magic.getA()[2][2] +
+                " Resonanzfertigkeiten auf Stufe " + magic.getA()[2][3] +", " + magic.getA()[2][4] + " Komplexe Formen",
+
+                "Zauberer oder Magieradept: Magie " + magic.getB()[0][1] + ", " + magic.getB()[0][2] +
+                " Magische Fertigkeiten auf Stufe " + magic.getB()[0][3] +", " + magic.getB()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "Technomancer: Resonanz " + magic.getB()[2][1] + ", " + magic.getB()[2][2] +
+                " Resonanzfertigkeiten auf Stufe " + magic.getB()[2][3] +", " + magic.getB()[2][4] + " Komplexe Formen\n" +
+                "Adept: Magie " + magic.getB()[3][1] + ", " + magic.getB()[2][2] +
+                " Aktionsfähigkeit auf Stufe " + magic.getB()[3][3] +"\n" +
+                "Aspektzauberer: Magie " + magic.getB()[4][1] + ", " + magic.getB()[4][2] +
+                " Magische Fertigkeitsgruppe auf Stufe " + magic.getB()[4][3],
+
+                "Zauberer oder Magieradept: Magie " + magic.getC()[0][1] + ", " + magic.getC()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "Technomancer: Resonanz " + magic.getC()[1][1] + ", " + magic.getC()[1][4] + " Komplexe Formen\n"+
+                "Adept: Magie " + magic.getB()[3][1] + ", " + magic.getC()[3][2] +
+                " Aktionsfähigkeit auf Stufe " + magic.getC()[3][3] +"\n" +
+                "Aspektzauberer: Magie " + magic.getC()[4][1] + ", " + magic.getC()[4][2] +
+                " Magische Fertigkeitsgruppe auf Stufe " + magic.getC()[4][3],
+
+                "Adept: Magie " + magic.getB()[3][1] + "\n"+
+                "Aspektzauberer: Magie " + magic.getC()[4][1] +  "",
+
                 "Magie Niete\n"}));
+
         PrioritySkills ability = new PrioritySkills(1);
         addItem(new PriorityContentProvider.PriorityItem("D", "Fertigkeiten" , new String[] {
                 "Du bist Macgyver\n"+ability.getA()[0]+" Fertigkeitenpunkte \n"+ability.getA()[1]+" Paketpunkte",

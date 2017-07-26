@@ -187,13 +187,13 @@ public class CharacterSheet extends AppCompatActivity {
         TextView physlimitValue = (TextView) findViewById(R.id.physlimitValue);
         TextView socialLimitValue = (TextView) findViewById(R.id.socialLimitValue);
 
-        if(character.gotMagic()) {
+        if(character.isMagician() || character.isMagicAdept() || character.isAdept() || character.isAspectedMagician()) {
             magicValue.setText("" + character.getAttributes().getMAG().getValue());
             highligthValue(character.getAttributes().getMAG().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
             magres.setText("Magie");
         }
         else{
-            if(character.gotResonance()){
+            if(character.isTechnomancer()){
                 magicValue.setText("" + character.getAttributes().getRES().getValue());
                 highligthValue(character.getAttributes().getRES().getValue(), konValue, getResources().getInteger(R.integer.lowAttribute), getResources().getInteger(R.integer.highAttribute), getResources().getInteger(R.integer.topAttribute));
                 magres.setText("Resonanz");

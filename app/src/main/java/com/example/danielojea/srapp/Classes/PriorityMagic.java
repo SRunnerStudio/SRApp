@@ -7,26 +7,12 @@ import java.io.Serializable;
  */
 
 public class PriorityMagic implements Priority, Serializable {
-    private String[][] A = {{"Zauberer oder Magieradept","Magie 6, zwei Magische Fertigkeiten auf Stufe 5, 10 Zauber,Rituale und/oder Alchemische Zauber"},
-                            {"Technomancer","Resonanz 6, zwei Resonanzfertigkeiten auf Stufe 5, 5 Komplexe Formen"},
-                            {"",""},{"",""},{"",""}};
+    private String[][] A = {{"Zauberer","6","2","5","10"},{"Magieradept","6","2","5","10"},{"Technomancer","6","2","5","5"},{"Adept","0","0","0","0"},{"Aspektzauberer","0","0","0","0"}};
+    private String[][] B = {{"Zauberer","4","2","4","7"},{"Magieradept","4","2","4","7"},{"Technomancer","4","2","4","2"},{"Adept","6","1","4","0"},{"Aspektzauberer","5","1","4","0"}};
+    private String[][] C = {{"Zauberer","3","0","0","5"},{"Magieradept","3","0","0","5"},{"Technomancer","3","0","0","1"},{"Adept","4","1","2","0"},{"Aspektzauberer","3","1","2","0"}};
+    private String[][] D = {{"Zauberer","0","0","0","0"},{"Magieradept","0","0","0","0"},{"Technomancer","0","0","0","0"},{"Adept","2","0","0","0"},{"Aspektzauberer","2","0","0","0"}};
+    private String[][] E = {{"Zauberer","0","0","0","0"},{"Magieradept","0","0","0","0"},{"Technomancer","0","0","0","0"},{"Adept","0","0","0","0"},{"Aspektzauberer","0","0","0","0"}};
 
-    private String[][] B = {{"Zauberer oder Magieradept","Magie 4, zwei Magische Fertigkeiten auf Stufe 4, 7 Zauber, Rituale und/oder Alchemische Zauber"},
-            {"Technomancer","Resonanz 4, zwei Resonanzfertigkeiten auf Stufe 4, 2 Komplexe Formen"},
-            {"Adept","Magie 6, eine Aktionsfähigkeit auf Stufe 4"},
-            {"Aspektzauberer","Magie 5, eine Magische Fertigkeitsgruppe auf Stufe 4"}};
-    private String[][] C = {{"Zauberer oder Magieradept","Magie 3, 5 Zauber, Rituale und/oder Alchemische Zauber"},
-            {"Technomancer","Resonanz 3, 1 Komplexe Form"},
-            {"Adept","Magie 4, eine Aktionsfähigkeit auf Stufe 2"},
-            {"Aspektzauberer","Magie 3, eine Magische Fertigkeitsgruppe auf Stufe 2"}};
-    private String[][] D = {{"",""},
-            {"",""},
-            {"Adept","Magie 2"},
-            {"Aspektzauberer","Magie 2"}};
-    private String[][] E = {{"",""},
-            {"",""},
-            {"",""},
-            {"",""}};
     private int priority;
 
     public PriorityMagic(int priority) {
@@ -35,6 +21,17 @@ public class PriorityMagic implements Priority, Serializable {
 
     public String[][] getMagic(int priority){
         switch (priority){
+            case 1: return A;
+            case 2: return B;
+            case 3: return C;
+            case 4: return D;
+            case 5: return E;
+        }
+        return E;
+    }
+
+    public String[][] getMagic(){
+        switch (this.priority){
             case 1: return A;
             case 2: return B;
             case 3: return C;

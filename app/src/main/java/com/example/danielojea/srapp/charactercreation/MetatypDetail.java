@@ -49,7 +49,12 @@ public class MetatypDetail extends AppCompatActivity {
         setSpecialAttribute();
         character.setAttributes(attributes);
         character.getAttributes().calculateStats();
-        Intent intent = new Intent(this, CustomizeAttributes.class);
+
+        Class intentClass = CustomizeAttributes.class;
+        if(character.getPriorityMagic().getPriority()!=5){
+            intentClass= MagicuserChoose.class;
+        }
+        Intent intent = new Intent(this, intentClass);
         intent.putExtra("Character", character);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
