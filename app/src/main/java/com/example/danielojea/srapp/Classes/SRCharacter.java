@@ -21,6 +21,7 @@ public class SRCharacter implements Serializable {
     private int mass;
     private int karma;
     private int totalKarma;
+    private int freeSkill;
     private String profileImage;
     private Attributes attributes;
     private ArrayList<Skill> skills;
@@ -402,6 +403,14 @@ public class SRCharacter implements Serializable {
 
     public void setStreetName(String streetName) {
         this.streetName = streetName;
+    }
+
+    public int getFreeSkill() {
+        return freeSkill;
+    }
+
+    public void setFreeSkill(int freeSkill) {
+        this.freeSkill = freeSkill;
     }
 
     public String getEthnicity() {

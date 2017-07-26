@@ -29,6 +29,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
     public View layout;
     public TextView skillPointCounter;
     public TextView skillPointCounterPackage;
+    public TextView adapterFreePointCounter;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -42,6 +43,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         public FloatingActionButton upgradeButton;
         public FloatingActionButton downgradeButton;
         public TextView txtPackage;
+        public TextView freePointCounter;
 
         public ViewHolder(View v) {
             super(v);
@@ -51,6 +53,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
             txtCounter = (TextView) v.findViewById(R.id.AbilityCounter);
             txtSpecialization = (TextView) v.findViewById(R.id.specialization);
             txtPackage = (TextView) v.findViewById(R.id.txtPackage);
+            freePointCounter = (TextView) v.findViewById(R.id.freePointCounter);
             plusButton = (FloatingActionButton) v.findViewById(R.id.PlusButton);
             minusButton = (FloatingActionButton) v.findViewById(R.id.MinusButton);
             upgradeButton = (FloatingActionButton) v.findViewById(R.id.UpgradeButton);
@@ -74,6 +77,14 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
         values = myDataset.getSkills();
         skillPointCounter = txtSkillPointCounter;
         skillPointCounterPackage = txtSkillPointCounterPackage;
+    }
+
+    public SkillListAdapter(SRCharacter myDataset, TextView txtSkillPointCounter,TextView txtSkillPointCounterPackage,TextView freePointCounter) {
+        character = myDataset;
+        values = myDataset.getSkills();
+        skillPointCounter = txtSkillPointCounter;
+        skillPointCounterPackage = txtSkillPointCounterPackage;
+        adapterFreePointCounter = freePointCounter;
     }
 
     // Create new views (invoked by the layout manager)
@@ -177,9 +188,23 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     values = updatedValues;
                     notifyDataSetChanged();
                 } else {
-                    character.setSkillPoints(character.getSkillPoints() + 1);
+                    int freeSkillCompensation=0;
+                    if(skill.isFree()&&(skill.getValue() <= skill.getStartValue())){
+                        character.setFreeSkill(character.getFreeSkill()+1);
+                        if (character.getFreeSkill()>0){
+                            adapterFreePointCounter.setText(character.getFreeSkill()+" Freie Resonanzfertigkeiten");
+                        }
+                    }
+                    else if(skill.isFree()&&(skill.getValue() <= skill.getStartValue()+1)){
+                        freeSkillCompensation=1;
+                        character.setSkillPoints(character.getSkillPoints() + 1);
+                    }
+                    else{
+
+                        character.setSkillPoints(character.getSkillPoints() + 1);
+                    }
                     skill.setValue(skill.getValue() - 1);
-                    if (skill.getValue() < 1) {
+                    if (skill.getValue()+freeSkillCompensation <= skill.getStartValue()) {
                         skill.setValue(skill.getValue() + 1);
                         deletedSkills.add(skill);
                         if (skill.isSpecialization()){

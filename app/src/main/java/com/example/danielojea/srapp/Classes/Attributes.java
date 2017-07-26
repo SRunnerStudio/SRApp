@@ -117,6 +117,10 @@ public class Attributes implements Serializable {
                 return INT.getValue();
             case "CHA":
                 return CHA.getValue();
+            case "MAG":
+                return MAG.getValue();
+            case "RES":
+                return RES.getValue();
         }
         return 0;
     }

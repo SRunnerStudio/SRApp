@@ -14,6 +14,7 @@ public class Skill implements Serializable {
     private String connectedAttribute;
     private String connectedPackage;
     private boolean packageBound;
+    private boolean isFree;
     private int startValue;
     boolean isknowledge;
 
@@ -105,5 +106,13 @@ public class Skill implements Serializable {
 
     public void setStartValue(int startValue) {
         this.startValue = startValue;
+    }
+
+    public boolean isFree() {
+        return isFree;
+    }
+
+    public void setFree(boolean free) {
+        isFree = free;
     }
 }

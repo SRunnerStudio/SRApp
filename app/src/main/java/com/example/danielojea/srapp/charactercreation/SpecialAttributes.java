@@ -38,7 +38,7 @@ public class SpecialAttributes extends AppCompatActivity {
         character = mAdapter.getCharacter();
         Class intentClass = SkillSelection.class;
         if(character.isMagician()||character.isMagicAdept()||character.isTechnomancer()||character.isAdept()||character.isAspectedMagician()){
-            intentClass= MagicuserChoose.class;
+            intentClass= SkillSelection.class;
         }
         Intent intent = new Intent(this, intentClass);
         intent.putExtra("Character", character);

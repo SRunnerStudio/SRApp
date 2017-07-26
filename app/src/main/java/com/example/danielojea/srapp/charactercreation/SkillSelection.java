@@ -30,9 +30,15 @@ public class SkillSelection extends AppCompatActivity {
         skills = (ArrayList<Skill>) getIntent().getSerializableExtra("Skills");
         TextView skillpointCounter = (TextView) findViewById(R.id.SkillpointCounter);
         TextView skillpointPackageCounter = (TextView) findViewById(R.id.SkillpointPackageCounter);
+        TextView freePointCounter = (TextView) findViewById(R.id.freePointCounter);
 
         skillpointCounter.setText("Skillpunkte: "+character.getSkillPoints());
         skillpointPackageCounter.setText("Skillpaketpunkte: "+character.getSkillPackagePoints());
+        if((character.isAdept()||character.isAspectedMagician()||character.isMagician()||character.isAspectedMagician())&&character.getFreeSkill()>0) {
+            freePointCounter.setText(character.getFreeSkill()+" Freie Magiefertigkeiten");
+        }else if (character.isTechnomancer()&&character.getFreeSkill()>0){
+            freePointCounter.setText(character.getFreeSkill()+" Freie Resonanzfertigkeiten");
+        }
         if(skills == null){
             createSkillList();
         }
@@ -44,7 +50,7 @@ public class SkillSelection extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.skillList);
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SkillListAdapter(character,(TextView)findViewById(R.id.SkillpointCounter),(TextView)findViewById(R.id.SkillpointPackageCounter));
+        mAdapter = new SkillListAdapter(character,(TextView)findViewById(R.id.SkillpointCounter),(TextView)findViewById(R.id.SkillpointPackageCounter),(TextView)findViewById(R.id.freePointCounter));
         recyclerView.setAdapter(mAdapter);
         setTitle("Fertigkeiten");
     }

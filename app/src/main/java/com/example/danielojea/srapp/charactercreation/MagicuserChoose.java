@@ -231,18 +231,23 @@ public class MagicuserChoose extends AppCompatActivity {
         chooseShownMagicuser();
         if(character.isMagician()){
             character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[0][1]));
+            character.setFreeSkill(Integer.parseInt(character.getPriorityMagic().getMagic()[0][2]));
         }
         if(character.isMagicAdept()){
             character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[1][1]));
+            character.setFreeSkill(Integer.parseInt(character.getPriorityMagic().getMagic()[1][2]));
         }
         if(character.isTechnomancer()){
             character.getAttributes().getRES().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[2][1]));
+            character.setFreeSkill(Integer.parseInt(character.getPriorityMagic().getMagic()[2][2]));
         }
         if(character.isAdept()){
             character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[3][1]));
+            character.setFreeSkill(Integer.parseInt(character.getPriorityMagic().getMagic()[3][2]));
         }
         if(character.isAspectedMagician()){
             character.getAttributes().getMAG().setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[4][1]));
+            character.setFreeSkill(Integer.parseInt(character.getPriorityMagic().getMagic()[4][2]));
         }
         Intent intent = new Intent(this, CustomizeAttributes.class);
         intent.putExtra("Character",character);

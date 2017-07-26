@@ -78,4 +78,16 @@
         app:layout_constraintTop_toBottomOf="@+id/view3"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/points_distribute_fragment" />
+
+    <TextView
+        android:id="@+id/freePointCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/SkillpointCounter"
+        app:layout_constraintRight_toLeftOf="@+id/SkillpointPackageCounter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

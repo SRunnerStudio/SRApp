@@ -56,29 +56,29 @@ public class PriorityContentProvider {
         PriorityMagic magic = new PriorityMagic(1);
 
         addItem(new PriorityContentProvider.PriorityItem("C", "Magie" ,new String[] {
-                "Zauberer oder Magieradept: Magie " + magic.getA()[0][1] + ", " + magic.getA()[0][2] +
-                " Magische Fertigkeiten auf Stufe " + magic.getA()[0][3] +", " + magic.getA()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
-                "Technomancer: Resonanz " + magic.getA()[2][1] + ", " + magic.getA()[2][2] +
-                " Resonanzfertigkeiten auf Stufe " + magic.getA()[2][3] +", " + magic.getA()[2][4] + " Komplexe Formen",
+                "ZAUBERER / MAGIERADEPT:  Magie " + magic.getA()[0][1] + " und " + magic.getA()[0][2] +
+                " Magische Fertigkeiten auf Stufe " + magic.getA()[0][3] +" und " + magic.getA()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "TECHNOMANCER:  Resonanz " + magic.getA()[2][1] + " und " + magic.getA()[2][2] +
+                " Resonanzfertigkeiten auf Stufe " + magic.getA()[2][3] +" und " + magic.getA()[2][4] + " Komplexe Formen",
 
-                "Zauberer oder Magieradept: Magie " + magic.getB()[0][1] + ", " + magic.getB()[0][2] +
-                " Magische Fertigkeiten auf Stufe " + magic.getB()[0][3] +", " + magic.getB()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
-                "Technomancer: Resonanz " + magic.getB()[2][1] + ", " + magic.getB()[2][2] +
-                " Resonanzfertigkeiten auf Stufe " + magic.getB()[2][3] +", " + magic.getB()[2][4] + " Komplexe Formen\n" +
-                "Adept: Magie " + magic.getB()[3][1] + ", " + magic.getB()[2][2] +
+                "ZAUBERER / MAGIERADEPT:  Magie " + magic.getB()[0][1] + " und " + magic.getB()[0][2] +
+                " Magische Fertigkeiten auf Stufe " + magic.getB()[0][3] +" und " + magic.getB()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "TECHNOMANCER:  Resonanz " + magic.getB()[2][1] + " und " + magic.getB()[2][2] +
+                " Resonanzfertigkeiten auf Stufe " + magic.getB()[2][3] +" und " + magic.getB()[2][4] + " Komplexe Formen\n" +
+                "ADEPT:  Magie " + magic.getB()[3][1] + " und " + magic.getB()[2][2] +
                 " Aktionsfähigkeit auf Stufe " + magic.getB()[3][3] +"\n" +
-                "Aspektzauberer: Magie " + magic.getB()[4][1] + ", " + magic.getB()[4][2] +
+                "ASPEKTZAUBERER:  Magie " + magic.getB()[4][1] + " und " + magic.getB()[4][2] +
                 " Magische Fertigkeitsgruppe auf Stufe " + magic.getB()[4][3],
 
-                "Zauberer oder Magieradept: Magie " + magic.getC()[0][1] + ", " + magic.getC()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
-                "Technomancer: Resonanz " + magic.getC()[1][1] + ", " + magic.getC()[1][4] + " Komplexe Formen\n"+
-                "Adept: Magie " + magic.getB()[3][1] + ", " + magic.getC()[3][2] +
+                "ZAUBERER / MAGIERADEPT:  Magie " + magic.getC()[0][1] + " und " + magic.getC()[0][4] + " Zauber,Rituale und/oder Alchemische Zauber\n" +
+                "TECHNOMANCER:  Resonanz " + magic.getC()[1][1] + " und " + magic.getC()[1][4] + " Komplexe Formen\n"+
+                "ADEPT:  Magie " + magic.getB()[3][1] + " und " + magic.getC()[3][2] +
                 " Aktionsfähigkeit auf Stufe " + magic.getC()[3][3] +"\n" +
-                "Aspektzauberer: Magie " + magic.getC()[4][1] + ", " + magic.getC()[4][2] +
+                "ASPEKTZAUBERER:  Magie " + magic.getC()[4][1] + " und " + magic.getC()[4][2] +
                 " Magische Fertigkeitsgruppe auf Stufe " + magic.getC()[4][3],
 
-                "Adept: Magie " + magic.getB()[3][1] + "\n"+
-                "Aspektzauberer: Magie " + magic.getC()[4][1] +  "",
+                "ADEPT:  Magie " + magic.getB()[3][1] + "\n"+
+                "ASPEKTZAUBERER:  Magie " + magic.getC()[4][1] +  "",
 
                 "Magie Niete\n"}));
 

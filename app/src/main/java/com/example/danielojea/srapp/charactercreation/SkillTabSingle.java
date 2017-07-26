@@ -1,14 +1,18 @@
 package com.example.danielojea.srapp.charactercreation;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
+import com.example.danielojea.srapp.CharacterSelection;
 import com.example.danielojea.srapp.Classes.SRCharacter;
 import com.example.danielojea.srapp.Classes.Skill;
 import com.example.danielojea.srapp.control.ExpandableListAdapter;
@@ -30,6 +34,7 @@ public class SkillTabSingle extends Fragment {
     HashMap<String, List<String>> listDataChild;
     SRCharacter character;
     ArrayList<Skill> skills;
+    boolean specialAttribteDialog=false;
 
     public SkillTabSingle() {
         // Required empty public constructor
@@ -54,19 +59,99 @@ public class SkillTabSingle extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (character.getSkillPoints() > 0) {
-                    for (Skill skill: skills){
+                    for (final Skill skill: skills){
                         if (skill.getName().equals(listAdapter.getChild(groupPosition, childPosition))) {
-                            character.addSkill(skill);
-                            character.setSkillPoints(character.getSkillPoints() - 1);
+                            if(skill.getConnectedAttribute().equals("MAG")&&hasFreeMagic()&&(character.getFreeSkill()>0)){
+                                specialAttribteDialog = true;
+                                AlertDialog.Builder priorityPointDialog = new AlertDialog.Builder(getActivity());
+                                priorityPointDialog.setTitle("Prioritätspunkte einlösen");
+                                priorityPointDialog.setMessage("Durch die Priorisierung stehen dem Charakter fertigkeiten für die keine Skillpunkte ausgegeben werden müssen zur Verfügung.");
+                                priorityPointDialog.setCancelable(true);
+
+                                priorityPointDialog.setPositiveButton("ja",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                        if (character.isMagician()) {
+                                            skill.setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[0][3]));
+                                            skill.setStartValue(Integer.parseInt(character.getPriorityMagic().getMagic()[0][3]));
+                                            skill.setFree(true);
+                                        }
+                                        if (character.isMagicAdept()) {
+                                            skill.setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[1][3]));
+                                            skill.setStartValue(Integer.parseInt(character.getPriorityMagic().getMagic()[1][3]));
+                                            skill.setFree(true);
+                                        }
+                                        if (character.isAdept()) {
+                                            skill.setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[3][3]));
+                                            skill.setStartValue(Integer.parseInt(character.getPriorityMagic().getMagic()[3][3]));
+                                            skill.setFree(true);
+                                        }
+                                        if (character.isAspectedMagician()) {
+                                            skill.setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[4][3]));
+                                            skill.setStartValue(Integer.parseInt(character.getPriorityMagic().getMagic()[4][3]));
+                                            skill.setFree(true);
+                                        }
+                                        character.setFreeSkill(character.getFreeSkill()-1);
+                                        character.addSkill(skill);
+                                        chooseSkill(updatedSkills);
+                                        }
+                                    });
+                                priorityPointDialog.setNegativeButton("nein",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //dismiss the dialog
+                                                character.addSkill(skill);
+                                                character.setSkillPoints(character.getSkillPoints() - 1);
+                                                chooseSkill(updatedSkills);
+
+                                            }
+                                        });
+                                priorityPointDialog.create().show();
+
+                            } else if(skill.getConnectedAttribute().equals("RES")&&character.isTechnomancer()
+                                    &&0<Integer.parseInt(character.getPriorityMagic().getMagic()[2][2])&&(character.getFreeSkill()>0)){
+                                specialAttribteDialog = true;
+                                AlertDialog.Builder priorityPointDialog = new AlertDialog.Builder(getActivity());
+                                priorityPointDialog.setTitle("Prioritätspunkte einlösen");
+                                priorityPointDialog.setMessage("Durch die Priorisierung stehen dem Charakter fertigkeiten für die keine Skillpunkte ausgegeben werden müssen zur Verfügung.");
+                                priorityPointDialog.setCancelable(true);
+
+                                priorityPointDialog.setPositiveButton("ja",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                        skill.setValue(Integer.parseInt(character.getPriorityMagic().getMagic()[2][3]));
+                                        skill.setStartValue(Integer.parseInt(character.getPriorityMagic().getMagic()[2][3]));
+                                        skill.setFree(true);
+
+                                        character.setFreeSkill(character.getFreeSkill()-1);
+                                        character.addSkill(skill);
+                                        chooseSkill(updatedSkills);
+                                        }
+                                    });
+                                priorityPointDialog.setNegativeButton("nein",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                        character.addSkill(skill);
+                                        character.setSkillPoints(character.getSkillPoints() - 1);
+                                        chooseSkill(updatedSkills);
+                                        }
+                                    });
+                                priorityPointDialog.create().show();
+                            }
+                            else {
+                                character.addSkill(skill);
+                                character.setSkillPoints(character.getSkillPoints() - 1);
+                            }
                         } else {
                             updatedSkills.add(skill);
                         }
                     }
-                    Intent intent = new Intent(getContext(), SkillSelection.class);
-                    intent.putExtra("Character", character);
-                    intent.putExtra("Skills", updatedSkills);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    if(!specialAttribteDialog) {
+                        chooseSkill(updatedSkills);
+                    }
                     return false;
                 }
                 return false;
@@ -79,6 +164,30 @@ public class SkillTabSingle extends Fragment {
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
+    }
+
+    private boolean hasFreeMagic(){
+        if(character.isMagician()){
+            return (0<Integer.parseInt(character.getPriorityMagic().getMagic()[0][2]));
+        }
+        if(character.isMagicAdept()){
+            return (0<Integer.parseInt(character.getPriorityMagic().getMagic()[1][2]));
+        }
+        if(character.isAdept()){
+            return (0<Integer.parseInt(character.getPriorityMagic().getMagic()[3][2]));
+        }
+        if(character.isAspectedMagician()){
+            return (0<Integer.parseInt(character.getPriorityMagic().getMagic()[4][2]));
+        }
+        return false;
+    }
+
+    private void chooseSkill(ArrayList<Skill> updatedSkills){
+        Intent intent = new Intent(getContext(), SkillSelection.class);
+        intent.putExtra("Character", character);
+        intent.putExtra("Skills", updatedSkills);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     private void prepareListData() {
@@ -188,4 +297,5 @@ public class SkillTabSingle extends Fragment {
         listDataChild.put(listDataHeader.get(8), fertigkeitenMAG);
         listDataChild.put(listDataHeader.get(9), fertigkeitenRES);
     }
+
 }

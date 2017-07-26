@@ -204,84 +204,30 @@ public class CharacterSheet extends AppCompatActivity {
         }
         konValue.setText(""+character.getAttributes().getKON().getValue());
         highligthValue(character.getAttributes().getKON().getValue(),konValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getKON().getValue(),konValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         gesValue.setText(""+character.getAttributes().getGES().getValue());
         highligthValue(character.getAttributes().getGES().getValue(),gesValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getGES().getValue(),gesValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         reaValue.setText(""+character.getAttributes().getREA().getValue());
         highligthValue(character.getAttributes().getREA().getValue(),reaValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-  /*      highligthValue(character.getAttributes().getREA().getValue(),reaValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         strValue.setText(""+character.getAttributes().getSTR().getValue());
         highligthValue(character.getAttributes().getSTR().getValue(),strValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getSTR().getValue(),strValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         wilValue.setText(""+character.getAttributes().getWIL().getValue());
         highligthValue(character.getAttributes().getWIL().getValue(),wilValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getWIL().getValue(),wilValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         logValue.setText(""+character.getAttributes().getLOG().getValue());
         highligthValue(character.getAttributes().getLOG().getValue(),logValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getLOG().getValue(),logValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         intValue.setText(""+character.getAttributes().getINT().getValue());
         highligthValue(character.getAttributes().getINT().getValue(),intValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getKON().getValue(),intValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         chValue.setText(""+character.getAttributes().getCHA().getValue());
         highligthValue(character.getAttributes().getCHA().getValue(),chValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
-/*        highligthValue(character.getAttributes().getCHA().getValue(),chValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         edgValue.setText(""+character.getAttributes().getEdge().getValue());
         highligthValue(character.getAttributes().getEdge().getValue(),edgValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute),getResources().getInteger(R.integer.topAttribute));
- /*       highligthValue(character.getAttributes().getEdge().getValue(),edgValue
-                ,getResources().getInteger(R.integer.commonAttribute)
-                ,getResources().getInteger(R.integer.uncommonAttribute)
-                ,getResources().getInteger(R.integer.rareAttribute)
-                ,getResources().getInteger(R.integer.epicAttribute)
-        );*/
 
         essValue.setText(""+character.getAttributes().getEssence());
         highligthValue(character.getAttributes().getEssence(),essValue,getResources().getInteger(R.integer.lowAttribute),getResources().getInteger(R.integer.highAttribute));
