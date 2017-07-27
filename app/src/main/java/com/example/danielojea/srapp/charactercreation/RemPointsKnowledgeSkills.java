@@ -47,6 +47,7 @@ public class RemPointsKnowledgeSkills extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
             final EditText et = new EditText(v.getContext());
+            et.setSingleLine(true);
 
             // set prompts.xml to alertdialog builder
             alertDialogBuilder.setView(et);

@@ -236,6 +236,7 @@ public class SkillListAdapter extends RecyclerView.Adapter<SkillListAdapter.View
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
 
                     final EditText et = new EditText(v.getContext());
+                    et.setSingleLine(true);
 
                     // set prompts.xml to alertdialog builder
                     alertDialogBuilder.setView(et);

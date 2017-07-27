@@ -23,20 +23,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".CharacterSelection" />
-        <activity android:name=".charactercreation.SkillSelection" />
+        <activity android:name=".charactercreation.SkillSelection"
+            android:parentActivityName=".CharacterSelection"/>
         <activity android:name=".charactercreation.MetatypChoose" />
         <activity
             android:name=".CharacterSheet"
             android:theme="@style/tracker" />
-        <activity android:name=".charactercreation.CharacterConcept" />
+        <activity android:name=".charactercreation.CharacterConcept"
+            android:parentActivityName=".CharacterSelection"/>
         <activity
             android:name=".charactercreation.SkillPicker"
             android:label="@string/title_activity_ability_picker"
+            android:parentActivityName=".CharacterSelection"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".charactercreation.MetatypDetail" />
         <activity
             android:name=".charactercreation.PriorityListActivity"
             android:label="@string/title_priorityitem_list"
+            android:parentActivityName=".CharacterSelection"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".charactercreation.PriorityDetailActivity"
@@ -47,31 +51,44 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danielojea.srapp.charactercreation.PriorityListActivity" />
         </activity>
-        <activity android:name=".charactercreation.KnowledgeSkillSelection" />
+        <activity android:name=".charactercreation.KnowledgeSkillSelection"
+            android:parentActivityName=".CharacterSelection"/>
         <activity
             android:name=".charactercreation.QualitiesPicker"
+            android:parentActivityName=".CharacterSelection"
             android:label="@string/title_activity_qualities"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".charactercreation.QualitySelection" />
+        <activity android:name=".charactercreation.QualitySelection"
+            android:parentActivityName=".CharacterSelection"/>
         android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".charactercreation.CustomizeAttributes" />
-        <activity android:name=".charactercreation.ConnectionSelection" />
-        <activity android:name=".charactercreation.RemainingPointsAttributes" />
-        <activity android:name=".charactercreation.RemainingPointsSkills" />
+        <activity android:name=".charactercreation.CustomizeAttributes"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.ConnectionSelection"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.RemainingPointsAttributes"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.RemainingPointsSkills"
+            android:parentActivityName=".CharacterSelection"/>
         <activity
             android:name=".charactercreation.RemPointsSkillPicker"
             android:label="@string/title_activity_ability_picker"
+            android:parentActivityName=".CharacterSelection"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".charactercreation.RemPointsKnowledgeSkills" />
-        <activity android:name=".charactercreation.RemainingPointsStartScreen" />
-        <activity android:name=".charactercreation.RemPointsConnectionSelection" />
+        <activity android:name=".charactercreation.RemPointsKnowledgeSkills"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.RemainingPointsStartScreen"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.RemPointsConnectionSelection"
+            android:parentActivityName=".CharacterSelection"/>
         <activity
             android:name=".CharacterSelectionPortrait"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_character_selection_portrait_test"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".charactercreation.SpecialAttributes" />
-        <activity android:name=".charactercreation.MagicuserChoose"></activity>
+        <activity android:name=".charactercreation.SpecialAttributes"
+            android:parentActivityName=".CharacterSelection"/>
+        <activity android:name=".charactercreation.MagicuserChoose"
+            android:parentActivityName=".CharacterSelection"></activity>
     </application>
 
 </manifest>

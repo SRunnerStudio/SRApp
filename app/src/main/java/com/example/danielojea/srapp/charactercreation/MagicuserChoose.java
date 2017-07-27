@@ -30,8 +30,6 @@ public class MagicuserChoose extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.magicuser_choose);
-        //setContentView(R.layout.activity_slide);
-
         character = (SRCharacter) getIntent().getSerializableExtra("Character");
 
         // Create the adapter that will return a fragment for each of the three
@@ -43,6 +41,11 @@ public class MagicuserChoose extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         setTitle("Magieanwender");
+    }
+
+    @Override
+    public boolean onPreparePanel(int featureId, View view, Menu menu) {
+        return super.onPreparePanel(featureId, view, menu);
     }
 
     public static class PlaceholderFragment extends Fragment {
@@ -115,7 +118,7 @@ public class MagicuserChoose extends AppCompatActivity {
             case 2:
                 return "MAGIERADEPTEN";
             case 3:
-                return  "TECHNOMANCER";
+                return "TECHNOMANCER";
             case 4:
                 return "ADEPTEN";
             case 5:
