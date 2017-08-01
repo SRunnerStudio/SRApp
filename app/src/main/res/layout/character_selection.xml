@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppBackgroudImage"
-    tools:context="com.example.danielojea.srapp.CharacterSelection">
+    tools:context="com.example.danielojea.srapp.CharacterSelection"
+    android:id="@+id/character_selection"
+    android:padding="0dp">
 
     <include
         layout="@layout/character_selection_list"
