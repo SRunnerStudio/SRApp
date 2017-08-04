@@ -28,7 +28,7 @@
         <activity android:name=".charactercreation.MetatypChoose" />
         <activity
             android:name=".CharacterSheet"
-            android:theme="@style/tracker" />
+            android:theme="@style/CharacterSheet" />
         <activity android:name=".charactercreation.CharacterConcept"
             android:parentActivityName=".CharacterSelection"/>
         <activity

@@ -52,7 +52,7 @@ public class CharacterSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.character_selection);
         if(getIntent().getSerializableExtra("Character")!= null) {
             Toast.makeText(CharacterSelection.this, "Charakter erstellt", Toast.LENGTH_SHORT).show();

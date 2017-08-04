@@ -247,7 +247,7 @@
 
     <Button
         android:id="@+id/physDamage01"
-        style="@style/tracker"
+        style="@style/CharacterSheet"
         android:layout_width="@dimen/tracker_button_size"
         android:layout_height="@dimen/tracker_button_size"
         android:layout_marginLeft="32dp"

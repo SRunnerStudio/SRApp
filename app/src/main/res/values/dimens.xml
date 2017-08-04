@@ -13,4 +13,8 @@
     <dimen name="ok_button_height">40dp</dimen>
     <dimen name="tracker_button_size">40dp</dimen>
 
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+
+
 </resources>

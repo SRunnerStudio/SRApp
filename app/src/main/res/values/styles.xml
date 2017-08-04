@@ -72,8 +72,16 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-    <style name="tracker" parent="AppTheme">
+    <style name="CharacterSheet" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonBarStyle">@color/colorDarkRunnerRed</item>
+        <item name="android:itemBackground">#2d2d2d</item>
+        <item name="colorPrimary">@color/colorDarkRunnerRed</item>
+        <item name="colorPrimaryDark">@color/colorVeryDarkRunnerRed</item>
+        <item name="android:buttonStyle">@style/ButtonColorRunnerDark</item>
+        <item name="android:popupMenuStyle">@style/PopupRunnerDark</item>
         <item name="android:textColor">@color/bookOrange</item>
+        <item name="android:windowActionBar">false</item>
         <item name="android:textColorHint">@color/colorOrangeTitle</item>
         <item name="android:titleTextColor">@color/colorOrangeTitle</item>
         <item name="android:colorButtonNormal">@color/damageTracker</item>
